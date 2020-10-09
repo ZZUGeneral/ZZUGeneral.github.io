@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>General 的个人博客</title>
+    <link>https://ZZUGeneral.github.io</link>
+    <atom:link href="https://ZZUGeneral.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>你一定会喜欢那个因为喜欢她而发光的自己！</description>
+    <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
+    <lastBuildDate>Fri, 09 Oct 2020 19:44:26 +0800</lastBuildDate>
+    <language>zh-cn</language>
+    <item>
+      <title>我在 GitHub 上的开源项目</title>
+      <link>https://ZZUGeneral.github.io/my-github-repos</link>
+      <description><![CDATA[<ol>
+<li>SpringBootWorkSpace Java ]]>🤩<![CDATA[1&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0   SpringBoot 学习  2. shipping CSS ]]>🤩<![CDATA[1&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0  3. WorkSpace3 JavaScript ]]>🤩<![CDATA[0&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0  4. JavaWeb Java ]]>🤩<![CDATA[0&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0   This is for javaweb!  5. AndroidWorkSpace Java ]]>🤩<![CDATA[0&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0</li>
+</ol>]]></description>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/my-github-repos</guid>
+      <category>GitHub</category>
+      <category>开源</category>
+      <pubDate>Fri, 09 Oct 2020 12:37:46 +0800</pubDate>
+    </item>
+    <item>
+      <title>Docker 私有仓库</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155951338.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155951338.html</guid>
+      <category>Docker</category>
+      <pubDate>Thu, 08 Oct 2020 19:19:20 +0800</pubDate>
+    </item>
+    <item>
+      <title>Docker镜像和Dockerfile</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155925978.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155925978.html</guid>
+      <category>Docker</category>
+      <pubDate>Thu, 08 Oct 2020 19:18:46 +0800</pubDate>
+    </item>
+    <item>
+      <title>Docker部署Mysql, Tomcat, Nginx, Redis</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155887721.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155887721.html</guid>
+      <category>Docker</category>
+      <pubDate>Thu, 08 Oct 2020 19:18:07 +0800</pubDate>
+    </item>
+    <item>
+      <title>Docker数据卷</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155867208.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155867208.html</guid>
+      <category>Docker</category>
+      <pubDate>Thu, 08 Oct 2020 19:17:47 +0800</pubDate>
+    </item>
+    <item>
+      <title>Docker命令</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155843939.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155843939.html</guid>
+      <category>Docker</category>
+      <pubDate>Thu, 08 Oct 2020 19:17:23 +0800</pubDate>
+    </item>
+    <item>
+      <title>CentOS 安装 Docker</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155817945.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155817945.html</guid>
+      <category>CentOS</category>
+      <category>Docker</category>
+      <pubDate>Thu, 08 Oct 2020 19:16:58 +0800</pubDate>
+    </item>
+    <item>
+      <title>Spring Boot + Swagger Demo</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155700915.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155700915.html</guid>
+      <category>Java</category>
+      <category>SpringBoot</category>
+      <category>Swagger</category>
+      <pubDate>Thu, 08 Oct 2020 19:15:34 +0800</pubDate>
+    </item>
+    <item>
+      <title>类设计技巧</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/09/23/1600870557493.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/09/23/1600870557493.html</guid>
+      <category>JAVA</category>
+      <pubDate>Wed, 23 Sep 2020 22:15:57 +0800</pubDate>
+    </item>
+    <item>
+      <title>包修饰符</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/09/23/1600870537064.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/09/23/1600870537064.html</guid>
+      <category>JAVA</category>
+      <pubDate>Wed, 23 Sep 2020 22:15:37 +0800</pubDate>
+    </item>
+  </channel>
+</rss>

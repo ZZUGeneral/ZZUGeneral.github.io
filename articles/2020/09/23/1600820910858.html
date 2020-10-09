@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>SQLMAP API 使用教程 - General 的个人博客</title><meta name="description" content="A small and beautiful blogging system. 一款小而美的博客系统。"/><meta property="og:description" content="A small and beautiful blogging system. 一款小而美的博客系统。"/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="SQLMAP API 使用教程 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/09/23/1600820910858.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="SQLMAP API 使用教程 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/09/23/1600820910858.html">        <link rel="stylesheet"
+              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602218249201"/>
+            <link rel="prev" title="方法参数" href="https://ZZUGeneral.github.io/articles/2020/09/22/1600784849849.html">
+            <link rel="next" title="JAVA 杂谈 --- 重载  构造器" href="https://ZZUGeneral.github.io/articles/2020/09/23/1600870505552.html">
+    <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body class="fn__flex-column">
+<div id="pjax" class="fn__flex-1">
+    
+    <progress class="fn__progress"></progress>
+    <header class="header header--article">
+        <div class="wrapper header__title">
+            <h1 class="header__h1 fn__flex-inline">
+                <a href="https://ZZUGeneral.github.io" rel="start">General 的个人博客</a>
+            </h1>
+            <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
+            <div class="header__desc">
+                Open Source, Open Mind, <br/>Open Sight, Open Future!
+
+<!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
+            </div>
+            <svg class="header__down" id="headerDown" viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M15.992 25.304c-0 0-0 0-0.001 0-0.516 0-0.981-0.216-1.31-0.563l-0.001-0.001-14.187-14.996c-0.306-0.323-0.494-0.76-0.494-1.241 0-0.998 0.809-1.807 1.807-1.807 0.517 0 0.983 0.217 1.313 0.565l0.001 0.001 12.875 13.612 12.886-13.612c0.331-0.348 0.797-0.565 1.314-0.565 0.481 0 0.918 0.187 1.242 0.493l-0.001-0.001c0.723 0.687 0.755 1.832 0.072 2.555l-14.201 14.996c-0.33 0.348-0.795 0.564-1.311 0.564-0.001 0-0.003 0-0.004 0h0z"></path>
+            </svg>
+        </div>
+    </header>
+    <div class="side__menu">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M30 18h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM30 6.25h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM2 25.75h28c1.1 0 2 0.9 2 2s-0.9 2-2 2h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2z"></path>
+        </svg>
+        <span>
+            &nbsp; menu
+        </span>
+    </div>
+    <div class="side__main">
+        <div class="side__bg"></div>
+        <div class="side__panel">
+            <svg class="side__close ft__a" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 20 20">
+                <path d="M18.362 19.324c-0.902 0.902-2.363 0.902-3.263 0l-5.098-5.827-5.098 5.825c-0.902 0.902-2.363 0.902-3.263 0-0.902-0.902-0.902-2.363 0-3.263l5.304-6.057-5.306-6.061c-0.902-0.902-0.902-2.361 0-3.263s2.361-0.902 3.263 0l5.1 5.829 5.098-5.829c0.902-0.902 2.361-0.902 3.263 0s0.902 2.363 0 3.263l-5.304 6.061 5.304 6.057c0.902 0.902 0.902 2.363 0 3.265z"></path>
+            </svg>
+
+            <div class="side__header">
+                <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+
+                <div class="side__meta">
+                    23 文章 <br>
+                    <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
+                    
+                </div>
+            </div>
+
+            <div class="side__title">
+                <span>ღゝ◡╹)ノ❤️</span>
+            </div>
+            <ul class="side__nav">
+                <li>
+                    <a href="https://ZZUGeneral.github.io" rel="start">
+                            General 的个人博客
+                    </a>
+                </li>
+                    <li>
+                        <a href="/my-github-repos" target="_self"><img
+                                class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
+                    </li>
+                <li>
+                    <a href="https://ZZUGeneral.github.io/categories.html">分类</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGeneral.github.io/tags.html">标签墙</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGeneral.github.io/archives.html">存档</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGeneral.github.io/links.html">友链</a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://ZZUGeneral.github.io/rss.xml">RSS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20200524.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)">
+        <div style="background-image: url(https://b3logfile.com/bing/20200524.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
+        <canvas id="articleTop"></canvas>
+    </div>
+    <div class="article">
+        <div class="ft__center">
+            <div class="article__meta">
+                <time>
+                    2020-09-23
+                </time>
+                /
+                    <a rel="tag"
+                       href="https://ZZUGeneral.github.io/tags/SQLMAP">SQLMAP</a> &nbsp;
+                    <a rel="tag"
+                       href="https://ZZUGeneral.github.io/tags/SQL%E6%B3%A8%E5%85%A5">SQL注入</a> &nbsp;
+            </div>
+            <h2 class="article__title">
+                SQLMAP API 使用教程
+            </h2>
+<div class="article__share"
+     data-title="SQLMAP API 使用教程"
+     data-blogtitle="General 的个人博客"
+     data-url="https://ZZUGeneral.github.io/articles/2020/09/23/1600820910858.html"
+     data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <span class="item" data-type="qqz">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M22.824 13.989l-8.348 6.287s3.351 0.522 8.404 0.461l-0.23-1.040 7.2-6.549c0.132-0.12 0.183-0.312 0.129-0.487s-0.203-0.299-0.377-0.314l-9.492-0.856-3.708-9.213c-0.068-0.169-0.226-0.279-0.401-0.279s-0.333 0.11-0.401 0.279l-3.708 9.213-9.492 0.856c-0.174 0.015-0.323 0.139-0.377 0.314s-0.004 0.366 0.129 0.487l7.2 6.549-2.158 9.742c-0.040 0.178 0.026 0.365 0.168 0.474 0.142 0.107 0.331 0.115 0.481 0.021l8.158-5.165 8.158 5.165c0.070 0.045 0.147 0.066 0.225 0.066 0.090 0 0.18-0.029 0.256-0.086 0.142-0.109 0.208-0.295 0.168-0.474l-1.707-7.704c0.732-0.386 1.538-1.040 1.538-1.040s-3.195 1.638-14.664 0.838l8.312-6.325s-0.327-0.534-10.744-0.914c-0.697-0.026 8.493-1.83 15.281-0.305z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="wechat">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="weibo">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+            <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+            <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+            <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="twitter">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+        </svg>
+    </span>
+    <span class="item__qr"></span>
+</div>        </div>
+        <div class="wrapper">
+            <section class="vditor-reset articles article__content">
+                <h2 id="为什么使用SqlmapAPI-">为什么使用 SqlmapAPI?</h2>
+<p>  由于 SQLMAP 每检测一个站点都需要开启一个新的命令行窗口或者结束掉上一个检测任务。虽然 -m 参数可以批量扫描 URL，但是模式也是一个结束扫描后才开始另一个扫描任务。通过 API 接口，下发扫描任务就简单了，无需开启一个新的命令行窗口。</p>
+<h2 id="SqlmapAPI">SqlmapAPI</h2>
+<p>  在 sqlmap 安装目录下的 sqlmapapi.py 文件，这个就是 sqlmap API，sqlmapapi 分为服务端以及客户端。</p>
+<pre><code class="highlight-chroma">C:\Users\yanghelong\Desktop\sqlmap&gt;python sqlmapapi.py -h
+Usage: sqlmapapi.py [options]
+
+Options:
+ &nbsp;-h, --help &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;显示帮助信息并
+ &nbsp;-s, --server &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;作为Api服务端运行
+ &nbsp;-c, --client &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;作为Api客户端运行
+ &nbsp;-H HOST, --host=HOST &nbsp;指定服务端IP地址(默认IP : "127.0.0.1")
+ &nbsp;-p PORT, --port=PORT &nbsp;指定服务端端口 (默认端口 : 8775)
+ &nbsp;--adapter=ADAPTER &nbsp; &nbsp; 服务端标准接口(默认值 : "wsgiref")
+ &nbsp;--username=USERNAME &nbsp; 可选，设置用户名
+ &nbsp;--password=PASSWORD &nbsp; 可选，设置密码
+</code></pre>
+<h3 id="启动服务端">启动服务端</h3>
+<p>  python sqlmapapi.py -s 命令成功后，在命令行中会返回一些信息。大概的意思是 API 服务端在本地 8775 端口上运行，admin token 为 bca6e58ac03c9cb52f35a87aeaa28dcf，IPC 数据库的位置在 C:\Users\YANGHE~1\AppData\Local\Temp\sqlmapipc-9lqlm_4d，API 服务端已经和 IPC 数据库连接上了，正在使用 bottle 框架 wsgiref 标准接口。</p>
+<pre><code class="highlight-chroma"> C:\Users\yanghelong\Desktop\sqlmap&gt; python sqlmapapi.py -s
+[15:52:26] [INFO] Running REST-JSON API server at '127.0.0.1:8775'..
+[15:52:26] [INFO] Admin (secret) token: bca6e58ac03c9cb52f35a87aeaa28dcf
+[15:52:26] [DEBUG] IPC database: 'C:\Users\YANGHE~1\AppData\Local\Temp\sqlmapipc-9lqlm_4d'
+[15:52:26] [DEBUG] REST-JSON API server connected to IPC database
+[15:52:26] [DEBUG] Using adapter 'wsgiref' to run bottle
+</code></pre>
+<p>  但是通过上面的这种方式开启 API 服务端有一个缺点，当服务端和客户端不在同一台主机时会连接不上，因此如果要解决这个问题，可以通过输入以下命令来开启 API 服务端：</p>
+<pre><code class="highlight-chroma">python sqlmapapi.py -s -H "0.0.0.0" -p 8775
+</code></pre>
+<p>  命令成功后，远程客户端就可以通过指定远程主机 IP 和端口来连接到 API 服务端。</p>
+<h3 id="固定admin-token">固定 admin token</h3>
+<p>  如果您有特殊的需求需要固定 admin token 的话，可以修改 sqlmap 目录下的/lib/utils/api.py 文件，以下是源代码：</p>
+<pre><code class="highlight-chroma">DataStore.admin_token = encodeHex(os.urandom(16), binary=False)
+</code></pre>
+<h2 id="接口模式">接口模式</h2>
+<h3 id="基于命令行的接口模式">基于命令行的接口模式</h3>
+<pre><code class="highlight-chroma">C:\Users\yanghelong\Desktop\sqlmap&gt; python sqlmapapi.py -c
+[16:00:23] [DEBUG] Example client access from command line:
+ &nbsp; &nbsp; &nbsp;  $ taskid=$(curl http://127.0.0.1:8775/task/new 2&gt;1 | grep -o -I '[a-f0-9]\{16\}') &amp;&amp; echo $taskid
+ &nbsp; &nbsp; &nbsp;  $ curl -H "Content-Type: application/json" -X POST -d '{"url": "http://testphp.vulnweb.com/artists.php?artist=1"}' http://127.0.0.1:8775/scan/$taskid/start
+ &nbsp; &nbsp; &nbsp;  $ curl http://127.0.0.1:8775/scan/$taskid/data
+ &nbsp; &nbsp; &nbsp;  $ curl http://127.0.0.1:8775/scan/$taskid/log
+[16:00:23] [INFO] Starting REST-JSON API client to 'http://127.0.0.1:8775'...
+[16:00:23] [DEBUG] Calling 'http://127.0.0.1:8775'
+[16:00:23] [INFO] Type 'help' or '?' for list of available commands
+api&gt; help
+help &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 显示帮助信息
+new ARGS &nbsp; &nbsp; &nbsp; 开启一个新的扫描任务
+use TASKID &nbsp; &nbsp; 切换指定taskid任务
+data &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 获取当前任务返回的数据
+log &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  获取当前任务的扫描日志
+status &nbsp; &nbsp; &nbsp; &nbsp; 获取当前任务的扫描状态
+option OPTION  获取当前任务的选项
+options &nbsp; &nbsp; &nbsp;  获取当前任务的所有配置信息
+stop &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 停止当前任务
+kill &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 杀死当前任务
+list &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 显示所有任务列表
+version &nbsp; &nbsp; &nbsp;  Fetch server version
+flush &nbsp; &nbsp; &nbsp; &nbsp;  清空任务(默认是所有任务)
+exit &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 退出客户端
+</code></pre>
+<h4 id="检测GET注入">检测 GET 注入</h4>
+<pre><code class="highlight-chroma">new -u url
+eg:
+//现请求了/task/new创建一个新的taskid，后由发起/scan/cafeb23befb85bb6/start请求开始任务
+api&gt; new -u "http://192.168.64.130/dvwa/vulnerabilities/sqli/?id=2&amp;Submit=Submit"
+[16:20:11] [DEBUG] Calling 'http://127.0.0.1:8775/task/new'
+[16:20:11] [INFO] New task ID is 'cafeb23befb85bb6'
+[16:20:11] [DEBUG] Calling 'http://127.0.0.1:8775/scan/cafeb23befb85bb6/start'
+[16:20:11] [INFO] Scanning started
+api (cafeb23befb85bb6)&gt;
+//通过status 获取该任务的扫描结果，若返回内容中的status字段为terminated，说明扫描完成，若返回内容中的status字段为running，说明扫描还在进行中
+api (cafeb23befb85bb6)&gt; status
+[16:21:29] [DEBUG] Calling 'http://127.0.0.1:8775/scan/cafeb23befb85bb6/status'
+{
+ &nbsp;  "success": true,
+ &nbsp;  "status": "running",
+ &nbsp;  "returncode": null
+}
+//输入 data 命令，来获取扫描完成后注入出来的信息，若返回的内容中data字段不为空就说明存在注入。
+
+
+//不存在注入返回的内容，data字段为空
+{
+ &nbsp;  "success": true,
+ &nbsp;  "data": [],
+ &nbsp;  "error": []
+}
+</code></pre>
+<h4 id="检测POST注入">检测 POST 注入</h4>
+<pre><code class="highlight-chroma">//输入以下命令，在data.txt中加入数据，指定注入的位置，来达到检测POST、cookie、UA等注入的目的：
+new -r data.txt
+api&gt; new -r C:\Users\yanghelong\Desktop\sql\build1\test.txt
+[16:29:30] [DEBUG] Calling 'http://127.0.0.1:8775/task/new'
+[16:29:30] [INFO] New task ID is '75708f5e15824979'
+[16:29:30] [DEBUG] Calling 'http://127.0.0.1:8775/scan/75708f5e15824979/start'
+[16:29:30] [INFO] Scanning started
+</code></pre>
+<p>  基于命令行的接口模式用起来还是比较方便的，我们只需要通过 new 命令就可以自动创建 taskid 并开始该任务。</p>
+<h3 id="基于HTTP协议的接口模式">基于 HTTP 协议的接口模式</h3>
+<p>  sqlmapapi.py 的 h 基于 http 接口调用模式的主要函数，进入到 lib/utils/api.py 的 server 类，可以发现通过向 server 提交数据进行与服务的交互。</p>
+<pre><code class="highlight-chroma">#辅助
+@get('/error/401') &nbsp; &nbsp;
+@get("/task/new")
+@get("/task/&lt;taskid&gt;/delete")
+
+#Admin 命令
+@get("/admin/list")
+@get("/admin/&lt;token&gt;/list")
+@get("/admin/flush")
+@get("/admin/&lt;token&gt;/flush")
+
+#sqlmap 核心交互命令
+@get("/option/&lt;taskid&gt;/list")
+@post("/option/&lt;taskid&gt;/get")
+@post("/option/&lt;taskid&gt;/set")
+@post("/scan/&lt;taskid&gt;/start")
+@get("/scan/&lt;taskid&gt;/stop")
+@get("/scan/&lt;taskid&gt;/kill")
+@get("/scan/&lt;taskid&gt;/status")
+@get("/scan/&lt;taskid&gt;/data")
+@get("/scan/&lt;taskid&gt;/log/&lt;start&gt;/&lt;end&gt;")
+@get("/scan/&lt;taskid&gt;/log")
+@get("/download/&lt;taskid&gt;/&lt;target&gt;/&lt;filename:path&gt;")
+</code></pre>
+<p>  <strong>@get("/task/new")</strong></p>
+<p>  新建任务，返回一个随机的 taskid</p>
+<pre><code class="highlight-chroma">@get("/task/new")
+def task_new():
+ &nbsp; &nbsp;"""
+ &nbsp;  Create a new task
+ &nbsp;  """
+ &nbsp; &nbsp;taskid = encodeHex(os.urandom(8), binary=False)
+ &nbsp; &nbsp;remote_addr = request.remote_addr
+ 
+ &nbsp; &nbsp;DataStore.tasks[taskid] = Task(taskid, remote_addr)
+ 
+ &nbsp; &nbsp;logger.debug("Created new task: '%s'" % taskid)
+ &nbsp; &nbsp;return jsonize({"success": True, "taskid": taskid})
+</code></pre>
+<p>  <strong>@get("/task/<taskid>/delete")</taskid></strong></p>
+<p>  删除任务，在调用时指定 taskid，不指定 taskid 会报错。</p>
+<pre><code class="highlight-chroma">@get("/task/&lt;taskid&gt;/delete")
+def task_delete(taskid):
+ &nbsp; &nbsp;"""
+ &nbsp;  Delete an existing task
+ &nbsp;  """
+ &nbsp; &nbsp;if taskid in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp; &nbsp;DataStore.tasks.pop(taskid)
+ 
+ &nbsp; &nbsp; &nbsp; &nbsp;logger.debug("(%s) Deleted task" % taskid)
+ &nbsp; &nbsp; &nbsp; &nbsp;return jsonize({"success": True})
+ &nbsp; &nbsp;else:
+ &nbsp; &nbsp; &nbsp; &nbsp;response.status = 404
+ &nbsp; &nbsp; &nbsp; &nbsp;logger.warning("[%s] Non-existing task ID provided to task_delete()" % taskid)
+ &nbsp; &nbsp; &nbsp; &nbsp;return jsonize({"success": False, "message": "Non-existing task ID"})
+</code></pre>
+<p>  <strong>@get("/admin/list")</strong></p>
+<p>  获取所有 taskid。</p>
+<pre><code class="highlight-chroma">def task_list(token=None): &nbsp; &nbsp;
+ &nbsp;  """
+ &nbsp;  Pull task list
+ &nbsp;  """
+ &nbsp;  tasks = {}
+ &nbsp;  for key in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  if is_admin(token) or DataStore.tasks[key].remote_addr == request.remote_addr:
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  tasks[key] = dejsonize(scan_status(key))["status"]
+ &nbsp;  logger.debug("(%s) Listed task pool (%s)" % (token, "admin" if is_admin(token) else request.remote_addr))
+ &nbsp;  return jsonize({"success": True, "tasks": tasks, "tasks_num": len(tasks)})
+</code></pre>
+<p>  <strong>@get("/option/<taskid>/list")</taskid></strong></p>
+<p>  获取特定任务 ID 的列表选项，调用时请指定 taskid，不然会报错。具体代码如下：</p>
+<pre><code class="highlight-chroma">def option_list(taskid):
+ &nbsp;  """
+ &nbsp;  List options for a certain task ID
+ &nbsp;  """
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to option_list()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  logger.debug("(%s) Listed task options" % taskid)
+ &nbsp;  return jsonize({"success": True, "options": DataStore.tasks[taskid].get_options()})
+</code></pre>
+<p>  <strong>@post("/option/<taskid>/get")</taskid></strong></p>
+<p>  获取特定任务 ID 的选项值，调用时请指定 taskid，不然会报错。具体代码如下：</p>
+<pre><code class="highlight-chroma">def option_get(taskid):
+ &nbsp;  """
+ &nbsp;  Get value of option(s) for a certain task ID
+ &nbsp;  """
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to option_get()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  options = request.json or []
+ &nbsp;  results = {}
+ &nbsp;  for option in options:
+ &nbsp; &nbsp; &nbsp;  if option in DataStore.tasks[taskid].options:
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  results[option] = DataStore.tasks[taskid].options[option]
+ &nbsp; &nbsp; &nbsp;  else:
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  logger.debug("(%s) Requested value for unknown option '%s'" % (taskid, option))
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Unknown option '%s'" % option})
+ &nbsp;  logger.debug("(%s) Retrieved values for option(s) '%s'" % (taskid, ",".join(options)))
+ &nbsp;  return jsonize({"success": True, "options": results})
+</code></pre>
+<p>  <strong>@post("/option/<taskid>/set")</taskid></strong></p>
+<p>  为特定任务 ID 设置选项值，调用时请指定 taskid，不然会报错。具体代码如下：</p>
+<pre><code class="highlight-chroma">def option_set(taskid):
+ &nbsp;  """
+ &nbsp;  Set value of option(s) for a certain task ID
+ &nbsp;  """
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to option_set()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  if request.json is None:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid JSON options provided to option_set()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid JSON options"})
+ &nbsp;  for option, value in request.json.items():
+ &nbsp; &nbsp; &nbsp;  DataStore.tasks[taskid].set_option(option, value)
+ &nbsp;  logger.debug("(%s) Requested to set options" % taskid)
+ &nbsp;  return jsonize({"success": True})
+</code></pre>
+<p>  <strong>@post("/scan/<taskid>/start")</taskid></strong></p>
+<p>  开始扫描特定任务，调用时请指定 taskid，不然会报错。具体代码如下：</p>
+<pre><code class="highlight-chroma">def scan_start(taskid):
+ &nbsp;  """
+ &nbsp;  Launch a scan
+ &nbsp;  """
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to scan_start()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  if request.json is None:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid JSON options provided to scan_start()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid JSON options"})
+ &nbsp;  # Initialize sqlmap engine's options with user's provided options, if any
+ &nbsp;  for option, value in request.json.items():
+ &nbsp; &nbsp; &nbsp;  DataStore.tasks[taskid].set_option(option, value)
+ &nbsp;  # Launch sqlmap engine in a separate process
+ &nbsp;  DataStore.tasks[taskid].engine_start()
+ &nbsp;  logger.debug("(%s) Started scan" % taskid)
+ &nbsp;  return jsonize({"success": True, "engineid": DataStore.tasks[taskid].engine_get_id()})
+</code></pre>
+<p>  <strong>@get("/scan/<taskid>/stop")</taskid></strong></p>
+<p>  停止扫描特定任务，调用时请指定 taskid，不然会出现问题。具体代码如下：</p>
+<pre><code class="highlight-chroma">def scan_stop(taskid):
+ &nbsp;  """
+ &nbsp;  Stop a scan
+ &nbsp;  """
+ &nbsp;  if (taskid not in DataStore.tasks or DataStore.tasks[taskid].engine_process() is None or DataStore.tasks[taskid].engine_has_terminated()):
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to scan_stop()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  DataStore.tasks[taskid].engine_stop()
+ &nbsp;  logger.debug("(%s) Stopped scan" % taskid)
+ &nbsp;  return jsonize({"success": True})
+</code></pre>
+<p>  <strong>@get("/scan/<taskid>/status")</taskid></strong></p>
+<p>  该接口可查询扫描状态，调用时请指定 taskid，不然会出现问题。具体代码如下：</p>
+<pre><code class="highlight-chroma">def scan_status(taskid):
+ &nbsp;  """
+ &nbsp;  Returns status of a scan
+ &nbsp;  """
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to scan_status()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  if DataStore.tasks[taskid].engine_process() is None:
+ &nbsp; &nbsp; &nbsp;  status = "not running"
+ &nbsp;  else:
+ &nbsp; &nbsp; &nbsp;  status = "terminated" if DataStore.tasks[taskid].engine_has_terminated() is True else "running"
+ &nbsp;  logger.debug("(%s) Retrieved scan status" % taskid)
+ &nbsp;  return jsonize({
+ &nbsp; &nbsp; &nbsp;  "success": True,
+ &nbsp; &nbsp; &nbsp;  "status": status,
+ &nbsp; &nbsp; &nbsp;  "returncode": DataStore.tasks[taskid].engine_get_returncode()
+ &nbsp;  })
+</code></pre>
+<p>  <strong>@get("/scan/<taskid>/data")</taskid></strong></p>
+<p>  该接口可获得到扫描结果，调用时请指定 taskid，不然会出现问题。具体代码如下：</p>
+<pre><code class="highlight-chroma">def scan_data(taskid):
+ &nbsp;  """
+ &nbsp;  Retrieve the data of a scan
+ &nbsp;  """
+ &nbsp;  json_data_message = list()
+ &nbsp;  json_errors_message = list()
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to scan_data()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  # Read all data from the IPC database for the taskid
+ &nbsp;  for status, content_type, value in DataStore.current_db.execute("SELECT status, content_type, value FROM data WHERE taskid = ? ORDER BY id ASC", (taskid,)):
+ &nbsp; &nbsp; &nbsp;  json_data_message.append({"status": status, "type": content_type, "value": dejsonize(value)})
+ &nbsp;  # Read all error messages from the IPC database
+ &nbsp;  for error in DataStore.current_db.execute("SELECT error FROM errors WHERE taskid = ? ORDER BY id ASC", (taskid,)):
+ &nbsp; &nbsp; &nbsp;  json_errors_message.append(error)
+ &nbsp;  logger.debug("(%s) Retrieved scan data and error messages" % taskid)
+ &nbsp;  return jsonize({"success": True, "data": json_data_message, "error": json_errors_message})
+</code></pre>
+<p>  <strong>@get("/scan/<taskid>/log")</taskid></strong></p>
+<p>  该接口可查询特定任务的扫描的日志，调用时请指定 taskid，不然会出现问题。具体代码如下：</p>
+<pre><code class="highlight-chroma">def scan_log(taskid):
+ &nbsp;  """
+ &nbsp;  Retrieve the log messages
+ &nbsp;  """
+ &nbsp;  json_log_messages = list()
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to scan_log()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  # Read all log messages from the IPC database
+ &nbsp;  for time_, level, message in DataStore.current_db.execute("SELECT time, level, message FROM logs WHERE taskid = ? ORDER BY id ASC", (taskid,)):
+ &nbsp; &nbsp; &nbsp;  json_log_messages.append({"time": time_, "level": level, "message": message})
+ &nbsp;  logger.debug("(%s) Retrieved scan log messages" % taskid)
+ &nbsp;  return jsonize({"success": True, "log": json_log_messages})
+
+
+def scan_log_limited(taskid, start, end):
+ &nbsp;  """
+ &nbsp;  Retrieve a subset of log messages
+ &nbsp;  """
+ &nbsp;  json_log_messages = list()
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to scan_log_limited()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  if not start.isdigit() or not end.isdigit() or end &lt; start:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid start or end value provided to scan_log_limited()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid start or end value, must be digits"})
+ &nbsp;  start = max(1, int(start))
+ &nbsp;  end = max(1, int(end))
+ &nbsp;  # Read a subset of log messages from the IPC database
+ &nbsp;  for time_, level, message in DataStore.current_db.execute("SELECT time, level, message FROM logs WHERE taskid = ? AND id &gt;= ? AND id &lt;= ? ORDER BY id ASC", (taskid, start, end)):
+ &nbsp; &nbsp; &nbsp;  json_log_messages.append({"time": time_, "level": level, "message": message})
+ &nbsp;  logger.debug("(%s) Retrieved scan log messages subset" % taskid)
+ &nbsp;  return jsonize({"success": True, "log": json_log_messages})
+</code></pre>
+<p>  <strong>@get("/download/<taskid>/<target>/<filename>/")</filename></target></taskid></strong></p>
+<p>  下载服务端指定任务的文件。具体代码如下：</p>
+<pre><code class="highlight-chroma">def download(taskid, target, filename):
+ &nbsp;  """
+ &nbsp;  Download a certain file from the file system
+ &nbsp;  """
+ &nbsp;  if taskid not in DataStore.tasks:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Invalid task ID provided to download()" % taskid)
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Invalid task ID"})
+ &nbsp;  path = os.path.abspath(os.path.join(paths.SQLMAP_OUTPUT_PATH, target, filename))
+ &nbsp;  # Prevent file path traversal
+ &nbsp;  if not path.startswith(paths.SQLMAP_OUTPUT_PATH):
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] Forbidden path (%s)" % (taskid, target))
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "Forbidden path"})
+ &nbsp;  if os.path.isfile(path):
+ &nbsp; &nbsp; &nbsp;  logger.debug("(%s) Retrieved content of file %s" % (taskid, target))
+ &nbsp; &nbsp; &nbsp;  with open(path, 'rb') as inf:
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  file_content = inf.read()
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": True, "file": base64encode(file_content)})
+ &nbsp;  else:
+ &nbsp; &nbsp; &nbsp;  logger.warning("[%s] File does not exist %s" % (taskid, target))
+ &nbsp; &nbsp; &nbsp;  return jsonize({"success": False, "message": "File does not exist"})
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>  基于 HTTP 的接口模式用起来可能比较繁琐，但是对于程序调用接口还是很友善的。总之该模式的流程是：</p>
+<ol>
+<li>通过 GET 请求 <a href="http://ip/" target="_blank">http://ip:port</a>/task/new 这个地址，创建一个新的扫描任务；</li>
+<li>通过 POST 请求 <a href="http://ip/" target="_blank">http://ip:port</a>/scan/<taskid>/start 地址，并通过 JSON 格式提交参数，开启一个扫描；</taskid></li>
+<li>通过 GET 请求 <a href="http://ip/" target="_blank">http://ip:port/</a>scan/<taskid>/status 地址，即可获取指定的 taskid 的扫描状态。这个返回值分为两种，一种是 run 状态（扫描未完成），一种是 terminated 状态（扫描完成）；</taskid></li>
+<li>扫描完成后获取扫描的结果。</li>
+</ol>
+                    <div>
+                        <hr>
+
+标题：SQLMAP API 使用教程<br>
+作者：<a href="https://ZZUGeneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGeneral.github.io/articles/2020/09/23/1600820910858.html" target="_blank">https://ZZUGeneral.github.io/articles/2020/09/23/1600820910858.html</a><br>
+一个没有得到Java开发工作的测试员！
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </section>
+        </div>
+
+    </div>
+        <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h2">
+            <a href="#为什么使用SqlmapAPI-">为什么使用 SqlmapAPI?</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#SqlmapAPI">SqlmapAPI</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#启动服务端">启动服务端</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#固定admin-token">固定 admin token</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#接口模式">接口模式</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#基于命令行的接口模式">基于命令行的接口模式</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#检测GET注入">检测 GET 注入</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#检测POST注入">检测 POST 注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#基于HTTP协议的接口模式">基于 HTTP 协议的接口模式</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#总结">总结</a>
+        </li>
+</ul>        </div>
+        <div class="wrapper">
+            <div id="gitalk-container"></div>
+            <div id="vcomment"
+                 style="    margin-bottom: 40px; margin-top: 80px;
+        border: 1px solid rgba(255,255,255,0.8);
+        border-radius: 5px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        padding: 20px;"
+                 data-name="General" data-postId="1600820910858"></div>
+            <div id="b3logsolocomments"></div>
+        </div>
+    <div class="article__bottom">
+        <div class="wrapper">
+            <div class="fn__flex">
+                <div class="item" id="randomArticles"></div>
+                <div class="item" id="relevantArticles"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script type="text/javascript"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602218249201"
+        charset="utf-8"></script>
+<footer class="footer">
+    <div class="wrapper">
+            <a href="https://ld246.com/member/General"
+       title="https://ld246.com/member/General"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/ZZUGeneral"
+           title="https://github.com/ZZUGeneral"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://www.linkedin.com/in/yhlgeneral"
+           title="https://www.linkedin.com/in/yhlgeneral"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.32 23.443h4.211v-12.651h-4.211v12.651zM8.805 6.891c-0.018-1.24-0.911-2.188-2.352-2.188s-2.388 0.948-2.388 2.188c0 1.203 0.911 2.187 2.333 2.187h0.018c1.477 0 2.388-0.984 2.388-2.187zM19.469 23.443h4.211v-7.255c0-3.883-2.078-5.688-4.849-5.688-2.26 0-3.263 1.258-3.81 2.133h0.036v-1.841h-4.211s0.055 1.185 0 12.651v0h4.211v-7.073c0-0.365 0.018-0.747 0.128-1.021 0.31-0.747 1.003-1.531 2.169-1.531 1.513 0 2.115 1.148 2.115 2.862v6.763zM28 5.25v17.5c0 2.898-2.352 5.25-5.25 5.25h-17.5c-2.898 0-5.25-2.352-5.25-5.25v-17.5c0-2.898 2.352-5.25 5.25-5.25h17.5c2.898 0 5.25 2.352 5.25 5.25z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/18203879479"
+           title="https://weibo.com/18203879479"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=1359541394"
+           title="1359541394"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="user__site" title="18203879479">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+ <br>
+        &copy; 2020
+        <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
+        最黑的夜成就最亮的星！
+        <span class="footer__heart">❤️</span><br>
+        <a href="http://www.beian.gov.cn/">豫ICP备2020028892号</a>
+    </div>
+</footer>
+<svg class="side__top" id="sideTop" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <path d="M26.562 13.958c0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303v0c0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303v0zM23.305 10.7c0 0 0 0 0 0 0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303c0-0 0-0 0-0v0c0-0 0-0 0-0 0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303c0 0 0 0 0 0v0zM20.022 7.417c0 0 0 0 0 0 0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303c0-0 0-0 0-0v0c0-0 0-0 0-0 0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303c0 0 0 0 0 0v0zM29.67 0h-27.339c-0.677 0-1.228 0.551-1.228 1.228s0.551 1.228 1.228 1.228h11.151l-10.725 10.725c-0.476 0.476-0.476 1.253 0 1.729 0.226 0.226 0.551 0.351 0.852 0.351s0.626-0.125 0.852-0.351l10.074-10.074v25.936c0 0.677 0.551 1.228 1.228 1.228s1.228-0.551 1.228-1.228v-26.011c0.476 0.426 1.203 0.426 1.679-0.050s0.476-1.253 0-1.729l-0.576-0.576h11.577c0.677 0 1.228-0.551 1.228-1.228 0-0.626-0.551-1.178-1.228-1.178z"></path>
+</svg>
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://ZZUGeneral.github.io",
+    staticServePath: "https://ZZUGeneral.github.io",
+    luteAvailable: true,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1600820910858",
+  }
+</script>
+<script type="text/javascript"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602218249201"
+        charset="utf-8"></script>
+<script type="text/javascript"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602218249201"
+        charset="utf-8"></script>
+
+    <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
+        <path d="M30 18h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM30 6.25h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM2 25.75h28c1.1 0 2 0.9 2 2s-0.9 2-2 2h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2z"></path>
+    </svg>
+
+<script type="text/javascript">
+    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602218249201', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1600820910858",
+        "blogHost": "https://ZZUGeneral.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+        page.loadRandomArticles('<h3>随机阅读</h3>');
+        page.loadRelevantArticles('1600820910858', '<h3>相关阅读</h3>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 23ms, 2020/10/09 19:44:27 -->
