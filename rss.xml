@@ -6,103 +6,110 @@
     <atom:link href="https://ZZUGeneral.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>你一定会喜欢那个因为喜欢她而发光的自己！</description>
     <generator>Solo, v4.3.1, https://b3log.org/solo</generator>
-    <lastBuildDate>Fri, 09 Oct 2020 19:44:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2020 08:28:33 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
-      <title>我在 GitHub 上的开源项目</title>
-      <link>https://ZZUGeneral.github.io/my-github-repos</link>
-      <description><![CDATA[<ol>
-<li>SpringBootWorkSpace Java ]]>🤩<![CDATA[1&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0   SpringBoot 学习  2. shipping CSS ]]>🤩<![CDATA[1&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0  3. WorkSpace3 JavaScript ]]>🤩<![CDATA[0&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0  4. JavaWeb Java ]]>🤩<![CDATA[0&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0   This is for javaweb!  5. AndroidWorkSpace Java ]]>🤩<![CDATA[0&nbsp;&nbsp;⭐️️0&nbsp;&nbsp;]]>🖖<![CDATA[0</li>
-</ol>]]></description>
-      <author>General</author>
-      <guid>https://ZZUGeneral.github.io/my-github-repos</guid>
-      <category>GitHub</category>
-      <category>开源</category>
-      <pubDate>Fri, 09 Oct 2020 12:37:46 +0800</pubDate>
-    </item>
-    <item>
-      <title>Docker 私有仓库</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155951338.html</link>
+      <title>HTTP协议简介</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/21/1603239878487.html</link>
       <description/>
       <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155951338.html</guid>
-      <category>Docker</category>
-      <pubDate>Thu, 08 Oct 2020 19:19:20 +0800</pubDate>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/21/1603239878487.html</guid>
+      <category>HTTP</category>
+      <category>JavaWeb</category>
+      <pubDate>Wed, 21 Oct 2020 08:24:38 +0800</pubDate>
     </item>
     <item>
-      <title>Docker镜像和Dockerfile</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155925978.html</link>
+      <title>正则表达式</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/19/1603119597719.html</link>
       <description/>
       <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155925978.html</guid>
-      <category>Docker</category>
-      <pubDate>Thu, 08 Oct 2020 19:18:46 +0800</pubDate>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/19/1603119597719.html</guid>
+      <category>正则表达式</category>
+      <pubDate>Mon, 19 Oct 2020 23:08:52 +0800</pubDate>
     </item>
     <item>
-      <title>Docker部署Mysql, Tomcat, Nginx, Redis</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155887721.html</link>
+      <title>CentOS下环境搭建安装Java,Mysql,Nginx,Php,Nodejs,Docker,Solo,图库,Empire</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/19/1603118637226.html</link>
       <description/>
       <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155887721.html</guid>
-      <category>Docker</category>
-      <pubDate>Thu, 08 Oct 2020 19:18:07 +0800</pubDate>
-    </item>
-    <item>
-      <title>Docker数据卷</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155867208.html</link>
-      <description/>
-      <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155867208.html</guid>
-      <category>Docker</category>
-      <pubDate>Thu, 08 Oct 2020 19:17:47 +0800</pubDate>
-    </item>
-    <item>
-      <title>Docker命令</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155843939.html</link>
-      <description/>
-      <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155843939.html</guid>
-      <category>Docker</category>
-      <pubDate>Thu, 08 Oct 2020 19:17:23 +0800</pubDate>
-    </item>
-    <item>
-      <title>CentOS 安装 Docker</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155817945.html</link>
-      <description/>
-      <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155817945.html</guid>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/19/1603118637226.html</guid>
       <category>CentOS</category>
-      <category>Docker</category>
-      <pubDate>Thu, 08 Oct 2020 19:16:58 +0800</pubDate>
+      <pubDate>Mon, 19 Oct 2020 22:43:57 +0800</pubDate>
     </item>
     <item>
-      <title>Spring Boot + Swagger Demo</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/10/08/1602155700915.html</link>
+      <title>继承的设计技巧</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/17/1602938103120.html</link>
       <description/>
       <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/10/08/1602155700915.html</guid>
-      <category>Java</category>
-      <category>SpringBoot</category>
-      <category>Swagger</category>
-      <pubDate>Thu, 08 Oct 2020 19:15:34 +0800</pubDate>
-    </item>
-    <item>
-      <title>类设计技巧</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/09/23/1600870557493.html</link>
-      <description/>
-      <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/09/23/1600870557493.html</guid>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/17/1602938103120.html</guid>
       <category>JAVA</category>
-      <pubDate>Wed, 23 Sep 2020 22:15:57 +0800</pubDate>
+      <pubDate>Sat, 17 Oct 2020 20:35:03 +0800</pubDate>
     </item>
     <item>
-      <title>包修饰符</title>
-      <link>https://ZZUGeneral.github.io/articles/2020/09/23/1600870537064.html</link>
+      <title>反射</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/17/1602938025485.html</link>
+      <description><![CDATA[<p>  反射类提供了一个非常丰富且精心设计的工具集，以便编写能够动态操纵 Java 代码的程序。这项功能被大量地应用于 JavaBean 中，它是 Java 组建的体系结构。</p>
+<p>  能够分析类的程序称为反射。反射的功能及其强大，可以用来：</p>
+<ul>
+<li>在运行时分析类的能力</li>
+<li>在运行时查看对象。例如，编写一个 toString 方法供所有类使用</li>
+<li>实现通用的数组操作代码</li>
+<li>利用 Method 对象</li>
+</ul>]]></description>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/17/1602938025485.html</guid>
+      <category>JAVA</category>
+      <pubDate>Sat, 17 Oct 2020 20:33:45 +0800</pubDate>
+    </item>
+    <item>
+      <title>核心防御机制</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html</link>
       <description/>
       <author>General</author>
-      <guid>https://ZZUGeneral.github.io/articles/2020/09/23/1600870537064.html</guid>
-      <category>JAVA</category>
-      <pubDate>Wed, 23 Sep 2020 22:15:37 +0800</pubDate>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html</guid>
+      <category>安全</category>
+      <category>Web渗透</category>
+      <pubDate>Wed, 14 Oct 2020 17:22:14 +0800</pubDate>
+    </item>
+    <item>
+      <title>Web应用程序安全</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html</guid>
+      <category>安全</category>
+      <pubDate>Tue, 13 Oct 2020 16:18:52 +0800</pubDate>
+    </item>
+    <item>
+      <title>Web常见漏洞</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html</guid>
+      <category>安全</category>
+      <category>Web渗透</category>
+      <pubDate>Tue, 13 Oct 2020 16:17:49 +0800</pubDate>
+    </item>
+    <item>
+      <title>Web渗透之信息搜集</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/12/1602510666141.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/12/1602510666141.html</guid>
+      <category>安全</category>
+      <category>信息搜集</category>
+      <category>Web渗透</category>
+      <pubDate>Mon, 12 Oct 2020 21:58:23 +0800</pubDate>
+    </item>
+    <item>
+      <title>Ubuntu创建本地apt仓库</title>
+      <link>https://ZZUGeneral.github.io/articles/2020/10/12/1602469729634.html</link>
+      <description/>
+      <author>General</author>
+      <guid>https://ZZUGeneral.github.io/articles/2020/10/12/1602469729634.html</guid>
+      <category>Ubuntu</category>
+      <category>apt</category>
+      <pubDate>Mon, 12 Oct 2020 10:29:13 +0800</pubDate>
     </item>
   </channel>
 </rss>
