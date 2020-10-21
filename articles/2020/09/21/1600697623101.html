@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>StringBuilder---构建字符串 - General 的个人博客</title><meta name="description" content="A small and beautiful blogging system. 一款小而美的博客系统。"/><meta property="og:description" content="A small and beautiful blogging system. 一款小而美的博客系统。"/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="StringBuilder---构建字符串 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/09/21/1600697623101.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="StringBuilder---构建字符串 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/09/21/1600697623101.html">        <link rel="stylesheet"
-              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602218249201"/>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>StringBuilder---构建字符串 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="StringBuilder---构建字符串 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/09/21/1600697623101.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="StringBuilder---构建字符串 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/09/21/1600697623101.html">        <link rel="stylesheet"
+              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
             <link rel="prev" title="JAVA 大数值" href="https://ZZUGeneral.github.io/articles/2020/09/21/1600697566894.html">
             <link rel="next" title="JAVA数值类型之间类型转换" href="https://ZZUGeneral.github.io/articles/2020/09/21/1600697671247.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
@@ -17,8 +17,7 @@
             </h1>
             <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
             <div class="header__desc">
-                Open Source, Open Mind, <br/>Open Sight, Open Future!
-
+                <h2>人间忽晚，山河已秋。</h2>
 <!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
             </div>
             <svg class="header__down" id="headerDown" viewBox="0 0 32 32" width="100%" height="100%">
@@ -46,7 +45,7 @@
                 <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    23 文章 <br>
+                    33 文章 <br>
                     <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
                     
                 </div>
@@ -181,7 +180,7 @@ builder.append(str)
     
 </div>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602218249201"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -224,6 +223,14 @@ builder.append(str)
                 <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
             </svg>
         </a>
+        <a href="https://www.zhihu.com/people/general-54-18"
+           title="https://www.zhihu.com/people/general-54-18"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
         <a href="tencent://message/?uin=1359541394"
            title="1359541394"
            target="_blank"
@@ -241,9 +248,12 @@ builder.append(str)
  <br>
         &copy; 2020
         <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
-        最黑的夜成就最亮的星！
+        你一定会喜欢那个因为喜欢她而发光的自己！
         <span class="footer__heart">❤️</span><br>
-        <a href="http://www.beian.gov.cn/">豫ICP备2020028892号</a>
+        <div align="center">
+          <a target="_blank" href="http://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫ICP备2020028892号-1</p></a> &nbsp;
+          <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41132602001081" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://img.hacpai.com/file/2019/07/备案图标-cc568907.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫公网安备 41132602001081号</p></a>
+        </div>
     </div>
 </footer>
 <svg class="side__top" id="sideTop" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -264,15 +274,15 @@ builder.append(str)
   }
 </script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602218249201"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602218249201"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
         charset="utf-8"></script>
 
 
 <script type="text/javascript">
-    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602218249201', 'soloPageScript')
+    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1600697623101",
@@ -292,4 +302,4 @@ builder.append(str)
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 94ms, 2020/10/09 19:44:27 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 29ms, 2020/10/21 08:28:34 -->

