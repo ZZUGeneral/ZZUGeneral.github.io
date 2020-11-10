@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>HTTP协议简介 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="HTTP协议简介 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/10/21/1603239878487.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="HTTP协议简介 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/10/21/1603239878487.html">        <link rel="stylesheet"
-              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
-            <link rel="prev" title="正则表达式" href="https://ZZUGeneral.github.io/articles/2020/10/19/1603119597719.html">
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>HTTP协议简介 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGEneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGEneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="HTTP协议简介 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGEneral.github.io/articles/2020/10/21/1603239878487.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="HTTP协议简介 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGEneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGEneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGEneral.github.io/articles/2020/10/21/1603239878487.html">        <link rel="stylesheet"
+              href="https://ZZUGEneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="正则表达式" href="https://ZZUGEneral.github.io/articles/2020/10/19/1603119597719.html">
+            <link rel="next" title="Scrapy爬虫框架初探" href="https://ZZUGEneral.github.io/articles/2020/10/21/1603287789767.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body class="fn__flex-column">
 <div id="pjax" class="fn__flex-1">
@@ -12,7 +13,7 @@
     <header class="header header--article">
         <div class="wrapper header__title">
             <h1 class="header__h1 fn__flex-inline">
-                <a href="https://ZZUGeneral.github.io" rel="start">General 的个人博客</a>
+                <a href="https://ZZUGEneral.github.io" rel="start">General 的个人博客</a>
             </h1>
             <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
             <div class="header__desc">
@@ -41,11 +42,11 @@
             </svg>
 
             <div class="side__header">
-                <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+                <a href="https://ZZUGEneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    33 文章 <br>
-                    <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
+                    48 文章 <br>
+                    <span data-uvstaturl="https://ZZUGEneral.github.io">0</span> 浏览
                     
                 </div>
             </div>
@@ -55,7 +56,7 @@
             </div>
             <ul class="side__nav">
                 <li>
-                    <a href="https://ZZUGeneral.github.io" rel="start">
+                    <a href="https://ZZUGEneral.github.io" rel="start">
                             General 的个人博客
                     </a>
                 </li>
@@ -64,19 +65,19 @@
                                 class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
                     </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/categories.html">分类</a>
+                    <a href="https://ZZUGEneral.github.io/categories.html">分类</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/tags.html">标签墙</a>
+                    <a href="https://ZZUGEneral.github.io/tags.html">标签墙</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/archives.html">存档</a>
+                    <a href="https://ZZUGEneral.github.io/archives.html">存档</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/links.html">友链</a>
+                    <a href="https://ZZUGEneral.github.io/links.html">友链</a>
                 </li>
                 <li>
-                    <a rel="alternate" href="https://ZZUGeneral.github.io/rss.xml">RSS</a>
+                    <a rel="alternate" href="https://ZZUGEneral.github.io/rss.xml">RSS</a>
                 </li>
             </ul>
         </div>
@@ -93,9 +94,9 @@
                 </time>
                 /
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/JavaWeb">JavaWeb</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/JavaWeb">JavaWeb</a> &nbsp;
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/HTTP">HTTP</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/HTTP">HTTP</a> &nbsp;
             </div>
             <h2 class="article__title">
                 HTTP协议简介
@@ -103,7 +104,7 @@
 <div class="article__share"
      data-title="HTTP协议简介"
      data-blogtitle="General 的个人博客"
-     data-url="https://ZZUGeneral.github.io/articles/2020/10/21/1603239878487.html"
+     data-url="https://ZZUGEneral.github.io/articles/2020/10/21/1603239878487.html"
      data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -133,8 +134,8 @@
         <div class="wrapper">
             <section class="vditor-reset articles article__content">
                 <h2 id="HTTP">HTTP</h2>
-<p>  HTTP（HyperText Transfer Protocol，超文本传输协议）是访问万维网使用的核心通信协议，也是今天所有 Web 应用程序使用的通信协议。</p>
-<p>  HTTP 是一种基于消息的模型：客户端发送出一条请求消息，而后由服务器返回一条消息。</p>
+<p>HTTP（HyperText Transfer Protocol，超文本传输协议）是访问万维网使用的核心通信协议，也是今天所有 Web 应用程序使用的通信协议。</p>
+<p>HTTP 是一种基于消息的模型：客户端发送出一条请求消息，而后由服务器返回一条消息。</p>
 <h3 id="HTTP请求">HTTP 请求</h3>
 <pre><code class="highlight-chroma">GET http://www.yanghelong.top/skins/Casper/js/common.min.js?1602727597090 HTTP/1.1
 Host: www.yanghelong.top
@@ -146,13 +147,13 @@ Accept-Encoding: gzip, deflate
 Accept-Language: zh-CN,zh;q=0.9
 Cookie: LATKE_SESSION_ID=1z8oYapHEN1TcsZa
 </code></pre>
-<p>  每个 HTTP 请求的第一行都由三个以空格间隔的项目组成：</p>
+<p>每个 HTTP 请求的第一行都由三个以空格间隔的项目组成：</p>
 <ul>
 <li>HTTP 请求方法：常用的 GET，POST。</li>
 <li>请求的 URL：URL 通常由请求的资源名称和提交的参数。</li>
 <li>HTTP 版本</li>
 </ul>
-<p>  其他组成部分：</p>
+<p>其他组成部分：</p>
 <ul>
 <li>Referer 消息头用于表达发出请求的原始 URL</li>
 <li>User-Agent 消息头提供与浏览器或其他生成请求的客户端软件有关的信息。</li>
@@ -173,13 +174,13 @@ Content-Length: 56614
 &lt;head&gt;
 ......
 </code></pre>
-<p>  每个 HTTP 响应的第一行都由三个以空格间隔的项目组成：</p>
+<p>每个 HTTP 响应的第一行都由三个以空格间隔的项目组成：</p>
 <ul>
 <li>HTTP 版本</li>
 <li>请求结果状态码</li>
 <li>文本形式的响应状态</li>
 </ul>
-<p>  其他组成部分：</p>
+<p>其他组成部分：</p>
 <ul>
 <li>Server 消息头包含一个旗标，指明所使用的 Web 服务器软件，有时还包含服务器的其他信息。</li>
 <li>Set-Cookie 消息头向浏览器发送另一个 Cookie，它将在随后向服务器发送的请求中由 Cookie 消息头返回</li>
@@ -228,13 +229,13 @@ Content-Length: 56614
 </tbody>
 </table>
 <h3 id="URL">URL</h3>
-<p>  URL（Uniform Resource Locator，统一资源定位符）是表示 Web 资源的唯一标识符，通过它即可获取其标识的资源。常用的 URL 格式如下：</p>
+<p>URL（Uniform Resource Locator，统一资源定位符）是表示 Web 资源的唯一标识符，通过它即可获取其标识的资源。常用的 URL 格式如下：</p>
 <pre><code class="highlight-chroma">protocol://hostname[:port]/[path/]file[?param=value]
 </code></pre>
 <h3 id="REST">REST</h3>
-<p>  表述性状态转移(REST，Representational State Transfer)是分布式系统的一种体系架构，在这类体系架构中，请求和响应包含系统资源当前状态的表示。万维网，包括 HTTP 协议和 URL 格式中使用的核心技术，均符合 REST 体系架构的风格。</p>
+<p>表述性状态转移(REST，Representational State Transfer)是分布式系统的一种体系架构，在这类体系架构中，请求和响应包含系统资源当前状态的表示。万维网，包括 HTTP 协议和 URL 格式中使用的核心技术，均符合 REST 体系架构的风格。</p>
 <h3 id="消息头">消息头</h3>
-<p>  <strong>常用消息头</strong></p>
+<p><strong>常用消息头</strong></p>
 <table>
 <thead>
 <tr>
@@ -261,7 +262,7 @@ Content-Length: 56614
 </tr>
 </tbody>
 </table>
-<p>  <strong>请求消息头</strong></p>
+<p><strong>请求消息头</strong></p>
 <table>
 <thead>
 <tr>
@@ -356,9 +357,9 @@ Content-Length: 56614
 </tbody>
 </table>
 <h3 id="Cookie">Cookie</h3>
-<p>  Cookie 是大多数 Web 应用程序所依赖的 HTTP 协议的一个关键组成部分，攻击者常常通过它来利用 Web 应用程序中的漏洞。服务器使用 cookie 机制向客户端发送数据，客户端保存 cookie 并将其返回给服务器。</p>
-<p>  cookie 一般是由一个 键值对构成，但也可能包含任何不含空格的字符串。可以在服务器响应中使用几个 Set-Cookie 消息头发送多个 cookie，并可在统一个 cookie 消息头中用分号分隔不同的 cookie ，将他们全部返回给服务器。</p>
-<p>  除了 cookie 的实际值，Set-Cookie 消息头还可包含以下可选属性：</p>
+<p>Cookie 是大多数 Web 应用程序所依赖的 HTTP 协议的一个关键组成部分，攻击者常常通过它来利用 Web 应用程序中的漏洞。服务器使用 cookie 机制向客户端发送数据，客户端保存 cookie 并将其返回给服务器。</p>
+<p>cookie 一般是由一个 键值对构成，但也可能包含任何不含空格的字符串。可以在服务器响应中使用几个 Set-Cookie 消息头发送多个 cookie，并可在统一个 cookie 消息头中用分号分隔不同的 cookie ，将他们全部返回给服务器。</p>
+<p>除了 cookie 的实际值，Set-Cookie 消息头还可包含以下可选属性：</p>
 <ul>
 <li>expires : 用于设定 cookie 的有效时间。这样会使浏览器将 cookie 保存在永久性的存储器中，在随后的浏览器会话中反复利用，指导到期时间位置。如果没有这个属性，cookie 仅用在当前会话中。</li>
 <li>domain : 用于指定 cookie 的有效域。这个域必须和收到的 cookie 域相同，或者是它的父域。</li>
@@ -366,7 +367,7 @@ Content-Length: 56614
 <li>secure : 设置这个属性，将无法通过客户端的 JavaScript 直接访问 cookie 。</li>
 </ul>
 <h3 id="状态码">状态码</h3>
-<p>  每个 HTTP 响应第一行都包含一个状态码，说明请求的结果。状态码可分为五类：</p>
+<p>每个 HTTP 响应第一行都包含一个状态码，说明请求的结果。状态码可分为五类：</p>
 <ul>
 <li>1xx : 提供信息</li>
 <li>2xx : 请求被成功提交</li>
@@ -374,7 +375,7 @@ Content-Length: 56614
 <li>4xx : 请求包含某种错误</li>
 <li>5xx : 服务器执行请求时遇到错误</li>
 </ul>
-<p>  还有大量特殊状态码，其中许多状态码仅用在特殊情况下。下面列出常见的：</p>
+<p>还有大量特殊状态码，其中许多状态码仅用在特殊情况下。下面列出常见的：</p>
 <ul>
 <li>100 Continue : 当客户端提交一个包含主体的请求时，将发送这个响应。该响应表示已接收到请求头，客户端应继续发送主体。请求完成后，再由服务端返回另一个响应。</li>
 <li>200 Ok : 本状态码表示已成功提交请求，且响应主体中包含请求结果。</li>
@@ -393,29 +394,29 @@ Content-Length: 56614
 <li>503 Service Unavailable : 表示尽管 Web 服务器运转正常，并且能够响应请求，但服务器访问的应用程序还是无法做出响应。应当进行核实，是否因为执行了某种行为而造成这个结果。</li>
 </ul>
 <h3 id="HTTPS">HTTPS</h3>
-<p>  HTTP 使用普遍的非加密 TCP 最为传输机制，因此在网络适当位置的攻击能够截取这个机制。HTTPS 本质上和 HTTP 一样，都属于应用层协议，但是 HTTPS 通过安全传输机制 --- 安全套阶层 （Secure Socket Layer ： SSL）传输数据，这种机制可以保护通过网络传出的所有数据的隐秘性和完整性，显著降低非入侵性拦截攻击的可能性。</p>
+<p>HTTP 使用普遍的非加密 TCP 最为传输机制，因此在网络适当位置的攻击能够截取这个机制。HTTPS 本质上和 HTTP 一样，都属于应用层协议，但是 HTTPS 通过安全传输机制 --- 安全套阶层 （Secure Socket Layer ： SSL）传输数据，这种机制可以保护通过网络传出的所有数据的隐秘性和完整性，显著降低非入侵性拦截攻击的可能性。</p>
 <h3 id="HTTP代理">HTTP 代理</h3>
-<p>  HTTP 代理服务器是一个协调客户端浏览器与目标 Web 服务器之间访问的服务器。当配置流浪器使用代理服务器是，它会将所有的请求提交到代理服务器，代理服务器再将请求传送给相关 Web 服务器，并将相应返回给浏览器。</p>
-<p>  注意点：</p>
+<p>HTTP 代理服务器是一个协调客户端浏览器与目标 Web 服务器之间访问的服务器。当配置流浪器使用代理服务器是，它会将所有的请求提交到代理服务器，代理服务器再将请求传送给相关 Web 服务器，并将相应返回给浏览器。</p>
+<p>注意点：</p>
 <ul>
 <li>当浏览器向代理服务器发布 HTTP 请求时，它会将完整的 URL 插入到请求中。代理服务器将提交主机名称和端口，并使用这些信息将请求提交给指定服务器。</li>
 <li>当使用 HTTPS 时，浏览器无法与代理服务器进行 SSL 握手，因为这样会破坏安全隧道，是通信易于收到拦截攻击。因此，浏览器必须将代理作为一个纯粹的 TCP 级中继，由它传递浏览器与目标 Web 服务器支架的呢所有网络数据，并与浏览器进行正常的 SSL 握手。浏览器使用 CONNECT 方法向代理服务器提交一个 HTTP 请求，并制定 URL 中的目标主机名称与端口号，从而建立中继。如果代理允许该请求，它会返回一个含 200 状态码的 HTTP 响应，一直开放 TCP 连接，从此以后作为目标 Web 服务器的纯粹 TCP 级中继。</li>
 </ul>
-<p>  从某种程度上来说，攻击 Web 应用程序时最有用的工具是一个处理浏览器与 Web 服务器之间的专用代理服务器，使用它可以拦截并修改所有使用 HTTPS 的请求和响应。</p>
+<p>从某种程度上来说，攻击 Web 应用程序时最有用的工具是一个处理浏览器与 Web 服务器之间的专用代理服务器，使用它可以拦截并修改所有使用 HTTPS 的请求和响应。</p>
 <h3 id="HTTP身份验证">HTTP 身份验证</h3>
-<p>  HTTP 拥有自己的用户身份验证机制：</p>
+<p>HTTP 拥有自己的用户身份验证机制：</p>
 <ul>
 <li>Basic : 一种非常简单的身份验证机制，他在请求消息头中随每条消息以 Base64 编码字符串的形式发送用户证书</li>
 <li>HTML ： 一种质询-响应机制，它使用某个 Windows NTLM 协议版本</li>
 <li>Digest ：一种质询-响应机制，它随用户证书一起使用一个随机值 MD5 校验和。</li>
 </ul>
-<p>  组织内部经常使用这些身份验证协议访问内联网服务，但因特网上的 Web 应用程序基本很少使用他们。</p>
+<p>组织内部经常使用这些身份验证协议访问内联网服务，但因特网上的 Web 应用程序基本很少使用他们。</p>
                     <div>
                         <hr>
 
 标题：HTTP协议简介<br>
-作者：<a href="https://ZZUGeneral.github.io" target="_blank">General</a><br>
-地址：<a href="https://ZZUGeneral.github.io/articles/2020/10/21/1603239878487.html" target="_blank">https://ZZUGeneral.github.io/articles/2020/10/21/1603239878487.html</a><br>
+作者：<a href="https://ZZUGEneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGEneral.github.io/articles/2020/10/21/1603239878487.html" target="_blank">https://ZZUGEneral.github.io/articles/2020/10/21/1603239878487.html</a><br>
 一个没有得到Java开发工作的测试员！
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
@@ -489,7 +490,7 @@ Content-Length: 56614
     
 </div>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -556,7 +557,7 @@ Content-Length: 56614
         </a>
  <br>
         &copy; 2020
-        <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
+        <a href="https://ZZUGEneral.github.io">General 的个人博客</a>
         你一定会喜欢那个因为喜欢她而发光的自己！
         <span class="footer__heart">❤️</span><br>
         <div align="center">
@@ -571,8 +572,8 @@ Content-Length: 56614
 <script>
   var Label = {
     speech: true,
-    servePath: "https://ZZUGeneral.github.io",
-    staticServePath: "https://ZZUGeneral.github.io",
+    servePath: "https://ZZUGEneral.github.io",
+    staticServePath: "https://ZZUGEneral.github.io",
     luteAvailable: true,
     hljsStyle: 'github',
     langLabel: "zh_CN",
@@ -583,10 +584,10 @@ Content-Length: 56614
   }
 </script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
         charset="utf-8"></script>
 
     <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
@@ -594,11 +595,11 @@ Content-Length: 56614
     </svg>
 
 <script type="text/javascript">
-    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    Util.addScript('https://ZZUGEneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1603239878487",
-        "blogHost": "https://ZZUGeneral.github.io",
+        "blogHost": "https://ZZUGEneral.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
@@ -614,4 +615,4 @@ Content-Length: 56614
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 48ms, 2020/10/21 08:28:34 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 37ms, 2020/11/10 14:53:25 -->

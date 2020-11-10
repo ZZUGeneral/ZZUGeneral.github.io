@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>核心防御机制 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="核心防御机制 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="核心防御机制 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html">        <link rel="stylesheet"
-              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
-            <link rel="prev" title="Web应用程序安全" href="https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html">
-            <link rel="next" title="反射" href="https://ZZUGeneral.github.io/articles/2020/10/17/1602938025485.html">
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>核心防御机制 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGEneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGEneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="核心防御机制 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGEneral.github.io/articles/2020/10/14/1602667334063.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="核心防御机制 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGEneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGEneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGEneral.github.io/articles/2020/10/14/1602667334063.html">        <link rel="stylesheet"
+              href="https://ZZUGEneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="Web应用程序安全" href="https://ZZUGEneral.github.io/articles/2020/10/13/1602577132460.html">
+            <link rel="next" title="反射" href="https://ZZUGEneral.github.io/articles/2020/10/17/1602938025485.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body class="fn__flex-column">
 <div id="pjax" class="fn__flex-1">
@@ -13,7 +13,7 @@
     <header class="header header--article">
         <div class="wrapper header__title">
             <h1 class="header__h1 fn__flex-inline">
-                <a href="https://ZZUGeneral.github.io" rel="start">General 的个人博客</a>
+                <a href="https://ZZUGEneral.github.io" rel="start">General 的个人博客</a>
             </h1>
             <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
             <div class="header__desc">
@@ -42,11 +42,11 @@
             </svg>
 
             <div class="side__header">
-                <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+                <a href="https://ZZUGEneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    33 文章 <br>
-                    <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
+                    48 文章 <br>
+                    <span data-uvstaturl="https://ZZUGEneral.github.io">0</span> 浏览
                     
                 </div>
             </div>
@@ -56,7 +56,7 @@
             </div>
             <ul class="side__nav">
                 <li>
-                    <a href="https://ZZUGeneral.github.io" rel="start">
+                    <a href="https://ZZUGEneral.github.io" rel="start">
                             General 的个人博客
                     </a>
                 </li>
@@ -65,19 +65,19 @@
                                 class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
                     </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/categories.html">分类</a>
+                    <a href="https://ZZUGEneral.github.io/categories.html">分类</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/tags.html">标签墙</a>
+                    <a href="https://ZZUGEneral.github.io/tags.html">标签墙</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/archives.html">存档</a>
+                    <a href="https://ZZUGEneral.github.io/archives.html">存档</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/links.html">友链</a>
+                    <a href="https://ZZUGEneral.github.io/links.html">友链</a>
                 </li>
                 <li>
-                    <a rel="alternate" href="https://ZZUGeneral.github.io/rss.xml">RSS</a>
+                    <a rel="alternate" href="https://ZZUGEneral.github.io/rss.xml">RSS</a>
                 </li>
             </ul>
         </div>
@@ -94,9 +94,9 @@
                 </time>
                 /
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/Web%E6%B8%97%E9%80%8F">Web渗透</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/Web%E6%B8%97%E9%80%8F">Web渗透</a> &nbsp;
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/%E5%AE%89%E5%85%A8">安全</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/%E5%AE%89%E5%85%A8">安全</a> &nbsp;
             </div>
             <h2 class="article__title">
                 核心防御机制
@@ -104,7 +104,7 @@
 <div class="article__share"
      data-title="核心防御机制"
      data-blogtitle="General 的个人博客"
-     data-url="https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html"
+     data-url="https://ZZUGEneral.github.io/articles/2020/10/14/1602667334063.html"
      data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -133,8 +133,8 @@
 </div>        </div>
         <div class="wrapper">
             <section class="vditor-reset articles article__content">
-                <p>  Web 引用程序的基本安全问题（所有用户的输入都不可信）致使应用程序实施大量安全机制来抵御攻击。虽然在设计细节和执行效率上千差万别，但是所有的安全机制在概念上都具有相似性。</p>
-<p>  Web 应用程序采用的防御机制由以下几个核心因素构成：</p>
+                <p>Web 引用程序的基本安全问题（所有用户的输入都不可信）致使应用程序实施大量安全机制来抵御攻击。虽然在设计细节和执行效率上千差万别，但是所有的安全机制在概念上都具有相似性。</p>
+<p>Web 应用程序采用的防御机制由以下几个核心因素构成：</p>
 <ul>
 <li>处理用户访问应用程序的数据与功能，防止用户获得未授权访问</li>
 <li>处理用户对应用程序功能的输入，防止错误输入造成不良影响</li>
@@ -142,18 +142,18 @@
 <li>管理应用程序本身，帮助管理员监控其行为，配置其功能</li>
 </ul>
 <h2 id="处理用户访问">处理用户访问</h2>
-<p>  几乎所有的应用程序都必须满足一个中心安全要求，即处理用户访问其数据与功能。</p>
-<p>  大多数 Web 应用程序使用三层相会关联的安全机制处理用户访问：</p>
+<p>几乎所有的应用程序都必须满足一个中心安全要求，即处理用户访问其数据与功能。</p>
+<p>大多数 Web 应用程序使用三层相会关联的安全机制处理用户访问：</p>
 <ol>
 <li>身份验证</li>
 <li>会话管理</li>
 <li>访问控制</li>
 </ol>
-<p>  上述每个机制都是应用程序受攻击面的一个关键部分。由于这些机制相互依赖，因此根本不可能提供强大的总体安全保护，任何一个部分存在缺陷都可能是攻击者自由访问应用程序的功能和数据。</p>
+<p>上述每个机制都是应用程序受攻击面的一个关键部分。由于这些机制相互依赖，因此根本不可能提供强大的总体安全保护，任何一个部分存在缺陷都可能是攻击者自由访问应用程序的功能和数据。</p>
 <h2 id="处理用户输入">处理用户输入</h2>
-<p>  用户的输入具有多样性。</p>
-<p>  除了用户通过浏览器提交的各种输入，一个典型的应用程序还会收到大量数据，他们在服务器上生成，并被传递给客户端，以便客户端能够在随后的请求中将其返回给服务器。虽然普通用户无法看到这些数据项，但攻击者可以查看和修改这些数据。在这种情况下，应用哦程序要对接收到的数据执行非常特殊的确认操作来确定是否有数据被修改。如果数据被修改了，应用程序应拒绝该请求，并记录到日志中。</p>
-<p>  输入处理方法：</p>
+<p>用户的输入具有多样性。</p>
+<p>除了用户通过浏览器提交的各种输入，一个典型的应用程序还会收到大量数据，他们在服务器上生成，并被传递给客户端，以便客户端能够在随后的请求中将其返回给服务器。虽然普通用户无法看到这些数据项，但攻击者可以查看和修改这些数据。在这种情况下，应用哦程序要对接收到的数据执行非常特殊的确认操作来确定是否有数据被修改。如果数据被修改了，应用程序应拒绝该请求，并记录到日志中。</p>
+<p>输入处理方法：</p>
 <ol>
 <li><strong>拒绝已知的不良输入</strong>：通常是<strong>黑名单</strong>，包含一组在攻击中常用的字符串或正则表达式等，确认机制阻止任何和黑名单匹配的数据并接受其他数据。</li>
 <li><strong>接收已知的正常输入</strong>：使用<strong>白名单</strong>，包含仅有与良性水配置的一组字符串或正则表达式。确认机制接受任何与报名单匹配的数据，并阻止其他数据。</li>
@@ -162,16 +162,16 @@
 <li><strong>语法检查</strong>：应用程序必须确认所提交的账号属于之前提交该账号的用户，防止攻击者修改提交的信息来访问其他账户的敏感信息。</li>
 </ol>
 <h3 id="边界确认">边界确认</h3>
-<p>  用户提交的不可信数据是造成 Web 应用程序核心安全问题的主要原因。在客户端进行输入确认并不能为实际到达服务器的数据提供任何保证，服务器应用处程序第一次收到用户数据的地方就是一个重要的信任边界，需要再次采取措施防止恶意输入。</p>
-<p>  鉴于核心问题的本质，在英特网与服务器应用程序之间的边界来考虑<strong>输入确认</strong>。从这个角度看，输入确认的任务就是净化到达的潜在恶意数据，然后将“纯净”的数据提交给可信任的程序。</p>
-<p>  很明显，当我们开始分析一些实际的漏洞时，这种简单的输入确认是不够的：</p>
+<p>用户提交的不可信数据是造成 Web 应用程序核心安全问题的主要原因。在客户端进行输入确认并不能为实际到达服务器的数据提供任何保证，服务器应用处程序第一次收到用户数据的地方就是一个重要的信任边界，需要再次采取措施防止恶意输入。</p>
+<p>鉴于核心问题的本质，在英特网与服务器应用程序之间的边界来考虑<strong>输入确认</strong>。从这个角度看，输入确认的任务就是净化到达的潜在恶意数据，然后将“纯净”的数据提交给可信任的程序。</p>
+<p>很明显，当我们开始分析一些实际的漏洞时，这种简单的输入确认是不够的：</p>
 <ul>
 <li>基于应用程序所执行功能的广泛性和所采用技术的多样性，这种简单的输入确认是不够的。因为我们需要防御大量各种各样的输入攻击且每种攻击可能采用一种截然不同的专门设计的数据，所以很难在外部边界建立一个单独的机制，防御所有的攻击。</li>
 <li>大部分应用程序功能都设计组合一系列不同的处理过程。不同的输入会导致各种各样的处理结果。所以很男在外部边界执行确认机制，预测所有的可能处理结果。</li>
 <li>防止不同类型的基于输入的攻击可能需要对相互矛盾的用户输入执行相互矛盾的用户输入执行各种确认检查。所以在应用程序的外部边界同时阻止所有类型的攻击几乎是不可能的事。</li>
 </ul>
-<p>  <strong>边界确认</strong>是一种更加有效地模型。服务器应用程序的每一个单独组件或功能单元将其输入当做来自恶意潜在来源的输入对待。除了客户端和服务端之间的外部边界，应用程序在上述每一个信任边界执行数据确认。每个组件都可以防御塔收到的特殊类型的专门设计的输入，当数据通过不同的组件时，即可对前面转换过程中生成的任意数据执行确认检查。由于在不同的处理阶段执行不同的确认检查，他们之间不可能发生冲突。</p>
-<p>  用户登录处理：</p>
+<p><strong>边界确认</strong>是一种更加有效地模型。服务器应用程序的每一个单独组件或功能单元将其输入当做来自恶意潜在来源的输入对待。除了客户端和服务端之间的外部边界，应用程序在上述每一个信任边界执行数据确认。每个组件都可以防御塔收到的特殊类型的专门设计的输入，当数据通过不同的组件时，即可对前面转换过程中生成的任意数据执行确认检查。由于在不同的处理阶段执行不同的确认检查，他们之间不可能发生冲突。</p>
+<p>用户登录处理：</p>
 <ol>
 <li>应用程序收到登录信息。表单处理程序确认每个输入仅包含合法字符，符合特殊的长度限制，并不包含任何已知的攻击签名。</li>
 <li>应用程序执行一个 SQL 查询检验用户证书。为了防止 SQL 注入，在执行查询前，应用程序应对用户输入中包含的可用于攻击数据库的所有字符进行转义。</li>
@@ -179,11 +179,11 @@
 <li>应用程序在用户浏览器中显示用户的账户信息。为了防止跨站脚本攻击，应用程序对植入返回页面的任何用户提交的数据执行 HTML 编码。</li>
 </ol>
 <h3 id="多步确认和规范化">多步确认和规范化</h3>
-<p>  在确认检查中，当需要在几个步骤中处理用户输入时，如果不谨慎处理，那么攻击者就会简历专门设计的输入，使恶意代码成功避开确认机制。</p>
-<p>  如果对用户输入执行几个确认步骤，攻击者机会利用确认顺序来避开过滤。</p>
-<p>  数据规范化处理用户输入时，攻击者可对输入进行各种形式的编码避开确认机制。</p>
+<p>在确认检查中，当需要在几个步骤中处理用户输入时，如果不谨慎处理，那么攻击者就会简历专门设计的输入，使恶意代码成功避开确认机制。</p>
+<p>如果对用户输入执行几个确认步骤，攻击者机会利用确认顺序来避开过滤。</p>
+<p>数据规范化处理用户输入时，攻击者可对输入进行各种形式的编码避开确认机制。</p>
 <h2 id="处理攻击者">处理攻击者</h2>
-<p>  任何设计安全应用程序的开发人员必须基于一个假设：应用程序将成为蓄意破坏且经验丰富的攻击者的直接攻击目标。能够以受控的方式来处理应对这些攻击，是应用程序安全机制的一项主要功能。这些机制通常结合使用一系列防御与攻击措施，以尽可能阻止攻击者，并就所发生的事件，通知应用程序所有者已提供证据。处理攻击者采用的措施一般有以下任务组成：</p>
+<p>任何设计安全应用程序的开发人员必须基于一个假设：应用程序将成为蓄意破坏且经验丰富的攻击者的直接攻击目标。能够以受控的方式来处理应对这些攻击，是应用程序安全机制的一项主要功能。这些机制通常结合使用一系列防御与攻击措施，以尽可能阻止攻击者，并就所发生的事件，通知应用程序所有者已提供证据。处理攻击者采用的措施一般有以下任务组成：</p>
 <ul>
 <li>处理错误</li>
 <li>维护审计日志</li>
@@ -191,40 +191,40 @@
 <li>应对攻击</li>
 </ul>
 <h3 id="处理错误">处理错误</h3>
-<p>  我们无法预测恶意用户与应用程序交互的每一种可能方式，并且当应用程序遭受攻击时肯定会出现其他错误。</p>
-<p>  应用程序的一个关键防御机制就是合理地吹无法预料的错误，要么纠正这些错误，要么向用户发送适当的错误消息。在正式环境中，应用程序不应再响应中返回任何系统生成的消息或其他调试信息。过于详细的错误消息有利于恶意用户向应用程序发动进一步攻击。</p>
+<p>我们无法预测恶意用户与应用程序交互的每一种可能方式，并且当应用程序遭受攻击时肯定会出现其他错误。</p>
+<p>应用程序的一个关键防御机制就是合理地吹无法预料的错误，要么纠正这些错误，要么向用户发送适当的错误消息。在正式环境中，应用程序不应再响应中返回任何系统生成的消息或其他调试信息。过于详细的错误消息有利于恶意用户向应用程序发动进一步攻击。</p>
 <h3 id="维护审计日志">维护审计日志</h3>
-<p>  审计日志在调查针对应用程序的入侵尝试时会发挥很大作用。发生入侵后，有效地审计日志功能应能够帮助应用程序所有者了解实际发生的情况，如那些漏洞被利用，攻击者是否非法访问或执行未授权操作，尽可能提供侵入者信息。</p>
-<p>  在任何注重安全的应用程序中，日志应记录所有的重要事件。至少应包括以下几项：</p>
+<p>审计日志在调查针对应用程序的入侵尝试时会发挥很大作用。发生入侵后，有效地审计日志功能应能够帮助应用程序所有者了解实际发生的情况，如那些漏洞被利用，攻击者是否非法访问或执行未授权操作，尽可能提供侵入者信息。</p>
+<p>在任何注重安全的应用程序中，日志应记录所有的重要事件。至少应包括以下几项：</p>
 <ul>
 <li>所有与身份验证功能有关的事件，如成功或失败的登录，密码修改</li>
 <li>关键交易，如支付和转账</li>
 <li>被访问控制机制组织的访问企图</li>
 <li>任何包含已知攻击字符串，公然表明恶意意图的请求</li>
 </ul>
-<p>  有效地审计日志一般会记录发生时间，发出的请求，发出请求的 IP 地址和用户账户。</p>
+<p>有效地审计日志一般会记录发生时间，发出的请求，发出请求的 IP 地址和用户账户。</p>
 <h3 id="向管理员发出警报">向管理员发出警报</h3>
-<p>  及时的警报可以使管理员及时采取防御措施，将影响降到最低。</p>
-<p>  警报机制必须在两个相互矛盾的目标之间取得平衡，既准确报告每次的真实攻击，又不会生成过多警报。精心设计的警报机制能够组合各种因素，确定应用程序正在操守的攻击；并在可能的情况下将所有相关事件集中到一个警报中。警报监控的反常事件一般包括：</p>
+<p>及时的警报可以使管理员及时采取防御措施，将影响降到最低。</p>
+<p>警报机制必须在两个相互矛盾的目标之间取得平衡，既准确报告每次的真实攻击，又不会生成过多警报。精心设计的警报机制能够组合各种因素，确定应用程序正在操守的攻击；并在可能的情况下将所有相关事件集中到一个警报中。警报监控的反常事件一般包括：</p>
 <ol>
 <li>应用反常，如短时间内收到同一个 IP 地址的大量请求。</li>
 <li>交易反常，如一个行货的转入转出资金数量出现异常</li>
 <li>包含已知攻击字符串的去八卦有</li>
 <li>请求中普通用户无法查看的数据被修改</li>
 </ol>
-<p>  现有的应用程序防火墙和入侵检测产品一般组合应用一组基于签名和异常的规则阿里确定对应用程序的恶意利用，能够主动阻止恶意请求并向管理员发出警报。但是由于每个应用程序的不同，这些产品的效用会受到限制并导致其规则趋于一般化。</p>
-<p>  在任何安全性至关重要的程序中，进行实时警报最有效的方法是将其余应用程序的输入确认机制和其他控制方式紧密结合起来。</p>
+<p>现有的应用程序防火墙和入侵检测产品一般组合应用一组基于签名和异常的规则阿里确定对应用程序的恶意利用，能够主动阻止恶意请求并向管理员发出警报。但是由于每个应用程序的不同，这些产品的效用会受到限制并导致其规则趋于一般化。</p>
+<p>在任何安全性至关重要的程序中，进行实时警报最有效的方法是将其余应用程序的输入确认机制和其他控制方式紧密结合起来。</p>
 <h3 id="应对攻击">应对攻击</h3>
-<p>  我们无法完全修复程序中的漏洞，有鉴于此，程序可以采用自动反应措施阻止一些攻击行为。例如终止会话，重新登录等等。</p>
-<p>  当然民族志显而易见的攻击不如修复应用程序中存在的所有漏洞重要。然而实际中总有一些可供利用的缺陷存在，给攻击者设置更多阻碍是一种有效地深层防御措施，这样能将地任何残存的漏洞被发现和利用的可能性。</p>
+<p>我们无法完全修复程序中的漏洞，有鉴于此，程序可以采用自动反应措施阻止一些攻击行为。例如终止会话，重新登录等等。</p>
+<p>当然民族志显而易见的攻击不如修复应用程序中存在的所有漏洞重要。然而实际中总有一些可供利用的缺陷存在，给攻击者设置更多阻碍是一种有效地深层防御措施，这样能将地任何残存的漏洞被发现和利用的可能性。</p>
 <h2 id="管理应用程序">管理应用程序</h2>
-<p>  任何有用的应用程序都需要记性管理与维护。这种共而过通常是应用程序安全机制的一个重要组成部分，可帮助管理员管理用户账户与角色，应用监控与审计功能，执行诊断任务并配置应用程序的功能。</p>
+<p>任何有用的应用程序都需要记性管理与维护。这种共而过通常是应用程序安全机制的一个重要组成部分，可帮助管理员管理用户账户与角色，应用监控与审计功能，执行诊断任务并配置应用程序的功能。</p>
                     <div>
                         <hr>
 
 标题：核心防御机制<br>
-作者：<a href="https://ZZUGeneral.github.io" target="_blank">General</a><br>
-地址：<a href="https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html" target="_blank">https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html</a><br>
+作者：<a href="https://ZZUGEneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGEneral.github.io/articles/2020/10/14/1602667334063.html" target="_blank">https://ZZUGEneral.github.io/articles/2020/10/14/1602667334063.html</a><br>
 一个没有得到Java开发工作的测试员！
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
@@ -289,7 +289,7 @@
     
 </div>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -356,7 +356,7 @@
         </a>
  <br>
         &copy; 2020
-        <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
+        <a href="https://ZZUGEneral.github.io">General 的个人博客</a>
         你一定会喜欢那个因为喜欢她而发光的自己！
         <span class="footer__heart">❤️</span><br>
         <div align="center">
@@ -371,8 +371,8 @@
 <script>
   var Label = {
     speech: true,
-    servePath: "https://ZZUGeneral.github.io",
-    staticServePath: "https://ZZUGeneral.github.io",
+    servePath: "https://ZZUGEneral.github.io",
+    staticServePath: "https://ZZUGEneral.github.io",
     luteAvailable: true,
     hljsStyle: 'github',
     langLabel: "zh_CN",
@@ -383,10 +383,10 @@
   }
 </script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
         charset="utf-8"></script>
 
     <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
@@ -394,11 +394,11 @@
     </svg>
 
 <script type="text/javascript">
-    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    Util.addScript('https://ZZUGEneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1602667334063",
-        "blogHost": "https://ZZUGeneral.github.io",
+        "blogHost": "https://ZZUGEneral.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
@@ -414,4 +414,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 53ms, 2020/10/21 08:28:34 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 43ms, 2020/11/10 14:53:26 -->

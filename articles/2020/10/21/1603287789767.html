@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Scrapy爬虫框架初探 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGEneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGEneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Scrapy爬虫框架初探 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGEneral.github.io/articles/2020/10/21/1603287789767.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Scrapy爬虫框架初探 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGEneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGEneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGEneral.github.io/articles/2020/10/21/1603287789767.html">        <link rel="stylesheet"
+              href="https://ZZUGEneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="HTTP协议简介" href="https://ZZUGEneral.github.io/articles/2020/10/21/1603239878487.html">
+            <link rel="next" title="Flask框架" href="https://ZZUGEneral.github.io/articles/2020/10/21/1603288674744.html">
+    <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body class="fn__flex-column">
+<div id="pjax" class="fn__flex-1">
+    
+    <progress class="fn__progress"></progress>
+    <header class="header header--article">
+        <div class="wrapper header__title">
+            <h1 class="header__h1 fn__flex-inline">
+                <a href="https://ZZUGEneral.github.io" rel="start">General 的个人博客</a>
+            </h1>
+            <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
+            <div class="header__desc">
+                <h2>人间忽晚，山河已秋。</h2>
+<!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
+            </div>
+            <svg class="header__down" id="headerDown" viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M15.992 25.304c-0 0-0 0-0.001 0-0.516 0-0.981-0.216-1.31-0.563l-0.001-0.001-14.187-14.996c-0.306-0.323-0.494-0.76-0.494-1.241 0-0.998 0.809-1.807 1.807-1.807 0.517 0 0.983 0.217 1.313 0.565l0.001 0.001 12.875 13.612 12.886-13.612c0.331-0.348 0.797-0.565 1.314-0.565 0.481 0 0.918 0.187 1.242 0.493l-0.001-0.001c0.723 0.687 0.755 1.832 0.072 2.555l-14.201 14.996c-0.33 0.348-0.795 0.564-1.311 0.564-0.001 0-0.003 0-0.004 0h0z"></path>
+            </svg>
+        </div>
+    </header>
+    <div class="side__menu">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M30 18h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM30 6.25h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM2 25.75h28c1.1 0 2 0.9 2 2s-0.9 2-2 2h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2z"></path>
+        </svg>
+        <span>
+            &nbsp; menu
+        </span>
+    </div>
+    <div class="side__main">
+        <div class="side__bg"></div>
+        <div class="side__panel">
+            <svg class="side__close ft__a" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 20 20">
+                <path d="M18.362 19.324c-0.902 0.902-2.363 0.902-3.263 0l-5.098-5.827-5.098 5.825c-0.902 0.902-2.363 0.902-3.263 0-0.902-0.902-0.902-2.363 0-3.263l5.304-6.057-5.306-6.061c-0.902-0.902-0.902-2.361 0-3.263s2.361-0.902 3.263 0l5.1 5.829 5.098-5.829c0.902-0.902 2.361-0.902 3.263 0s0.902 2.363 0 3.263l-5.304 6.061 5.304 6.057c0.902 0.902 0.902 2.363 0 3.265z"></path>
+            </svg>
+
+            <div class="side__header">
+                <a href="https://ZZUGEneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+
+                <div class="side__meta">
+                    48 文章 <br>
+                    <span data-uvstaturl="https://ZZUGEneral.github.io">0</span> 浏览
+                    
+                </div>
+            </div>
+
+            <div class="side__title">
+                <span>ღゝ◡╹)ノ❤️</span>
+            </div>
+            <ul class="side__nav">
+                <li>
+                    <a href="https://ZZUGEneral.github.io" rel="start">
+                            General 的个人博客
+                    </a>
+                </li>
+                    <li>
+                        <a href="/my-github-repos" target="_self"><img
+                                class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
+                    </li>
+                <li>
+                    <a href="https://ZZUGEneral.github.io/categories.html">分类</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGEneral.github.io/tags.html">标签墙</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGEneral.github.io/archives.html">存档</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGEneral.github.io/links.html">友链</a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://ZZUGEneral.github.io/rss.xml">RSS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="article__top" style="background-image: url(https://b3logfile.com/file/2020/10/image20200803114114179-ab6240e7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)">
+        <div style="background-image: url(https://b3logfile.com/file/2020/10/image20200803114114179-ab6240e7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)"></div>
+        <canvas id="articleTop"></canvas>
+    </div>
+    <div class="article">
+        <div class="ft__center">
+            <div class="article__meta">
+                <time>
+                    2020-10-21
+                </time>
+                /
+                    <a rel="tag"
+                       href="https://ZZUGEneral.github.io/tags/Python.%E7%88%AC%E8%99%AB">Python.爬虫</a> &nbsp;
+                    <a rel="tag"
+                       href="https://ZZUGEneral.github.io/tags/Scrapy">Scrapy</a> &nbsp;
+            </div>
+            <h2 class="article__title">
+                Scrapy爬虫框架初探
+            </h2>
+<div class="article__share"
+     data-title="Scrapy爬虫框架初探"
+     data-blogtitle="General 的个人博客"
+     data-url="https://ZZUGEneral.github.io/articles/2020/10/21/1603287789767.html"
+     data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <span class="item" data-type="qqz">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M22.824 13.989l-8.348 6.287s3.351 0.522 8.404 0.461l-0.23-1.040 7.2-6.549c0.132-0.12 0.183-0.312 0.129-0.487s-0.203-0.299-0.377-0.314l-9.492-0.856-3.708-9.213c-0.068-0.169-0.226-0.279-0.401-0.279s-0.333 0.11-0.401 0.279l-3.708 9.213-9.492 0.856c-0.174 0.015-0.323 0.139-0.377 0.314s-0.004 0.366 0.129 0.487l7.2 6.549-2.158 9.742c-0.040 0.178 0.026 0.365 0.168 0.474 0.142 0.107 0.331 0.115 0.481 0.021l8.158-5.165 8.158 5.165c0.070 0.045 0.147 0.066 0.225 0.066 0.090 0 0.18-0.029 0.256-0.086 0.142-0.109 0.208-0.295 0.168-0.474l-1.707-7.704c0.732-0.386 1.538-1.040 1.538-1.040s-3.195 1.638-14.664 0.838l8.312-6.325s-0.327-0.534-10.744-0.914c-0.697-0.026 8.493-1.83 15.281-0.305z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="wechat">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="weibo">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+            <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+            <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+            <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="twitter">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+        </svg>
+    </span>
+    <span class="item__qr"></span>
+</div>        </div>
+        <div class="wrapper">
+            <section class="vditor-reset articles article__content">
+                <h1 id="Scrapy介绍">Scrapy 介绍</h1>
+<p>Scrapy 是一个为了方便人们爬取网站数据，提取结构性数据而编写的分布式爬取框架。它可以应用在包括数据挖掘， 信息处理或存储历史数据等一系列的程序中。因其功能颇多，所以学会它需要一定的时间成本。</p>
+<h2 id="特点">特点</h2>
+<ul>
+<li>HTML, XML 源数据 选择及提取 的内置支持</li>
+<li>提供了一系列在 spider 之间共享的可复用的过滤器(即 Item Loaders)，对智能处理爬取数据提供了内置支持。</li>
+<li>通过 feed 导出 提供了多格式(JSON、CSV、XML)，多存储后端(FTP、S3、本地文件系统)的内置支持</li>
+<li>提供了 media pipeline，可以 自动下载 爬取到的数据中的图片(或者其他资源)。</li>
+<li>高扩展性。您可以通过使用 signals ，设计好的 API(中间件， extensions, pipelines)来定制实现您的功能。</li>
+<li>内置的中间件及扩展为下列功能提供了支持：</li>
+<li>cookies and session 处理</li>
+<li>HTTP 压缩</li>
+<li>HTTP 认证</li>
+<li>HTTP 缓存</li>
+<li>user-agent 模拟</li>
+<li>robots.txt</li>
+<li>爬取深度限制</li>
+<li>健壮的编码支持和自动识别，用于处理外文、非标准和错误编码问题</li>
+<li>针对多爬虫下性能评估、失败检测，提供了可扩展的 状态收集工具 。</li>
+<li>内置 Web service, 使您可以监视及控制您的机器。</li>
+</ul>
+<h2 id="PIP更换源">PIP 更换源</h2>
+<ul>
+<li>清华：<a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank">https://pypi.tuna.tsinghua.edu.cn/simple</a></li>
+<li>阿里云：<a href="https://mirrors.aliyun.com/pypi/simple/" target="_blank">https://mirrors.aliyun.com/pypi/simple/</a></li>
+<li>中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank">https://pypi.mirrors.ustc.edu.cn/simple/</a></li>
+<li>华中理工大学：<a href="https://pypi.hustunique.com/" target="_blank">https://pypi.hustunique.com/</a></li>
+<li>山东理工大学：<a href="https://pypi.sdutlinux.org/" target="_blank">https://pypi.sdutlinux.org/</a></li>
+<li>豆瓣：<a href="https://pypi.douban.com/simple/" target="_blank">https://pypi.douban.com/simple/</a></li>
+</ul>
+<p>临时使用：在使用 pip 的时候加参数-i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+<p>CentOS 修改 ~/.pip/pip.conf (没有就创建一个)， 修改 index-url 为国内镜像地址，内容如下：</p>
+<pre><code class="highlight-chroma">[global] 
+timeout = 60000
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple 
+123
+</code></pre>
+<p>windows 下，直接在 user 目录中创建一个 pip 目录，如：C:\Users\xx\pip，新建文件 pip.ini，内容如下</p>
+<pre><code class="highlight-chroma">[global] 
+timeout = 60000
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple 
+</code></pre>
+<h2 id="依赖">依赖</h2>
+<ul>
+<li>lxml：XML 和 HTML 文本解析器，配合 Xpath 能提取网页中的内容信息。</li>
+<li>Twisted：Twisted 是 Python 下面一个非常重要的基于事件驱动的 IO 引擎。
+<ul>
+<li>Microsoft Visual C++ : <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">https://visualstudio.microsoft.com/downloads/</a></li>
+</ul>
+</li>
+<li>pyOpenSSL：pyopenssl 是 Python 的 OpenSSL 接口。</li>
+<li>
+<pre><code class="highlight-chroma">pip install Scrapy
+</code></pre>
+</li>
+</ul>
+<p>可以选择 <a href="https://pypi.org/" target="_blank">https://pypi.org/</a>下载离线包安装（Python 版本最好是稳定版的，不要最新的，最新的官网没有对应依赖包）</p>
+<h2 id="项目结构">项目结构</h2>
+<pre><code class="highlight-chroma">scrapy startproject name
+</code></pre>
+<ul>
+<li>scrapy.cfg：项目的配置文件，开发无需用到。</li>
+<li>scrapy_demo：项目中会有两个同名的文件夹。最外层表示 project，里面那个目录代表 module（项目的核心）。</li>
+<li>scrapy_demo/items.py：以字段形式定义后期需要处理的数据。</li>
+<li>scrapy_demo/pipelines.py：提取出来的 Item 对象返回的数据并进行存储。</li>
+<li>scrapy_demo/settings.py：项目的设置文件。可以对爬虫进行自定义设置，比如选择深度优先爬取还是广度优先爬取，设置对每个 IP 的爬虫数，设置每个域名的爬虫数，设置爬虫延时，设置代理等等。</li>
+<li>scrapy_demo/spider： 这个目录存放爬虫程序代码。</li>
+<li><strong>init</strong>.py：python 包要求，对 scrapy 作用不大。</li>
+</ul>
+<h2 id="架构">架构</h2>
+<p><img src="https://b3logfile.com/file/2020/10/image20200803114114179-ab6240e7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image20200803114114179.png"></p>
+<p>我按照从上而下，从左往右的顺序阐述各组件的作用。</p>
+<ul>
+<li>Scheduler ：调度器。负责接受 Engine 发送过来的 Requests 请求，并将其队列化；</li>
+<li>Item Pipeline ：Item Pipeline 负责处理被 spider 提取出来的 item。其有典型应用，如清理 HTML 数据、验证爬取的数据（检查 item 包含某些字段）、查重（并丢弃）、爬取数据持久化（存入数据库、写入文件等）；</li>
+<li>Scrapy Engine ：引擎是 Scrapy 的中枢。它负责控制数据流在系统中所有组件中流动，并在相应动作发生时触发事件；</li>
+<li>Downloader Middlewares ：下载中间件是 Engine 和 Downloader 的枢纽。负责处理 Downloader 传递给 Engine 的 responses；它还支持自定义扩展。</li>
+<li>Downloader ：负责下载 Engine 发送的所有 Requests 请求，并将其获取到的 responses 回传给 Scrapy Engine；</li>
+<li>Spider middlewares ：Spider 中间件是 Engine 和 Spider 的连接桥梁；它支持自定义扩展来处理 Spider 的输入(responses) 以及输出 item 和 requests 给 Engine ；</li>
+<li>Spiders ：负责解析 Responses 并提取 Item 字段需要的数据，再将需要跟进的 URL 提交给引擎，再次进入 Scheduler(调度器)；</li>
+</ul>
+<h2 id="工作机制">工作机制</h2>
+<p><img src="https://b3logfile.com/file/2020/10/image20200803114234821-746ad3ef.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image20200803114234821.png"></p>
+<ol>
+<li>当引擎(Engine) 收到 Spider 发送过来的 url 主入口地址（其实是一个 Request 对象， 因为 Scrapy 内部是用到 Requests 请求库），Engine 会进行初始化操作。</li>
+<li>Engine 请求调度器（Scheduler），让 Scheduler 调度出下一个 url 给 Engine。</li>
+<li>Scheduler 返回下一个 url 给 Engine。</li>
+<li>Engine 将 url 通过下载中间件(请求(request)方向)转发给下载器(Downloader)。</li>
+<li>一旦页面下载完毕，Downloader 生成一个该页面的 Response，并将其通过下载中间件(返回(response)方向)发送给 Engine</li>
+<li>引擎将从下载器中接收到 Response 发送给 Spider 处理。</li>
+<li>Spider 处理 Response 并返回爬取到的 Item 及新的 Request 给引擎。</li>
+<li>Engine 将 Spider 返回的爬取到的 Item 转发给 Item Pipeline，顺便也将将 Request 给调度器。</li>
+<li>重复（第 2 步)直到调度器中没有更多地 request，引擎关闭该网站。</li>
+</ol>
+<h1 id="Scrapy使用">Scrapy 使用</h1>
+<h3 id="1-选取目标">1 选取目标</h3>
+<p>网络爬虫，顾名思义是对某个网站或者系列网站，按照一定规则进行爬取信息。爬取程序的首要工作当然是选定爬取目标。本次爬取目标选择是 <code>V电影</code>，网址是 <code>http://www.vmovier.com/</code>。爬取内容是[最新推荐]栏目的前 15 条短视频数据信息。具体信息包括封面、标题、详细说明以及视频播放地址。</p>
+<h3 id="2-定义-Item">2 定义 Item</h3>
+<p>为什么将爬取信息定义清楚呢？因为接下来 Item 需要用到。在 Item.py 文件中，我们以类的形式以及 Field 对象来声明。其中 Field 对象其实是一个字典类型，用于保存爬取到的数据。而定义出来的字段，可以简单理解为数据库表中的字段，但是它没有数据类型。Item 则复制了标准的 dict API，存放以及读取跟字典没有差别。</p>
+<h3 id="3-编写-Spider">3 编写 Spider</h3>
+<p>Spider 目录是我们爬虫程序爬取网站以及提取信息的模块。我们首先在目录下新建一个名为 VmoiveSpider 的文件。同时，该类继承 <code>scrapy.Spider</code>。</p>
+<p>这里我们用到的 <code>scrapy.spider.Spider</code> 是 Scrapy 中最简单的内置 spider。继承 spider 的类需要定义父类中的属性以及实现重要的方法。</p>
+<ul>
+<li>name</li>
+</ul>
+<p>这个属性是非常重要的，所以必须定义它。定义 name 目的是为爬虫程序命名。因此，还要保持 name 属性是唯一的。它是 String 类型，我们在 VmoiveSpider 可以定义：</p>
+<pre><code class="highlight-chroma">name = 'vmoive'
+</code></pre>
+<ul>
+<li>start_urls</li>
+</ul>
+<p>start_urls 是 Url 列表，也是必须被定义。可以把它理解为存放爬虫程序的主入口 url 地址的容器。</p>
+<ul>
+<li>allowed_domains</li>
+</ul>
+<p>可选字段。包含了 spider 允许爬取的域名(domain)列表(list)。 当 OffsiteMiddleware 启用时， 域名不在列表中的 URL 不会被跟进。根据 V 电影的 url 地址，我们可以这样定义：</p>
+<pre><code class="highlight-chroma">allowed_domains = ['vmovier.com']
+</code></pre>
+<ul>
+<li>parse(response)</li>
+</ul>
+<p>parser 方法是 Scrapy 处理下载的 response 的默认方法。它同样必须被实现。parse 主要负责处理 response 并返回处理的数据以及跟进的 URL。该方法及其他的 Request 回调函数必须返回一个包含 Request 及(或) Item 的可迭代的对象。</p>
+<h3 id="4-运行程序">4 运行程序</h3>
+<p>在项目目录下打开终端，并执行以下命令。我们没有 <code>pipelines.py</code> 中将爬取结果进行存储，所以我们使用 scrapy 提供的导出数据命令，将 15 条电影信息导出到名为 items.json 文件中。其中 vmoive 为刚才在 VmoiveSpider 中定义的 name 属性的值。</p>
+<pre><code class="highlight-chroma">scrapy crawl vmoive -o items.json
+</code></pre>
+<h3 id="5-进阶">5 进阶</h3>
+<p>上述代码只是在 V 电影主页中提取信息，而进入电影详情页面中匹配搜索信息。因此，我们是获取不到电影的播放地址的。如何搞定这难题？我们可以在 parse 方法中做文章。parse() 前文提到它必须返回一个 Reuqest 对象或者 Item。再者， Request 中就包含 url。换句话说，我们只有获取到电影详情页的 url 地址，并在传递给返回的 Request 对象中。</p>
+<h3 id="6-数据持久化">6 数据持久化</h3>
+<p>在实际生产中，我们很少把数据导出到 JSON 文件中。因为后期维护、数据查询、数据修改都是一件麻烦的事情。我们通常是将数据保存到数据库中。</p>
+<p>我们先定义并创建数据库表，然后在 settings 文件中增加数据库的配置。最后我们要在 pipeline 文件中编写处理数据存储的代码。</p>
+<h1 id="开发小技巧">开发小技巧</h1>
+<h4 id="1-设置-User-agent">1 设置 User-agent</h4>
+<p>Scrapy 官方建议使用 User-Agent 池， 轮流选择其中一个常用浏览器的 User-Agent 来作为 User-Agent。scrapy 发起的 http 请求中 headers 部分中 User-Agent 字段的默认值是 Scrapy/VERSION (http://scrapy.org)，我们需要修改该字段伪装成浏览器访问网站。</p>
+<ol>
+<li>同样在 setting.py 中新建存储 User-Agent 列表，</li>
+</ol>
+<pre><code class="highlight-chroma">UserAgent_List = [
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2225.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2225.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 4.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.67 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.67 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (X11; OpenBSD i386) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1944.0 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.2309.372 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.2117.157 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1866.237 Safari/537.36",
+ &nbsp; &nbsp;"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/4E423F",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0",
+ &nbsp; &nbsp;"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0",
+ &nbsp; &nbsp;"Mozilla/5.0 (X11; Linux i586; rv:31.0) Gecko/20100101 Firefox/31.0",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20130401 Firefox/31.0",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0",
+ &nbsp; &nbsp;"Opera/9.80 (X11; Linux i686; Ubuntu/14.10) Presto/2.12.388 Version/12.16",
+ &nbsp; &nbsp;"Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14",
+ &nbsp; &nbsp;"Mozilla/5.0 (Windows NT 6.0; rv:2.0) Gecko/20100101 Firefox/4.0 Opera 12.14",
+ &nbsp; &nbsp;"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0) Opera 12.14",
+ &nbsp; &nbsp;"Opera/9.80 (Windows NT 5.1; U; zh-sg) Presto/2.9.181 Version/12.00"
+]
+</code></pre>
+<ol start="2">
+<li>在 middlewares.py 文件中新建一个名为 <code>RandomUserAgentMiddleware</code> 的代理中间层类</li>
+</ol>
+<pre><code class="highlight-chroma">import random
+
+from scrapy_demo.settings import UserAgent_List
+
+class RandomUserAgentMiddleware(object):
+ &nbsp; &nbsp;'''动态随机设置 User-agent'''
+ &nbsp; &nbsp;def process_request(self, request, spider):
+
+ &nbsp; &nbsp; &nbsp; &nbsp;ua = random.choice(UserAgent_List)
+ &nbsp; &nbsp; &nbsp; &nbsp;if ua:
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;request.headers.setdefault('User-Agent', ua)
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;print(request.headers)
+</code></pre>
+<ol start="3">
+<li>在 settings.py 中配置 RandomUserAgentMiddleware , 激活中间件</li>
+</ol>
+<pre><code class="highlight-chroma">DOWNLOADER_MIDDLEWARES = {
+
+ &nbsp; &nbsp;# 第二行的填写规则
+ &nbsp; &nbsp;#  yourproject.middlewares(文件名).middleware类
+
+ &nbsp; &nbsp;# 设置 User-Agent
+ &nbsp; &nbsp;'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
+ &nbsp; &nbsp;'scrapy_demo.middlewares.RandomUserAgentMiddleware': 400, &nbsp;# scrapy_demo 是你项目的名称
+}
+</code></pre>
+<h4 id="2-禁用cookies">2 禁用 cookies</h4>
+<p>有些站点会使用 cookies 来发现爬虫的轨迹。因此，我们最好禁用 cookies</p>
+<p>在 settings.py 文件中新增以下配置。</p>
+<pre><code class="highlight-chroma"># 默认是被注释的, 也就是运行使用 cookies
+# Disable cookies (enabled by default)
+COOKIES_ENABLED = False
+</code></pre>
+<h4 id="3-设置下载延迟">3 设置下载延迟</h4>
+<p>当 scrapy 的下载器在下载同一个网站下一个页面前需要等待的时间。我们设置下载延迟， 可以有效避免下载器获取到下载地址就立刻执行下载任务的情况发生。从而可以限制爬取速度， 减轻服务器压力。</p>
+<p>在 settings.py 文件中新增以下配置。</p>
+<pre><code class="highlight-chroma"># 默认是被注释的
+# Configure a delay for requests for the same website (default: 0)
+# See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
+# See also autothrottle settings and docs
+DOWNLOAD_DELAY = 3 
+# 单位是秒,  上述设置是延迟 3s。 
+# 同时还支持设置小数, 例 0.3, 延迟 300 ms
+</code></pre>
+<h4 id="4-设置代理">4 设置代理</h4>
+<p>有些网站设置反爬虫机制，这使得我们的爬虫程序可能爬到一定数量网页就爬取不下去了。我们需要装饰下爬虫，让它访问网站行为更像类人行为。使用 IP 代理池能突破大部分网站的限制。</p>
+<ol>
+<li>我们可以通过国内一些知名代理网站(例如：迅代理、西刺代理)获取代理服务器地址。</li>
+</ol>
+<p>我将自己收集一些代理地址以列表形式保存到 settings.py 文件中</p>
+<pre><code class="highlight-chroma"># 代理地址具有一定的使用期限, 不保证以下地址都可用。
+PROXY_LIST = [
+ &nbsp; &nbsp;"https://175.9.77.240:80",
+ &nbsp; &nbsp;"http://61.135.217.7:80",
+ &nbsp; &nbsp;"http://113.77.101.113:3128"
+ &nbsp; &nbsp;"http://121.12.42.180:61234",
+ &nbsp; &nbsp;"http://58.246.59.59:8080",
+ &nbsp; &nbsp;"http://27.40.144.98:808",
+ &nbsp; &nbsp;"https://119.5.177.167:4386",
+ &nbsp; &nbsp;"https://210.26.54.43:808",
+]
+</code></pre>
+<ol start="2">
+<li>在 middlewares.py 文件中新建一个名为 <code>ProxyMiddleware</code> 的代理中间层类</li>
+</ol>
+<pre><code class="highlight-chroma">import random
+
+from scrapy_demo.settings import PROXY_LIST
+
+class ProxyMiddleware(object):
+ &nbsp; &nbsp;# overwrite process request
+ &nbsp; &nbsp;def process_request(self, request, spider):
+ &nbsp; &nbsp; &nbsp; &nbsp;# Set the location of the proxy
+ &nbsp; &nbsp; &nbsp; &nbsp;# request.meta['proxy'] = "https://175.9.77.240:80"
+ &nbsp; &nbsp; &nbsp; &nbsp;request.meta['proxy'] = random.choice(PROXY_LIST)
+</code></pre>
+<ol start="3">
+<li>在 settings.py 文件中增加代理配置：</li>
+</ol>
+<pre><code class="highlight-chroma">DOWNLOADER_MIDDLEWARES = {
+
+ &nbsp; &nbsp;# 第二行的填写规则
+ &nbsp; &nbsp;#  yourproject.middlewares(文件名).middleware类
+
+ &nbsp; &nbsp;# 设置代理
+ &nbsp; &nbsp;'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
+ &nbsp; &nbsp;'scrapy_demo.middlewares.ProxyMiddleware': 100, &nbsp;# scrapy_demo 是你项目的名称
+}
+</code></pre>
+<p>除此之外，如果你比较狠的话，可以采用 VPN + Tor 方式来突破反爬虫机制。</p>
+<h4 id="5-减小下载超时">5 减小下载超时</h4>
+<p>如果您对一个非常慢的连接进行爬取(一般对通用爬虫来说并不重要)， 减小下载超时能让卡住的连接能被快速的放弃并解放处理其他站点的能力。</p>
+<p>在 settings.py 文件中增加配置：</p>
+<pre><code class="highlight-chroma">DOWNLOAD_TIMEOUT = 15
+</code></pre>
+<h4 id="6-页面跟随规则">6 页面跟随规则</h4>
+<p>在爬取网站时，可能一些页面是我们不想爬取的。如果使用 最基本的 Spider，它还是会将这些页面爬取下来。因此，我们需要使用更加强大的爬取类 CrawlSpider。</p>
+<p>我们的爬取类继承 CrawlSpider，必须新增定义一个 rules 属性。rules  是一个包含至少一个 Rule（爬取规则）对象的 list。 每个 Rule 对爬取网站的动作定义了特定表现。CrawlSpider 也是继承 Spider 类，所以具有 Spider 的所有函数。</p>
+<p>Rule 对象的构造方法如下：</p>
+<pre><code class="highlight-chroma">Rule(link_extractor, callback=None, cb_kwargs=None, follow=None, process_links=None, process_request=None)
+</code></pre>
+<p>我们在使用 Rule 一般只会用到前面几个参数，它们作用如下：</p>
+<ul>
+<li>link_extractor： 它是一个 Link Extractor 对象。 其定义了如何从爬取到的页面提取链接。<br>
+link_extractor 既可以自己定义，也可以使用已有 LinkExtractor 类，主要参数为：
+<ul>
+<li>allow ：满足括号中“正则表达式”的值会被提取，如果为空，则全部匹配。</li>
+<li>deny ：与这个正则表达式(或正则表达式列表)不匹配的 Url 一定不提取。</li>
+<li>allow_domains ：会被提取的链接的 domains。</li>
+<li>deny_domains ：一定不会被提取链接的 domains。</li>
+<li>restrict_xpaths ：使用 xpath 表达式，和 allow 共同作用过滤链接。还有一个类似的 <code>restrict_css</code></li>
+</ul>
+</li>
+<li>callback ：从 link_extractor 中每获取到链接时将会调用该函数。它指定一个回调方法。会返回一个包含 Item 对象的列表。</li>
+<li>follow ：它 是一个布尔(boolean)值，指定了根据该规则从 response 提取的链接是否需要跟进。 如果 callback 为 None， follow 默认设置为 True ，否则默认为 False 。</li>
+<li>process_links ：从 link_extractor 中获取到链接列表时将会调用该函数。它同样需要指定一个方法，该方法主要用来过滤 Url。</li>
+</ul>
+                    <div>
+                        <hr>
+
+标题：Scrapy爬虫框架初探<br>
+作者：<a href="https://ZZUGEneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGEneral.github.io/articles/2020/10/21/1603287789767.html" target="_blank">https://ZZUGEneral.github.io/articles/2020/10/21/1603287789767.html</a><br>
+一个没有得到Java开发工作的测试员！
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </section>
+        </div>
+
+    </div>
+        <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#Scrapy介绍">Scrapy 介绍</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#特点">特点</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#PIP更换源">PIP 更换源</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#依赖">依赖</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#项目结构">项目结构</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#架构">架构</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#工作机制">工作机制</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#Scrapy使用">Scrapy 使用</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#1-选取目标">1 选取目标</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#2-定义-Item">2 定义 Item</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#3-编写-Spider">3 编写 Spider</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#4-运行程序">4 运行程序</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#5-进阶">5 进阶</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#6-数据持久化">6 数据持久化</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#开发小技巧">开发小技巧</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#1-设置-User-agent">1 设置 User-agent</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#2-禁用cookies">2 禁用 cookies</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#3-设置下载延迟">3 设置下载延迟</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#4-设置代理">4 设置代理</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#5-减小下载超时">5 减小下载超时</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#6-页面跟随规则">6 页面跟随规则</a>
+        </li>
+</ul>        </div>
+        <div class="wrapper">
+            <div id="gitalk-container"></div>
+            <div id="vcomment"
+                 style="    margin-bottom: 40px; margin-top: 80px;
+        border: 1px solid rgba(255,255,255,0.8);
+        border-radius: 5px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        padding: 20px;"
+                 data-name="General" data-postId="1603287789767"></div>
+            <div id="b3logsolocomments"></div>
+        </div>
+    <div class="article__bottom">
+        <div class="wrapper">
+            <div class="fn__flex">
+                <div class="item" id="randomArticles"></div>
+                <div class="item" id="relevantArticles"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script type="text/javascript"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        charset="utf-8"></script>
+<footer class="footer">
+    <div class="wrapper">
+            <a href="https://ld246.com/member/General"
+       title="https://ld246.com/member/General"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/ZZUGeneral"
+           title="https://github.com/ZZUGeneral"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://www.linkedin.com/in/yhlgeneral"
+           title="https://www.linkedin.com/in/yhlgeneral"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.32 23.443h4.211v-12.651h-4.211v12.651zM8.805 6.891c-0.018-1.24-0.911-2.188-2.352-2.188s-2.388 0.948-2.388 2.188c0 1.203 0.911 2.187 2.333 2.187h0.018c1.477 0 2.388-0.984 2.388-2.187zM19.469 23.443h4.211v-7.255c0-3.883-2.078-5.688-4.849-5.688-2.26 0-3.263 1.258-3.81 2.133h0.036v-1.841h-4.211s0.055 1.185 0 12.651v0h4.211v-7.073c0-0.365 0.018-0.747 0.128-1.021 0.31-0.747 1.003-1.531 2.169-1.531 1.513 0 2.115 1.148 2.115 2.862v6.763zM28 5.25v17.5c0 2.898-2.352 5.25-5.25 5.25h-17.5c-2.898 0-5.25-2.352-5.25-5.25v-17.5c0-2.898 2.352-5.25 5.25-5.25h17.5c2.898 0 5.25 2.352 5.25 5.25z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/18203879479"
+           title="https://weibo.com/18203879479"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/general-54-18"
+           title="https://www.zhihu.com/people/general-54-18"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=1359541394"
+           title="1359541394"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="user__site" title="18203879479">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+ <br>
+        &copy; 2020
+        <a href="https://ZZUGEneral.github.io">General 的个人博客</a>
+        你一定会喜欢那个因为喜欢她而发光的自己！
+        <span class="footer__heart">❤️</span><br>
+        <div align="center">
+          <a target="_blank" href="http://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫ICP备2020028892号-1</p></a> &nbsp;
+          <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41132602001081" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://img.hacpai.com/file/2019/07/备案图标-cc568907.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫公网安备 41132602001081号</p></a>
+        </div>
+    </div>
+</footer>
+<svg class="side__top" id="sideTop" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <path d="M26.562 13.958c0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303v0c0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303v0zM23.305 10.7c0 0 0 0 0 0 0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303c0-0 0-0 0-0v0c0-0 0-0 0-0 0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303c0 0 0 0 0 0v0zM20.022 7.417c0 0 0 0 0 0 0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303c0-0 0-0 0-0v0c0-0 0-0 0-0 0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303c0 0 0 0 0 0v0zM29.67 0h-27.339c-0.677 0-1.228 0.551-1.228 1.228s0.551 1.228 1.228 1.228h11.151l-10.725 10.725c-0.476 0.476-0.476 1.253 0 1.729 0.226 0.226 0.551 0.351 0.852 0.351s0.626-0.125 0.852-0.351l10.074-10.074v25.936c0 0.677 0.551 1.228 1.228 1.228s1.228-0.551 1.228-1.228v-26.011c0.476 0.426 1.203 0.426 1.679-0.050s0.476-1.253 0-1.729l-0.576-0.576h11.577c0.677 0 1.228-0.551 1.228-1.228 0-0.626-0.551-1.178-1.228-1.178z"></path>
+</svg>
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://ZZUGEneral.github.io",
+    staticServePath: "https://ZZUGEneral.github.io",
+    luteAvailable: true,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1603287789767",
+  }
+</script>
+<script type="text/javascript"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        charset="utf-8"></script>
+<script type="text/javascript"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        charset="utf-8"></script>
+
+    <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
+        <path d="M30 18h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM30 6.25h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM2 25.75h28c1.1 0 2 0.9 2 2s-0.9 2-2 2h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2z"></path>
+    </svg>
+
+<script type="text/javascript">
+    Util.addScript('https://ZZUGEneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1603287789767",
+        "blogHost": "https://ZZUGEneral.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+        page.loadRandomArticles('<h3>随机阅读</h3>');
+        page.loadRelevantArticles('1603287789767', '<h3>相关阅读</h3>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 34ms, 2020/11/10 14:53:25 -->

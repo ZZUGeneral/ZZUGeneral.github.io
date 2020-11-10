@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Web渗透之信息搜集 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Web渗透之信息搜集 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/10/12/1602510666141.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Web渗透之信息搜集 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/10/12/1602510666141.html">        <link rel="stylesheet"
-              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
-            <link rel="prev" title="Ubuntu创建本地apt仓库" href="https://ZZUGeneral.github.io/articles/2020/10/12/1602469729634.html">
-            <link rel="next" title="Web常见漏洞" href="https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html">
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Web安全攻防之信息搜集 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGEneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGEneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Web安全攻防之信息搜集 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGEneral.github.io/articles/2020/10/12/1602510666141.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Web安全攻防之信息搜集 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGEneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGEneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGEneral.github.io/articles/2020/10/12/1602510666141.html">        <link rel="stylesheet"
+              href="https://ZZUGEneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="Ubuntu创建本地apt仓库" href="https://ZZUGEneral.github.io/articles/2020/10/12/1602469729634.html">
+            <link rel="next" title="Web安全攻防之常见漏洞" href="https://ZZUGEneral.github.io/articles/2020/10/12/1602511210520.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body class="fn__flex-column">
 <div id="pjax" class="fn__flex-1">
@@ -13,7 +13,7 @@
     <header class="header header--article">
         <div class="wrapper header__title">
             <h1 class="header__h1 fn__flex-inline">
-                <a href="https://ZZUGeneral.github.io" rel="start">General 的个人博客</a>
+                <a href="https://ZZUGEneral.github.io" rel="start">General 的个人博客</a>
             </h1>
             <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
             <div class="header__desc">
@@ -42,11 +42,11 @@
             </svg>
 
             <div class="side__header">
-                <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+                <a href="https://ZZUGEneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    33 文章 <br>
-                    <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
+                    48 文章 <br>
+                    <span data-uvstaturl="https://ZZUGEneral.github.io">0</span> 浏览
                     
                 </div>
             </div>
@@ -56,7 +56,7 @@
             </div>
             <ul class="side__nav">
                 <li>
-                    <a href="https://ZZUGeneral.github.io" rel="start">
+                    <a href="https://ZZUGEneral.github.io" rel="start">
                             General 的个人博客
                     </a>
                 </li>
@@ -65,48 +65,50 @@
                                 class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
                     </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/categories.html">分类</a>
+                    <a href="https://ZZUGEneral.github.io/categories.html">分类</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/tags.html">标签墙</a>
+                    <a href="https://ZZUGEneral.github.io/tags.html">标签墙</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/archives.html">存档</a>
+                    <a href="https://ZZUGEneral.github.io/archives.html">存档</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/links.html">友链</a>
+                    <a href="https://ZZUGEneral.github.io/links.html">友链</a>
                 </li>
                 <li>
-                    <a rel="alternate" href="https://ZZUGeneral.github.io/rss.xml">RSS</a>
+                    <a rel="alternate" href="https://ZZUGEneral.github.io/rss.xml">RSS</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20180612.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)">
-        <div style="background-image: url(https://b3logfile.com/bing/20180612.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
+    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20190722.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)">
+        <div style="background-image: url(https://b3logfile.com/bing/20190722.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
         <canvas id="articleTop"></canvas>
     </div>
     <div class="article">
         <div class="ft__center">
             <div class="article__meta">
                 <time>
-                    2020-10-12
+                    2020-10-21
                 </time>
                 /
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/Web%E6%B8%97%E9%80%8F">Web渗透</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/Web%E6%B8%97%E9%80%8F">Web渗透</a> &nbsp;
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/%E5%AE%89%E5%85%A8">安全</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/%E5%AE%89%E5%85%A8">安全</a> &nbsp;
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86">信息搜集</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86">信息搜集</a> &nbsp;
+                    <a rel="tag"
+                       href="https://ZZUGEneral.github.io/tags/Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2">Web安全攻防</a> &nbsp;
             </div>
             <h2 class="article__title">
-                Web渗透之信息搜集
+                Web安全攻防之信息搜集
             </h2>
 <div class="article__share"
-     data-title="Web渗透之信息搜集"
+     data-title="Web安全攻防之信息搜集"
      data-blogtitle="General 的个人博客"
-     data-url="https://ZZUGeneral.github.io/articles/2020/10/12/1602510666141.html"
+     data-url="https://ZZUGEneral.github.io/articles/2020/10/12/1602510666141.html"
      data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -135,21 +137,21 @@
 </div>        </div>
         <div class="wrapper">
             <section class="vditor-reset articles article__content">
-                <h1 id="渗透测试之信息搜集">渗透测试之信息搜集</h1>
+                <h1 id="信息搜集">信息搜集</h1>
 <h2 id="域名信息">域名信息</h2>
-<p>  <strong>Whois 域名详细信息</strong></p>
-<p>  kali 默认安装了 Whois，使用命令：</p>
+<p><strong>Whois 域名详细信息</strong></p>
+<p>kali 默认安装了 Whois，使用命令：</p>
 <pre><code class="highlight-chroma">whois baidu.com
 </code></pre>
-<p>  网站：</p>
-<p>  爱站工具网 <a href="http://whois.aizhan.com" target="_blank">http://whois.aizhan.com</a></p>
-<p>  站长之家 <a href="http://whois.chinaz.com" target="_blank">http://whois.chinaz.com</a></p>
-<p>  VirusTotal <a href="http://www.virtustotal.com" target="_blank">http://www.virtustotal.com</a></p>
+<p>网站：</p>
+<p>爱站工具网 <a href="http://whois.aizhan.com" target="_blank">http://whois.aizhan.com</a></p>
+<p>站长之家 <a href="http://whois.chinaz.com" target="_blank">http://whois.chinaz.com</a></p>
+<p>VirusTotal <a href="http://www.virtustotal.com" target="_blank">http://www.virtustotal.com</a></p>
 <h2 id="备案信息">备案信息</h2>
-<p>  ICP 备案信息查询网  <a href="http://www.beianbeian.com" target="_blank">http://www.beianbeian.com</a></p>
-<p>  天眼查 <a href="http://www.tainyan.com" target="_blank">http://www.tainyan.com</a></p>
+<p>ICP 备案信息查询网  <a href="http://www.beianbeian.com" target="_blank">http://www.beianbeian.com</a></p>
+<p>天眼查 <a href="http://www.tainyan.com" target="_blank">http://www.tainyan.com</a></p>
 <h2 id="敏感信息收集">敏感信息收集</h2>
-<p>  <strong>Google</strong></p>
+<p><strong>Google</strong></p>
 <table>
 <thead>
 <tr>
@@ -192,7 +194,7 @@
 </tr>
 </tbody>
 </table>
-<p>  <strong>乌云漏洞表</strong> <a href="http://wooyun.shuimugan.com" target="_blank">http://wooyun.shuimugan.com</a></p>
+<p><strong>乌云漏洞表</strong> <a href="http://wooyun.shuimugan.com" target="_blank">http://wooyun.shuimugan.com</a></p>
 <h2 id="子域名信息">子域名信息</h2>
 <ol>
 <li>工具：Layer 子域名挖掘机，K8，wydomain，Sublist3r,dnsmaper,subDomainBrute,Maltego CE</li>
@@ -202,7 +204,7 @@
 <li>子域名爆破网站：<a href="http://phpinfo.me/domain" target="_blank">http://phpinfo.me/domain</a>  IP 反查绑定域名网站 <a href="http://dns.aizhan.com" target="_blank">http://dns.aizhan.com</a></li>
 </ol>
 <h2 id="收集常用端口信息">收集常用端口信息</h2>
-<p>  <strong>文件服务 duankou</strong></p>
+<p><strong>文件服务 duankou</strong></p>
 <table>
 <thead>
 <tr>
@@ -234,7 +236,7 @@
 </tr>
 </tbody>
 </table>
-<p>  <strong>远程连接服务端口</strong></p>
+<p><strong>远程连接服务端口</strong></p>
 <table>
 <thead>
 <tr>
@@ -271,7 +273,7 @@
 </tr>
 </tbody>
 </table>
-<p>  <strong>Web 应用服务端口</strong></p>
+<p><strong>Web 应用服务端口</strong></p>
 <table>
 <thead>
 <tr>
@@ -318,7 +320,7 @@
 </tr>
 </tbody>
 </table>
-<p>  <strong>数据库服务端口</strong></p>
+<p><strong>数据库服务端口</strong></p>
 <table>
 <thead>
 <tr>
@@ -365,7 +367,7 @@
 </tr>
 </tbody>
 </table>
-<p>  <strong>邮件服务端口</strong></p>
+<p><strong>邮件服务端口</strong></p>
 <table>
 <thead>
 <tr>
@@ -392,7 +394,7 @@
 </tr>
 </tbody>
 </table>
-<p>  <strong>网络常见协议端口</strong></p>
+<p><strong>网络常见协议端口</strong></p>
 <table>
 <thead>
 <tr>
@@ -419,7 +421,7 @@
 </tr>
 </tbody>
 </table>
-<p>  <strong>特殊服务端口</strong></p>
+<p><strong>特殊服务端口</strong></p>
 <table>
 <thead>
 <tr>
@@ -472,27 +474,27 @@
 </tbody>
 </table>
 <h2 id="指纹识别">指纹识别</h2>
-<p>  这里的指纹是指网站 CMS 指纹识别。计算机操作系统及 Web 容器的指纹识别等。</p>
-<p>  CMS (Content Management System) : 整站系统或文章系统</p>
-<p>  内容管理系统（content management system，CMS）是一种位于 Web 前端（Web 服务器）和后端办公系统或流程（内容创作、编辑）之间的软件系统。内容的创作人员、编辑人员、发布人员使用内容管理系统来提交、修改、审批、发布内容。这里指的“内容”可能包括文件、表格、图片、数据库中的数据甚至视频等一切你想要发布到 Internet、Intranet 以及 Extranet 网站的信息。</p>
-<p>  <strong>常见 CMS</strong>：织梦 dedecms、discuz、phpweb、phpwind、phpcms、ecshop、dvbbs、siteweaver、aspcms、帝国、Z-Blog、wordpress 等</p>
-<p>  <strong>识别主流 CMS 的代表工具</strong>：御剑 Web 指纹识别、whatweb、webrobo、椰树、轻量 Web 指纹识别</p>
-<p>  <strong>识别主流 CMS 指纹的在线网站</strong>：</p>
-<p>  BugScanner : <a href="http://whatweb.bugscaner.com/look/" target="_blank">http://whatweb.bugscaner.com/look/</a></p>
-<p>  云悉指纹 : <a href="http://www.yunsee.cn/finger.html" target="_blank">http://www.yunsee.cn/finger.html</a></p>
-<p>  和 WhatWeb : <a href="https://whatweb.net" target="_blank">https://whatweb.net</a>(<a href="https://whatweb.net/" target="_blank">https://whatweb.net/</a>)</p>
+<p>这里的指纹是指网站 CMS 指纹识别。计算机操作系统及 Web 容器的指纹识别等。</p>
+<p>CMS (Content Management System) : 整站系统或文章系统</p>
+<p>内容管理系统（content management system，CMS）是一种位于 Web 前端（Web 服务器）和后端办公系统或流程（内容创作、编辑）之间的软件系统。内容的创作人员、编辑人员、发布人员使用内容管理系统来提交、修改、审批、发布内容。这里指的“内容”可能包括文件、表格、图片、数据库中的数据甚至视频等一切你想要发布到 Internet、Intranet 以及 Extranet 网站的信息。</p>
+<p><strong>常见 CMS</strong>：织梦 dedecms、discuz、phpweb、phpwind、phpcms、ecshop、dvbbs、siteweaver、aspcms、帝国、Z-Blog、wordpress 等</p>
+<p><strong>识别主流 CMS 的代表工具</strong>：御剑 Web 指纹识别、whatweb、webrobo、椰树、轻量 Web 指纹识别</p>
+<p><strong>识别主流 CMS 指纹的在线网站</strong>：</p>
+<p>BugScanner : <a href="http://whatweb.bugscaner.com/look/" target="_blank">http://whatweb.bugscaner.com/look/</a></p>
+<p>云悉指纹 : <a href="http://www.yunsee.cn/finger.html" target="_blank">http://www.yunsee.cn/finger.html</a></p>
+<p>和 WhatWeb : <a href="https://whatweb.net" target="_blank">https://whatweb.net</a>(<a href="https://whatweb.net/" target="_blank">https://whatweb.net/</a>)</p>
 <h2 id="查找真实IP">查找真实 IP</h2>
-<p>  如果目标服务器不存在 CDN，可以直接通过 <a href="www.ip138.com" target="_blank">www.ip138.com</a> 获取目标的一些 IP 和域名信息。</p>
-<p>  下面是几种绕过 CDN 寻找目标服务器的真实 IP</p>
-<p>  CDN 的全称是 Content Delivery Network，即<a href="https://baike.baidu.com/item/%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C/4034265" target="_blank">内容分发网络</a>。CDN 是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN 的关键技术主要有内容存储和分发技术。</p>
-<p>  CDN 的基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。通过在网络各处放置<a href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9%E6%9C%8D%E5%8A%A1%E5%99%A8/4576219" target="_blank">节点服务器</a>所构成的在现有的互联网基础之上的一层智能<a href="https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E7%BD%91%E7%BB%9C/855117" target="_blank">虚拟网络</a>，CDN 系统能够实时地根据<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F/7489548" target="_blank">网络流量</a>和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet 网络拥挤的状况，提高用户访问网站的响应速度。<br>
+<p>如果目标服务器不存在 CDN，可以直接通过 <a href="www.ip138.com" target="_blank">www.ip138.com</a> 获取目标的一些 IP 和域名信息。</p>
+<p>下面是几种绕过 CDN 寻找目标服务器的真实 IP</p>
+<p>CDN 的全称是 Content Delivery Network，即<a href="https://baike.baidu.com/item/%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C/4034265" target="_blank">内容分发网络</a>。CDN 是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN 的关键技术主要有内容存储和分发技术。</p>
+<p>CDN 的基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。通过在网络各处放置<a href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9%E6%9C%8D%E5%8A%A1%E5%99%A8/4576219" target="_blank">节点服务器</a>所构成的在现有的互联网基础之上的一层智能<a href="https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E7%BD%91%E7%BB%9C/855117" target="_blank">虚拟网络</a>，CDN 系统能够实时地根据<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F/7489548" target="_blank">网络流量</a>和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet 网络拥挤的状况，提高用户访问网站的响应速度。<br>
 <strong>1. 目标服务器存在 CDN</strong></p>
-<p>  目标服务器存在 CDN，通过 ping 域名来查看 IP 结果只是离我们最近的一台目标节点的 CDN 服务器。</p>
-<p>  <strong>2. 判断目标是否使用了 CDN</strong></p>
-<p>  判断目标服务器是否存在 CDN，通过 ping 域名来查看 IP 结果是否一样。</p>
-<p>  也可以通过 <a href="https://www.17ce.com/" target="_blank">https://www.17ce.com</a> 判断。</p>
-<p>  原则：ping 出的 IP 结果一致，极有可能不存在 CDN。若 IP 大多不太一样或规律性很强，则可能存在 CDN。</p>
-<p>  <strong>3. 绕过 CDN 寻找真实 IP</strong></p>
+<p>目标服务器存在 CDN，通过 ping 域名来查看 IP 结果只是离我们最近的一台目标节点的 CDN 服务器。</p>
+<p><strong>2. 判断目标是否使用了 CDN</strong></p>
+<p>判断目标服务器是否存在 CDN，通过 ping 域名来查看 IP 结果是否一样。</p>
+<p>也可以通过 <a href="https://www.17ce.com/" target="_blank">https://www.17ce.com</a> 判断。</p>
+<p>原则：ping 出的 IP 结果一致，极有可能不存在 CDN。若 IP 大多不太一样或规律性很强，则可能存在 CDN。</p>
+<p><strong>3. 绕过 CDN 寻找真实 IP</strong></p>
 <ol>
 <li>内部邮箱源 （ping 该邮件服务器的域名，即可获得真实 IP 第三方或者公共邮件 8 服务器不适用）</li>
 <li>扫描网站测试文件（例如 phpinfo、test）</li>
@@ -501,20 +503,20 @@
 <li>查询域名解析记录（<a href="https://www.netcraft.com" target="_blank">https://www.netcraft.com</a>）</li>
 <li>绕过 CloudFlare CDN 查找真实的 IP（<a href="http://www.crimeflare.us/cfs.html#box" target="_blank">http://www.crimeflare.us/cfs.html#box</a>）</li>
 </ol>
-<p>  <strong>4. 验证 IP</strong></p>
+<p><strong>4. 验证 IP</strong></p>
 <ol>
 <li>Web 网站通过 IP 访问防战</li>
 <li>借助 Masscan 的工具扫描对应 IP 段中所有开启 80，443，8080 端口的 IP，在逐个尝试</li>
 </ol>
 <h2 id="收集蜜柑目录文件">收集蜜柑目录文件</h2>
-<p>  针对网站目录扫描：DirBuster、御剑后台扫描珍藏版、wwwscan、Spinder.py、Sensitivefilescan、weakfilescan 等工具</p>
+<p>针对网站目录扫描：DirBuster、御剑后台扫描珍藏版、wwwscan、Spinder.py、Sensitivefilescan、weakfilescan 等工具</p>
 <h2 id="社会工程学">社会工程学</h2>
                     <div>
                         <hr>
 
-标题：Web渗透之信息搜集<br>
-作者：<a href="https://ZZUGeneral.github.io" target="_blank">General</a><br>
-地址：<a href="https://ZZUGeneral.github.io/articles/2020/10/12/1602510666141.html" target="_blank">https://ZZUGeneral.github.io/articles/2020/10/12/1602510666141.html</a><br>
+标题：Web安全攻防之信息搜集<br>
+作者：<a href="https://ZZUGEneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGEneral.github.io/articles/2020/10/12/1602510666141.html" target="_blank">https://ZZUGEneral.github.io/articles/2020/10/12/1602510666141.html</a><br>
 一个没有得到Java开发工作的测试员！
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
@@ -526,7 +528,7 @@
         <div class="post__toc">
 <ul class="article__toc">
         <li class="toc__h1">
-            <a href="#渗透测试之信息搜集">渗透测试之信息搜集</a>
+            <a href="#信息搜集">信息搜集</a>
         </li>
         <li class="toc__h2">
             <a href="#域名信息">域名信息</a>
@@ -579,7 +581,7 @@
     
 </div>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -646,7 +648,7 @@
         </a>
  <br>
         &copy; 2020
-        <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
+        <a href="https://ZZUGEneral.github.io">General 的个人博客</a>
         你一定会喜欢那个因为喜欢她而发光的自己！
         <span class="footer__heart">❤️</span><br>
         <div align="center">
@@ -661,8 +663,8 @@
 <script>
   var Label = {
     speech: true,
-    servePath: "https://ZZUGeneral.github.io",
-    staticServePath: "https://ZZUGeneral.github.io",
+    servePath: "https://ZZUGEneral.github.io",
+    staticServePath: "https://ZZUGEneral.github.io",
     luteAvailable: true,
     hljsStyle: 'github',
     langLabel: "zh_CN",
@@ -673,10 +675,10 @@
   }
 </script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
         charset="utf-8"></script>
 
     <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
@@ -684,11 +686,11 @@
     </svg>
 
 <script type="text/javascript">
-    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    Util.addScript('https://ZZUGEneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1602510666141",
-        "blogHost": "https://ZZUGeneral.github.io",
+        "blogHost": "https://ZZUGEneral.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
@@ -704,4 +706,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 40ms, 2020/10/21 08:28:34 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 35ms, 2020/11/10 14:53:26 -->

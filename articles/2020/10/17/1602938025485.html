@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>反射 - General 的个人博客</title><meta name="description" content="  反射类提供了一个非常丰富且精心设计的工具集，以便编写能够动态操纵 Java 代码的程序。这项功能被大量地应用于 JavaBean 中，它是 Java 组建的体系结构。   能够分析类的程序称为反射。反射的功能及其强大，可以用来： 在运行时分析类的能力 在运行时查看对象。例如，编写一个 toString 方法供所有类使用 实现通用的数组操作代码 利用 Method 对象"/><meta property="og:description" content="  反射类提供了一个非常丰富且精心设计的工具集，以便编写能够动态操纵 Java 代码的程序。这项功能被大量地应用于 JavaBean 中，它是 Java 组建的体系结构。   能够分析类的程序称为反射。反射的功能及其强大，可以用来： 在运行时分析类的能力 在运行时查看对象。例如，编写一个 toString 方法供所有类使用 实现通用的数组操作代码 利用 Method 对象"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="反射 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/10/17/1602938025485.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="反射 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/10/17/1602938025485.html">        <link rel="stylesheet"
-              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
-            <link rel="prev" title="核心防御机制" href="https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html">
-            <link rel="next" title="继承的设计技巧" href="https://ZZUGeneral.github.io/articles/2020/10/17/1602938103120.html">
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>反射 - General 的个人博客</title><meta name="description" content="反射类提供了一个非常丰富且精心设计的工具集，以便编写能够动态操纵 Java 代码的程序。这项功能被大量地应用于 JavaBean 中，它是 Java 组建的体系结构。 能够分析类的程序称为反射。反射的功能及其强大，可以用来： 在运行时分析类的能力 在运行时查看对象。例如，编写一个 toString 方法供所有类使用 实现通用的数组操作代码 利用 Method 对象"/><meta property="og:description" content="反射类提供了一个非常丰富且精心设计的工具集，以便编写能够动态操纵 Java 代码的程序。这项功能被大量地应用于 JavaBean 中，它是 Java 组建的体系结构。 能够分析类的程序称为反射。反射的功能及其强大，可以用来： 在运行时分析类的能力 在运行时查看对象。例如，编写一个 toString 方法供所有类使用 实现通用的数组操作代码 利用 Method 对象"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGEneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGEneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="反射 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGEneral.github.io/articles/2020/10/17/1602938025485.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="反射 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGEneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGEneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGEneral.github.io/articles/2020/10/17/1602938025485.html">        <link rel="stylesheet"
+              href="https://ZZUGEneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="核心防御机制" href="https://ZZUGEneral.github.io/articles/2020/10/14/1602667334063.html">
+            <link rel="next" title="继承的设计技巧" href="https://ZZUGEneral.github.io/articles/2020/10/17/1602938103120.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body class="fn__flex-column">
 <div id="pjax" class="fn__flex-1">
@@ -13,7 +13,7 @@
     <header class="header header--article">
         <div class="wrapper header__title">
             <h1 class="header__h1 fn__flex-inline">
-                <a href="https://ZZUGeneral.github.io" rel="start">General 的个人博客</a>
+                <a href="https://ZZUGEneral.github.io" rel="start">General 的个人博客</a>
             </h1>
             <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
             <div class="header__desc">
@@ -42,11 +42,11 @@
             </svg>
 
             <div class="side__header">
-                <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+                <a href="https://ZZUGEneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    33 文章 <br>
-                    <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
+                    48 文章 <br>
+                    <span data-uvstaturl="https://ZZUGEneral.github.io">0</span> 浏览
                     
                 </div>
             </div>
@@ -56,7 +56,7 @@
             </div>
             <ul class="side__nav">
                 <li>
-                    <a href="https://ZZUGeneral.github.io" rel="start">
+                    <a href="https://ZZUGEneral.github.io" rel="start">
                             General 的个人博客
                     </a>
                 </li>
@@ -65,36 +65,36 @@
                                 class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
                     </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/categories.html">分类</a>
+                    <a href="https://ZZUGEneral.github.io/categories.html">分类</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/tags.html">标签墙</a>
+                    <a href="https://ZZUGEneral.github.io/tags.html">标签墙</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/archives.html">存档</a>
+                    <a href="https://ZZUGEneral.github.io/archives.html">存档</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/links.html">友链</a>
+                    <a href="https://ZZUGEneral.github.io/links.html">友链</a>
                 </li>
                 <li>
-                    <a rel="alternate" href="https://ZZUGeneral.github.io/rss.xml">RSS</a>
+                    <a rel="alternate" href="https://ZZUGEneral.github.io/rss.xml">RSS</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20190419.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)">
-        <div style="background-image: url(https://b3logfile.com/bing/20190419.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
+    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20201001.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)">
+        <div style="background-image: url(https://b3logfile.com/bing/20201001.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
         <canvas id="articleTop"></canvas>
     </div>
     <div class="article">
         <div class="ft__center">
             <div class="article__meta">
                 <time>
-                    2020-10-17
+                    2020-10-26
                 </time>
                 /
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/JAVA">JAVA</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/JAVA">JAVA</a> &nbsp;
             </div>
             <h2 class="article__title">
                 反射
@@ -102,7 +102,7 @@
 <div class="article__share"
      data-title="反射"
      data-blogtitle="General 的个人博客"
-     data-url="https://ZZUGeneral.github.io/articles/2020/10/17/1602938025485.html"
+     data-url="https://ZZUGEneral.github.io/articles/2020/10/17/1602938025485.html"
      data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -131,8 +131,8 @@
 </div>        </div>
         <div class="wrapper">
             <section class="vditor-reset articles article__content">
-                <p>  反射类提供了一个非常丰富且精心设计的工具集，以便编写能够动态操纵 Java 代码的程序。这项功能被大量地应用于 JavaBean 中，它是 Java 组建的体系结构。</p>
-<p>  能够分析类的程序称为反射。反射的功能及其强大，可以用来：</p>
+                <p>反射类提供了一个非常丰富且精心设计的工具集，以便编写能够动态操纵 Java 代码的程序。这项功能被大量地应用于 JavaBean 中，它是 Java 组建的体系结构。</p>
+<p>能够分析类的程序称为反射。反射的功能及其强大，可以用来：</p>
 <ul>
 <li>在运行时分析类的能力</li>
 <li>在运行时查看对象。例如，编写一个 toString 方法供所有类使用</li>
@@ -140,46 +140,46 @@
 <li>利用 Method 对象</li>
 </ul>
 <h2 id="Class类">Class 类</h2>
-<p>  在程序运行期间，Java 运行时系统始终为所有的对象维护一个被称为运行时的类型标识。这个信息跟踪着每个对象所属的类。虚拟机利用这些运行时类型信息选择相应的方法执行。</p>
-<p>  然而，可以通过专门的 Java 类访问这些信息。保存这些信息的类别称为 Class，Object 类中的 getClass() 方法将会返回一个 Class 类型的实例。</p>
+<p>在程序运行期间，Java 运行时系统始终为所有的对象维护一个被称为运行时的类型标识。这个信息跟踪着每个对象所属的类。虚拟机利用这些运行时类型信息选择相应的方法执行。</p>
+<p>然而，可以通过专门的 Java 类访问这些信息。保存这些信息的类别称为 Class，Object 类中的 getClass() 方法将会返回一个 Class 类型的实例。</p>
 <pre><code class="highlight-chroma">Employee e;
 ...
 Class cl = e.getClass();
 </code></pre>
-<p>  如同用一个 Employee 对象表示一个特定的雇员属性一样，一个 Class 对象将表示一个特性类的属性。最常用的 Class 方法是 getName()，返回类的名字。</p>
+<p>如同用一个 Employee 对象表示一个特定的雇员属性一样，一个 Class 对象将表示一个特性类的属性。最常用的 Class 方法是 getName()，返回类的名字。</p>
 <pre><code class="highlight-chroma">System.out.println(e.getClass().getName() + " " + e.getName());
 </code></pre>
 <pre><code class="highlight-chroma">e是一个经理，结果为： Manager Tom
 e是一个雇员，结果为： Employee Tom
 </code></pre>
-<p>  如果类在一个包中，包的名字也会作为类名的一部分。</p>
-<p>  还可以调用静态方法 forName() 获得类名对应的 Class 对象。</p>
+<p>如果类在一个包中，包的名字也会作为类名的一部分。</p>
+<p>还可以调用静态方法 forName() 获得类名对应的 Class 对象。</p>
 <pre><code class="highlight-chroma">String className = "java.util.Random";
 Class cl = Class.forName(className);
 </code></pre>
-<p>  如果类名保存在字符串中，并可在运行中改变，就可以用这个方法。这个方法只能在 className 是类名或者接口名时才能够执行。否侧， forName() 方法会抛出一个 checked exception。无论何时使用这个方法，都应该提供一个异常处理器。</p>
-<p>  获得 Class 对象的第三种方法非常简单。如果 T 是任意的 Java 类型 （或者 void 关键字）， T.class 将代表匹配的类对象。</p>
+<p>如果类名保存在字符串中，并可在运行中改变，就可以用这个方法。这个方法只能在 className 是类名或者接口名时才能够执行。否侧， forName() 方法会抛出一个 checked exception。无论何时使用这个方法，都应该提供一个异常处理器。</p>
+<p>获得 Class 对象的第三种方法非常简单。如果 T 是任意的 Java 类型 （或者 void 关键字）， T.class 将代表匹配的类对象。</p>
 <pre><code class="highlight-chroma">Class cl1 = Random.Class; // 如果你没有 import java.util.*
 Class cl2 = int.class;
 Class Cl3 = Double[].class;
 </code></pre>
-<p>  Tips ： 一个 Class 对象实际上表示的是一个类型，而这个类型未必是一定是一种类。例如， int 不是类，但是 int.class 是一个 Class 类型的对象。</p>
-<p>  Class 类实际上是一个泛型类。Employee.class 的类型是 Class<employee>。Class 将已经抽象的概念更加复杂化了。在大多是实际问题中，可以忽略参数类型，而使用原始的 Class 类。</employee></p>
-<p>  鉴于历史原因，getName 方法应用于数组类型的人时候会翻译一个很奇怪的名字：</p>
+<p>Tips ： 一个 Class 对象实际上表示的是一个类型，而这个类型未必是一定是一种类。例如， int 不是类，但是 int.class 是一个 Class 类型的对象。</p>
+<p>Class 类实际上是一个泛型类。Employee.class 的类型是 Class<employee>。Class 将已经抽象的概念更加复杂化了。在大多是实际问题中，可以忽略参数类型，而使用原始的 Class 类。</employee></p>
+<p>鉴于历史原因，getName 方法应用于数组类型的人时候会翻译一个很奇怪的名字：</p>
 <ul>
 <li>Double[].class.getName() 返回 “[Ljava.lang.Double;”</li>
 <li>int[].class.getName() 返回 “[I”</li>
 </ul>
-<p>  虚拟机为每个类型管理一个 Class 对象。因此，可以利用 == 运算符实现两个类对象比较的操作。</p>
-<p>  newInstance 方法调用默认的构造器（无参构造器）初始化新创建的对象。如果没有默认的构造器，就会抛出异常。将 forName 与 newInstance 配合使用，可以根据储存在字符串中的类型创建一个对象。</p>
+<p>虚拟机为每个类型管理一个 Class 对象。因此，可以利用 == 运算符实现两个类对象比较的操作。</p>
+<p>newInstance 方法调用默认的构造器（无参构造器）初始化新创建的对象。如果没有默认的构造器，就会抛出异常。将 forName 与 newInstance 配合使用，可以根据储存在字符串中的类型创建一个对象。</p>
 <pre><code class="highlight-chroma">String s = "java.util.Random";
 Object a = Class.forName(s).newInstance();
 </code></pre>
 <h2 id="利用反射分析类的能力">利用反射分析类的能力</h2>
-<p>  反射机制中最重要的内容---检查类的结构。</p>
-<p>  在 java.lang.reflect 包中有三个类 Field, Method 和 Constructor 分别用于描述类的域，方法和构造器。这三个类都有一个 getName 方法，用来返回项目的名称。</p>
-<p>  Field 有一个 getType 方法，用力返回描述域所述类型的 Class 对象。Method 和 Constructor 类能够报告参数类型的方法，Method 类还有一个可以报告返回类型的方法。这三个类还有一个 getModifiers 的方法，它将返回一个整形数值，用不同的为开关描述 public 和 static 这样的修饰符。还可以利用 java.lang.reflect 包中的 Modifier 类的静态方法分析 getModifiers 返回的整形数值。</p>
-<p>  下面的类打印一个类的所有信息。用户输入类型，然后输出类中的所有方法和构造器签名，以及全部的域名。</p>
+<p>反射机制中最重要的内容---检查类的结构。</p>
+<p>在 java.lang.reflect 包中有三个类 Field, Method 和 Constructor 分别用于描述类的域，方法和构造器。这三个类都有一个 getName 方法，用来返回项目的名称。</p>
+<p>Field 有一个 getType 方法，用力返回描述域所述类型的 Class 对象。Method 和 Constructor 类能够报告参数类型的方法，Method 类还有一个可以报告返回类型的方法。这三个类还有一个 getModifiers 的方法，它将返回一个整形数值，用不同的为开关描述 public 和 static 这样的修饰符。还可以利用 java.lang.reflect 包中的 Modifier 类的静态方法分析 getModifiers 返回的整形数值。</p>
+<p>下面的类打印一个类的所有信息。用户输入类型，然后输出类中的所有方法和构造器签名，以及全部的域名。</p>
 <pre><code class="highlight-chroma">请输入类名(eg : java.util.Date) : 
 java.lang.Double
 java.lang.Double类的所有信息如下 : 
@@ -237,7 +237,7 @@ public final class java.lang.Double extend java.lang.Number
   public static final java.lang.Class TYPE;
 }
 </code></pre>
-<p>  这个程序可以分析 Java 解释器能够加载的任何类，而不仅仅是编译程序是可以使用的类。该程序代码如下：</p>
+<p>这个程序可以分析 Java 解释器能够加载的任何类，而不仅仅是编译程序是可以使用的类。该程序代码如下：</p>
 <pre><code class="language-go highlight-chroma"><span class="highlight-kn">package</span> <span class="highlight-nx">com</span><span class="highlight-p">.</span><span class="highlight-nx">yhl</span><span class="highlight-p">.</span><span class="highlight-nx">book</span><span class="highlight-p">.</span><span class="highlight-nx">test</span><span class="highlight-p">;</span>
 
 <span class="highlight-kn">import</span> <span class="highlight-nx">java</span><span class="highlight-p">.</span><span class="highlight-nx">lang</span><span class="highlight-p">.</span><span class="highlight-nx">reflect</span><span class="highlight-p">.</span><span class="highlight-nx">Constructor</span><span class="highlight-p">;</span>
@@ -348,10 +348,10 @@ public final class java.lang.Double extend java.lang.Number
 <span class="highlight-p">}</span>
 </code></pre>
 <h2 id="在运行时使用反射分析对象">在运行时使用反射分析对象</h2>
-<p>  反射机制的默认行为受限于 Java 的访问控制。然而，如果一个 Java 程序·没有收到安全管理器的控制，就可以覆盖访问控制。为了达到这个目的，可以调用 Field, Method 或 Constructor 对象的 setAccessible 方法。</p>
-<p>  setAccessible 方法是 AccessibleObject 类的一个方法，它是 Method、Field 和 Constructor 类的公共超类。这个特性是为了调试，持久存储和相似机制提供的。</p>
-<p>  下列代码编写一个可供任意类提供 toString 方法，使用 getDeclaredFields 获取所有的数据域，使用 setAccessible 将所有的域设置为可访问的。对于每个域，获得了名字和值。</p>
-<p>  循环应用可能会导致无限递归，所示 ObjectAnalyzer 将记录已经被访问过的对象。为了查看数组内部，需要采用一种不同的方式，具体看代码。</p>
+<p>反射机制的默认行为受限于 Java 的访问控制。然而，如果一个 Java 程序·没有收到安全管理器的控制，就可以覆盖访问控制。为了达到这个目的，可以调用 Field, Method 或 Constructor 对象的 setAccessible 方法。</p>
+<p>setAccessible 方法是 AccessibleObject 类的一个方法，它是 Method、Field 和 Constructor 类的公共超类。这个特性是为了调试，持久存储和相似机制提供的。</p>
+<p>下列代码编写一个可供任意类提供 toString 方法，使用 getDeclaredFields 获取所有的数据域，使用 setAccessible 将所有的域设置为可访问的。对于每个域，获得了名字和值。</p>
+<p>循环应用可能会导致无限递归，所示 ObjectAnalyzer 将记录已经被访问过的对象。为了查看数组内部，需要采用一种不同的方式，具体看代码。</p>
 <pre><code class="language-go highlight-chroma"><span class="highlight-kn">package</span> <span class="highlight-nx">book</span><span class="highlight-p">.</span><span class="highlight-nx">test</span><span class="highlight-p">.</span><span class="highlight-nx">reflect</span><span class="highlight-p">.</span><span class="highlight-nx">objectAnalyzer</span><span class="highlight-p">;</span>
 
 <span class="highlight-kn">import</span> <span class="highlight-nx">java</span><span class="highlight-p">.</span><span class="highlight-nx">lang</span><span class="highlight-p">.</span><span class="highlight-nx">reflect</span><span class="highlight-p">.</span><span class="highlight-nx">AccessibleObject</span><span class="highlight-p">;</span>
@@ -416,7 +416,7 @@ public final class java.lang.Double extend java.lang.Number
  &nbsp;  <span class="highlight-p">}</span>
 <span class="highlight-p">}</span>
 </code></pre>
-<p>  测试代码</p>
+<p>测试代码</p>
 <pre><code class="language-go highlight-chroma"><span class="highlight-kn">package</span> <span class="highlight-nx">book</span><span class="highlight-p">.</span><span class="highlight-nx">test</span><span class="highlight-p">.</span><span class="highlight-nx">reflect</span><span class="highlight-p">.</span><span class="highlight-nx">objectAnalyzer</span><span class="highlight-p">;</span>
 
 <span class="highlight-kn">import</span> <span class="highlight-nx">java</span><span class="highlight-p">.</span><span class="highlight-nx">util</span><span class="highlight-p">.</span><span class="highlight-nx">ArrayList</span><span class="highlight-p">;</span>
@@ -438,12 +438,12 @@ public final class java.lang.Double extend java.lang.Number
  &nbsp;  <span class="highlight-p">}</span>
 <span class="highlight-p">}</span>
 </code></pre>
-<p>  运行结果</p>
+<p>运行结果</p>
 <pre><code class="highlight-chroma">java.util.ArrayList[elementData=class java.lang.Object[]{java.lang.Integer[value=1][][],java.lang.Integer[value=4][][],java.lang.Integer[value=9][][],java.lang.Integer[value=16][][],java.lang.Integer[value=25][][],null,null,null,null,null},size=5][modCount=5][][]
 </code></pre>
 <h2 id="使用反射编写泛型数组代码">使用反射编写泛型数组代码</h2>
-<p>  java.lang.reflect 包中的 Array 类允许动态创建数组，可以将这个特性应用到 Array 类的 copyOf() 方法中。其中最关键的是 Array 类的静态方法 newInstance，它能构建新数组。需要两个参数，一个是数组元素类型，一个是数组的长度。</p>
-<p>  可以通过调用 Array.getLength(a) 获得数组的长度，也可以通过 Array 的静态 getLength 方法的返回值得到任意数组的长度。而获得新数组元素类型，需要进行一下工作：</p>
+<p>java.lang.reflect 包中的 Array 类允许动态创建数组，可以将这个特性应用到 Array 类的 copyOf() 方法中。其中最关键的是 Array 类的静态方法 newInstance，它能构建新数组。需要两个参数，一个是数组元素类型，一个是数组的长度。</p>
+<p>可以通过调用 Array.getLength(a) 获得数组的长度，也可以通过 Array 的静态 getLength 方法的返回值得到任意数组的长度。而获得新数组元素类型，需要进行一下工作：</p>
 <ol>
 <li>首先获得 a 数组的类对象</li>
 <li>确认它是一个数组</li>
@@ -497,18 +497,18 @@ public final class java.lang.Double extend java.lang.Number
 <span class="highlight-p">}</span>
 </code></pre>
 <h2 id="调用任意方法">调用任意方法</h2>
-<p>  Java 设计者认为方法指针是很危险的，并常常会带来隐患。而 Java 提供接口是一种更好地解决方案。然而，反射机制允许你调用任意方法。</p>
-<p>  在 Method 类中有一个 invoke 方法，它允许调用包装在当前 Method 对象中的方法。</p>
-<p>  invoke 的方法签名是：</p>
+<p>Java 设计者认为方法指针是很危险的，并常常会带来隐患。而 Java 提供接口是一种更好地解决方案。然而，反射机制允许你调用任意方法。</p>
+<p>在 Method 类中有一个 invoke 方法，它允许调用包装在当前 Method 对象中的方法。</p>
+<p>invoke 的方法签名是：</p>
 <pre><code class="highlight-chroma">Object invoke(Object obj, Object... args)
 </code></pre>
-<p>  第一个参数是隐式参数，其余对象提供了显式参数。假设用 ml 代表 Employee 类的 getName 方法，调用方式如下：</p>
+<p>第一个参数是隐式参数，其余对象提供了显式参数。假设用 ml 代表 Employee 类的 getName 方法，调用方式如下：</p>
 <pre><code class="highlight-chroma">String n = (String) ml.invoke(harry);
 </code></pre>
-<p>  如果返回类型是基本类型， invoke 方法会返回其包装器类型。例如：</p>
+<p>如果返回类型是基本类型， invoke 方法会返回其包装器类型。例如：</p>
 <pre><code class="highlight-chroma">double s = (Double) ml.invoke(harry);
 </code></pre>
-<p>  如何获得 Method 对象呢？可以通过调用 getDeclareMethods 方法，然后对返回的 Method 对象数组进行查找，知道找到想要的方法位置。也可以通过调用 Class 类中的的 getMethod 方法得到想要的方法。</p>
+<p>如何获得 Method 对象呢？可以通过调用 getDeclareMethods 方法，然后对返回的 Method 对象数组进行查找，知道找到想要的方法位置。也可以通过调用 Class 类中的的 getMethod 方法得到想要的方法。</p>
 <pre><code class="highlight-chroma">Method getMethod(String name, Class... parameterTypes);
 </code></pre>
 <pre><code class="language-go highlight-chroma"><span class="highlight-kn">package</span> <span class="highlight-nx">book</span><span class="highlight-p">.</span><span class="highlight-nx">test</span><span class="highlight-p">.</span><span class="highlight-nx">reflect</span><span class="highlight-p">.</span><span class="highlight-nx">methods</span><span class="highlight-p">;</span>
@@ -554,7 +554,7 @@ public final class java.lang.Double extend java.lang.Number
  &nbsp;  <span class="highlight-p">}</span>
 <span class="highlight-p">}</span>
 </code></pre>
-<p>  运行结果</p>
+<p>运行结果</p>
 <pre><code class="highlight-chroma">public static double book.test.reflect.methods.MethodTableTest.square(double)
  &nbsp;  1.0000 | &nbsp; &nbsp; 1.0000
  &nbsp;  2.0000 | &nbsp; &nbsp; 4.0000
@@ -578,14 +578,16 @@ public static double java.lang.Math.sqrt(double)
  &nbsp;  9.0000 | &nbsp; &nbsp; 3.0000
  &nbsp; 10.0000 | &nbsp; &nbsp; 3.1623
 </code></pre>
-<p>  invoke 的参数和返回值必须是 Object 类型的。这意味需要进行多次的类型转换。不仅如此，使用反射获得方法指针的代码要比仅仅直接调用方法明显慢得多。</p>
-<p>  有鉴于此，建议在必要的时候才使用 Method 对象，而最好使用接口以及 Java SE 8 中的 lambda 表达式。</p>
+<p>invoke 的参数和返回值必须是 Object 类型的。这意味需要进行多次的类型转换。不仅如此，使用反射获得方法指针的代码要比仅仅直接调用方法明显慢得多。</p>
+<p>有鉴于此，建议在必要的时候才使用 Method 对象，而最好使用接口以及 Java SE 8 中的 lambda 表达式。</p>
+<p>作者 : General</p>
+<p>地址 : <a href="http://www.yanghelong.top/" target="_blank">http://www.yanghelong.top</a></p>
                     <div>
                         <hr>
 
 标题：反射<br>
-作者：<a href="https://ZZUGeneral.github.io" target="_blank">General</a><br>
-地址：<a href="https://ZZUGeneral.github.io/articles/2020/10/17/1602938025485.html" target="_blank">https://ZZUGeneral.github.io/articles/2020/10/17/1602938025485.html</a><br>
+作者：<a href="https://ZZUGEneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGEneral.github.io/articles/2020/10/17/1602938025485.html" target="_blank">https://ZZUGEneral.github.io/articles/2020/10/17/1602938025485.html</a><br>
 一个没有得到Java开发工作的测试员！
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
@@ -635,7 +637,7 @@ public static double java.lang.Math.sqrt(double)
     
 </div>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -702,7 +704,7 @@ public static double java.lang.Math.sqrt(double)
         </a>
  <br>
         &copy; 2020
-        <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
+        <a href="https://ZZUGEneral.github.io">General 的个人博客</a>
         你一定会喜欢那个因为喜欢她而发光的自己！
         <span class="footer__heart">❤️</span><br>
         <div align="center">
@@ -717,8 +719,8 @@ public static double java.lang.Math.sqrt(double)
 <script>
   var Label = {
     speech: true,
-    servePath: "https://ZZUGeneral.github.io",
-    staticServePath: "https://ZZUGeneral.github.io",
+    servePath: "https://ZZUGEneral.github.io",
+    staticServePath: "https://ZZUGEneral.github.io",
     luteAvailable: true,
     hljsStyle: 'github',
     langLabel: "zh_CN",
@@ -729,10 +731,10 @@ public static double java.lang.Math.sqrt(double)
   }
 </script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
         charset="utf-8"></script>
 
     <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
@@ -740,11 +742,11 @@ public static double java.lang.Math.sqrt(double)
     </svg>
 
 <script type="text/javascript">
-    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    Util.addScript('https://ZZUGEneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1602938025485",
-        "blogHost": "https://ZZUGeneral.github.io",
+        "blogHost": "https://ZZUGEneral.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
@@ -760,4 +762,4 @@ public static double java.lang.Math.sqrt(double)
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 41ms, 2020/10/21 08:28:34 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 26ms, 2020/11/10 14:53:25 -->

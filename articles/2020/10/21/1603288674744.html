@@ -1,0 +1,4018 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Flask框架 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGEneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGEneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Flask框架 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGEneral.github.io/articles/2020/10/21/1603288674744.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Flask框架 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGEneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGEneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGEneral.github.io/articles/2020/10/21/1603288674744.html">        <link rel="stylesheet"
+              href="https://ZZUGEneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="Scrapy爬虫框架初探" href="https://ZZUGEneral.github.io/articles/2020/10/21/1603287789767.html">
+            <link rel="next" title="Whatweb 使用教程" href="https://ZZUGEneral.github.io/articles/2020/10/26/1603679856210.html">
+    <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
+<body class="fn__flex-column">
+<div id="pjax" class="fn__flex-1">
+    
+    <progress class="fn__progress"></progress>
+    <header class="header header--article">
+        <div class="wrapper header__title">
+            <h1 class="header__h1 fn__flex-inline">
+                <a href="https://ZZUGEneral.github.io" rel="start">General 的个人博客</a>
+            </h1>
+            <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
+            <div class="header__desc">
+                <h2>人间忽晚，山河已秋。</h2>
+<!-- 公告栏可使用 HTML、JavaScript，比如可以在此加入第三方统计 js -->
+            </div>
+            <svg class="header__down" id="headerDown" viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M15.992 25.304c-0 0-0 0-0.001 0-0.516 0-0.981-0.216-1.31-0.563l-0.001-0.001-14.187-14.996c-0.306-0.323-0.494-0.76-0.494-1.241 0-0.998 0.809-1.807 1.807-1.807 0.517 0 0.983 0.217 1.313 0.565l0.001 0.001 12.875 13.612 12.886-13.612c0.331-0.348 0.797-0.565 1.314-0.565 0.481 0 0.918 0.187 1.242 0.493l-0.001-0.001c0.723 0.687 0.755 1.832 0.072 2.555l-14.201 14.996c-0.33 0.348-0.795 0.564-1.311 0.564-0.001 0-0.003 0-0.004 0h0z"></path>
+            </svg>
+        </div>
+    </header>
+    <div class="side__menu">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M30 18h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM30 6.25h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM2 25.75h28c1.1 0 2 0.9 2 2s-0.9 2-2 2h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2z"></path>
+        </svg>
+        <span>
+            &nbsp; menu
+        </span>
+    </div>
+    <div class="side__main">
+        <div class="side__bg"></div>
+        <div class="side__panel">
+            <svg class="side__close ft__a" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 20 20">
+                <path d="M18.362 19.324c-0.902 0.902-2.363 0.902-3.263 0l-5.098-5.827-5.098 5.825c-0.902 0.902-2.363 0.902-3.263 0-0.902-0.902-0.902-2.363 0-3.263l5.304-6.057-5.306-6.061c-0.902-0.902-0.902-2.361 0-3.263s2.361-0.902 3.263 0l5.1 5.829 5.098-5.829c0.902-0.902 2.361-0.902 3.263 0s0.902 2.363 0 3.263l-5.304 6.061 5.304 6.057c0.902 0.902 0.902 2.363 0 3.265z"></path>
+            </svg>
+
+            <div class="side__header">
+                <a href="https://ZZUGEneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+
+                <div class="side__meta">
+                    48 文章 <br>
+                    <span data-uvstaturl="https://ZZUGEneral.github.io">0</span> 浏览
+                    
+                </div>
+            </div>
+
+            <div class="side__title">
+                <span>ღゝ◡╹)ノ❤️</span>
+            </div>
+            <ul class="side__nav">
+                <li>
+                    <a href="https://ZZUGEneral.github.io" rel="start">
+                            General 的个人博客
+                    </a>
+                </li>
+                    <li>
+                        <a href="/my-github-repos" target="_self"><img
+                                class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
+                    </li>
+                <li>
+                    <a href="https://ZZUGEneral.github.io/categories.html">分类</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGEneral.github.io/tags.html">标签墙</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGEneral.github.io/archives.html">存档</a>
+                </li>
+                <li>
+                    <a href="https://ZZUGEneral.github.io/links.html">友链</a>
+                </li>
+                <li>
+                    <a rel="alternate" href="https://ZZUGEneral.github.io/rss.xml">RSS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20181020.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)">
+        <div style="background-image: url(https://b3logfile.com/bing/20181020.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
+        <canvas id="articleTop"></canvas>
+    </div>
+    <div class="article">
+        <div class="ft__center">
+            <div class="article__meta">
+                <time>
+                    2020-10-24
+                </time>
+                /
+                    <a rel="tag"
+                       href="https://ZZUGEneral.github.io/tags/Flask">Flask</a> &nbsp;
+                    <a rel="tag"
+                       href="https://ZZUGEneral.github.io/tags/Python">Python</a> &nbsp;
+            </div>
+            <h2 class="article__title">
+                Flask框架
+            </h2>
+<div class="article__share"
+     data-title="Flask框架"
+     data-blogtitle="General 的个人博客"
+     data-url="https://ZZUGEneral.github.io/articles/2020/10/21/1603288674744.html"
+     data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
+    <span class="item" data-type="qqz">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M22.824 13.989l-8.348 6.287s3.351 0.522 8.404 0.461l-0.23-1.040 7.2-6.549c0.132-0.12 0.183-0.312 0.129-0.487s-0.203-0.299-0.377-0.314l-9.492-0.856-3.708-9.213c-0.068-0.169-0.226-0.279-0.401-0.279s-0.333 0.11-0.401 0.279l-3.708 9.213-9.492 0.856c-0.174 0.015-0.323 0.139-0.377 0.314s-0.004 0.366 0.129 0.487l7.2 6.549-2.158 9.742c-0.040 0.178 0.026 0.365 0.168 0.474 0.142 0.107 0.331 0.115 0.481 0.021l8.158-5.165 8.158 5.165c0.070 0.045 0.147 0.066 0.225 0.066 0.090 0 0.18-0.029 0.256-0.086 0.142-0.109 0.208-0.295 0.168-0.474l-1.707-7.704c0.732-0.386 1.538-1.040 1.538-1.040s-3.195 1.638-14.664 0.838l8.312-6.325s-0.327-0.534-10.744-0.914c-0.697-0.026 8.493-1.83 15.281-0.305z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="wechat">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="weibo">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+            <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+            <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+            <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+        </svg>
+    </span>
+    <span class="item" data-type="twitter">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path d="M32.003 6.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+        </svg>
+    </span>
+    <span class="item__qr"></span>
+</div>        </div>
+        <div class="wrapper">
+            <section class="vditor-reset articles article__content">
+                <p><img src="https://b3logfile.com/bing/20181020.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<h1 id="Flask基础">Flask 基础</h1>
+<h2 id="Flask简介">Flask 简介</h2>
+<p>Flask 是一个使用 Python 编写的轻量级 Web 应用框架。其 WSGI 工具箱采用 Werkzeug ，模板引擎则使用 Jinja2 。</p>
+<p>所有的扩展功能都需要使用第三方扩展来实现。</p>
+<p><img src="https://b3logfile.com/file/2020/10/image20200904105728490-5b9f4a95.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="image20200904105728490.png"></p>
+<p>英文指导文档：<a href="https://flask.palletsprojects.com/en/0.12.x/" target="_blank">https://flask.palletsprojects.com/en/0.12.x/</a></p>
+<p>中文指导文档：<a href="https://dormousehole.readthedocs.io/en/latest/" target="_blank">https://dormousehole.readthedocs.io/en/latest/</a></p>
+<h2 id="安装">安装</h2>
+<ol>
+<li>
+<p>安装 python</p>
+</li>
+<li>
+<p>更换 pip 源</p>
+<ol>
+<li>清华：<a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank">https://pypi.tuna.tsinghua.edu.cn/simple</a></li>
+<li>阿里云：<a href="https://mirrors.aliyun.com/pypi/simple/" target="_blank">https://mirrors.aliyun.com/pypi/simple/</a></li>
+<li>豆瓣：<a href="https://pypi.douban.com/simple/" target="_blank">https://pypi.douban.com/simple/</a></li>
+</ol>
+<p>临时使用：在使用 pip 的时候加参数-i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank">https://pypi.tuna.tsinghua.edu.cn/simple</a><br>
+CentOS 修改 ~/.pip/pip.conf (没有就创建一个)， 修改 index-url 为国内镜像地址，内容如下：</p>
+<pre><code class="highlight-chroma">[global] 
+timeout = 60000
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple 
+</code></pre>
+<p>windows 下，直接在 C:\Users\XXX\目录中创建一个 pip 目录，如：C:\Users\xx\pip，新建文件 pip.ini，内容如下</p>
+<pre><code class="highlight-chroma">[global] 
+timeout = 60000
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple 
+</code></pre>
+</li>
+<li>
+<p>安装 flask</p>
+<pre><code class="highlight-chroma">pip install flask
+</code></pre>
+</li>
+</ol>
+<h1 id="Hello-World">Hello World</h1>
+<p>使用 pyCharm 新建 Flask 项目</p>
+<p>app.py</p>
+<pre><code class="highlight-chroma"># 导入Flask扩展
+from flask import Flask
+
+# 创建Flask应用程序实例
+# __name__ ：为了确定资源所在路径
+app = Flask(__name__)
+
+
+# 定义路由和视图函数
+# Flask中定义路由是通过装饰器实现的
+# 路由默认只支持GET，如果需要增加，需要自行制定
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return 'Hello Flask!'
+</code></pre>
+<p>运行项目，用浏览器打开 <a href="http://127.0.0.1/" target="_blank">http://127.0.0.1/</a></p>
+<h2 id="参数讲解">参数讲解</h2>
+<p>app = Flask(<strong>name</strong>)</p>
+<pre><code class="highlight-chroma">flask.app.Flask 
+
+def __init__(self,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; import_name: Any,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; static_url_path: Any = None,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; static_folder: str = "static",
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; static_host: Any = None,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; host_matching: bool = False,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; subdomain_matching: bool = False,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; template_folder: str = "templates",
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; instance_path: Any = None,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; instance_relative_config: bool = False,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; root_path: Any = None) -&gt; Any
+</code></pre>
+<p>常用参数：</p>
+<ul>
+<li>import_name
+<ul>
+<li>Flask 程序所在的包(模块)，传 <code>__name__</code> 就可以</li>
+<li>其可以决定 Flask 在访问静态文件时查找的路径</li>
+</ul>
+</li>
+<li>static_url_path
+<ul>
+<li>静态文件访问路径，可以不传，默认为：<code>/ + static</code></li>
+</ul>
+</li>
+<li>static_folder
+<ul>
+<li>静态文件存储的文件夹，可以不传，默认为 <code>static</code></li>
+</ul>
+</li>
+<li>template_folder
+<ul>
+<li>模板文件存储的文件夹，可以不传，默认为 <code>templates</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="相关配置加载方式">相关配置加载方式</h2>
+<p>在 Flask 程序运行的时候，可以设置相关配置比如：配置 Debug 模式，配置数据库连接地址等，设置 Flask 配置有以下三种方式：</p>
+<ul>
+<li>从配置对象中加载(常用)
+<ul>
+<li>app.config.from_object()</li>
+</ul>
+</li>
+<li>从配置文件中加载
+<ul>
+<li>app.config.from_pyfile()</li>
+</ul>
+</li>
+<li>从环境变量中加载(了解)
+<ul>
+<li>app.config.from_envvar()</li>
+</ul>
+</li>
+</ul>
+<pre><code class="highlight-chroma"># 配置对象，里面定义需要给 APP 添加的一系列配置
+class Config(object):
+ &nbsp; &nbsp;DEBUG = True
+ &nbsp; &nbsp;
+# 从配置对象中加载配置
+app.config.from_object(Config)
+
+# 从配置文件中加载配置
+app.config.from_pyfile('config.ini')
+
+# 加载指定环境变量名称所对应的相关配置
+app.config.from_envvar('FLASKCONFIG')
+</code></pre>
+<h4 id="配置文件">配置文件</h4>
+<ul>
+<li>创建配置文件 <code>config.ini</code>，在配置文件中添加配置</li>
+</ul>
+<p><img src="https://b3logfile.com/file/2020/10/%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-30b633bb.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="创建配置文件 1599201031159.png"></p>
+<h4 id="环境变量-了解-">环境变量(了解)</h4>
+<p><img src="https://b3logfile.com/file/2020/10/%E7%BC%96%E8%BE%91%E8%BF%90%E8%A1%8C%E9%85%8D%E7%BD%AE-2defc7bb.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="编辑运行配置.png"></p>
+<p><img src="https://b3logfile.com/file/2020/10/%E6%B7%BB%E5%8A%A0%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-331d7903.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="添加运行环境变量.png"></p>
+<h4 id="app-run的参数">app.run 的参数</h4>
+<ul>
+<li>可以指定运行的主机 IP 地址，端口，是否开启调试模式</li>
+</ul>
+<pre><code class="highlight-chroma">app.run(host="0.0.0.0", port=5000, debug = True)
+</code></pre>
+<h2 id="路由设置">路由设置</h2>
+<h3 id="指定路由地址">指定路由地址</h3>
+<pre><code class="highlight-chroma"># 指定访问视图函数index,访问路径为/index
+@app.route('/index')
+def demo1():
+ &nbsp; &nbsp;return 'index'
+</code></pre>
+<h3 id="路由传参">路由传参</h3>
+<p>有时我们需要将同一类 URL 映射到同一个视图函数处理，比如：使用同一个视图函数来显示不同用户的个人信息。</p>
+<pre><code class="highlight-chroma"># 路由传递参数,整数
+@app.route('/user/&lt;int:user_id&gt;')
+def user_info(user_id):
+    return 'the num is %d' % user_id
+# 路由传递参数,字符串,不指定path默认就是字符串
+@app.route('/user/&lt;path:user_id&gt;')
+def user_info(user_id):
+    return 'hello %s' % user_id
+</code></pre>
+<blockquote>
+<p>提示：之所以 int,path 可以接收整数，字符串，是由于 werkzeug 提供了 IntegerConverter,PathConverter 对应转换器。</p>
+</blockquote>
+<h3 id="指定请求方式">指定请求方式</h3>
+<p>在 Flask 中，定义一个路由，默认的请求方式为：</p>
+<ul>
+<li>GET</li>
+<li>OPTIONS(自带)</li>
+<li>HEAD(自带)</li>
+</ul>
+<p>如果想添加请求方试，那么可以使用 methods 指定，比如：</p>
+<pre><code class="highlight-chroma">@app.route('/demo', methods=['GET', 'POST'])
+def demo():
+    # 直接从请求中取到请求方式并返回
+    return request.method
+</code></pre>
+<h2 id="响应">响应</h2>
+<ul>
+<li>使用 jsonify，生成 JSON 数据响应体</li>
+<li>使用 redirect,url_for，生成文本响应体</li>
+<li>直接响应，字符串，自定义状态码，返回文本响应体</li>
+</ul>
+<h3 id="生成json数据响应体">生成 JSON 数据响应体</h3>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh"># 生成json 数据响应体
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/demo4')
+def demo4():
+    json_dict = {
+        "user_id": 10,
+        "user_name": "laowang"
+    }
+    return jsonify(json_dict)
+</code></pre>
+<h3 id="使用redirect-url-for-生成文本响应体">使用 redirect,url_for，生成文本响应体</h3>
+<ul>
+<li>redirect 重定向到 <strong>黑马</strong> 官网<br>
+格式： redirect('地址');<br>
+地址： 可以是外链地址， 可以是视图函数地址</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh"># 重定向
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/demo5')
+def demo5():
+    return redirect('http://www.itheima.com')
+</code></pre>
+<ul>
+<li>url_for 反解析：通过视图函数的名称，返回地址<br>
+格式： url_for('视图函数名',key=value)<br>
+提示： url_for 经常配合 redirect 使用，可以传递参数 ```python @app.route('/demo1') def demo1(): return 'demo1'</li>
+</ul>
+<h3 id="重定向">重定向</h3>
+<pre><code class="language-md highlight-chroma"><span class="highlight-ni">@app</span>.route('/demo5') def demo5(): return redirect(url_for('demo1'))
+</code></pre>
+<pre><code class="language-md highlight-chroma"><span class="highlight-k">-</span> 重定向到视图函数,携带参数演示
+```python
+<span class="highlight-gh"># 路由传递参数
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/user/<span class="highlight-p">&lt;</span><span class="highlight-nt">int:user_id</span><span class="highlight-p">&gt;</span>')
+def user_info(user_id):
+    return 'hello %d' % user_id
+
+<span class="highlight-gh"># 重定向
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/demo5')
+def demo5():
+    # 使用 url_for 生成指定视图函数所对应的 url
+    return redirect(url_for('user_info', user_id=100))
+</code></pre>
+<h3 id="返回字符串-自定义状态码-返回文本响应体">返回字符串，自定义状态码，返回文本响应体</h3>
+<ul>
+<li>在 Flask 中，可以很方便的返回自定义状态码，以实现不符合 http 协议的状态码，例如：status code: 666</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-ni">@app</span>.route('/demo6')
+def demo6():
+  return '状态码为666', 666
+</code></pre>
+<h2 id="转换器">转换器</h2>
+<p>在 Web 开发中，可能会出现限制用户访问规则的场景，那么这个时候就需要过滤指定用户， 所以可以使用转换器实现<br>
+转换器的本质：通过正则表达式，匹配路由地址</p>
+<h3 id="系统自带转换器">系统自带转换器</h3>
+<pre><code class="language-md highlight-chroma">DEFAULT_CONVERTERS = {
+    'default':          UnicodeConverter,
+    'string':           UnicodeConverter,
+    'any':              AnyConverter,
+    'path':             PathConverter,
+    'int':              IntegerConverter,
+    'float':            FloatConverter,
+    'uuid':             UUIDConverter,
+}
+</code></pre>
+<blockquote>
+<p>系统自带的转换器具体使用方式在每种转换器的注释代码中有写，请留意每种转换器初始化的参数。</p>
+</blockquote>
+<h3 id="自定义转换器">自定义转换器</h3>
+<p>自定义转换器，具体实现步骤为：</p>
+<ul>
+<li>导入转换器基类(BaseConverter)：Flask 中所有的路由的匹配规则，都是使用转换器实现</li>
+<li>自定义转换器：自定义类继承于转换器基类</li>
+<li>添加转换器到默认的转换器字典中</li>
+<li>使用自定义转换器实现自定义匹配规则</li>
+</ul>
+<h3 id="代码实现">代码实现</h3>
+<pre><code class="language-md highlight-chroma">from flask import Flask
+<span class="highlight-gh">#导入基类转换器
+</span><span class="highlight-gh"></span>from werkzeug.routing import BaseConverter
+
+app = Flask(__name__)
+
+<span class="highlight-gh"># 1.自定义类,继承自BaseConverter
+</span><span class="highlight-gh"></span>class MyRegexConverter(BaseConverter):
+
+    # 2.编写初始化方法, init方法, 接收两个参数, url_map, regex, 并初始化父类空间和子类空间
+    def <span class="highlight-gs">__init__</span>(self,url_map,regex):
+        super(MyRegexConverter, self).__init__(url_map)
+        self.regex = regex
+
+<span class="highlight-gh"># 3.将自定义转换器类,添加到默认的转换列表中
+</span><span class="highlight-gh"></span>app.url_map.converters['re'] = MyRegexConverter
+
+<span class="highlight-gh">#使用自定义转换器
+</span><span class="highlight-gh">#接收3位整数
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/<span class="highlight-p">&lt;</span><span class="highlight-nt">re</span><span class="highlight-err">("</span>\d<span class="highlight-err">{</span><span class="highlight-na">3</span><span class="highlight-err">}")</span><span class="highlight-na">:num</span><span class="highlight-p">&gt;</span>')
+def hello_world(num):
+
+    print("num = %s"%num)
+
+    return "the num is %s"%num
+
+<span class="highlight-gh">#接收一个手机号
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/<span class="highlight-p">&lt;</span><span class="highlight-nt">re</span><span class="highlight-err">("</span><span class="highlight-na">1</span><span class="highlight-err">[</span><span class="highlight-na">345678</span><span class="highlight-err">]</span>\d<span class="highlight-err">{</span><span class="highlight-na">9</span><span class="highlight-err">}")</span><span class="highlight-na">:mobile</span><span class="highlight-p">&gt;</span>')
+def get_phone_number(mobile):
+
+    return "the mobile is %s"%mobile
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    app.run()
+</code></pre>
+<h2 id="异常处理">异常处理</h2>
+<h3 id="abort-异常抛出">abort，异常抛出</h3>
+<ul>
+<li>abort(code):主动抛出异常状态码</li>
+<li>参数 code:HTTP 的错误状态码</li>
+<li>例如：abort(404)</li>
+</ul>
+<h3 id="errorhandler-异常捕获">errorhandler，异常捕获</h3>
+<ul>
+<li>errorhandler(code_or_exception):用来监听捕捉异常，然后返回自定义的页面处理</li>
+<li>参数：code_or_exception – HTTP 的错误状态码或指定异常</li>
+</ul>
+<p><strong>代码演示：</strong></p>
+<pre><code class="language-md highlight-chroma">from flask import Flask,abort
+
+app = Flask(__name__)
+
+<span class="highlight-ni">@app</span>.route('/game/<span class="highlight-p">&lt;</span><span class="highlight-nt">int:age</span><span class="highlight-p">&gt;</span>')
+def play_game(age):
+    <span class="highlight-ni">#异常抛出</span>
+    abort(404)
+    return "helloworld"
+
+<span class="highlight-gh">#异常捕获
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.errorhandler(404)
+def page_not_found(e):
+    print(e)
+    return "找不到服务器资源,服务器搬家了"
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    app.run()
+</code></pre>
+<h2 id="请求勾子">请求勾子</h2>
+<p>在客户端和服务器交互的过程中，有些准备工作或扫尾工作需要处理，比如：</p>
+<ul>
+<li>在请求开始时，建立数据库连接；</li>
+<li>在请求开始时，根据需求进行权限校验；</li>
+<li>在请求结束时，指定数据的交互格式；</li>
+</ul>
+<p>为了让每个视图函数避免编写重复功能的代码，Flask 提供了通用设施的功能，即<strong>请求钩子</strong>。</p>
+<p>请求钩子是通过装饰器的形式实现，Flask 支持如下四种请求钩子：</p>
+<ul>
+<li>before_first_request:在处理第一个请求前执行</li>
+<li>before_request:在每次请求前执行，在该装饰函数中，一旦 return，视图函数不再执行</li>
+<li>after_request:如果没有抛出错误，在每次请求后执行
+<ul>
+<li>接受一个参数：视图函数作出的响应</li>
+<li>在此函数中可以对响应值，在返回之前做最后一步处理，再返回</li>
+</ul>
+</li>
+<li>teardown_request：在每次请求后执行
+<ul>
+<li>接受一个参数：用来接收错误信息</li>
+</ul>
+</li>
+</ul>
+<p><strong>代码测试</strong></p>
+<pre><code class="language-md highlight-chroma">from flask import Flask
+from flask import abort
+
+app = Flask(__name__)
+
+<span class="highlight-gh"># 在第一次请求之前调用，可以在此方法内部做一些初始化操作
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.before_first_request
+def before_first_request():
+    print("before_first_request")
+
+
+<span class="highlight-gh"># 在每次请求之前调用，这时候已经有请求了，可能在这个方法里面做请求的校验
+</span><span class="highlight-gh"># 如果请求的校验不成功，可以直接在此方法中进行响应，直接return之后那么就不会执行视图函数
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.before_request
+def before_request():
+    print("before_request")
+    # if 请求不符合条件:
+    #     return "laowang"
+
+<span class="highlight-gh"># 在执行完视图函数之后会调用，并且会把视图函数所生成的响应传入,可以在此方法中对响应做最后一步统一的处理
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.after_request
+def after_request(response):
+    print("after_request")
+    response.headers["Content-Type"] = "application/json"
+    return response
+
+<span class="highlight-gh"># 请每一次请求之后都会调用，会接受一个参数，参数是服务器出现的错误信息
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.teardown_request
+def teardown_request(e):
+    print("teardown_request")
+
+<span class="highlight-ni">@app</span>.route('/')
+def index():
+    return 'index'
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    app.run(debug=True)
+</code></pre>
+<ul>
+<li>在第 1 次请求时的打印：</li>
+</ul>
+<pre><code class="language-md highlight-chroma">before_first_request
+before_request
+after_request
+teardown_request
+</code></pre>
+<ul>
+<li>在第 2,3,..n 次请求时的打印：</li>
+</ul>
+<pre><code class="language-md highlight-chroma">before_request
+after_request
+teardown_request
+</code></pre>
+<h2 id="request">request</h2>
+<p>request 就是 flask 中代表当前请求的 request 对象，其中一个请求上下文变量(理解成全局变量，在视图函数中直接使用可以取到当前本次请求)</p>
+<p>常用的属性如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>记录请求的数据，并转换为字符串</td>
+<td>*</td>
+</tr>
+<tr>
+<td>form</td>
+<td>记录请求中的表单数据</td>
+<td>MultiDict</td>
+</tr>
+<tr>
+<td>args</td>
+<td>记录请求中的查询参数</td>
+<td>MultiDict</td>
+</tr>
+<tr>
+<td>cookies</td>
+<td>记录请求中的 cookie 信息</td>
+<td>Dict</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>记录请求中的报文头</td>
+<td>EnvironHeaders</td>
+</tr>
+<tr>
+<td>method</td>
+<td>记录请求使用的 HTTP 方法</td>
+<td>GET/POST</td>
+</tr>
+<tr>
+<td>url</td>
+<td>记录请求的 URL 地址</td>
+<td>string</td>
+</tr>
+<tr>
+<td>files</td>
+<td>记录请求上传的文件</td>
+<td>*</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Web表单">Web 表单</h2>
+<h3 id="WTForms支持的HTML标准字段">WTForms 支持的 HTML 标准字段</h3>
+<table>
+<thead>
+<tr>
+<th>字段对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>StringField</td>
+<td>文本字段</td>
+</tr>
+<tr>
+<td>TextAreaField</td>
+<td>多行文本字段</td>
+</tr>
+<tr>
+<td>PasswordField</td>
+<td>密码文本字段</td>
+</tr>
+<tr>
+<td>HiddenField</td>
+<td>隐藏文件字段</td>
+</tr>
+<tr>
+<td>DateField</td>
+<td>文本字段，值为 datetime.date 文本格式</td>
+</tr>
+<tr>
+<td>DateTimeField</td>
+<td>文本字段，值为 datetime.datetime 文本格式</td>
+</tr>
+<tr>
+<td>IntegerField</td>
+<td>文本字段，值为整数</td>
+</tr>
+<tr>
+<td>DecimalField</td>
+<td>文本字段，值为 decimal.Decimal</td>
+</tr>
+<tr>
+<td>FloatField</td>
+<td>文本字段，值为浮点数</td>
+</tr>
+<tr>
+<td>BooleanField</td>
+<td>复选框，值为 True 和 False</td>
+</tr>
+<tr>
+<td>RadioField</td>
+<td>一组单选框</td>
+</tr>
+<tr>
+<td>SelectField</td>
+<td>下拉列表</td>
+</tr>
+<tr>
+<td>SelectMutipleField</td>
+<td>下拉列表，可选择多个值</td>
+</tr>
+<tr>
+<td>FileField</td>
+<td>文件上传字段</td>
+</tr>
+<tr>
+<td>SubmitField</td>
+<td>表单提交按钮</td>
+</tr>
+<tr>
+<td>FormField</td>
+<td>把表单作为字段嵌入另一个表单</td>
+</tr>
+<tr>
+<td>FieldList</td>
+<td>一组指定类型的字段</td>
+</tr>
+</tbody>
+</table>
+<h3 id="WTForms常用验证函数">WTForms 常用验证函数</h3>
+<table>
+<thead>
+<tr>
+<th>验证函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataRequired</td>
+<td>确保字段中有数据</td>
+</tr>
+<tr>
+<td>EqualTo</td>
+<td>比较两个字段的值，常用于比较两次密码输入</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>验证输入的字符串长度</td>
+</tr>
+<tr>
+<td>NumberRange</td>
+<td>验证输入的值在数字范围内</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>验证 URL</td>
+</tr>
+<tr>
+<td>AnyOf</td>
+<td>验证输入值在可选列表中</td>
+</tr>
+<tr>
+<td>NoneOf</td>
+<td>验证输入值不在可选列表中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="传统Demo">传统 Demo</h3>
+<p>login.html</p>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">form</span> <span class="highlight-na">method</span><span class="highlight-o">=</span><span class="highlight-s">"post"</span> <span class="highlight-na">action</span><span class="highlight-o">=</span><span class="highlight-s">"/login"</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>用 户 名：<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"text"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"username"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>密 码：<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"password"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"password"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>确认密码：<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"password"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"password2"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"submit"</span> <span class="highlight-na">value</span><span class="highlight-o">=</span><span class="highlight-s">"提交"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">form</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<p>app.py</p>
+<pre><code class="language-md highlight-chroma">'''
+ 实现简单的登录处理
+ <span class="highlight-k">1.</span> 路由需要有get和post两种请求方式 ---&gt;判断请求方式
+ <span class="highlight-k">2.</span> 获取请求的参数
+ <span class="highlight-k">3.</span> 判断参数是否填写 <span class="highlight-err">&amp;</span> 密码是否相同
+ <span class="highlight-k">4.</span> 如果判断都没有问题，返回登录成功
+'''
+
+
+<span class="highlight-ni">@app</span>.route("/login", methods=['GET', 'POST'])
+def login_deal():
+	# request ：请求对象 --获取请求方式，数据
+	# 1. 获取请求方式
+	if request.method == 'POST':
+		# 2. 获取请求数据
+		username = request.form.get('username')
+		password = request.form.get('password')
+		password2 = request.form.get('password2')
+		# print(username)
+		# 3。 判断参数是否完整
+		if not all([username, password, password2]):
+			return '参数不完整'
+		# 4. 判断密码是否相同
+		elif password == password2:
+			return '登录成功'
+		else:
+			return '密码不一致'
+
+	return render_template('login.html')
+</code></pre>
+<h3 id="WTF-DEMO">WTF DEMO</h3>
+<p>app.py</p>
+<pre><code class="language-md highlight-chroma">from flask import Flask, render_template, request, flash
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired, EqualTo
+
+<span class="highlight-gh"># 自定义表单类
+</span><span class="highlight-gh"></span>class login_form(FlaskForm):
+	username = StringField('用户名', validators=[DataRequired()])
+	password = PasswordField('密码', validators=[DataRequired()])
+	password2 = PasswordField('确认密码', validators=[DataRequired(), EqualTo('password', message='密码错误')])
+	submit = SubmitField('提交')
+
+
+<span class="highlight-ni">@app</span>.route('/form', methods=['GET', 'POST'])
+def form():
+	loginForm = login_form()
+
+	# 判断请求参数
+	if request.method == 'POST':
+		# 获取参数
+		if loginForm.validate_on_submit():
+			return 'SUCCESS'
+		else:
+			flash('参数有误')
+	# 验证数据
+	return render_template('form.html', form=loginForm)
+</code></pre>
+<p>form.html</p>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">form</span> <span class="highlight-na">method</span><span class="highlight-o">=</span><span class="highlight-s">"post"</span> <span class="highlight-na">action</span><span class="highlight-o">=</span><span class="highlight-s">"/form"</span><span class="highlight-p">&gt;</span>
+    {{ form.csrf_token() }}
+    {{ form.username.label }}{{ form.username }} <span class="highlight-p">&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    {{ form.password.label }}{{ form.password }} <span class="highlight-p">&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    {{ form.password2.label }}{{ form.password2 }} <span class="highlight-p">&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    {{ form.submit.label }}{{ form.submit }} <span class="highlight-p">&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    {% for message in  get_flashed_messages() %}
+        {{ message }}
+    {% endfor %}
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">form</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h1 id="进阶">进阶</h1>
+<h2 id="状态保持">状态保持</h2>
+<h3 id="状态相关概念">状态相关概念</h3>
+<ul>
+<li>http 是一种无状态协议，浏览器请求服务器是无状态的。</li>
+<li><strong>无状态</strong>：指一次用户请求时，浏览器、服务器不知道之前这个用户做过什么，每次请求都是一次新的请求。</li>
+<li><strong>无状态原因</strong>：浏览器与服务器是使用 socket 套接字进行通信的，服务器将请求结果返回给浏览器之后，会关闭当前的 socket 连接，而且服务器也会在处理页面完毕之后销毁页面对象。</li>
+<li>有时需要保持下来用户浏览的状态，比如用户是否登录过，浏览过哪些商品等</li>
+<li>实现状态保持主要有两种方式：
+<ul>
+<li>在客户端存储信息使用 Cookie</li>
+<li>在服务器端存储信息使用 Session</li>
+</ul>
+</li>
+</ul>
+<h3 id="Cookie">Cookie</h3>
+<h4 id="什么是cookie">什么是 cookie</h4>
+<pre><code class="language-md highlight-chroma"><span class="highlight-k">*</span> 指某些网站为了辨别用户身份、进行会话跟踪而储存在用户本地的数据（通常经过加密）。
+<span class="highlight-k">*</span> 复数形式Cookies。
+<span class="highlight-k">*</span> Cookie最早是网景公司的前雇员Lou Montulli在1993年3月的发明。
+<span class="highlight-k">*</span> Cookie是由服务器端生成，发送给客户端浏览器，浏览器会将Cookie的key/value保存，下次请求同一网站时就发送该Cookie给服务器.
+<span class="highlight-k">*</span> Cookie中的key/value可以由服务器端自己定义。
+</code></pre>
+<h4 id="cookie使用场景">cookie 使用场景</h4>
+<ul>
+<li>应用
+<ul>
+<li>网站的广告推送，经常遇到访问某个网站时，会弹出小窗口，展示我们曾经在购物网站上看过的商品信息。</li>
+<li>购物车，用户可能会在一段时间内在同一家网站的不同页面中选择不同的商品，这些信息都会写入 Cookie，以便在最后付款时提取信息。</li>
+</ul>
+</li>
+<li>提示
+<ul>
+<li>Cookie 是存储在浏览器中的一段纯文本信息，建议不要存储敏感信息如密码，因为电脑上的浏览器可能被其它人使用</li>
+<li>Cookie 基于域名安全，不同域名的 Cookie 是不能互相访问的
+<ul>
+<li>如访问 itcast.cn 时向浏览器中写了 Cookie 信息，使用同一浏览器访问 baidu.com 时，无法访问到 itcast.cn 写的 Cookie 信息</li>
+<li>浏览器的同源策略</li>
+</ul>
+</li>
+<li>当浏览器请求某网站时，会将本网站下所有 Cookie 信息提交给服务器，所以在 request 中可以读取 Cookie 信息</li>
+</ul>
+</li>
+</ul>
+<h4 id="三-设置-获取cookie">三。设置，获取 cookie</h4>
+<p><strong>代码展示</strong></p>
+<pre><code class="language-md highlight-chroma">from flask import Flask, make_response, request
+
+app = Flask(__name__)
+
+<span class="highlight-gh">#设置cookie值
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/set_cookie')
+def set_cookie():
+
+    response = make_response("set cookie")
+    response.set_cookie("name","zhangsan")
+    response.set_cookie("age","13",10) <span class="highlight-ni">#10秒有效期</span>
+
+    return response
+
+<span class="highlight-gh">#获取cookie
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/get_cookie')
+def get_cookie():
+
+    <span class="highlight-ni">#获取cookie</span>,可以根据cookie的内容来推荐商品信息
+    # name = request.cookies['haha']
+    name = request.cookies.get('name')
+    age = request.cookies.get('age')
+
+    return "获取cookie,name is %s, age is %s"%(name,age)
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    app.run(debug=True)
+</code></pre>
+<h3 id="Session">Session</h3>
+<h4 id="一-session作用">一。session 作用</h4>
+<ul>
+<li>对于敏感、重要的信息，建议要存储在服务器端，不能存储在浏览器中，如用户名、余额、等级、验证码等信息，所以可以使用 session 进行保存</li>
+<li>在服务器端进行状态保持的方案就是 <code>Session</code></li>
+</ul>
+<h4 id="二-session设置-获取">二。session 设置，获取</h4>
+<p><strong>代码展示</strong></p>
+<pre><code class="language-md highlight-chroma">from flask import Flask,session
+
+app = Flask(__name__)
+
+<span class="highlight-gh">#设置SECRET_KEY
+</span><span class="highlight-gh"></span>app.config["SECRET_KEY"] = "fhdk^fk#djefkj<span class="highlight-err">&amp;</span>*<span class="highlight-err">&amp;</span>*<span class="highlight-err">&amp;</span>"
+
+<span class="highlight-gh">#设置session
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/set_session/<span class="highlight-p">&lt;</span><span class="highlight-nt">path:name</span><span class="highlight-p">&gt;</span>')
+def set_session(name):
+
+    session["name"] = name
+    session["age"] = "13"
+
+    return "set session"
+
+<span class="highlight-gh">#获取session内容
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/get_session')
+def get_session():
+
+    name = session.get('name')
+    age = session.get('age')
+
+    return "name is %s, age is %s"%(name,age)
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    app.run(debug=True)
+</code></pre>
+<p>提示：</p>
+<blockquote>
+<p>session 的存储依赖于 cookie，在 cookie 保存的 session 编号<br>
+session 编号生成，需要进行加密，所以需要设置 secret_key secret_key 的作用参考：<a href="https://segmentfault.com/q/1010000007295395" target="_blank">https://segmentfault.com/q/1010000007295395</a></p>
+</blockquote>
+<h2 id="上下文">上下文</h2>
+<p>上下文：相当于一个容器，保存了 Flask 程序运行过程中的一些信息。</p>
+<p>Flask 中有两种上下文，请求上下文和应用上下文</p>
+<h3 id="一-请求上下文-request-context-">一。请求上下文(request context)</h3>
+<p>思考：在视图函数中，如何取到当前请求的相关数据？比如：请求地址，请求方式，cookie 等等</p>
+<p>在 flask 中，可以直接在视图函数中使用 <strong>request</strong> 这个对象进行获取相关数据，而 <strong>request</strong> 就是请求上下文的对象，保存了当前本次请求的相关数据，请求上下文对象有：request、session</p>
+<ul>
+<li>request
+<ul>
+<li>封装了 HTTP 请求的内容，针对的是 http 请求。举例：user = request.args.get('user')，获取的是 get 请求的参数。</li>
+</ul>
+</li>
+<li>session
+<ul>
+<li>用来记录请求会话中的信息，针对的是用户信息。举例：session['name'] = user.id，可以记录用户信息。还可以通过 session.get('name')获取用户信息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="二-应用上下文-application-context-">二。应用上下文(application context)</h3>
+<p>它的字面意思是 应用上下文，但它不是一直存在的，它只是 request context 中的一个对 app 的代理(人)，所谓 local proxy。它的作用主要是帮助 request 获取当前的应用，它是伴 request 而生，随 request 而灭的。</p>
+<p>应用上下文对象有：current_app，g</p>
+<h3 id="current-app">current_app</h3>
+<p>应用程序上下文，用于存储应用程序中的变量，可以通过 current_app.name 打印当前 app 的名称，也可以在 current_app 中存储一些变量，例如：</p>
+<ul>
+<li>应用的启动脚本是哪个文件，启动时指定了哪些参数</li>
+<li>加载了哪些配置文件，导入了哪些配置</li>
+<li>连了哪个数据库</li>
+<li>有哪些 public 的工具类、常量</li>
+<li>应用跑再哪个机器上，IP 多少，内存多大</li>
+</ul>
+<pre><code class="language-md highlight-chroma">current_app.name
+current_app.test_value='value'
+</code></pre>
+<h3 id="g变量">g 变量</h3>
+<p>g 作为 flask 程序全局的一个临时变量，充当者中间媒介的作用，我们可以通过它传递一些数据，g 保存的是当前请求的全局变量，不同的请求会有不同的全局变量，通过不同的 thread id 区别</p>
+<pre><code class="language-md highlight-chroma">g.name='abc'
+</code></pre>
+<blockquote>
+<p>注意：不同的请求，会有不同的全局变量</p>
+</blockquote>
+<h3 id="两者区别">两者区别</h3>
+<ul>
+<li>请求上下文：保存了客户端和服务器交互的数据</li>
+<li>应用上下文：flask 应用程序运行过程中，保存的一些配置信息，比如程序名、数据库连接、应用信息等</li>
+</ul>
+<blockquote>
+<p>上下文中的对象只能在指定上下文中使用，超出范围不能使用 请求上下文和应用上下文原理实现：<a href="https://segmentfault.com/a/1190000004223296" target="_blank">https://segmentfault.com/a/1190000004223296</a></p>
+</blockquote>
+<h2 id="Flask-Script-扩展">Flask-Script 扩展</h2>
+<h3 id="一-flask-script作用">一。flask_script 作用</h3>
+<p>属于 flask 的扩展包，通过使用 Flask-Script 扩展，我们可以在 Flask 服务器启动的时候，通过命令行的方式传入参数。而不仅仅通过 app.run()方法中传参，比如我们可以通过：</p>
+<pre><code class="language-md highlight-chroma">python hello.py runserver -host ip地址
+</code></pre>
+<p>提示：通过 python hello.py runserver --help 可以查看，程序运行需要什么参数。</p>
+<p><img src="https://b3logfile.com/file/2020/10/terminator-24e735e2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="terminator.png"></p>
+<h3 id="二-代码实现">二。代码实现</h3>
+<ul>
+<li>安装 Flask-Script 扩展</li>
+<li>pip install flask-script</li>
+</ul>
+<pre><code class="language-md highlight-chroma">from flask import Flask
+<span class="highlight-gh">#1.从flask_script中导入Manager类
+</span><span class="highlight-gh"></span>from flask_script import Manager
+
+app = Flask(__name__)
+
+<span class="highlight-gh"># 2.使用Manager管理app对象
+</span><span class="highlight-gh"></span>manager = Manager(app)
+
+<span class="highlight-ni">@app</span>.route('/')
+def hello_world():
+    return "helloworld"
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    manager.run()
+</code></pre>
+<h1 id="Jinja2模板引擎">Jinja2 模板引擎</h1>
+<h3 id="一-Jinja2模板概述">一。Jinja2 模板概述</h3>
+<p>用来展示数据的 HTML 页面，这个过程也通常称为渲染，属于 Jinja2 的功能 使用模板的好处：</p>
+<ul>
+<li>视图函数只负责业务逻辑和数据处理(业务逻辑方面)</li>
+<li>而模板则取到视图函数的数据结果进行展示(视图展示方面)</li>
+<li>代码结构清晰，耦合度低</li>
+</ul>
+<h3 id="二-Jinja2特点">二。Jinja2 特点</h3>
+<ul>
+<li>Jinja2：是 Python 下一个被广泛应用的模板引擎，是由 Python 实现的模板语言，他的设计思想来源于 Django 的模板引擎，并扩展了其语法和一系列强大的功能，其是 Flask 内置的模板语言。</li>
+<li>模板语言：是一种被设计来自动生成文档的简单文本格式，在模板语言中，一般都会把一些变量传给模板，替换模板的特定位置上预先定义好的占位变量名。</li>
+<li>使用 render_template 函数封装模板引擎</li>
+</ul>
+<h2 id="模板的使用">模板的使用</h2>
+<h3 id="一-Jinja2模板语法">一。Jinja2 模板语法</h3>
+<ul>
+<li>获取变量值：</li>
+</ul>
+<pre><code class="language-md highlight-chroma">    <span class="highlight-p">&lt;</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>整数:{ {number} }<span class="highlight-p">&lt;/</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>元祖:{ {tuple[0]} }<span class="highlight-p">&lt;/</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>列表:{ { list[0] } }<span class="highlight-p">&lt;/</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>字典:{ { dict['key'] } }<span class="highlight-p">&lt;/</span><span class="highlight-nt">h1</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>分支语句 if</li>
+</ul>
+<pre><code class="language-md highlight-chroma">{ % if 条件 % }
+    语句1
+ { % else % }  
+    语句2
+{ % endif % }
+</code></pre>
+<ul>
+<li>for 循环</li>
+</ul>
+<pre><code class="language-md highlight-chroma">{% for 变量  in 容器 %}
+语句
+{% endfor%}
+</code></pre>
+<ul>
+<li>注释</li>
+</ul>
+<pre><code class="language-md highlight-chroma">{# 注释内容 #}
+</code></pre>
+<h3 id="二-代码展示">二。代码展示</h3>
+<ul>
+<li>使用函数： render_template('模板文件名',key=value)</li>
+<li>将数据携带到，文件中进行展示</li>
+<li>创建文件 demo01.py，代码如下：</li>
+</ul>
+<pre><code class="language-md highlight-chroma">from flask import Flask,render_template
+app = Flask(__name__) <span class="highlight-ni">#默认省略了三个参数</span>,static_url_path, static_folder, template_folders
+
+<span class="highlight-ni">@app</span>.route('/')
+def hello_world():
+    <span class="highlight-ni">#定义数据</span>,整数,字符串,元祖,列表,字典
+    num = 10
+    str = "hello"
+    tuple = (1,2,3,4)
+    list = [5,6,7,8]
+    dict = {
+        "name":"张三",
+        "age":13
+    }
+
+    return render_template('file01.html',my_num=num,my_str=str,my_tuple=tuple,my_list=list,my_dict=dict)
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    app.run(debug=True)
+</code></pre>
+<ul>
+<li>在 <strong>templates</strong> 文件夹下，创建文件 <strong>file01.html</strong> 文件，代码如下：</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>1.获取各种变量的值<span class="highlight-p">&lt;/</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>整数: {{ my_num + 20}}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>字符串: {{ my_str + " python" }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>元组: {{ my_tuple }}, 分开获取:{{ my_tuple[0] }}, {{ my_tuple[1] }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>列表: {{ my_list }}, 分开获取:{{ my_list[0] }}, {{ my_list[1] }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>字典: {{ my_dict }},分开获取:{{ my_dict.name }}, {{ my_dict[age] }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h3</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>2.遍历元祖中所有的元素<span class="highlight-p">&lt;/</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>
+    {% for item in my_tuple %}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>{{ item }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+    {% endfor %}
+
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>3.取出列表中所有偶数<span class="highlight-p">&lt;/</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>
+    {% for item in my_list %}
+        {% if item %2 == 0 %}
+            {{ item }}
+        {% endif %}
+    {% endfor %}
+
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>4.遍历字典内容<span class="highlight-p">&lt;/</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>
+    {% for key in my_dict %}
+        {# 如果直接是mydict.key ,那么这个key是一个字符串, 如果是 mydict[key], 那么key当成变量 #}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>{{ key }} = {{ my_dict[key] }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+    {% endfor %}
+</code></pre>
+<h3 id="扩展-">扩展：</h3>
+<p>在一个 for 循环块中你可以访问这些特殊的变量：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loop.index</td>
+<td>当前循环迭代的次数（从 1 开始）</td>
+</tr>
+<tr>
+<td>loop.index0</td>
+<td>当前循环迭代的次数（从 0 开始）</td>
+</tr>
+<tr>
+<td>loop.revindex</td>
+<td>到循环结束需要迭代的次数（从 1 开始）</td>
+</tr>
+<tr>
+<td>loop.revindex0</td>
+<td>到循环结束需要迭代的次数（从 0 开始）</td>
+</tr>
+<tr>
+<td>loop.first</td>
+<td>如果是第一次迭代，为 True 。</td>
+</tr>
+<tr>
+<td>loop.last</td>
+<td>如果是最后一次迭代，为 True 。</td>
+</tr>
+<tr>
+<td>loop.length</td>
+<td>序列中的项目数。</td>
+</tr>
+<tr>
+<td>loop.cycle</td>
+<td>在一串序列间期取值的辅助函数。见下面示例程序。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Jinja2自带过滤器">Jinja2 自带过滤器</h2>
+<h3 id="一-过滤器概述">一。过滤器概述</h3>
+<p>过滤器的本质就是函数。有时候我们不仅仅只是需要输出变量的值，我们还需要修改变量的显示，甚至格式化、运算等等，而在模板中是不能直接调用 Python 中的某些方法，那么这就用到了过滤器。</p>
+<h3 id="二-两种过滤器">二。两种过滤器</h3>
+<h3 id="字符串">字符串</h3>
+<pre><code class="language-md highlight-chroma"><span class="highlight-k">*</span> 使用格式:{{ 字符串 | 字符串过滤器 }}
+</code></pre>
+<ul>
+<li>safe：禁用转义</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ '<span class="highlight-p">&lt;</span><span class="highlight-nt">em</span><span class="highlight-p">&gt;</span>hello<span class="highlight-p">&lt;/</span><span class="highlight-nt">em</span><span class="highlight-p">&gt;</span>' | safe }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>capitalize：把变量值的首字母转成大写，其余字母转小写</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ 'hello' | capitalize }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>lower：把值转成小写</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ 'HELLO' | lower }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>upper：把值转成大写</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ 'hello' | upper }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>title：把值中的每个单词的首字母都转成大写</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ 'hello' | title }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>reverse：字符串反转</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ 'olleh' | reverse }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>format：格式化输出</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ '%s is %d' | format('name',17) }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>striptags：渲染之前把值中所有的 HTML 标签都删掉</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ '<span class="highlight-p">&lt;</span><span class="highlight-nt">em</span><span class="highlight-p">&gt;</span>hello<span class="highlight-p">&lt;/</span><span class="highlight-nt">em</span><span class="highlight-p">&gt;</span>' | striptags }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h3 id="列表">列表</h3>
+<pre><code class="language-md highlight-chroma"><span class="highlight-k">*</span> 使用格式:{{ 列表 | 列表过滤器 }}
+</code></pre>
+<ul>
+<li>first：取第一个元素</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ [1,2,3,4,5,6] | first }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>last：取最后一个元素</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ [1,2,3,4,5,6] | last }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>length：获取列表长度</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ [1,2,3,4,5,6] | length }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>sum：列表求和</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ [1,2,3,4,5,6] | sum }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>sort：列表排序</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>{{ [6,2,3,1,5,4] | sort }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h3 id="其他操作语句">其他操作语句</h3>
+<h4 id="语句块操作">语句块操作</h4>
+<pre><code class="language-md highlight-chroma">{% filter upper %}
+    <span class="highlight-ni">#一大堆文字</span>#
+{% endfilter %}
+</code></pre>
+<h4 id="链式调用">链式调用</h4>
+<pre><code class="language-md highlight-chroma">
+{{ "hello world" | reverse | upper }}
+</code></pre>
+<h2 id="自定义过滤器">自定义过滤器</h2>
+<h3 id="一-为什么要自定义过滤器">一。为什么要自定义过滤器</h3>
+<p>过滤器的本质是函数。当模板内置的过滤器不能满足需求，可以自定义过滤器。</p>
+<h3 id="二-自定义过滤器两种方式">二。自定义过滤器两种方式</h3>
+<h4 id="方式一">方式一</h4>
+<ul>
+<li>先定义函数</li>
+<li>后添加到过滤器列表，app.add_template_filter('函数名','过滤器名称')</li>
+</ul>
+<pre><code class="language-md highlight-chroma">def do_listreverse(li):
+    # 通过原列表创建一个新列表
+    temp_li = list(li)
+    # 将新列表进行返转
+    temp_li.reverse()
+    return temp_li
+
+app.add_template_filter(do_listreverse,'lireverse')
+</code></pre>
+<h4 id="方式二">方式二</h4>
+<ul>
+<li>定义函数，直接使用@app.template_filter('过滤器名称')装饰
+<pre><code class="language-md highlight-chroma"><span class="highlight-ni">@app</span>.template_filter('lireverse')
+def do_listreverse(li):
+  # 通过原列表创建一个新列表
+  temp_li = list(li)
+  # 将新列表进行返转
+  temp_li.reverse()
+  return temp_li
+</code></pre>
+</li>
+</ul>
+<h3 id="三-在html代码中使用过滤器">三。在 HTML 代码中使用过滤器</h3>
+<ul>
+<li>在 HTML 中使用该自定义过滤器</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-p">&lt;</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>my_array 原内容：{{ my_array }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span> my_array 反转：{{ my_array | lireverse }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h2 id="模板使用练习">模板使用练习</h2>
+<ul>
+<li>实现的效果如下：</li>
+</ul>
+<p><img src="https://b3logfile.com/file/2020/10/%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5%E6%95%88%E6%9E%9C-2a7f05b1.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="控制语句效果.png"></p>
+<ul>
+<li>给定如下 5 条数据，只显示 4 行数据，背景颜色依次为：黄，绿，红，紫</li>
+</ul>
+<pre><code class="language-md highlight-chroma">my_list = [
+    {
+        "id": 1,
+        "value": "我爱工作"
+    },
+    {
+        "id": 2,
+        "value": "工作使人快乐"
+    },
+    {
+        "id": 3,
+        "value": "沉迷于工作无法自拔"
+    },
+    {
+        "id": 4,
+        "value": "日渐消瘦"
+    },
+    {
+        "id": 5,
+        "value": "以梦为马，越骑越傻"
+    }
+]
+</code></pre>
+<ul>
+<li>模板代码</li>
+</ul>
+<pre><code class="language-md highlight-chroma">{% for item in my_list if item.id != 5 %}
+    {% if loop.index == 1 %}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span> <span class="highlight-na">style</span><span class="highlight-o">=</span><span class="highlight-s">"background-color: orange"</span><span class="highlight-p">&gt;</span>{{ item.value }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+    {% elif loop.index == 2 %}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span> <span class="highlight-na">style</span><span class="highlight-o">=</span><span class="highlight-s">"background-color: green"</span><span class="highlight-p">&gt;</span>{{ item.value }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+    {% elif loop.index == 3 %}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span> <span class="highlight-na">style</span><span class="highlight-o">=</span><span class="highlight-s">"background-color: red"</span><span class="highlight-p">&gt;</span>{{ item.value }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+    {% else %}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span> <span class="highlight-na">style</span><span class="highlight-o">=</span><span class="highlight-s">"background-color: purple"</span><span class="highlight-p">&gt;</span>{{ item.value }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>
+    {% endif %}
+{% endfor %}
+</code></pre>
+<ul>
+<li>python 代码</li>
+</ul>
+<pre><code class="language-md highlight-chroma">from flask import Flask,render_template
+
+app = Flask(__name__)
+
+<span class="highlight-ni">@app</span>.route('/')
+def hello_world():
+    my_list = [
+        {
+            "id": 1,
+            "value": "我爱工作"
+        },
+        {
+            "id": 2,
+            "value": "工作使人快乐"
+        },
+        {
+            "id": 3,
+            "value": "沉迷于工作无法自拔"
+        },
+        {
+            "id": 4,
+            "value": "日渐消瘦"
+        },
+        {
+            "id": 5,
+            "value": "以梦为马，越骑越傻"
+        }
+    ]
+    return render_template("practice.html",my_list=my_list)
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    app.run(debug=True)
+</code></pre>
+<h2 id="模板代码复用">模板代码复用</h2>
+<p>在模板中，可能会遇到以下情况：</p>
+<ul>
+<li>多个模板具有完全相同的顶部和底部内容</li>
+<li>多个模板中具有相同的模板代码内容，但是内容中部分值不一样</li>
+<li>多个模板中具有完全相同的 HTML 代码块内容</li>
+</ul>
+<p>像遇到这种情况，可以使用 JinJa2 模板中的 宏、继承、包含来进行实现</p>
+<h3 id="宏">宏</h3>
+<h4 id="一-什么是宏">一。什么是宏</h4>
+<p>宏是 Jinja2 中的函数，调用后，直接返回一个模板，或者字符串。当模板中出现大量重复功能代码的时候，可以使用宏来进行封装</p>
+<h4 id="二-定义宏-使用宏">二。定义宏，使用宏</h4>
+<ul>
+<li>定义宏，可以在当前文件，也可以是其他文件</li>
+</ul>
+<pre><code class="language-md highlight-chroma">{% macro input(name,value='',type='text') %}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"{{type}}"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"{{name}}"</span> <span class="highlight-na">value</span><span class="highlight-o">=</span><span class="highlight-s">"{{value}}"</span><span class="highlight-p">&gt;</span>
+{% endmacro %}
+</code></pre>
+<ul>
+<li>使用当前文件宏</li>
+</ul>
+<pre><code class="language-md highlight-chroma">{{ input('name' value='zs')}}
+</code></pre>
+<ul>
+<li>使用其他文件宏</li>
+</ul>
+<pre><code class="language-md highlight-chroma">    {%import 'filename.html' as 别名%}
+    {%别名.函数名(参数)%}
+</code></pre>
+<h4 id="三-代码展示">三。代码展示</h4>
+<ul>
+<li>使用当前文件宏，其他文件宏</li>
+<li>当前文件 test.html</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-cp">&lt;!DOCTYPE html&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">html</span> <span class="highlight-na">lang</span><span class="highlight-o">=</span><span class="highlight-s">"en"</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">head</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">meta</span> <span class="highlight-na">charset</span><span class="highlight-o">=</span><span class="highlight-s">"UTF-8"</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">title</span><span class="highlight-p">&gt;</span>Title<span class="highlight-p">&lt;/</span><span class="highlight-nt">title</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">head</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">body</span><span class="highlight-p">&gt;</span>
+
+    {# 定义宏 #}
+    {% macro input(name,password) %}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>{{ name }}:<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"text"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"username"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>{{ password }}:<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"password"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"username"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    {% endmacro %}
+
+    {# 使用当前文件宏 #}
+    {{ input("账号","密码") }}
+
+
+    {# 使用其他文件宏 #}
+    {% import 'other_macro.html' as other_macro %}
+    {{ other_macro.input2('用户名',"密码") }}
+    {{ other_macro.input3() }}
+
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">body</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">html</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<ul>
+<li>其他文件 other_macro.html</li>
+</ul>
+<pre><code class="language-md highlight-chroma">{% macro input(name,password) %}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>{{ name }}:<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"text"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"username"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>{{ password }}:<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"password"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"username"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+{% endmacro %}
+</code></pre>
+<h3 id="模板继承-包含">模板继承，包含</h3>
+<h4 id="一-什么是继承">一。什么是继承</h4>
+<p>将公共的内容抽取到父类模板，共子类使用的形式称为继承。<br>
+一般 Web 开发中，继承主要使用在网站的顶部菜单、底部。这些内容可以定义在父模板中，子模板直接继承，而不需要重复书写。</p>
+<h4 id="二-继承的格式">二。继承的格式</h4>
+<ul>
+<li>父模板中使用多个 block 组成，格式： ```python</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-k">-</span> 子模板使用
+<span class="highlight-k">-</span> 子模板使用格式: 
+<span class="highlight-k">-</span> 继承后,子类完全拥有父类内容,并且子类可以进行重写,如果写保留父类内容使用: super()
+
+
+<span class="highlight-gu">### 三.代码展示
+</span><span class="highlight-gu">#### 父模板
+</span><span class="highlight-gu"></span><span class="highlight-k">-</span> base.html
+
+```python
+{% block top %}
+  顶部菜单
+{% endblock top %}
+
+{% block content %}
+  正文内容
+{% endblock content %}
+
+{% block bottom %}
+  底部
+{% endblock bottom %}
+</code></pre>
+<h4 id="子模板">子模板</h4>
+<pre><code class="language-md highlight-chroma">{% extends 'base.html' %}
+{% block content %}
+ 需要填充的内容
+{% endblock content %}
+</code></pre>
+<ul>
+<li>模板继承使用时注意点：
+<ul>
+<li>不支持多继承</li>
+<li>为了便于阅读，在子模板中使用 extends 时，尽量写在模板的第一行。</li>
+<li>不能在一个模板文件中定义多个相同名字的 block 标签。</li>
+<li>定义 block 模板的时候，一定要加上 endblock 结束标记</li>
+</ul>
+</li>
+</ul>
+<h3 id="包含">包含</h3>
+<h4 id="一-什么是包含">一。什么是包含</h4>
+<p>Jinja2 模板中，除了宏和继承，还支持一种代码重用的功能，叫包含(Include)。它的功能是将另一个模板整个加载到当前模板中，并直接渲染。</p>
+<h4 id="二-包含的使用">二。包含的使用</h4>
+<p>格式：</p>
+<pre><code class="language-md highlight-chroma">{% include 'hello.html' %}
+或者
+{% include 'hello.html' ignore missing %}
+</code></pre>
+<ul>
+<li>提示： ignore missing 加上后如果文件不存在，不会报错</li>
+</ul>
+<h4 id="三-代码展示-">三。代码展示</h4>
+<pre><code class="language-md highlight-chroma"><span class="highlight-cp">&lt;!DOCTYPE html&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">html</span> <span class="highlight-na">lang</span><span class="highlight-o">=</span><span class="highlight-s">"en"</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">head</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">meta</span> <span class="highlight-na">charset</span><span class="highlight-o">=</span><span class="highlight-s">"UTF-8"</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">title</span><span class="highlight-p">&gt;</span>Title<span class="highlight-p">&lt;/</span><span class="highlight-nt">title</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">head</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">body</span><span class="highlight-p">&gt;</span>
+    {% include '其他模板文件' ignore missing %}
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">body</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">html</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h3 id="小结">小结</h3>
+<ul>
+<li>宏(Macro)、继承(Block)、包含(include)均能实现代码的复用。</li>
+<li>继承(Block)的本质是代码替换，一般用来实现多个页面中重复不变的区域。</li>
+<li>宏(Macro)的功能类似函数，可以传入参数，需要定义、调用。</li>
+<li>包含(include)是直接将目标模板文件整个渲染出来。</li>
+</ul>
+<h2 id="模板中特有的变量和函数">模板中特有的变量和函数</h2>
+<p>你可以在自己的模板中访问一些 Flask 默认内置的函数和对象</p>
+<h4 id="config">config</h4>
+<p>你可以从模板中直接访问 Flask 当前的 config 对象：</p>
+<pre><code class="language-md highlight-chroma">{{config.DEBUG}}
+输出:True
+</code></pre>
+<h4 id="request-">request</h4>
+<p>就是 flask 中代表当前请求的 request 对象：</p>
+<pre><code class="language-md highlight-chroma">{{request.url}}
+输出:http://127.0.0.1
+</code></pre>
+<h4 id="g变量-">g 变量</h4>
+<p>在视图函数中设置 g 变量的 name 属性的值，然后在模板中直接可以取出</p>
+<pre><code class="language-md highlight-chroma">{{ g.name }}
+</code></pre>
+<h4 id="url-for--">url_for()</h4>
+<p>url_for 会根据传入的路由器函数名，返回该路由对应的 URL，在模板中始终使用 url_for()就可以安全的修改路由绑定的 URL，则不比担心模板中渲染出错的链接：</p>
+<pre><code class="language-md highlight-chroma">{{url_for('home')}}
+/
+</code></pre>
+<p>如果我们定义的路由 URL 是带有参数的，则可以把它们作为关键字参数传入 url_for(),Flask 会把他们填充进最终生成的 URL 中：</p>
+<pre><code class="language-md highlight-chroma">{{ url_for('post', post_id=1)}}
+/post/1
+</code></pre>
+<h5 id="get-flashed-messages--">get_flashed_messages()</h5>
+<p>这个函数会返回之前在 flask 中通过 flask()传入的消息的列表，flash 函数的作用很简单，可以把由 Python 字符串表示的消息加入一个消息队列中，再使用 get_flashed_message()函数取出它们并消费掉：</p>
+<pre><code class="language-md highlight-chroma">{%for message in get_flashed_messages()%}
+    {{message}}
+{%endfor%}
+</code></pre>
+<h2 id="CSRF-理解-">CSRF(理解)</h2>
+<h3 id="一--什么是CSRFToken-">一。 什么是 CSRFToken?</h3>
+<ul>
+<li>
+<p><code>CSRF</code> 全拼为 <code>Cross Site Request Forgery</code>，译为跨站请求伪造。</p>
+</li>
+<li>
+<p>CSRF</p>
+<p>指攻击者盗用了你的身份，以你的名义发送恶意请求。</p>
+<ul>
+<li>包括：以你名义发送邮件，发消息，盗取你的账号，甚至于购买商品，虚拟货币转账......</li>
+</ul>
+</li>
+<li>
+<p>造成的问题：个人隐私泄露以及财产安全。</p>
+</li>
+</ul>
+<h3 id="二-CSRF攻击示意图">二。CSRF 攻击示意图</h3>
+<ul>
+<li>客户端访问服务器时没有同服务器做安全验证</li>
+</ul>
+<h3 id="三-防止CSRF攻击">三。防止 CSRF 攻击</h3>
+<ol>
+<li>在客户端向后端请求界面数据的时候，后端会往响应中的 cookie 中设置 csrf_token 的值</li>
+<li>在 Form 表单中添加一个隐藏的的字段，值也是 csrf_token</li>
+<li>在用户点击提交的时候，会带上这两个值向后台发起请求</li>
+<li>后端接受到请求，以会以下几件事件：
+<ul>
+<li>从 cookie 中取出 csrf_token</li>
+<li>从 表单数据中取出来隐藏的 csrf_token 的值</li>
+<li>进行对比</li>
+</ul>
+</li>
+<li>如果比较之后两值一样，那么代表是正常的请求，如果没取到或者比较不一样，代表不是正常的请求，不执行下一步操作</li>
+<li>提示：代码展示：见 &lt;&lt; webA &gt;&gt;, &lt;&lt; webB &gt;&gt; 文件</li>
+</ol>
+<h3 id="四-csrf校验机制作用域代码">四。csrf 校验机制作用域代码</h3>
+<ul>
+<li>flask_wtf 模块提供了 csrf 攻击的保护</li>
+<li>使用流程：
+<ul>
+<li>from flask_wtf.csrf import CSRFProtect</li>
+<li>CSRFProtect(app)</li>
+</ul>
+</li>
+<li>CSRFProtect(app)保护原理：
+<ul>
+<li>对应用程序 app 中的 post,put,dispatch,delete, 4 种类型的请求做保护，因为这些类型的请求是用于更改服务器的资源</li>
+<li>当以上面 4 种类型的请求，操作服务器资源的时候，会校验 cookie 中的 csrf_token, 表单中的 csrf_token 信息</li>
+<li>只有上面二者的值相等的时候，那么校验则通过，可以操作服务器资源</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>提示： csrf_token 值的生成需要加密， 所以设置 SECRET_KEY</p>
+<ul>
+<li><strong>代码展示</strong></li>
+<li>后端代码：</li>
+</ul>
+</blockquote>
+<pre><code class="language-md highlight-chroma">from flask import Flask,render_template
+from flask_wtf import CSRFProtect
+
+app = Flask(__name__)
+
+<span class="highlight-gh">#设置SECRET_KEY
+</span><span class="highlight-gh"></span>app.config["SECRET_KEY"] = "fjkdjfkdfjdk"
+
+<span class="highlight-gh">#保护应用程序
+</span><span class="highlight-gh"></span>CSRFProtect(app)
+
+<span class="highlight-ni">@app</span>.route('/')
+def show_page():
+
+    return render_template('file01csrf.html')
+
+<span class="highlight-ni">@app</span>.route('/add_data',methods=["POST"])
+def add_data():
+
+    return "登陆成功"
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    app.run(debug=True)
+</code></pre>
+<ul>
+<li>前端代码，file01csrf.html 文件</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-cp">&lt;!DOCTYPE html&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">html</span> <span class="highlight-na">lang</span><span class="highlight-o">=</span><span class="highlight-s">"en"</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">head</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">meta</span> <span class="highlight-na">charset</span><span class="highlight-o">=</span><span class="highlight-s">"UTF-8"</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">title</span><span class="highlight-p">&gt;</span>Title<span class="highlight-p">&lt;/</span><span class="highlight-nt">title</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">head</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">body</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">form</span> <span class="highlight-na">action</span><span class="highlight-o">=</span><span class="highlight-s">"/add_data"</span> <span class="highlight-na">method</span><span class="highlight-o">=</span><span class="highlight-s">"post"</span><span class="highlight-p">&gt;</span>
+    {#设置隐藏的csrf_token,使用了CSRFProtect保护app之后,即可使用csrf_token()方法#}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"hidden"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"csrf_token"</span> <span class="highlight-na">value</span><span class="highlight-o">=</span><span class="highlight-s">"{{ csrf_token() }}"</span><span class="highlight-p">&gt;</span>
+
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>用户名:<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span> <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"text"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"username"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>密码:<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span> <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"text"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"username"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"submit"</span> <span class="highlight-na">value</span><span class="highlight-o">=</span><span class="highlight-s">"登陆"</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">form</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">body</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">html</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h1 id="数据库">数据库</h1>
+<h2 id="ORM">ORM</h2>
+<h3 id="一-什么是ORM">一。什么是 ORM</h3>
+<ul>
+<li><strong><code>ORM</code></strong> 全拼 <code>Object-Relation Mapping</code>. 称为<strong>对象-关系映射</strong></li>
+<li>主要实现模型对象到关系数据库数据的映射。
+<ul>
+<li>比如：把数据库表中每条记录映射为一个模型对象<br>
+<img src="https://b3logfile.com/file/2020/10/PeopleInfoTable-b86d3b53.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="PeopleInfoTable.png"></li>
+</ul>
+</li>
+</ul>
+<h4 id="ORM图解">ORM 图解</h4>
+<p><img src="https://b3logfile.com/file/2020/10/ORM1599202467512-f2e63b24.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="ORM1599202467512.png"></p>
+<h3 id="二-ORM的优缺点有哪些-">二。ORM 的优缺点有哪些？</h3>
+<p><strong>优点 :</strong></p>
+<ul>
+<li>对数据库的操作都转化成对类，属性和方法的操作。</li>
+<li>不用编写各种数据库的 <code>sql语句</code>.</li>
+<li>不在关注，使用的是 <code>mysql</code>、<code>oracle</code>...等数据库</li>
+</ul>
+<p><strong>缺点 :</strong></p>
+<ul>
+<li>相比较直接使用 SQL 语句操作数据库，有性能损失。</li>
+</ul>
+<h2 id="Flask-SQLAlchemy安装及设置">Flask-SQLAlchemy 安装及设置</h2>
+<ul>
+<li>SQLALchemy 实际上是对数据库的抽象，让开发者不用直接和 SQL 语句打交道，而是通过 Python 对象来操作数据库，在舍弃一些性能开销的同时，换来的是开发效率的较大提升</li>
+<li>SQLAlchemy 是一个关系型数据库框架，它提供了高层的 ORM 和底层的原生数据库的操作。flask-sqlalchemy 是一个简化了 SQLAlchemy 操作的 flask 扩展。</li>
+<li>文档地址：<a href="http://docs.jinkan.org/docs/flask-sqlalchemy" target="_blank">http://docs.jinkan.org/docs/flask-sqlalchemy</a></li>
+</ul>
+<h3 id="一-安装">一，安装</h3>
+<ul>
+<li>安装 flask-sqlalchemy</li>
+</ul>
+<pre><code class="language-md highlight-chroma">pip install flask-sqlalchemy
+</code></pre>
+<ul>
+<li>如果连接的是 MySQL 数据库，需要安装 mysqldb</li>
+</ul>
+<pre><code class="language-md highlight-chroma">pip install flask-mysqldb
+</code></pre>
+<blockquote>
+<p>提示：如果 flask-mysqldb 安装不上，安装， pip install pymysql</p>
+</blockquote>
+<h3 id="二-数据库连接设置">二，数据库连接设置</h3>
+<ul>
+<li>设置数据库的链接地址，追踪信息</li>
+<li>格式：mysql://&lt; 用户名 &gt;:&lt; 密码 &gt;@:&lt; 端口 &gt;/数据库名称</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh"># 数据库链接地址
+</span><span class="highlight-gh"></span>app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:mysql@127.0.0.1:3306/test'
+<span class="highlight-gh"># 跟踪数据库修改 ----&gt;不建议开启，未来版本中会删除
+</span><span class="highlight-gh"></span>app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+</code></pre>
+<blockquote>
+<p>查看映射的 SQL 语句，设置： app.config['SQLALCHEMY_ECHO'] = True</p>
+</blockquote>
+<ul>
+<li>配置完成需要去 MySQL 中创建项目所使用的数据库</li>
+</ul>
+<pre><code class="language-md highlight-chroma">$ mysql -uroot -pmysql
+$ create database flask charset utf8;
+</code></pre>
+<h3 id="三-其他配置信息">三，其他配置信息</h3>
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQLALCHEMY_DATABASE_URI</td>
+<td>用于连接的数据库 URI 。例如：sqlite:////tmp/test.dbmysql://username:password@server/db</td>
+</tr>
+<tr>
+<td>SQLALCHEMY_BINDS</td>
+<td>一个映射 binds 到连接 URI 的字典。更多 binds 的信息见<a href="http://docs.jinkan.org/docs/flask-sqlalchemy/binds.html#binds" target="_blank"><em>用 Binds 操作多个数据库</em></a>。</td>
+</tr>
+<tr>
+<td>SQLALCHEMY_ECHO</td>
+<td>如果设置为 Ture， SQLAlchemy 会记录所有 发给 stderr 的语句，这对调试有用。(打印 SQL 语句)</td>
+</tr>
+<tr>
+<td>SQLALCHEMY_RECORD_QUERIES</td>
+<td>可以用于显式地禁用或启用查询记录。查询记录 在调试或测试模式自动启用。更多信息见 get_debug_queries()。</td>
+</tr>
+<tr>
+<td>SQLALCHEMY_NATIVE_UNICODE</td>
+<td>可以用于显式禁用原生 unicode 支持。当使用 不合适的指定无编码的数据库默认值时，这对于 一些数据库适配器是必须的（比如 Ubuntu 上 某些版本的 PostgreSQL ）。</td>
+</tr>
+<tr>
+<td>SQLALCHEMY_POOL_SIZE</td>
+<td>数据库连接池的大小。默认是引擎默认值（通常 是 5 ）</td>
+</tr>
+<tr>
+<td>SQLALCHEMY_POOL_TIMEOUT</td>
+<td>设定连接池的连接超时时间。默认是 10 。</td>
+</tr>
+<tr>
+<td>SQLALCHEMY_POOL_RECYCLE</td>
+<td>多少秒后自动回收连接。这对 MySQL 是必要的， 它默认移除闲置多于 8 小时的连接。注意如果 使用了 MySQL ， Flask-SQLALchemy 自动设定 这个值为 2 小时。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="连接其他数据库">连接其他数据库</h3>
+<p>完整连接 URI 列表请跳转到 SQLAlchemy 下面的文档 (<a href="http://www.sqlalchemy.org/docs/core/engines.html" target="_blank">Supported Databases</a>) 。这里给出一些 常见的连接字符串。</p>
+<ul>
+<li>Postgres:</li>
+</ul>
+<pre><code class="language-md highlight-chroma">postgresql://scott:tiger@localhost/mydatabase
+</code></pre>
+<ul>
+<li>MySQL:</li>
+</ul>
+<pre><code class="language-md highlight-chroma">mysql://scott:tiger@localhost/mydatabase
+</code></pre>
+<ul>
+<li>Oracle:</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-k">-</span> oracle://scott:tiger@127.0.0.1:1521/sidname
+</code></pre>
+<ul>
+<li>SQLite （注意开头的四个斜线）:</li>
+</ul>
+<pre><code class="language-md highlight-chroma">sqlite:////absolute/path/to/foo.db
+</code></pre>
+<h3 id="常用的SQLAlchemy字段类型">常用的 SQLAlchemy 字段类型</h3>
+<table>
+<thead>
+<tr>
+<th>类型名</th>
+<th>python 中类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integer</td>
+<td>int</td>
+<td>普通整数，一般是 32 位</td>
+</tr>
+<tr>
+<td>SmallInteger</td>
+<td>int</td>
+<td>取值范围小的整数，一般是 16 位</td>
+</tr>
+<tr>
+<td>BigInteger</td>
+<td>int 或 long</td>
+<td>不限制精度的整数</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>float</td>
+<td>浮点数</td>
+</tr>
+<tr>
+<td>Numeric</td>
+<td>decimal.Decimal</td>
+<td>普通整数，一般是 32 位</td>
+</tr>
+<tr>
+<td>String</td>
+<td>str</td>
+<td>变长字符串</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>str</td>
+<td>变长字符串，对较长或不限长度的字符串做了优化</td>
+</tr>
+<tr>
+<td>Unicode</td>
+<td>unicode</td>
+<td>变长 Unicode 字符串</td>
+</tr>
+<tr>
+<td>UnicodeText</td>
+<td>unicode</td>
+<td>变长 Unicode 字符串，对较长或不限长度的字符串做了优化</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>bool</td>
+<td>布尔值</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>datetime.date</td>
+<td>时间</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>datetime.datetime</td>
+<td>日期和时间</td>
+</tr>
+<tr>
+<td>LargeBinary</td>
+<td>str</td>
+<td>二进制文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用的SQLAlchemy列选项">常用的 SQLAlchemy 列选项</h3>
+<table>
+<thead>
+<tr>
+<th>选项名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>primary_key</td>
+<td>如果为 True，代表表的主键</td>
+</tr>
+<tr>
+<td>unique</td>
+<td>如果为 True，代表这列不允许出现重复的值</td>
+</tr>
+<tr>
+<td>index</td>
+<td>如果为 True，为这列创建索引，提高查询效率</td>
+</tr>
+<tr>
+<td>nullable</td>
+<td>如果为 True，允许有空值，如果为 False，不允许有空值</td>
+</tr>
+<tr>
+<td>default</td>
+<td>为这列定义默认值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用的SQLAlchemy关系选项">常用的 SQLAlchemy 关系选项</h3>
+<table>
+<thead>
+<tr>
+<th>选项名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backref</td>
+<td>在关系的另一模型中添加反向引用</td>
+</tr>
+<tr>
+<td>primary join</td>
+<td>明确指定两个模型之间使用的联结条件</td>
+</tr>
+<tr>
+<td>uselist</td>
+<td>如果为 False，不使用列表，而使用标量值</td>
+</tr>
+<tr>
+<td>order_by</td>
+<td>指定关系中记录的排序方式</td>
+</tr>
+<tr>
+<td>secondary</td>
+<td>指定多对多关系中关系表的名字</td>
+</tr>
+<tr>
+<td>secondary join</td>
+<td>在 SQLAlchemy 中无法自行决定时，指定多对多关系中的二级联结条件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据库基本操作">数据库基本操作</h2>
+<ul>
+<li>在 Flask-SQLAlchemy 中，插入、修改、删除操作，均由数据库会话管理。
+<ul>
+<li>会话用 db.session 表示。在准备把数据写入数据库前，要先将数据添加到会话中然后调用 db.session.commit() 方法提交会话。</li>
+</ul>
+</li>
+<li>在 Flask-SQLAlchemy 中，查询操作是通过 query 对象操作数据。
+<ul>
+<li>最基本的查询是返回表中所有数据，可以通过过滤器进行更精确的数据库查询。</li>
+</ul>
+</li>
+</ul>
+<h3 id="一-在视图函数中定义模型类">一，在视图函数中定义模型类</h3>
+<pre><code class="language-md highlight-chroma">from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+
+<span class="highlight-gh">#设置连接数据库的URL
+</span><span class="highlight-gh"></span>app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:mysql@127.0.0.1:3306/test'
+<span class="highlight-gh">#设置数据库追踪信息,压制警告
+</span><span class="highlight-gh"></span>app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+<span class="highlight-gh">#创建SQLAlchemy对象,读取app中配置信息
+</span><span class="highlight-gh"></span>db = SQLAlchemy(app)
+<span class="highlight-gh">#定义角色模型(一方)
+</span><span class="highlight-gh"></span>class Role(db.Model):
+    # 定义表名
+    <span class="highlight-gs">__tablename__</span> = 'roles'
+    # 定义列对象
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    <span class="highlight-ni">#设置关系属性</span>,方便查询使用
+    us = db.relationship('User', backref='role')
+    <span class="highlight-ni">#重写__repr__方法</span>,方便查看对象输出内容
+    def <span class="highlight-gs">__repr__</span>(self):
+        return 'Role:%s'% self.name
+
+<span class="highlight-gh">#定义用户模型类(多方)
+</span><span class="highlight-gh"></span>class User(db.Model):
+    <span class="highlight-gs">__tablename__</span> = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True, index=True)
+    email = db.Column(db.String(64),unique=True)
+    password = db.Column(db.String(64))
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+
+    def <span class="highlight-gs">__repr__</span>(self):
+        return 'User:%s'%self.name
+if <span class="highlight-gs">__name__</span> == '__main__':
+    <span class="highlight-ni">#删除所有和db相关联的表</span>
+    db.drop_all()
+    <span class="highlight-ni">#创建所有和db相关联的表</span>
+    db.create_all()
+    app.run(debug=True)
+</code></pre>
+<h3 id="二-关键代码格式">二，关键代码格式</h3>
+<ul>
+<li>一对多关系</li>
+</ul>
+<pre><code class="language-md highlight-chroma">class Role(db.Model):
+    ...
+    <span class="highlight-ni">#关键代码</span>
+    us = db.relationship('User', backref='role', lazy='dynamic')
+    ...
+
+class User(db.Model):
+    ...
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+</code></pre>
+<ul>
+<li>其中 realtionship 描述了 Role 和 User 的关系。</li>
+<li>第一个参数为对应参照的类"User"</li>
+<li>第二个参数 backref 为类 User，反向引用属性</li>
+<li>第三个参数 lazy 决定了什么时候 SQLALchemy 从数据库中加载数据
+<ul>
+<li>如果设置为子查询方式(subquery)，则会在加载完 Role 对象后，就立即加载与其关联的对象，这样会让总查询数量减少，但如果返回的条目数量很多，就会比较慢
+<ul>
+<li>设置为 subquery 的话，role.users 返回所有数据列表</li>
+</ul>
+</li>
+<li>另外，也可以设置为动态方式(dynamic)，这样关联对象会在被使用的时候再进行加载，并且在返回前进行过滤，如果返回的对象数很多，或者未来会变得很多，那最好采用这种方式</li>
+</ul>
+</li>
+</ul>
+<h3 id="三-常见的操作语句">三，常见的操作语句</h3>
+<ul>
+<li>db.session.add(obj) 添加对象</li>
+<li>db.session.add_all([obj1,obj2,..]) 添加多个对象</li>
+<li>db.session.delete(obj) 删除对象</li>
+<li>db.session.commit() 提交会话</li>
+<li>db.session.rollback() 回滚</li>
+<li>db.session.remove() 移除会话</li>
+</ul>
+<h3 id="四-常用的SQLAlchemy查询过滤器">四，常用的 SQLAlchemy 查询过滤器</h3>
+<ul>
+<li>用来过滤数据，返回查询的结果集</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>过滤器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filter()</td>
+<td>把过滤器添加到原查询上，返回一个新查询</td>
+</tr>
+<tr>
+<td>filter_by()</td>
+<td>把等值过滤器添加到原查询上，返回一个新查询</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>使用指定的值限定原查询返回的结果</td>
+</tr>
+<tr>
+<td>offset()</td>
+<td>偏移原查询返回的结果，返回一个新查询</td>
+</tr>
+<tr>
+<td>order_by()</td>
+<td>根据指定条件对原查询结果进行排序，返回一个新查询</td>
+</tr>
+<tr>
+<td>group_by()</td>
+<td>根据指定条件对原查询结果进行分组，返回一个新查询</td>
+</tr>
+</tbody>
+</table>
+<h3 id="五-常用的SQLAlchemy查询执行器">五，常用的 SQLAlchemy 查询执行器</h3>
+<ul>
+<li>用来执行结果集，得到具体数据</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all()</td>
+<td>以列表形式返回查询的所有结果</td>
+</tr>
+<tr>
+<td>first()</td>
+<td>返回查询的第一个结果，如果未查到，返回 None</td>
+</tr>
+<tr>
+<td>first_or_404()</td>
+<td>返回查询的第一个结果，如果未查到，返回 404</td>
+</tr>
+<tr>
+<td>get()</td>
+<td>返回指定主键对应的行，如不存在，返回 None</td>
+</tr>
+<tr>
+<td>get_or_404()</td>
+<td>返回指定主键对应的行，如不存在，返回 404</td>
+</tr>
+<tr>
+<td>count()</td>
+<td>返回查询结果的数量</td>
+</tr>
+<tr>
+<td>paginate()</td>
+<td>返回一个 Paginate 对象，它包含指定范围内的结果</td>
+</tr>
+</tbody>
+</table>
+<h3 id="六-练习数据库查询操作">六，练习数据库查询操作</h3>
+<ul>
+<li>代码准备</li>
+</ul>
+<pre><code class="language-md highlight-chroma">from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+
+<span class="highlight-gh">#配置信息
+</span><span class="highlight-gh"></span>app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:123456@127.0.0.1:3306/basic8"
+<span class="highlight-gh">#设置压制警告信息,如果True会追踪数据库变化,会增加显著开销,所以建议设置为False
+</span><span class="highlight-gh"></span>app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+<span class="highlight-gh">#创建SQLAlchemy类对象,关联app
+</span><span class="highlight-gh"></span>db = SQLAlchemy(app)
+
+<span class="highlight-gh">#编写模型类,继承db.Model
+</span><span class="highlight-gh">#角色,用户之间的关系
+</span><span class="highlight-gh"></span>class Role(db.Model):
+    <span class="highlight-gs">__tablename__</span> = "roles" <span class="highlight-ni">#指定表名称</span>
+    <span class="highlight-ni">#参数1:表示整数类型</span>,  参数2:表示主键
+    id = db.Column(db.Integer,primary_key=True)
+    <span class="highlight-ni">#角色名唯一的</span>
+    name = db.Column(db.String(64),unique=True)
+
+
+    <span class="highlight-ni">#需要设置关系属性relationship</span>(不会产生字段),设置在一方
+    <span class="highlight-ni">#给Role添加了users关系属性</span>, 查询格式: role.users
+    <span class="highlight-ni">#给User添加了role关系属性</span>(反向引用),查询格式: user.role
+    users = db.relationship('User',backref='role')
+
+    <span class="highlight-ni">#为了方便的看到对象输出的内容__repr__</span>, 如果是普通类__str__
+    def <span class="highlight-gs">__repr__</span>(self):
+        return "<span class="highlight-p">&lt;</span><span class="highlight-nt">Role:</span><span class="highlight-err">%</span><span class="highlight-na">s</span><span class="highlight-p">&gt;</span>"%self.name
+
+<span class="highlight-gh"># 用户(多方)
+</span><span class="highlight-gh"></span>class User(db.Model):
+    <span class="highlight-gs">__tablename__</span> = "users"  # 指定表名称
+    <span class="highlight-ni">#参数1:表示整数类型</span>,  参数2:表示主键
+    id = db.Column(db.Integer,primary_key=True)
+    <span class="highlight-ni">#用户名唯一的</span>
+    name = db.Column(db.String(64),unique=True)
+    <span class="highlight-ni">#邮箱密码</span>
+    email = db.Column(db.String(64),unique=True)
+    password = db.Column(db.String(64))
+
+    <span class="highlight-ni">#外键</span>
+    role_id = db.Column(db.Integer,db.ForeignKey(Role.id))
+
+    <span class="highlight-ni">#为了方便的看到对象输出的内容__repr__</span>, 如果是普通类__str__
+    def <span class="highlight-gs">__repr__</span>(self):
+        return "<span class="highlight-p">&lt;</span><span class="highlight-nt">User:</span><span class="highlight-err">%</span><span class="highlight-na">s</span><span class="highlight-err">,%</span><span class="highlight-na">s</span><span class="highlight-err">,%</span><span class="highlight-na">s</span><span class="highlight-err">,%</span><span class="highlight-na">s</span><span class="highlight-p">&gt;</span>"%(self.id,self.name,self.email,self.password)
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+
+    <span class="highlight-ni">#为了演示方便</span>,先删除数据库表,和模型类关联的表
+    db.drop_all()
+
+    <span class="highlight-ni">#创建表</span>,所有继承自dbModel的表
+    db.create_all()
+
+    <span class="highlight-ni">#创建测试数据</span>
+    ro1 = Role(name='admin')
+    db.session.add(ro1)
+    db.session.commit()
+    # 再次插入一条数据
+    ro2 = Role(name='user')
+    db.session.add(ro2)
+    db.session.commit()
+
+    <span class="highlight-ni">#多条用户数据</span>
+    us1 = User(name='wang', email='wang@163.com', password='123456', role_id=ro1.id)
+    us2 = User(name='zhang', email='zhang@189.com', password='201512', role_id=ro2.id)
+    us3 = User(name='chen', email='chen@126.com', password='987654', role_id=ro2.id)
+    us4 = User(name='zhou', email='zhou@163.com', password='456789', role_id=ro1.id)
+    us5 = User(name='tang', email='tang@itheima.com', password='158104', role_id=ro2.id)
+    us6 = User(name='wu', email='wu@gmail.com', password='5623514', role_id=ro2.id)
+    us7 = User(name='qian', email='qian@gmail.com', password='1543567', role_id=ro1.id)
+    us8 = User(name='liu', email='liu@itheima.com', password='867322', role_id=ro1.id)
+    us9 = User(name='li', email='li@163.com', password='4526342', role_id=ro2.id)
+    us10 = User(name='sun', email='sun@163.com', password='235523', role_id=ro2.id)
+    db.session.add_all([us1, us2, us3, us4, us5, us6, us7, us8, us9, us10])
+    db.session.commit()
+
+    app.run(debug=True)
+</code></pre>
+<p><strong>需求： 编写方法，查询以下内容</strong></p>
+<ul>
+<li>查询所有用户数据</li>
+<li>查询有多少个用户</li>
+<li>查询第 1 个用户</li>
+<li>查询 id 为 4 的用户[3 种方式]</li>
+<li>查询名字结尾字符为 g 的所有数据[开始/包含]</li>
+<li>查询名字不等于 wang 的所有数据[2 种方式]</li>
+<li>查询名字和邮箱都以 li 开头的所有数据[2 种方式]</li>
+<li>查询 password 是 <code>123456</code> 或者 <code>email</code> 以 <code>itheima.com</code> 结尾的所有数据</li>
+<li>查询 id 为 [1, 3, 5, 7, 9] 的用户列表</li>
+<li>查询 name 为 liu 的角色数据</li>
+<li>查询所有用户数据，并以邮箱排序</li>
+<li>每页 3 个，查询第 2 页的数据</li>
+</ul>
+<h3 id="七-代码参考">七，代码参考</h3>
+<h4 id="查询-filter-by精确查询">查询：filter_by 精确查询</h4>
+<p>返回名字等于 wang 的所有人</p>
+<pre><code class="language-md highlight-chroma">User.query.filter_by(name='wang').all()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/filterbyall-fc31ed19.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="filterbyall.png"></p>
+<h4 id="first--返回查询到的第一个对象">first()返回查询到的第一个对象</h4>
+<pre><code class="language-md highlight-chroma">User.query.first()
+</code></pre>
+<h4 id="all--返回查询到的所有对象">all()返回查询到的所有对象</h4>
+<pre><code class="language-md highlight-chroma">User.query.all()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/queryall-af89c304.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="queryall.png"></p>
+<h4 id="filter模糊查询-返回名字结尾字符为g的所有数据-">filter 模糊查询，返回名字结尾字符为 g 的所有数据。</h4>
+<pre><code class="language-md highlight-chroma">User.query.filter(User.name.endswith('g')).all()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/likequery-789846c7.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="likequery.png"></p>
+<h4 id="get---参数为主键-如果主键不存在没有返回内容">get():参数为主键，如果主键不存在没有返回内容</h4>
+<pre><code class="language-md highlight-chroma">User.query.get()
+</code></pre>
+<h4 id="逻辑非-返回名字不等于wang的所有数据">逻辑非，返回名字不等于 wang 的所有数据</h4>
+<pre><code class="language-md highlight-chroma">User.query.filter(User.name!='wang').all()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/logicnot-510a8ef2.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="logicnot.png"></p>
+<h4 id="not--相当于取反">not_ 相当于取反</h4>
+<pre><code class="language-md highlight-chroma">from sqlalchemy import not_
+User.query.filter(not_(User.name=='chen')).all()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/not-b15df866.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="not.png"></p>
+<h4 id="逻辑与-需要导入and-返回and--条件满足的所有数据">逻辑与，需要导入 and，返回 and()条件满足的所有数据</h4>
+<pre><code class="language-md highlight-chroma">from sqlalchemy import and_
+User.query.filter(and_(User.name!='wang',User.email.endswith('163.com'))).all()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/logicand-7ded6b53.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="logicand.png"></p>
+<h4 id="逻辑或-需要导入or-">逻辑或，需要导入 or_</h4>
+<pre><code class="language-md highlight-chroma">from sqlalchemy import or_
+User.query.filter(or_(User.name!='wang',User.email.endswith('163.com'))).all()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/logicor-5aae2eb4.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="logicor.png"></p>
+<h4 id="查询数据后删除">查询数据后删除</h4>
+<pre><code class="language-md highlight-chroma">user = User.query.first()
+db.session.delete(user)
+db.session.commit()
+User.query.all()
+</code></pre>
+<h4 id="更新数据">更新数据</h4>
+<pre><code class="language-md highlight-chroma">user = User.query.first()
+user.name = 'dong'
+db.session.commit()
+User.query.first()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/updatedata-9a22e898.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="updatedata.png"></p>
+<h4 id="关联查询示例-">关联查询示例：</h4>
+<blockquote>
+<p>角色和用户的关系是一对多的关系，一个角色可以有多个用户，一个用户只能属于一个角色。</p>
+</blockquote>
+<ul>
+<li>查询角色的所有用户</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh">#查询roles表id为1的角色
+</span><span class="highlight-gh"></span>ro1 = Role.query.get(1)
+<span class="highlight-gh">#查询该角色的所有用户
+</span><span class="highlight-gh"></span>ro1.us.all()
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/rolequeryall-a9cb716d.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="rolequeryall.png"></p>
+<ul>
+<li>查询用户所属角色</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh">#查询users表id为3的用户
+</span><span class="highlight-gh"></span>us1 = User.query.get(3)
+<span class="highlight-gh">#查询用户属于什么角色
+</span><span class="highlight-gh"></span>us1.role
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/userinrole-f5d81746.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="userinrole.png"></p>
+<h2 id="多对多演练">多对多演练</h2>
+<p>在项目开发过程中，会遇到很多数据之间多对多关系的情况，比如：</p>
+<ul>
+<li>学生网上选课(学生和课程)</li>
+<li>老师与其授课的班级(老师和班级)</li>
+<li>用户与其收藏的新闻(用户和新闻)</li>
+<li>等等...</li>
+</ul>
+<p>所以在开发过程中需要使用 ORM 模型将表与表的多对多关联关系使用代码描述出来。多对多关系描述有一个唯一的点就是：<strong>需要添加一张单独的表去记录两张表之间的对应关系</strong></p>
+<h3 id="场景示例">场景示例</h3>
+<h4 id="需求分析">需求分析</h4>
+<ul>
+<li>学生可以网上选课，学生有多个，课程也有多个</li>
+<li>学生有：张三、李四、王五</li>
+<li>课程有：物理、化学、生物</li>
+<li>选修关系有：
+<ul>
+<li>张三选修了化学和生物</li>
+<li>李四选修了化学</li>
+<li>王五选修了物理、化学和生物</li>
+</ul>
+</li>
+<li>需求：
+<ol>
+<li>查询某个学生选修了哪些课程</li>
+<li>查询某个课程都有哪些学生选择</li>
+</ol>
+</li>
+</ul>
+<h4 id="思路分析">思路分析</h4>
+<ul>
+<li>可以通过分析得出
+<ul>
+<li>用一张表来保存所有的学生数据</li>
+<li>用一张表来保存所有的课程数据</li>
+</ul>
+</li>
+<li>具体表及测试数据可以如下：</li>
+</ul>
+<h5 id="学生表-Student-">学生表(Student)</h5>
+<table>
+<thead>
+<tr>
+<th>主键(id)</th>
+<th>学生名(name)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>张三</td>
+</tr>
+<tr>
+<td>2</td>
+<td>李四</td>
+</tr>
+<tr>
+<td>3</td>
+<td>王五</td>
+</tr>
+</tbody>
+</table>
+<h5 id="选修课表-Course-">选修课表(Course)</h5>
+<table>
+<thead>
+<tr>
+<th>主键(id)</th>
+<th>课程名(name)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>物理</td>
+</tr>
+<tr>
+<td>2</td>
+<td>化学</td>
+</tr>
+<tr>
+<td>3</td>
+<td>生物</td>
+</tr>
+</tbody>
+</table>
+<h5 id="数据关联关系表-Student-Course-">数据关联关系表(Student_Course)</h5>
+<table>
+<thead>
+<tr>
+<th>主键(student.id)</th>
+<th>主键(course.id)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h4 id="结果">结果</h4>
+<ul>
+<li>查询某个学生选修了哪些课程，例如：查询王五选修了哪些课程
+<ul>
+<li>取出王五的 id 去 Student_Course 表中查询 student.id 值为 3 的所有数据</li>
+<li>查询出来有 3 条数据，然后将这 3 条数据里面的 course.id 取值并查询 Course 表即可获得结果</li>
+</ul>
+</li>
+<li>查询某个课程都有哪些学生选择，例如：查询生物课程都有哪些学生选修
+<ul>
+<li>取出生物课程的 id 去 Student_Course 表中查询 course.id 值为 3 的所有数据</li>
+<li>查询出来有 2 条数据，然后将这 2 条数据里面的 student.id 取值并查询 Student 表即可获得结果</li>
+</ul>
+</li>
+</ul>
+<h3 id="代码演练">代码演练</h3>
+<ul>
+<li>定义模型及表</li>
+</ul>
+<pre><code class="language-md highlight-chroma">tb_student_course = db.Table('tb_student_course',
+                             db.Column('student_id', db.Integer, db.ForeignKey('students.id')),
+                             db.Column('course_id', db.Integer, db.ForeignKey('courses.id'))
+                             )
+
+
+class Student(db.Model):
+    <span class="highlight-gs">__tablename__</span> = "students"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+
+    courses = db.relationship('Course', secondary=tb_student_course,
+                              backref='student',
+                              lazy='dynamic')
+
+
+class Course(db.Model):
+    <span class="highlight-gs">__tablename__</span> = "courses"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+</code></pre>
+<ul>
+<li>添加测试数据</li>
+</ul>
+<pre><code class="language-md highlight-chroma">if <span class="highlight-gs">__name__</span> == '__main__':
+    db.drop_all()
+    db.create_all()
+
+    # 添加测试数据
+
+    stu1 = Student(name='张三')
+    stu2 = Student(name='李四')
+    stu3 = Student(name='王五')
+
+    cou1 = Course(name='物理')
+    cou2 = Course(name='化学')
+    cou3 = Course(name='生物')
+
+    stu1.courses = [cou2, cou3]
+    stu2.courses = [cou2]
+    stu3.courses = [cou1, cou2, cou3]
+
+    db.session.add_all([stu1, stu2, stu2])
+    db.session.add_all([cou1, cou2, cou3])
+
+    db.session.commit()
+
+    app.run(debug=True)
+</code></pre>
+<h2 id="数据库迁移">数据库迁移</h2>
+<ul>
+<li>在开发过程中，需要修改数据库模型，而且还要在修改之后更新数据库。最直接的方式就是删除旧表，但这样会丢失数据。</li>
+<li>更好的解决办法是使用数据库迁移框架，它可以追踪数据库模式的变化，然后把变动应用到数据库中。</li>
+<li>在 Flask 中可以使用 Flask-Migrate 扩展，来实现数据迁移。并且集成到 Flask-Script 中，所有操作通过命令就能完成。</li>
+<li>为了导出数据库迁移命令，Flask-Migrate 提供了一个 MigrateCommand 类，可以附加到 flask-script 的 manager 对象上。</li>
+</ul>
+<p>首先要在虚拟环境中安装 Flask-Migrate。</p>
+<pre><code class="language-md highlight-chroma">pip install flask-migrate
+</code></pre>
+<ul>
+<li>代码文件内容：</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh">#coding=utf-8
+</span><span class="highlight-gh"></span>from flask import Flask
+
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate,MigrateCommand
+from flask_script import Shell,Manager
+
+app = Flask(__name__)
+manager = Manager(app)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:mysql@127.0.0.1:3306/Flask_test'
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+db = SQLAlchemy(app)
+
+<span class="highlight-gh">#第一个参数是Flask的实例，第二个参数是Sqlalchemy数据库实例
+</span><span class="highlight-gh"></span>migrate = Migrate(app,db) 
+
+<span class="highlight-gh">#manager是Flask-Script的实例，这条语句在flask-Script中添加一个db命令
+</span><span class="highlight-gh"></span>manager.add_command('db',MigrateCommand)
+
+<span class="highlight-gh">#定义模型Role
+</span><span class="highlight-gh"></span>class Role(db.Model):
+    # 定义表名
+    <span class="highlight-gs">__tablename__</span> = 'roles'
+    # 定义列对象
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    user = db.relationship('User', backref='role')
+
+    <span class="highlight-ni">#repr</span>()方法显示一个可读字符串，
+    def <span class="highlight-gs">__repr__</span>(self):
+        return 'Role:'.format(self.name)
+
+<span class="highlight-gh">#定义用户
+</span><span class="highlight-gh"></span>class User(db.Model):
+    <span class="highlight-gs">__talbe__</span> = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True, index=True)
+    <span class="highlight-ni">#设置外键</span>
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+
+    def <span class="highlight-gs">__repr__</span>(self):
+        return 'User:'.format(self.username)
+
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+    manager.run()
+</code></pre>
+<h3 id="创建迁移仓库">创建迁移仓库</h3>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh">#这个命令会创建migrations文件夹，所有迁移文件都放在里面。
+</span><span class="highlight-gh"></span>python database.py db init
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/dbinit-3e0c98f9.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="dbinit.png"></p>
+<h3 id="创建迁移脚本">创建迁移脚本</h3>
+<ul>
+<li>自动创建迁移脚本有两个函数
+<ul>
+<li>upgrade()：函数把迁移中的改动应用到数据库中。</li>
+<li>downgrade()：函数则将改动删除。</li>
+</ul>
+</li>
+<li>自动创建的迁移脚本会根据模型定义和数据库当前状态的差异，生成 upgrade()和 downgrade()函数的内容。</li>
+<li>对比不一定完全正确，有可能会遗漏一些细节，需要进行检查</li>
+</ul>
+<pre><code class="language-md highlight-chroma">python database.py db migrate -m 'initial migration'
+</code></pre>
+<p><img src="https://b3logfile.com/file/2020/10/migration-568ca0d0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="migration.png"></p>
+<h3 id="更新数据库">更新数据库</h3>
+<pre><code class="language-md highlight-chroma">python database.py db upgrade
+</code></pre>
+<h3 id="返回以前的版本">返回以前的版本</h3>
+<p>可以根据 history 命令找到版本号，然后传给 downgrade 命令：</p>
+<pre><code class="language-md highlight-chroma">python app.py db history
+
+输出格式：<span class="highlight-p">&lt;</span><span class="highlight-nt">base</span><span class="highlight-p">&gt;</span> -&gt;  版本号 (head), initial migration
+</code></pre>
+<ul>
+<li>回滚到指定版本</li>
+</ul>
+<pre><code class="language-md highlight-chroma">python app.py db downgrade 版本号
+</code></pre>
+<h3 id="实际操作顺序-">实际操作顺序：</h3>
+<ul>
+<li>1.python 文件 db init</li>
+<li>2.python 文件 db migrate -m"版本名(注释)"</li>
+<li>3.python 文件 db upgrade 然后观察表结构</li>
+<li>4.根据需求修改模型</li>
+<li>5.python 文件 db migrate -m"新版本名(注释)"</li>
+<li>6.python 文件 db upgrade 然后观察表结构</li>
+<li>7.若返回版本，则利用 python 文件 db history 查看版本号</li>
+<li>8.python 文件 db downgrade(upgrade) 版本号</li>
+</ul>
+<h2 id="常见关系模板代码">常见关系模板代码</h2>
+<p>以下罗列了使用关系型数据库中常见关系定义模板代码</p>
+<h3 id="一对多">一对多</h3>
+<ul>
+<li>示例场景：
+<ul>
+<li>用户与其发布的帖子(用户表与帖子表)</li>
+<li>角色与所属于该角色的用户(角色表与多用户表)</li>
+</ul>
+</li>
+<li>示例代码</li>
+</ul>
+<pre><code class="language-md highlight-chroma">class Role(db.Model):
+    """角色表"""
+    <span class="highlight-gs">__tablename__</span> = 'roles'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    users = db.relationship('User', backref='role', lazy='dynamic')
+
+class User(db.Model):
+    """用户表"""
+    <span class="highlight-gs">__tablename__</span> = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True, index=True)
+</code></pre>
+<h3 id="多对多">多对多</h3>
+<ul>
+<li>示例场景
+<ul>
+<li>讲师与其上课的班级(讲师表与班级表)</li>
+<li>用户与其收藏的新闻(用户表与新闻表)</li>
+<li>学生与其选修的课程(学生表与选修课程表)</li>
+</ul>
+</li>
+<li>示例代码</li>
+</ul>
+<pre><code class="language-md highlight-chroma">tb_student_course = db.Table('tb_student_course',
+                             db.Column('student_id', db.Integer, db.ForeignKey('students.id')),
+                             db.Column('course_id', db.Integer, db.ForeignKey('courses.id'))
+                             )
+
+class Student(db.Model):
+    <span class="highlight-gs">__tablename__</span> = "students"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+
+    courses = db.relationship('Course', secondary=tb_student_course,
+                              backref=db.backref('students', lazy='dynamic'),
+                              lazy='dynamic')
+
+class Course(db.Model):
+    <span class="highlight-gs">__tablename__</span> = "courses"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+</code></pre>
+<h3 id="自关联一对多-了解-">自关联一对多(了解)</h3>
+<ul>
+<li>示例场景
+<ul>
+<li>评论与该评论的子评论(评论表)</li>
+<li>参考网易新闻</li>
+</ul>
+</li>
+<li>示例代码</li>
+</ul>
+<pre><code class="language-md highlight-chroma">class Comment(db.Model):
+    """评论"""
+    <span class="highlight-gs">__tablename__</span> = "comments"
+
+    id = db.Column(db.Integer, primary_key=True)
+    # 评论内容
+    content = db.Column(db.Text, nullable=False)
+    # 父评论id
+    parent_id = db.Column(db.Integer, db.ForeignKey("comments.id"))
+    # 父评论(也是评论模型)
+    parent = db.relationship("Comment", remote_side=[id],
+                             backref=db.backref('childs', lazy='dynamic'))
+
+<span class="highlight-gh"># 测试代码
+</span><span class="highlight-gh"></span>if <span class="highlight-gs">__name__</span> == '__main__':
+    db.drop_all()
+    db.create_all()
+
+    com1 = Comment(content='我是主评论1')
+    com2 = Comment(content='我是主评论2')
+    com11 = Comment(content='我是回复主评论1的子评论1')
+    com11.parent = com1
+    com12 = Comment(content='我是回复主评论1的子评论2')
+    com12.parent = com1
+
+    db.session.add_all([com1, com2, com11, com12])
+    db.session.commit()
+    app.run(debug=True)
+</code></pre>
+<h3 id="自关联多对多-了解-">自关联多对多(了解)</h3>
+<ul>
+<li>示例场景
+<ul>
+<li>用户关注其他用户(用户表，中间表)</li>
+</ul>
+</li>
+<li>示例代码</li>
+</ul>
+<pre><code class="language-md highlight-chroma">tb_user_follows = db.Table(
+    "tb_user_follows",
+    db.Column('follower_id', db.Integer, db.ForeignKey('info_user.id'), primary_key=True),  # 粉丝id
+    db.Column('followed_id', db.Integer, db.ForeignKey('info_user.id'), primary_key=True)  # 被关注人的id
+)
+
+class User(db.Model):
+    """用户表"""
+    <span class="highlight-gs">__tablename__</span> = "info_user"
+
+    id = db.Column(db.Integer, primary_key=True)  
+    name = db.Column(db.String(32), unique=True, nullable=False)
+
+    # 用户所有的粉丝，添加了反向引用followed，代表用户都关注了哪些人
+    followers = db.relationship('User',
+                                secondary=tb_user_follows,
+                                primaryjoin=id == tb_user_follows.c.followed_id,
+                                secondaryjoin=id == tb_user_follows.c.follower_id,
+                                backref=db.backref('followed', lazy='dynamic'),
+                                lazy='dynamic')
+</code></pre>
+<h1 id="综合案例-图书管理">综合案例-图书管理</h1>
+<h2 id="创建数据库连接信息-定义模型">创建数据库连接信息，定义模型</h2>
+<pre><code class="language-md highlight-chroma">from flask import Flask, render_template, redirect, url_for, flash, request
+from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
+
+app = Flask(__name__)
+
+<span class="highlight-gh">#开启csrf保护
+</span><span class="highlight-gh"></span>CSRFProtect(app)
+
+<span class="highlight-gh">#设置数据库配置信息
+</span><span class="highlight-gh"></span>app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@127.0.0.1:3306/library2"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False <span class="highlight-ni">#压制警告信息</span>
+
+<span class="highlight-gh">#创建SQLAlchemy对象,关联app
+</span><span class="highlight-gh"></span>db = SQLAlchemy(app)
+
+<span class="highlight-gh">#设置密码
+</span><span class="highlight-gh"></span>app.config['SECRET_KEY'] = "jfkdjfkdkjf"
+
+<span class="highlight-gh">#编写模型类
+</span><span class="highlight-gh">#作者(一方)
+</span><span class="highlight-gh"></span>class Author(db.Model):
+    <span class="highlight-gs">__tablename__</span> = 'authors'
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(64),unique=True)
+
+    <span class="highlight-ni">#关系属性和反向引用</span>
+    books = db.relationship('Book',backref='author')
+
+<span class="highlight-gh">#书籍(多方)
+</span><span class="highlight-gh"></span>class Book(db.Model):
+    <span class="highlight-gs">__tablename__</span> = 'books'
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(64),unique=True)
+
+    <span class="highlight-ni">#外键</span>
+    author_id = db.Column(db.Integer,db.ForeignKey('authors.id')) <span class="highlight-ni">#或者是</span>, Author.id
+
+
+
+
+<span class="highlight-gh">#添加书籍
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/add_book', methods=['POST'])
+def add_book():
+    """
+    思路分析:
+    1.获取参数
+    2.校验参数
+    3.通过作者名称,查询作者对象
+    4.判断作者,判断书籍,进行添加
+    5.重定向展示页
+    :return:
+    """
+    # 1.获取参数
+    author_name = request.form.get("author")
+    book_name = request.form.get("book")
+
+    # 2.校验参数
+    if not all([author_name,book_name]):
+        return "作者或者书籍为空"
+
+    # 3.通过作者名称,查询作者对象
+    author = Author.query.filter(Author.name == author_name).first()  # 有金庸
+
+    # 4.判断作者,判断书籍,进行添加
+    # 判断作者是否存在
+    if author:
+
+        # 通过书籍名称,查询书籍对象 数据库,古龙写了 天龙八部
+        book = Book.query.filter(Book.name == book_name, Book.author_id == author.id).first()
+
+        # 判断书籍是否存在
+        if book:
+            flash('该作者有该书籍')
+        else:
+            # 创建书籍对象,添加到数据库
+            book = Book(name=book_name, author_id=author.id)
+            db.session.add(book)
+            db.session.commit()
+
+    else:
+        # 创建作者添加到数据库
+        author = Author(name=author_name)
+        db.session.add(author)
+        db.session.commit()
+
+        # 创建书籍添加到数据库
+        book = Book(name=book_name, author_id=author.id)
+        db.session.add(book)
+        db.session.commit()
+
+    # 5.重定向展示页
+    return redirect(url_for('show_page'))
+
+
+<span class="highlight-gh">#删除书籍
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/delete_book/<span class="highlight-p">&lt;</span><span class="highlight-nt">int:book_id</span><span class="highlight-p">&gt;</span>')
+def delete_book(book_id):
+    <span class="highlight-ni">#1</span>.根据编号获取书籍对象
+    book = Book.query.get(book_id)
+
+    <span class="highlight-ni">#2</span>.删除书籍
+    db.session.delete(book)
+    db.session.commit()
+
+    <span class="highlight-ni">#3</span>.重定向页面展示
+    return redirect(url_for('show_page'))
+
+<span class="highlight-gh">#删除作者
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/delete_author/<span class="highlight-p">&lt;</span><span class="highlight-nt">int:author_id</span><span class="highlight-p">&gt;</span>')
+def delete_author(author_id):
+    <span class="highlight-ni">#1</span>.通过编号获取作者对象
+    author = Author.query.get(author_id)
+
+    <span class="highlight-ni">#2</span>.删除作者书籍
+    for book in author.books:
+        db.session.delete(book)
+
+    <span class="highlight-ni">#3</span>.删除作者对象
+    db.session.delete(author)
+    db.session.commit()
+
+    <span class="highlight-ni">#4</span>.重定向展示页面
+    return redirect(url_for('show_page'))
+
+
+if <span class="highlight-gs">__name__</span> == '__main__':
+
+    app.run(debug=True)
+</code></pre>
+<h2 id="创建表-添加测试数据">创建表，添加测试数据</h2>
+<pre><code class="language-md highlight-chroma">if <span class="highlight-gs">__name__</span> == '__main__':
+
+    <span class="highlight-ni">#为了演示方便</span>,先删除所有表,再创建
+    db.drop_all()
+    db.create_all()
+
+
+    <span class="highlight-ni">#添加测试数据库</span>
+    # 生成数据
+    au1 = Author(name='老王')
+    au2 = Author(name='老尹')
+    au3 = Author(name='老刘')
+    # 把数据提交给用户会话
+    db.session.add_all([au1, au2, au3])
+    # 提交会话
+    db.session.commit()
+
+
+    bk1 = Book(name='老王回忆录', author_id=au1.id)
+    bk2 = Book(name='我读书少，你别骗我', author_id=au1.id)
+    bk3 = Book(name='如何才能让自己更骚', author_id=au2.id)
+    bk4 = Book(name='怎样征服美丽少女', author_id=au3.id)
+    bk5 = Book(name='如何征服英俊少男', author_id=au3.id)
+    # 把数据提交给用户会话
+    db.session.add_all([bk1, bk2, bk3, bk4, bk5])
+    # 提交会话
+    db.session.commit()
+
+    app.run(debug=True)
+</code></pre>
+<h2 id="数据显示-表单添加">数据显示&amp;表单添加</h2>
+<ul>
+<li>后端代码：</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh">#展示页面
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/')
+def show_page():
+
+    <span class="highlight-ni">#查询数据库</span>
+    authors = Author.query.all()
+
+    # 渲染到页面
+    return render_template('library.html',authors=authors)
+</code></pre>
+<ul>
+<li>前端代码</li>
+<li>创建文件 <strong>library.html</strong> ，编写以下代码：</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-cp">&lt;!DOCTYPE html&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">html</span> <span class="highlight-na">lang</span><span class="highlight-o">=</span><span class="highlight-s">"en"</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">head</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">meta</span> <span class="highlight-na">charset</span><span class="highlight-o">=</span><span class="highlight-s">"UTF-8"</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">title</span><span class="highlight-p">&gt;</span>Title<span class="highlight-p">&lt;/</span><span class="highlight-nt">title</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">head</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;</span><span class="highlight-nt">body</span><span class="highlight-p">&gt;</span>
+    {#注册表单#}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">form</span> <span class="highlight-na">action</span><span class="highlight-o">=</span><span class="highlight-s">"/add_book"</span> <span class="highlight-na">method</span><span class="highlight-o">=</span><span class="highlight-s">"post"</span><span class="highlight-p">&gt;</span>
+
+        {# 设置隐藏的csrf_token #}
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"hidden"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"csrf_token"</span> <span class="highlight-na">value</span><span class="highlight-o">=</span><span class="highlight-s">"{{ csrf_token() }}"</span><span class="highlight-p">&gt;</span>
+
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>作者<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"text"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"author"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+        <span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;</span>书籍<span class="highlight-p">&lt;/</span><span class="highlight-nt">label</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"text"</span> <span class="highlight-na">name</span><span class="highlight-o">=</span><span class="highlight-s">"book"</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+        <span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+        <span class="highlight-p">&lt;</span><span class="highlight-nt">input</span> <span class="highlight-na">type</span><span class="highlight-o">=</span><span class="highlight-s">"submit"</span> <span class="highlight-na">value</span><span class="highlight-o">=</span><span class="highlight-s">"添加"</span><span class="highlight-p">&gt;</span>
+        <span class="highlight-p">&lt;/</span><span class="highlight-nt">p</span><span class="highlight-p">&gt;</span>
+
+        {% for message in get_flashed_messages() %}
+            <span class="highlight-p">&lt;</span><span class="highlight-nt">span</span> <span class="highlight-na">style</span><span class="highlight-o">=</span><span class="highlight-s">"color: red"</span><span class="highlight-p">&gt;</span>{{ message }}<span class="highlight-p">&lt;/</span><span class="highlight-nt">span</span><span class="highlight-p">&gt;</span>
+        {% endfor %}
+
+    <span class="highlight-p">&lt;/</span><span class="highlight-nt">form</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">hr</span><span class="highlight-p">&gt;</span>
+
+    {# 书籍展示 #}
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>书籍展示<span class="highlight-p">&lt;/</span><span class="highlight-nt">h2</span><span class="highlight-p">&gt;</span>
+    <span class="highlight-p">&lt;</span><span class="highlight-nt">ul</span><span class="highlight-p">&gt;</span>
+        {% for author in authors %}
+            <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>作者: {{ author.name }} <span class="highlight-p">&lt;</span><span class="highlight-nt">a</span> <span class="highlight-na">href</span><span class="highlight-o">=</span><span class="highlight-s">"{{ url_for('delete_author',author_id=author.id) }}"</span><span class="highlight-p">&gt;</span>删除<span class="highlight-p">&lt;/</span><span class="highlight-nt">a</span><span class="highlight-p">&gt;&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+            <span class="highlight-p">&lt;</span><span class="highlight-nt">ul</span><span class="highlight-p">&gt;</span>
+                {% for book in author.books %}
+                    <span class="highlight-p">&lt;</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;</span>书籍: {{ book.name }} <span class="highlight-p">&lt;</span><span class="highlight-nt">a</span> <span class="highlight-na">href</span><span class="highlight-o">=</span><span class="highlight-s">"{{ url_for('delete_book',book_id=book.id) }}"</span><span class="highlight-p">&gt;</span>删除<span class="highlight-p">&lt;/</span><span class="highlight-nt">a</span><span class="highlight-p">&gt;&lt;/</span><span class="highlight-nt">li</span><span class="highlight-p">&gt;&lt;</span><span class="highlight-nt">br</span><span class="highlight-p">&gt;</span>
+                {% endfor %}
+            <span class="highlight-p">&lt;/</span><span class="highlight-nt">ul</span><span class="highlight-p">&gt;</span>
+        {% endfor %}
+    <span class="highlight-p">&lt;/</span><span class="highlight-nt">ul</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">body</span><span class="highlight-p">&gt;</span>
+<span class="highlight-p">&lt;/</span><span class="highlight-nt">html</span><span class="highlight-p">&gt;</span>
+</code></pre>
+<h2 id="添加数据">添加数据</h2>
+<ul>
+<li>添加书籍
+<pre><code class="language-md highlight-chroma"><span class="highlight-ni">@app</span>.route('/add_book', methods=['POST'])
+def add_book():
+  """
+  思路分析:
+  1.获取参数
+  2.校验参数
+  3.通过作者名称,查询作者对象
+  4.判断作者,判断书籍,进行添加
+  5.重定向展示页
+  :return:
+  """
+  # 1.获取参数
+  author_name = request.form.get("author")
+  book_name = request.form.get("book")
+
+  # 2.校验参数
+  if not all([author_name,book_name]):
+      return "作者或者书籍为空"
+
+  # 3.通过作者名称,查询作者对象
+  author = Author.query.filter(Author.name == author_name).first()  # 有金庸
+
+  # 4.判断作者,判断书籍,进行添加
+  # 判断作者是否存在
+  if author:
+
+      # 通过书籍名称,查询书籍对象 数据库,古龙写了 天龙八部
+      book = Book.query.filter(Book.name == book_name, Book.author_id == author.id).first()
+
+      # 判断书籍是否存在
+      if book:
+          flash('该作者有该书籍')
+      else:
+          # 创建书籍对象,添加到数据库
+          book = Book(name=book_name, author_id=author.id)
+          db.session.add(book)
+          db.session.commit()
+
+  else:
+      # 创建作者添加到数据库
+      author = Author(name=author_name)
+      db.session.add(author)
+      db.session.commit()
+
+      # 创建书籍添加到数据库
+      book = Book(name=book_name, author_id=author.id)
+      db.session.add(book)
+      db.session.commit()
+
+  # 5.重定向展示页
+  return redirect(url_for('show_page'))
+</code></pre>
+</li>
+</ul>
+<h2 id="删除数据">删除数据</h2>
+<ul>
+<li>删除书籍</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh">#删除书籍
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/delete_book/<span class="highlight-p">&lt;</span><span class="highlight-nt">int:book_id</span><span class="highlight-p">&gt;</span>')
+def delete_book(book_id):
+    <span class="highlight-ni">#1</span>.根据编号获取书籍对象
+    book = Book.query.get(book_id)
+
+    <span class="highlight-ni">#2</span>.删除书籍
+    db.session.delete(book)
+    db.session.commit()
+
+    <span class="highlight-ni">#3</span>.重定向页面展示
+    return redirect(url_for('show_page'))
+</code></pre>
+<ul>
+<li>删除作者</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-gh">#删除作者
+</span><span class="highlight-gh"></span><span class="highlight-ni">@app</span>.route('/delete_author/<span class="highlight-p">&lt;</span><span class="highlight-nt">int:author_id</span><span class="highlight-p">&gt;</span>')
+def delete_author(author_id):
+    <span class="highlight-ni">#1</span>.通过编号获取作者对象
+    author = Author.query.get(author_id)
+
+    <span class="highlight-ni">#2</span>.删除作者书籍
+    for book in author.books:
+        db.session.delete(book)
+
+    <span class="highlight-ni">#3</span>.删除作者对象
+    db.session.delete(author)
+    db.session.commit()
+
+    <span class="highlight-ni">#4</span>.重定向展示页面
+    return redirect(url_for('show_page'))
+</code></pre>
+<h1 id="蓝图-单元测试">蓝图&amp;单元测试</h1>
+<h1 id="Blueprint">Blueprint</h1>
+<h3 id="模块化">模块化</h3>
+<p>随着 flask 程序越来越复杂，我们需要对程序进行模块化的处理，之前学习过 python 的模块化管理，于是针对一个简单的 flask 程序进行模块化处理</p>
+<p>举例来说：</p>
+<p>我们有一个博客程序，前台界面需要的路由为：首页，列表，详情等页面</p>
+<pre><code class="language-md highlight-chroma">源程序app.py文件:
+from flask import Flask
+
+app=Flask(__name__)
+
+<span class="highlight-ni">@app</span>.route('/')
+def index():
+    return 'index'
+
+<span class="highlight-ni">@app</span>.route('/list')
+def list():
+    return 'list'
+
+<span class="highlight-ni">@app</span>.route('/detail')
+def detail():
+    return 'detail'
+
+if <span class="highlight-gs">__name__</span>=='__main__':
+    app.run()
+</code></pre>
+<p>如果博主需要编辑博客，要进入后台进行处理：后台主页，编辑，创建，发布博客</p>
+<pre><code class="language-md highlight-chroma">改进后程序:
+from flask import Flask
+
+app=Flask(__name__)
+
+<span class="highlight-ni">@app</span>.route('/')
+def index():
+    return 'index'
+
+<span class="highlight-ni">@app</span>.route('/list')
+def list():
+    return 'list'
+
+<span class="highlight-ni">@app</span>.route('/detail')
+def detail():
+    return 'detail'
+
+<span class="highlight-ni">@app</span>.route('/')
+def admin_home():
+    return 'admin_home'
+
+<span class="highlight-ni">@app</span>.route('/new')
+def new():
+    return 'new'
+
+<span class="highlight-ni">@app</span>.route('/edit')
+def edit():
+    return 'edit'
+
+<span class="highlight-ni">@app</span>.route('/publish')
+def publish():
+    return 'publish'
+
+if <span class="highlight-gs">__name__</span>=='__main__':
+    app.run()
+</code></pre>
+<ul>
+<li>问题： 这样就使得我们在一个 py 文件中写入了很多路由，将来维护代码会非常麻烦，</li>
+<li>此时，考虑到了模块化的处理方式，将 admin 相关的路由写到一个 admin.py 文件中</li>
+</ul>
+<pre><code class="language-md highlight-chroma">修改后的代码:
+app.py
+from flask import Flask
+
+app=Flask(__name__)
+
+<span class="highlight-ni">@app</span>.route('/')
+def index():
+    return 'index'
+
+<span class="highlight-ni">@app</span>.route('/list')
+def list():
+    return 'list'
+
+<span class="highlight-ni">@app</span>.route('/detail')
+def detail():
+    return 'detail'
+
+if <span class="highlight-gs">__name__</span>=='__main__':
+    app.run()
+
+admin.py
+
+<span class="highlight-ni">@app</span>.route('/')
+def admin_home():
+    return 'admin_home'
+
+<span class="highlight-ni">@app</span>.route('/new')
+def new():
+    return 'new'
+
+<span class="highlight-ni">@app</span>.route('/edit')
+def edit():
+    return 'edit'
+
+<span class="highlight-ni">@app</span>.route('/publish')
+def publish():
+    return 'publish'
+</code></pre>
+<ul>
+<li>问题： 发现 app.py 文件中的 app 直接报错，代码无法继续写下去</li>
+<li>解决： 需要使用蓝图，flask 中提供了 Blueprint 类，来专门处理模块化开发</li>
+</ul>
+<h3 id="Blueprint概念">Blueprint 概念</h3>
+<ul>
+<li>简单来说，Blueprint 是一个存储操作方法的容器，</li>
+<li>这些操作在这个 Blueprint 被注册到一个应用之后就可以被调用，</li>
+<li>Flask 可以通过 Blueprint 来组织 URL 以及处理请求。</li>
+</ul>
+<p>Flask 使用 Blueprint 让应用实现模块化，在 Flask 中，Blueprint 具有如下属性：</p>
+<ul>
+<li>一个应用可以具有多个 Blueprint</li>
+<li>在一个应用中，一个模块可以注册多次</li>
+<li>Blueprint 可以单独具有自己的模板、静态文件或者其它的通用操作方法</li>
+<li>在一个应用初始化时，就应该要注册需要使用的 Blueprint</li>
+<li>一个 Blueprint 并不是一个完整的应用，它不能独立于应用运行，而必须要注册到某一个应用中。</li>
+</ul>
+<h3 id="初识蓝图">初识蓝图</h3>
+<p>蓝图/Blueprint 对象用起来和一个应用/Flask 对象差不多，最大的区别在于一个 蓝图对象没有办法独立运行，必须将它注册到一个应用对象上才能生效</p>
+<p>使用蓝图可以分为三个步骤</p>
+<ul>
+<li>1，创建一个蓝图对象</li>
+</ul>
+<pre><code class="language-md highlight-chroma">admin=Blueprint('admin',__name__)
+</code></pre>
+<ul>
+<li>2，在这个蓝图对象上进行操作，注册路由，指定静态文件夹，注册模版过滤器</li>
+</ul>
+<pre><code class="language-md highlight-chroma"><span class="highlight-ni">@admin</span>.route('/')
+def admin_home():
+    return 'admin_home'
+</code></pre>
+<ul>
+<li>3，在应用对象上注册这个蓝图对象</li>
+</ul>
+<pre><code class="language-md highlight-chroma">app.register_blueprint(admin,url\_prefix='/admin')
+</code></pre>
+<p>当这个应用启动后，通过/admin/可以访问到蓝图中定义的视图函数</p>
+<h3 id="蓝图对象中的参数">蓝图对象中的参数</h3>
+<h4 id="蓝图的url前缀">蓝图的 url 前缀</h4>
+<ul>
+<li>当我们在应用对象上注册一个蓝图时，可以指定一个 url_prefix 关键字参数（这个参数默认是/）</li>
+<li>在应用最终的路由表 url_map 中，在蓝图上注册的路由 URL 自动被加上了这个前缀，这个可以保证在多个蓝图中使用相同的 URL 规则而不会最终引起冲突，只要在注册蓝图时将不同的蓝图挂接到不同的自路径即可</li>
+<li>url_for</li>
+</ul>
+<pre><code class="language-md highlight-chroma">url_for('admin.index') # /admin/
+</code></pre>
+<h4 id="注册静态路由">注册静态路由</h4>
+<p>和应用对象不同，蓝图对象创建时不会默认注册静态目录的路由。需要我们在 创建时指定 static_folder 参数。</p>
+<p>下面的示例将蓝图所在目录下的 static_admin 目录设置为静态目录</p>
+<pre><code class="language-md highlight-chroma">admin = Blueprint("admin",__name__,static_folder='static_admin')
+app.register_blueprint(admin,url_prefix='/admin')
+</code></pre>
+<p>现在就可以使用/admin/static_admin/ 访问 static_admin 目录下的静态文件了 定制静态目录 URL 规则 ：可以在创建蓝图对象时使用 static_url_path 来改变静态目录的路由。下面的示例将为 static_admin 文件夹的路由设置为 /lib</p>
+<pre><code class="language-md highlight-chroma">admin = Blueprint("admin",__name__,static_folder='static_admin',static_url_path='/lib')
+app.register_blueprint(admin,url_prefix='/admin')
+</code></pre>
+<h4 id="设置模版目录">设置模版目录</h4>
+<p>蓝图对象默认的模板目录为系统的模版目录，可以在创建蓝图对象时使用 template_folder 关键字参数设置模板目录</p>
+<pre><code class="language-md highlight-chroma">admin = Blueprint('admin',__name__,template_folder='my_templates')
+</code></pre>
+<blockquote>
+<p>注：如果在 templates 中存在和 my_templates 同名文件，则系统会优先使用 templates 中的文件 参考链接：<a href="https://stackoverflow.com/questions/7974771/flask-blueprint-template-folder" target="_blank">https://stackoverflow.com/questions/7974771/flask-blueprint-template-folder</a></p>
+</blockquote>
+<h1 id="单元测试">单元测试</h1>
+<h3 id="为什么要测试-">为什么要测试？</h3>
+<p>Web 程序开发过程一般包括以下几个阶段：[需求分析，设计阶段，实现阶段，测试阶段]。其中测试阶段通过人工或自动来运行测试某个系统的功能。目的是检验其是否满足需求，并得出特定的结果，以达到弄清楚预期结果和实际结果之间的差别的最终目的。</p>
+<h4 id="测试的分类-">测试的分类：</h4>
+<p>测试从软件开发过程可以分为：</p>
+<ul>
+<li>单元测试
+<ul>
+<li>对单独的代码块(例如函数)分别进行测试，以保证它们的正确性</li>
+</ul>
+</li>
+<li>集成测试
+<ul>
+<li>对大量的程序单元的协同工作情况做测试</li>
+</ul>
+</li>
+<li>系统测试
+<ul>
+<li>同时对整个系统的正确性进行检查，而不是针对独立的片段</li>
+</ul>
+</li>
+</ul>
+<p>在众多的测试中，与程序开发人员最密切的就是单元测试，因为单元测试是由开发人员进行的，而其他测试都由专业的测试人员来完成。所以我们主要学习单元测试。</p>
+<h3 id="什么是单元测试-">什么是单元测试？</h3>
+<p>程序开发过程中，写代码是为了实现需求。当我们的代码通过了编译，只是说明它的语法正确，功能能否实现则不能保证。 因此，当我们的某些功能代码完成后，为了检验其是否满足程序的需求。可以通过编写测试代码，模拟程序运行的过程，检验功能代码是否符合预期。</p>
+<p>单元测试就是开发者编写一小段代码，检验目标代码的功能是否符合预期。通常情况下，单元测试主要面向一些功能单一的模块进行。</p>
+<p>举个例子：一部手机有许多零部件组成，在正式组装一部手机前，手机内部的各个零部件，CPU、内存、电池、摄像头等，都要进行测试，这就是单元测试。</p>
+<p>在 Web 开发过程中，单元测试实际上就是一些“断言”（assert）代码。</p>
+<p>断言就是判断一个函数或对象的一个方法所产生的结果是否符合你期望的那个结果。 python 中 assert 断言是声明布尔值为真的判定，如果表达式为假会发生异常。单元测试中，一般使用 assert 来断言结果。</p>
+<h4 id="断言方法的使用-">断言方法的使用：</h4>
+<p><img src="https://b3logfile.com/file/2020/10/%E6%96%AD%E8%A8%80-be9f3ba0.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100" alt="断言.png"></p>
+<p>断言语句类似于：</p>
+<pre><code class="highlight-chroma">if not expression:  
+    raise AssertionError
+ AssertionError
+</code></pre>
+<p><strong>常用的断言方法：</strong></p>
+<pre><code class="highlight-chroma">assertEqual &nbsp; &nbsp; 如果两个值相等，则pass
+assertNotEqual  如果两个值不相等，则pass
+assertTrue &nbsp; &nbsp;  判断bool值为True，则pass
+assertFalse &nbsp; &nbsp; 判断bool值为False，则pass
+assertIsNone &nbsp;  不存在，则pass
+assertIsNotNone 存在，则pass
+</code></pre>
+<h3 id="单元测试的基本写法-">单元测试的基本写法：</h3>
+<p><strong>首先</strong>，定义一个类，继承自 unittest.TestCase</p>
+<pre><code class="highlight-chroma">import unittest
+class TestClass(unitest.TestCase):
+ &nbsp; &nbsp;pass
+</code></pre>
+<p><strong>其次</strong>，在测试类中，定义两个测试方法</p>
+<pre><code class="highlight-chroma">import unittest
+class TestClass(unittest.TestCase):
+
+ &nbsp; &nbsp;#该方法会首先执行，方法名为固定写法
+ &nbsp; &nbsp;def setUp(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;pass
+
+ &nbsp; &nbsp;#该方法会在测试代码执行完后执行，方法名为固定写法
+ &nbsp; &nbsp;def tearDown(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;pass
+</code></pre>
+<p><strong>最后</strong>，在测试类中，编写测试代码</p>
+<pre><code class="highlight-chroma">import unittest
+class TestClass(unittest.TestCase):
+
+ &nbsp; &nbsp;#该方法会首先执行，相当于做测试前的准备工作
+ &nbsp; &nbsp;def setUp(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;pass
+
+ &nbsp; &nbsp;#该方法会在测试代码执行完后执行，相当于做测试后的扫尾工作
+ &nbsp; &nbsp;def tearDown(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;pass
+ &nbsp; &nbsp;#测试代码
+ &nbsp; &nbsp;def test_app_exists(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;pass
+</code></pre>
+<h3 id="登录测试">登录测试</h3>
+<ul>
+<li>被测试的代码逻辑</li>
+</ul>
+<pre><code class="highlight-chroma">@app.route('/login', methods=['POST'])
+def login():
+ &nbsp; &nbsp;username = request.form.get('username')
+ &nbsp; &nbsp;password = request.form.get('password')
+
+ &nbsp; &nbsp;# 判断参数是否为空
+ &nbsp; &nbsp;if not all([username, password]):
+ &nbsp; &nbsp; &nbsp; &nbsp;result = {
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"errcode": -2,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"errmsg": "params error"
+ &nbsp; &nbsp; &nbsp;  }
+ &nbsp; &nbsp; &nbsp; &nbsp;return jsonify(result)
+
+ &nbsp; &nbsp;# a = 1 / 0
+ &nbsp; &nbsp;# 如果账号密码正确
+ &nbsp; &nbsp;# 判断账号密码是否正确
+ &nbsp; &nbsp;if username == 'itheima' and password == 'python':
+ &nbsp; &nbsp; &nbsp; &nbsp;result = {
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"errcode": 0,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"errmsg": "success"
+ &nbsp; &nbsp; &nbsp;  }
+ &nbsp; &nbsp; &nbsp; &nbsp;return jsonify(result)
+ &nbsp; &nbsp;else:
+ &nbsp; &nbsp; &nbsp; &nbsp;result = {
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"errcode": -1,
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"errmsg": "wrong username or password"
+ &nbsp; &nbsp; &nbsp;  }
+ &nbsp; &nbsp; &nbsp; &nbsp;return jsonify(result)
+</code></pre>
+<ul>
+<li>单元测试代码</li>
+</ul>
+<pre><code class="highlight-chroma">import json
+import unittest
+from demo1_login import app
+
+class LoginTest(unittest.TestCase):
+ &nbsp; &nbsp;"""为登录逻辑编写测试案例"""
+
+ &nbsp; &nbsp;def setUp(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;app.testing = True
+ &nbsp; &nbsp; &nbsp; &nbsp;self.client = app.test_client()
+
+ &nbsp; &nbsp;def test_empty_username_password(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;"""测试用户名与密码为空的情况[当参数不全的话，返回errcode=-2]"""
+ &nbsp; &nbsp; &nbsp; &nbsp;response = app.test_client().post('/login', data={})
+ &nbsp; &nbsp; &nbsp; &nbsp;json_data = response.data
+ &nbsp; &nbsp; &nbsp; &nbsp;json_dict = json.loads(json_data)
+
+ &nbsp; &nbsp; &nbsp; &nbsp;self.assertIn('errcode', json_dict, '数据格式返回错误')
+ &nbsp; &nbsp; &nbsp; &nbsp;self.assertEqual(json_dict['errcode'], -2, '状态码返回错误')
+
+ &nbsp; &nbsp; &nbsp; &nbsp;# TODO 测试用户名为空的情况
+
+ &nbsp; &nbsp; &nbsp; &nbsp;# TODO 测试密码为空的情况
+
+ &nbsp; &nbsp;def test_error_username_password(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;"""测试用户名和密码错误的情况[当登录名和密码错误的时候，返回 errcode = -1]"""
+ &nbsp; &nbsp; &nbsp; &nbsp;response = app.test_client().post('/login', data={"username": "aaaaa", "password": "12343"})
+ &nbsp; &nbsp; &nbsp; &nbsp;json_data = response.data
+ &nbsp; &nbsp; &nbsp; &nbsp;json_dict = json.loads(json_data)
+ &nbsp; &nbsp; &nbsp; &nbsp;self.assertIn('errcode', json_dict, '数据格式返回错误')
+ &nbsp; &nbsp; &nbsp; &nbsp;self.assertEqual(json_dict['errcode'], -1, '状态码返回错误')
+
+ &nbsp; &nbsp; &nbsp; &nbsp;# TODO 测试用户名错误的情况
+
+ &nbsp; &nbsp; &nbsp; &nbsp;# TODO 测试密码错误的情况
+
+if __name__ == '__main__':
+ &nbsp; &nbsp;unittest.main()
+</code></pre>
+<h3 id="数据库测试-">数据库测试：</h3>
+<pre><code class="highlight-chroma">#coding=utf-8
+import unittest
+from author_book import *
+
+#自定义测试类，setUp方法和tearDown方法会分别在测试前后执行。以test_开头的函数就是具体的测试代码。
+class DatabaseTestCase(unittest.TestCase):
+ &nbsp; &nbsp;def setUp(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;app.config['TESTING'] = True
+ &nbsp; &nbsp; &nbsp; &nbsp;app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:mysql@localhost/test0'
+ &nbsp; &nbsp; &nbsp; &nbsp;self.app = app
+ &nbsp; &nbsp; &nbsp; &nbsp;db.create_all()
+
+ &nbsp; &nbsp;def tearDown(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;db.session.remove()
+ &nbsp; &nbsp; &nbsp; &nbsp;db.drop_all()
+
+ &nbsp; &nbsp;#测试代码
+ &nbsp; &nbsp;def test_append_data(self):
+ &nbsp; &nbsp; &nbsp; &nbsp;au = Author(name='itcast')
+ &nbsp; &nbsp; &nbsp; &nbsp;bk = Book(info='python')
+ &nbsp; &nbsp; &nbsp; &nbsp;db.session.add_all([au,bk])
+ &nbsp; &nbsp; &nbsp; &nbsp;db.session.commit()
+ &nbsp; &nbsp; &nbsp; &nbsp;author = Author.query.filter_by(name='itcast').first()
+ &nbsp; &nbsp; &nbsp; &nbsp;book = Book.query.filter_by(info='python').first()
+ &nbsp; &nbsp; &nbsp; &nbsp;#断言数据存在
+ &nbsp; &nbsp; &nbsp; &nbsp;self.assertIsNotNone(author)
+ &nbsp; &nbsp; &nbsp; &nbsp;self.assertIsNotNone(book)
+</code></pre>
+<p>作者 : General</p>
+<p>地址 : <a href="http://www.yanghelong.top" target="_blank">http://www.yanghelong.top</a></p>
+                    <div>
+                        <hr>
+
+标题：Flask框架<br>
+作者：<a href="https://ZZUGEneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGEneral.github.io/articles/2020/10/21/1603288674744.html" target="_blank">https://ZZUGEneral.github.io/articles/2020/10/21/1603288674744.html</a><br>
+一个没有得到Java开发工作的测试员！
+<!-- 签名档内可使用 HTML、JavaScript -->
+<br>
+                    </div>
+            </section>
+        </div>
+
+    </div>
+        <div class="post__toc">
+<ul class="article__toc">
+        <li class="toc__h1">
+            <a href="#Flask基础">Flask 基础</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#Flask简介">Flask 简介</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#安装">安装</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#Hello-World">Hello World</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#参数讲解">参数讲解</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#相关配置加载方式">相关配置加载方式</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#配置文件">配置文件</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#环境变量-了解-">环境变量(了解)</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#app-run的参数">app.run 的参数</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#路由设置">路由设置</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#指定路由地址">指定路由地址</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#路由传参">路由传参</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#指定请求方式">指定请求方式</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#响应">响应</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#生成json数据响应体">生成 JSON 数据响应体</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#使用redirect-url-for-生成文本响应体">使用 redirect,url_for，生成文本响应体</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#重定向">重定向</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#返回字符串-自定义状态码-返回文本响应体">返回字符串，自定义状态码，返回文本响应体</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#转换器">转换器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#系统自带转换器">系统自带转换器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#自定义转换器">自定义转换器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#代码实现">代码实现</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#异常处理">异常处理</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#abort-异常抛出">abort，异常抛出</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#errorhandler-异常捕获">errorhandler，异常捕获</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#请求勾子">请求勾子</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#request">request</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#Web表单">Web 表单</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#WTForms支持的HTML标准字段">WTForms 支持的 HTML 标准字段</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#WTForms常用验证函数">WTForms 常用验证函数</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#传统Demo">传统 Demo</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#WTF-DEMO">WTF DEMO</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#进阶">进阶</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#状态保持">状态保持</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#状态相关概念">状态相关概念</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Cookie">Cookie</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#什么是cookie">什么是 cookie</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#cookie使用场景">cookie 使用场景</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#三-设置-获取cookie">三。设置，获取 cookie</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Session">Session</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#一-session作用">一。session 作用</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#二-session设置-获取">二。session 设置，获取</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#上下文">上下文</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-请求上下文-request-context-">一。请求上下文(request context)</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-应用上下文-application-context-">二。应用上下文(application context)</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#current-app">current_app</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#g变量">g 变量</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#两者区别">两者区别</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#Flask-Script-扩展">Flask-Script 扩展</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-flask-script作用">一。flask_script 作用</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-代码实现">二。代码实现</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#Jinja2模板引擎">Jinja2 模板引擎</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-Jinja2模板概述">一。Jinja2 模板概述</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-Jinja2特点">二。Jinja2 特点</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#模板的使用">模板的使用</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-Jinja2模板语法">一。Jinja2 模板语法</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-代码展示">二。代码展示</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#扩展-">扩展：</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#Jinja2自带过滤器">Jinja2 自带过滤器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-过滤器概述">一。过滤器概述</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-两种过滤器">二。两种过滤器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#字符串">字符串</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#列表">列表</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#其他操作语句">其他操作语句</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#语句块操作">语句块操作</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#链式调用">链式调用</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#自定义过滤器">自定义过滤器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-为什么要自定义过滤器">一。为什么要自定义过滤器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-自定义过滤器两种方式">二。自定义过滤器两种方式</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#方式一">方式一</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#方式二">方式二</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#三-在html代码中使用过滤器">三。在 HTML 代码中使用过滤器</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#模板使用练习">模板使用练习</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#模板代码复用">模板代码复用</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#宏">宏</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#一-什么是宏">一。什么是宏</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#二-定义宏-使用宏">二。定义宏，使用宏</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#三-代码展示">三。代码展示</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#模板继承-包含">模板继承，包含</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#一-什么是继承">一。什么是继承</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#二-继承的格式">二。继承的格式</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#子模板">子模板</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#包含">包含</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#一-什么是包含">一。什么是包含</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#二-包含的使用">二。包含的使用</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#三-代码展示-">三。代码展示</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#小结">小结</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#模板中特有的变量和函数">模板中特有的变量和函数</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#config">config</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#request-">request</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#g变量-">g 变量</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#url-for--">url_for()</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#get-flashed-messages--">get_flashed_messages()</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#CSRF-理解-">CSRF(理解)</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一--什么是CSRFToken-">一。 什么是 CSRFToken?</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-CSRF攻击示意图">二。CSRF 攻击示意图</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#三-防止CSRF攻击">三。防止 CSRF 攻击</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#四-csrf校验机制作用域代码">四。csrf 校验机制作用域代码</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#数据库">数据库</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#ORM">ORM</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-什么是ORM">一。什么是 ORM</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#ORM图解">ORM 图解</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-ORM的优缺点有哪些-">二。ORM 的优缺点有哪些？</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#Flask-SQLAlchemy安装及设置">Flask-SQLAlchemy 安装及设置</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-安装">一，安装</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-数据库连接设置">二，数据库连接设置</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#三-其他配置信息">三，其他配置信息</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#连接其他数据库">连接其他数据库</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#常用的SQLAlchemy字段类型">常用的 SQLAlchemy 字段类型</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#常用的SQLAlchemy列选项">常用的 SQLAlchemy 列选项</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#常用的SQLAlchemy关系选项">常用的 SQLAlchemy 关系选项</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#数据库基本操作">数据库基本操作</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一-在视图函数中定义模型类">一，在视图函数中定义模型类</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#二-关键代码格式">二，关键代码格式</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#三-常见的操作语句">三，常见的操作语句</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#四-常用的SQLAlchemy查询过滤器">四，常用的 SQLAlchemy 查询过滤器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#五-常用的SQLAlchemy查询执行器">五，常用的 SQLAlchemy 查询执行器</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#六-练习数据库查询操作">六，练习数据库查询操作</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#七-代码参考">七，代码参考</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#查询-filter-by精确查询">查询：filter_by 精确查询</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#first--返回查询到的第一个对象">first()返回查询到的第一个对象</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#all--返回查询到的所有对象">all()返回查询到的所有对象</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#filter模糊查询-返回名字结尾字符为g的所有数据-">filter 模糊查询，返回名字结尾字符为 g 的所有数据。</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#get---参数为主键-如果主键不存在没有返回内容">get():参数为主键，如果主键不存在没有返回内容</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#逻辑非-返回名字不等于wang的所有数据">逻辑非，返回名字不等于 wang 的所有数据</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#not--相当于取反">not_ 相当于取反</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#逻辑与-需要导入and-返回and--条件满足的所有数据">逻辑与，需要导入 and，返回 and()条件满足的所有数据</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#逻辑或-需要导入or-">逻辑或，需要导入 or_</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#查询数据后删除">查询数据后删除</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#更新数据">更新数据</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#关联查询示例-">关联查询示例：</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#多对多演练">多对多演练</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#场景示例">场景示例</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#需求分析">需求分析</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#思路分析">思路分析</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#学生表-Student-">学生表(Student)</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#选修课表-Course-">选修课表(Course)</a>
+        </li>
+        <li class="toc__h5">
+            <a href="#数据关联关系表-Student-Course-">数据关联关系表(Student_Course)</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#结果">结果</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#代码演练">代码演练</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#数据库迁移">数据库迁移</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#创建迁移仓库">创建迁移仓库</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#创建迁移脚本">创建迁移脚本</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#更新数据库">更新数据库</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#返回以前的版本">返回以前的版本</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#实际操作顺序-">实际操作顺序：</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#常见关系模板代码">常见关系模板代码</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#一对多">一对多</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#多对多">多对多</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#自关联一对多-了解-">自关联一对多(了解)</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#自关联多对多-了解-">自关联多对多(了解)</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#综合案例-图书管理">综合案例-图书管理</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#创建数据库连接信息-定义模型">创建数据库连接信息，定义模型</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#创建表-添加测试数据">创建表，添加测试数据</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#数据显示-表单添加">数据显示&表单添加</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#添加数据">添加数据</a>
+        </li>
+        <li class="toc__h2">
+            <a href="#删除数据">删除数据</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#蓝图-单元测试">蓝图&单元测试</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#Blueprint">Blueprint</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#模块化">模块化</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#Blueprint概念">Blueprint 概念</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#初识蓝图">初识蓝图</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#蓝图对象中的参数">蓝图对象中的参数</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#蓝图的url前缀">蓝图的 url 前缀</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#注册静态路由">注册静态路由</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#设置模版目录">设置模版目录</a>
+        </li>
+        <li class="toc__h1">
+            <a href="#单元测试">单元测试</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#为什么要测试-">为什么要测试？</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#测试的分类-">测试的分类：</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#什么是单元测试-">什么是单元测试？</a>
+        </li>
+        <li class="toc__h4">
+            <a href="#断言方法的使用-">断言方法的使用：</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#单元测试的基本写法-">单元测试的基本写法：</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#登录测试">登录测试</a>
+        </li>
+        <li class="toc__h3">
+            <a href="#数据库测试-">数据库测试：</a>
+        </li>
+</ul>        </div>
+        <div class="wrapper">
+            <div id="gitalk-container"></div>
+            <div id="vcomment"
+                 style="    margin-bottom: 40px; margin-top: 80px;
+        border: 1px solid rgba(255,255,255,0.8);
+        border-radius: 5px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        padding: 20px;"
+                 data-name="General" data-postId="1603288674744"></div>
+            <div id="b3logsolocomments"></div>
+        </div>
+    <div class="article__bottom">
+        <div class="wrapper">
+            <div class="fn__flex">
+                <div class="item" id="randomArticles"></div>
+                <div class="item" id="relevantArticles"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script type="text/javascript"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        charset="utf-8"></script>
+<footer class="footer">
+    <div class="wrapper">
+            <a href="https://ld246.com/member/General"
+       title="https://ld246.com/member/General"
+       class="user__site"
+       target="_blank" rel="noopener nofollow">
+        <svg viewBox="0 0 32 32" width="100%" height="100%">
+            <path fill="#d23f31" style="fill: var(--color1, #d23f31)" d="M5.787 17.226h17.033l5.954 9.528c0.47 0.752 0.003 1.361-1.042 1.361h-15.141z"></path>
+            <path d="M10.74 3.927h17.033c1.045 0 1.512 0.609 1.042 1.361l-5.954 9.528h-19.872l6.379-10.209c0.235-0.376 0.849-0.681 1.372-0.681z"></path>
+            <path d="M2.953 17.226h2.839l6.804 10.889h-1.892c-0.523 0-1.137-0.305-1.372-0.681z"></path>
+        </svg>
+    </a>
+
+        <a href="https://github.com/ZZUGeneral"
+           title="https://github.com/ZZUGeneral"
+           class="user__site"
+           target="_blank" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M16 0.331c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z"></path>
+            </svg>
+        </a>
+
+        <a href="https://www.linkedin.com/in/yhlgeneral"
+           title="https://www.linkedin.com/in/yhlgeneral"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.32 23.443h4.211v-12.651h-4.211v12.651zM8.805 6.891c-0.018-1.24-0.911-2.188-2.352-2.188s-2.388 0.948-2.388 2.188c0 1.203 0.911 2.187 2.333 2.187h0.018c1.477 0 2.388-0.984 2.388-2.187zM19.469 23.443h4.211v-7.255c0-3.883-2.078-5.688-4.849-5.688-2.26 0-3.263 1.258-3.81 2.133h0.036v-1.841h-4.211s0.055 1.185 0 12.651v0h4.211v-7.073c0-0.365 0.018-0.747 0.128-1.021 0.31-0.747 1.003-1.531 2.169-1.531 1.513 0 2.115 1.148 2.115 2.862v6.763zM28 5.25v17.5c0 2.898-2.352 5.25-5.25 5.25h-17.5c-2.898 0-5.25-2.352-5.25-5.25v-17.5c0-2.898 2.352-5.25 5.25-5.25h17.5c2.898 0 5.25 2.352 5.25 5.25z"></path>
+            </svg>
+        </a>
+        <a href="https://weibo.com/18203879479"
+           title="https://weibo.com/18203879479"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M13.444 27.064c-5.3 0.525-9.875-1.875-10.219-5.35-0.344-3.481 3.675-6.719 8.969-7.244 5.3-0.525 9.875 1.875 10.212 5.35 0.35 3.481-3.669 6.725-8.963 7.244zM24.038 15.521c-0.45-0.137-0.762-0.225-0.525-0.819 0.512-1.287 0.563-2.394 0.006-3.188-1.038-1.481-3.881-1.406-7.137-0.037 0 0-1.025 0.444-0.762-0.363 0.5-1.613 0.425-2.956-0.356-3.737-1.769-1.769-6.469 0.069-10.5 4.1-3.013 3.006-4.763 6.212-4.763 8.981 0 5.287 6.787 8.506 13.425 8.506 8.7 0 14.494-5.056 14.494-9.069 0-2.431-2.044-3.806-3.881-4.375z"></path>
+                <path d="M29.819 5.833c-2.1-2.331-5.2-3.219-8.063-2.612v0c-0.663 0.144-1.081 0.794-0.938 1.45 0.144 0.662 0.788 1.081 1.45 0.938 2.038-0.431 4.238 0.2 5.731 1.856s1.9 3.913 1.256 5.888v0c-0.206 0.644 0.144 1.331 0.788 1.544 0.644 0.206 1.331-0.144 1.544-0.787v-0.006c0.9-2.762 0.331-5.938-1.769-8.269z"></path>
+                <path d="M26.588 8.752c-1.025-1.138-2.538-1.569-3.925-1.269-0.569 0.119-0.931 0.688-0.813 1.256 0.125 0.569 0.688 0.931 1.25 0.806v0c0.681-0.144 1.419 0.069 1.919 0.619 0.5 0.556 0.637 1.313 0.419 1.975v0c-0.175 0.55 0.125 1.15 0.681 1.331 0.556 0.175 1.15-0.125 1.331-0.681 0.438-1.356 0.163-2.906-0.863-4.037z"></path>
+                <path d="M13.738 20.771c-0.188 0.319-0.594 0.469-0.912 0.337-0.319-0.125-0.412-0.488-0.231-0.794 0.188-0.306 0.581-0.456 0.894-0.337 0.313 0.113 0.425 0.469 0.25 0.794zM12.044 22.933c-0.512 0.819-1.613 1.175-2.438 0.8-0.813-0.369-1.056-1.319-0.544-2.119 0.506-0.794 1.569-1.15 2.388-0.806 0.831 0.356 1.1 1.3 0.594 2.125zM13.969 17.146c-2.519-0.656-5.369 0.6-6.463 2.819-1.119 2.262-0.037 4.781 2.506 5.606 2.638 0.85 5.75-0.456 6.831-2.894 1.069-2.394-0.262-4.85-2.875-5.531z"></path>
+            </svg>
+        </a>
+        <a href="https://www.zhihu.com/people/general-54-18"
+           title="https://www.zhihu.com/people/general-54-18"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M32 26.67c0 2.931-2.382 5.33-5.33 5.33h-21.339c-2.948 0-5.33-2.382-5.33-5.33v-21.339c0-2.948 2.382-5.33 5.33-5.33h21.339c2.948 0 5.33 2.382 5.33 5.33v21.339zM12.358 17.191h4.713c0-1.114-0.531-1.748-0.531-1.748h-4.079c0.103-2.005 0.189-4.576 0.223-5.536h3.874s-0.017-1.645-0.463-1.645h-6.822s0.411-2.142 0.96-3.085c0 0-2.040-0.12-2.742 2.605-0.686 2.725-1.731 4.354-1.851 4.662s0.6 0.137 0.891 0c0.309-0.137 1.663-0.617 2.057-2.537h2.108c0.034 1.2 0.12 4.885 0.086 5.536h-4.336c-0.6 0.446-0.823 1.748-0.823 1.748h4.971c-0.206 1.371-0.566 3.137-1.080 4.062-0.806 1.491-1.234 2.828-4.131 5.176 0 0-0.48 0.36 0.994 0.223 1.474-0.12 2.845-0.514 3.839-2.434 0.514-0.994 1.011-2.28 1.423-3.565l4.079 4.713s0.548-1.268 0.137-2.657l-3.034-3.394-1.028 0.754c0.291-0.994 0.497-1.988 0.548-2.845 0.017 0.017 0.017 0 0.017-0.034zM18.048 7.936v16.3h1.714l0.703 1.954 2.965-1.954h3.754v-16.3h-9.136zM25.401 22.487h-1.937l-2.434 1.611-0.566-1.611h-0.6v-12.735h5.553v12.735h-0.017z"></path>
+            </svg>
+        </a>
+        <a href="tencent://message/?uin=1359541394"
+           title="1359541394"
+           target="_blank"
+           class="user__site" rel="noopener nofollow">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M4.821 14.393c-0.125-0.304-0.143-0.607-0.143-0.929 0-0.5 0.321-1.304 0.625-1.679-0.018-0.464 0.179-1.411 0.536-1.714 0-3.304 2.554-7.464 5.536-8.893 1.839-0.875 3.768-1.179 5.786-1.179 1.571 0 3.286 0.375 4.75 0.982 4.196 1.768 5.143 5.054 6.036 9.25l0.018 0.089c0.518 0.786 0.982 1.714 0.982 2.679 0 0.482-0.321 0.964-0.321 1.393 0 0.036 0.107 0.179 0.125 0.214 1.536 2.268 2.929 4.732 2.929 7.554 0 0.625-0.339 2.804-1.339 2.804-0.696 0-1.464-1.696-1.714-2.161-0.018-0.018-0.036-0.018-0.054-0.018l-0.089 0.071c-0.571 1.482-1.196 2.875-2.357 3.982 1.018 0.982 2.661 0.893 2.964 2.589-0.089 0.196-0.054 0.411-0.196 0.607-1.018 1.536-3.75 1.732-5.393 1.732-2.179 0-3.946-0.571-6-1.179-0.429-0.125-1.071-0.054-1.536-0.107-1.089 1.196-3.75 1.518-5.286 1.518-1.357 0-6.607-0.089-6.607-2.411 0-1 0.214-1.286 0.911-1.929 0.554-0.107 0.964-0.411 1.607-0.446 0.089 0 0.161-0.018 0.25-0.036 0.018-0.018 0.036-0.018 0.036-0.071l-0.036-0.054c-1.232-0.286-2.964-3.393-3.232-4.679l-0.089-0.054c-0.125 0-0.179 0.268-0.214 0.357-0.393 0.911-1.321 1.893-2.357 2h-0.018c-0.143 0-0.089-0.143-0.196-0.179-0.25-0.589-0.411-1.125-0.411-1.786 0-3.571 1.714-6.214 4.5-8.321z"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)"
+           class="user__site" title="18203879479">
+            <svg viewBox="0 0 32 32" width="100%" height="100%">
+                <path d="M9.062 9.203c0-0.859-0.562-1.422-1.422-1.422-0.844 0-1.703 0.562-1.703 1.422 0 0.844 0.859 1.406 1.703 1.406 0.859 0 1.422-0.562 1.422-1.406zM20.672 17.125c0-0.562-0.562-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.859 0 1.422-0.562 1.422-1.141zM16.984 9.203c0-0.859-0.562-1.422-1.406-1.422-0.859 0-1.703 0.562-1.703 1.422 0 0.844 0.844 1.406 1.703 1.406 0.844 0 1.406-0.562 1.406-1.406zM26.906 17.125c0-0.562-0.578-1.125-1.422-1.125-0.562 0-1.125 0.562-1.125 1.125 0 0.578 0.562 1.141 1.125 1.141 0.844 0 1.422-0.562 1.422-1.141zM22.75 10.922c-0.359-0.047-0.719-0.063-1.094-0.063-5.375 0-9.625 4.016-9.625 8.953 0 0.828 0.125 1.625 0.359 2.375-0.359 0.031-0.703 0.047-1.063 0.047-1.422 0-2.547-0.281-3.969-0.562l-3.953 1.984 1.125-3.406c-2.828-1.984-4.531-4.547-4.531-7.656 0-5.391 5.094-9.625 11.328-9.625 5.563 0 10.453 3.391 11.422 7.953zM32 19.687c0 2.547-1.688 4.813-3.969 6.516l0.859 2.828-3.109-1.703c-1.141 0.281-2.281 0.578-3.406 0.578-5.391 0-9.625-3.688-9.625-8.219s4.234-8.219 9.625-8.219c5.094 0 9.625 3.688 9.625 8.219z"></path>
+            </svg>
+        </a>
+ <br>
+        &copy; 2020
+        <a href="https://ZZUGEneral.github.io">General 的个人博客</a>
+        你一定会喜欢那个因为喜欢她而发光的自己！
+        <span class="footer__heart">❤️</span><br>
+        <div align="center">
+          <a target="_blank" href="http://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫ICP备2020028892号-1</p></a> &nbsp;
+          <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41132602001081" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://img.hacpai.com/file/2019/07/备案图标-cc568907.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">豫公网安备 41132602001081号</p></a>
+        </div>
+    </div>
+</footer>
+<svg class="side__top" id="sideTop" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <path d="M26.562 13.958c0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303v0c0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303v0zM23.305 10.7c0 0 0 0 0 0 0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303c0-0 0-0 0-0v0c0-0 0-0 0-0 0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303c0 0 0 0 0 0v0zM20.022 7.417c0 0 0 0 0 0 0 0.72 0.583 1.303 1.303 1.303s1.303-0.583 1.303-1.303c0-0 0-0 0-0v0c0-0 0-0 0-0 0-0.72-0.583-1.303-1.303-1.303s-1.303 0.583-1.303 1.303c0 0 0 0 0 0v0zM29.67 0h-27.339c-0.677 0-1.228 0.551-1.228 1.228s0.551 1.228 1.228 1.228h11.151l-10.725 10.725c-0.476 0.476-0.476 1.253 0 1.729 0.226 0.226 0.551 0.351 0.852 0.351s0.626-0.125 0.852-0.351l10.074-10.074v25.936c0 0.677 0.551 1.228 1.228 1.228s1.228-0.551 1.228-1.228v-26.011c0.476 0.426 1.203 0.426 1.679-0.050s0.476-1.253 0-1.729l-0.576-0.576h11.577c0.677 0 1.228-0.551 1.228-1.228 0-0.626-0.551-1.178-1.228-1.178z"></path>
+</svg>
+<script>
+  var Label = {
+    speech: true,
+    servePath: "https://ZZUGEneral.github.io",
+    staticServePath: "https://ZZUGEneral.github.io",
+    luteAvailable: true,
+    hljsStyle: 'github',
+    langLabel: "zh_CN",
+    version: "4.3.1",
+    staticSite: true,
+    showCodeBlockLn: false,
+    articleId: "1603288674744",
+  }
+</script>
+<script type="text/javascript"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        charset="utf-8"></script>
+<script type="text/javascript"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        charset="utf-8"></script>
+
+    <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
+        <path d="M30 18h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM30 6.25h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2h28c1.1 0 2 0.9 2 2s-0.9 2-2 2zM2 25.75h28c1.1 0 2 0.9 2 2s-0.9 2-2 2h-28c-1.1 0-2-0.9-2-2s0.9-2 2-2z"></path>
+    </svg>
+
+<script type="text/javascript">
+    Util.addScript('https://ZZUGEneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    var page = new Page({
+        "commentContentCannotEmptyLabel": "评论不能为空",
+        "oId": "1603288674744",
+        "blogHost": "https://ZZUGEneral.github.io",
+        "randomArticles1Label": "随机阅读：",
+        "externalRelevantArticles1Label": "站外相关阅读："
+    });
+    $(document).ready(function () {
+        page.load();
+    page.tips.externalRelevantArticlesDisplayCount = "0";
+        page.loadRandomArticles('<h3>随机阅读</h3>');
+        page.loadRelevantArticles('1603288674744', '<h3>相关阅读</h3>');
+    Skin.initArticle()
+    });
+</script>
+
+</body>
+</html>
+
+<!-- Generated by Latke (https://github.com/88250/latke) in 45ms, 2020/11/10 14:53:25 -->

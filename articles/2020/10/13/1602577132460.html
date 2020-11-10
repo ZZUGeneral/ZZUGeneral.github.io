@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Web应用程序安全 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGeneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGeneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Web应用程序安全 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Web应用程序安全 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGeneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGeneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html">        <link rel="stylesheet"
-              href="https://ZZUGeneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
-            <link rel="prev" title="Web常见漏洞" href="https://ZZUGeneral.github.io/articles/2020/10/12/1602511210520.html">
-            <link rel="next" title="核心防御机制" href="https://ZZUGeneral.github.io/articles/2020/10/14/1602667334063.html">
+<meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Web应用程序安全 - General 的个人博客</title><meta name="description" content="杨贺龙的博客系统。"/><meta property="og:description" content="杨贺龙的博客系统。"/>    <meta name="keywords" content="Solo,Java, 安全,测试博客,开源,Linux,CentOS,Ubuntu,Docker,Spring Boot,Swagger,SQLMAP,Web渗透"/><link rel="dns-prefetch" href="https://ZZUGEneral.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://ZZUGEneral.github.io"><link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Web应用程序安全 - General 的个人博客"/><meta property="og:site_name" content="General 的个人博客"/><meta property="og:url"      content="https://ZZUGEneral.github.io/articles/2020/10/13/1602577132460.html?"/><meta property="og:image" content="https://static.b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Web应用程序安全 - General 的个人博客" href="/opensearch.xml"><link href="https://ZZUGEneral.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://ZZUGEneral.github.io/manifest.json">        <link rel="canonical" href="https://ZZUGEneral.github.io/articles/2020/10/13/1602577132460.html">        <link rel="stylesheet"
+              href="https://ZZUGEneral.github.io/skins/Bubble/css/base.css?1602754508835"/>
+            <link rel="prev" title="Web安全攻防之常见漏洞" href="https://ZZUGEneral.github.io/articles/2020/10/12/1602511210520.html">
+            <link rel="next" title="核心防御机制" href="https://ZZUGEneral.github.io/articles/2020/10/14/1602667334063.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.5.3/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
 <body class="fn__flex-column">
 <div id="pjax" class="fn__flex-1">
@@ -13,7 +13,7 @@
     <header class="header header--article">
         <div class="wrapper header__title">
             <h1 class="header__h1 fn__flex-inline">
-                <a href="https://ZZUGeneral.github.io" rel="start">General 的个人博客</a>
+                <a href="https://ZZUGEneral.github.io" rel="start">General 的个人博客</a>
             </h1>
             <h2 class="header__desc header__desc--title">你一定会喜欢那个因为喜欢她而发光的自己！</h2>
             <div class="header__desc">
@@ -42,11 +42,11 @@
             </svg>
 
             <div class="side__header">
-                <a href="https://ZZUGeneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
+                <a href="https://ZZUGEneral.github.io" rel="start"><img class="side__logo" alt="General 的个人博客" src="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    33 文章 <br>
-                    <span data-uvstaturl="https://ZZUGeneral.github.io">0</span> 浏览
+                    48 文章 <br>
+                    <span data-uvstaturl="https://ZZUGEneral.github.io">0</span> 浏览
                     
                 </div>
             </div>
@@ -56,7 +56,7 @@
             </div>
             <ul class="side__nav">
                 <li>
-                    <a href="https://ZZUGeneral.github.io" rel="start">
+                    <a href="https://ZZUGEneral.github.io" rel="start">
                             General 的个人博客
                     </a>
                 </li>
@@ -65,19 +65,19 @@
                                 class="page-icon" src="/images/github-icon.png" alt="我的开源">我的开源</a>
                     </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/categories.html">分类</a>
+                    <a href="https://ZZUGEneral.github.io/categories.html">分类</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/tags.html">标签墙</a>
+                    <a href="https://ZZUGEneral.github.io/tags.html">标签墙</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/archives.html">存档</a>
+                    <a href="https://ZZUGEneral.github.io/archives.html">存档</a>
                 </li>
                 <li>
-                    <a href="https://ZZUGeneral.github.io/links.html">友链</a>
+                    <a href="https://ZZUGEneral.github.io/links.html">友链</a>
                 </li>
                 <li>
-                    <a rel="alternate" href="https://ZZUGeneral.github.io/rss.xml">RSS</a>
+                    <a rel="alternate" href="https://ZZUGEneral.github.io/rss.xml">RSS</a>
                 </li>
             </ul>
         </div>
@@ -94,7 +94,7 @@
                 </time>
                 /
                     <a rel="tag"
-                       href="https://ZZUGeneral.github.io/tags/%E5%AE%89%E5%85%A8">安全</a> &nbsp;
+                       href="https://ZZUGEneral.github.io/tags/%E5%AE%89%E5%85%A8">安全</a> &nbsp;
             </div>
             <h2 class="article__title">
                 Web应用程序安全
@@ -102,7 +102,7 @@
 <div class="article__share"
      data-title="Web应用程序安全"
      data-blogtitle="General 的个人博客"
-     data-url="https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html"
+     data-url="https://ZZUGEneral.github.io/articles/2020/10/13/1602577132460.html"
      data-avatar="https://b3logfile.com/avatar/1596873896447_1600698145202.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100">
     <span class="item" data-type="qqz">
         <svg viewBox="0 0 32 32" width="100%" height="100%">
@@ -132,7 +132,7 @@
         <div class="wrapper">
             <section class="vditor-reset articles article__content">
                 <h2 id="-本站点是安全的-">"本站点是安全的"</h2>
-<p>  实际上，大多数 Web 应用程序并不安全。下面列出常见类型的漏洞：</p>
+<p>实际上，大多数 Web 应用程序并不安全。下面列出常见类型的漏洞：</p>
 <ul>
 <li>不完善的身份验证措施</li>
 <li>不完善的访问控制措施</li>
@@ -142,14 +142,14 @@
 <li>跨站点请求伪造</li>
 </ul>
 <h2 id="核心安全问题-用户可以提交任意输入">核心安全问题：用户可以提交任意输入</h2>
-<p>  Web 应用程序的核心安全问题：用户可以提交任意输入。由于引用程序都无法控制客户端，用户几乎可向服务端应用程序提交任意输入。引用程序必须假设所有输入的信息都是恶意的输入，并必须采取措施确保攻击者无法使用专门设计的输入破坏应用程序，干扰其逻辑结构与行为，并最终达到非法访问其数据和功能的目的。</p>
-<p>  这个核心问题变现在许多方面：</p>
+<p>Web 应用程序的核心安全问题：用户可以提交任意输入。由于引用程序都无法控制客户端，用户几乎可向服务端应用程序提交任意输入。引用程序必须假设所有输入的信息都是恶意的输入，并必须采取措施确保攻击者无法使用专门设计的输入破坏应用程序，干扰其逻辑结构与行为，并最终达到非法访问其数据和功能的目的。</p>
+<p>这个核心问题变现在许多方面：</p>
 <ul>
 <li>用户可干预客户端和服务端见传送的所有数据，包括请求参数，Cookie，HTTP 信息头等。</li>
 <li>用户可按任何顺序发送请求，并可在应用程序要求之外的不同阶段不止一次提交或者根本不提交参数。即用户的操作和开发者对用户和引用程序交互方式做出的任何假设完全不同。</li>
 <li>用户并不仅限于一种 Web 浏览器访问应用程序。各种各样的工具可以提出普通浏览器无法提交的请求，并能迅速生成大量的请求，查找和利用安全问题达到自己的目的。</li>
 </ul>
-<p>  绝大多数针对 Web 应用程序的攻击都设计向服务器提交输入，旨在引起一些应用程序设计者无法预料或者不希望出现的事件。</p>
+<p>绝大多数针对 Web 应用程序的攻击都设计向服务器提交输入，旨在引起一些应用程序设计者无法预料或者不希望出现的事件。</p>
 <ul>
 <li>更改以隐藏的 HTML 表单字段提交的产品价格，以低廉的价格欺诈性地购买商品。</li>
 <li>修改 HTTP Cookie 中的会话令牌，劫持另一个验证用户的会话。</li>
@@ -157,7 +157,7 @@
 <li>改变由后端数据库处理的某个输入，从而注入一个恶意数据库查询以访问敏感数据。</li>
 </ul>
 <h2 id="关键问题因素">关键问题因素</h2>
-<p>  任何情况下，如果一个应用程序必须接受并处理可能为恶意的未经验证的数据，就会产生 Web 应用程序面临的核心安全问题。但是，对 Web 应用程序而言，几种因素的结合使问题更加严重。</p>
+<p>任何情况下，如果一个应用程序必须接受并处理可能为恶意的未经验证的数据，就会产生 Web 应用程序面临的核心安全问题。但是，对 Web 应用程序而言，几种因素的结合使问题更加严重。</p>
 <ul>
 <li>不成熟的安全意识：与网络和操作系统这些发展更完善的领域相比，人们对 Web 应用程序的安全意识还远不够成熟。</li>
 <li>独立开发：大多是应用程序都与企业自己独立开发，即是应用程序采用第三方组件，也是使用新代码将第三方组件进行自定义或拼凑在一起。导致每个应用程序各不相同，并且可能包含其独有的缺陷。</li>
@@ -167,15 +167,15 @@
 <li>技术上强其所难：开发人员沿用原油的技术来满足新的需求</li>
 <li>对功能需求不断增强：现在的网站包含各种各样的功能，在某种程度上增加的网站被攻击的可能性。</li>
 </ul>
-<p>  在 Web 应用程序之前，主要在网络边界抵御外部攻击。保护这个边界需要对其提供的服务进行强化，打补丁，并在用户访问之间设置防火墙。</p>
-<p>  Web 应用程序改变了这一切。用户要访问应用程序，边界防火墙必须允许其通过 HTTP/HTTPS 连接内部服务器；应用程序要实现其功能，必须允许其连接服务器以支持后端系统，如数据库，大型主机以及金融与后勤系统。这些系统通常处于组织运营的核心部分，并由几层网络级防御保护。</p>
-<p>  如果 Web 应用程序存在漏洞，那么公网上的攻击者只需要从 Web 浏览器提交专门设计的数据就可以攻破组织的核心后端系统。这些数据会向传送至 Web 应用程序的正常、良性数据一样，穿透组织的所有网络防御。</p>
+<p>在 Web 应用程序之前，主要在网络边界抵御外部攻击。保护这个边界需要对其提供的服务进行强化，打补丁，并在用户访问之间设置防火墙。</p>
+<p>Web 应用程序改变了这一切。用户要访问应用程序，边界防火墙必须允许其通过 HTTP/HTTPS 连接内部服务器；应用程序要实现其功能，必须允许其连接服务器以支持后端系统，如数据库，大型主机以及金融与后勤系统。这些系统通常处于组织运营的核心部分，并由几层网络级防御保护。</p>
+<p>如果 Web 应用程序存在漏洞，那么公网上的攻击者只需要从 Web 浏览器提交专门设计的数据就可以攻破组织的核心后端系统。这些数据会向传送至 Web 应用程序的正常、良性数据一样，穿透组织的所有网络防御。</p>
                     <div>
                         <hr>
 
 标题：Web应用程序安全<br>
-作者：<a href="https://ZZUGeneral.github.io" target="_blank">General</a><br>
-地址：<a href="https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html" target="_blank">https://ZZUGeneral.github.io/articles/2020/10/13/1602577132460.html</a><br>
+作者：<a href="https://ZZUGEneral.github.io" target="_blank">General</a><br>
+地址：<a href="https://ZZUGEneral.github.io/articles/2020/10/13/1602577132460.html" target="_blank">https://ZZUGEneral.github.io/articles/2020/10/13/1602577132460.html</a><br>
 一个没有得到Java开发工作的测试员！
 <!-- 签名档内可使用 HTML、JavaScript -->
 <br>
@@ -219,7 +219,7 @@
     
 </div>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/TweenMax.min.js?1602754508835"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -286,7 +286,7 @@
         </a>
  <br>
         &copy; 2020
-        <a href="https://ZZUGeneral.github.io">General 的个人博客</a>
+        <a href="https://ZZUGEneral.github.io">General 的个人博客</a>
         你一定会喜欢那个因为喜欢她而发光的自己！
         <span class="footer__heart">❤️</span><br>
         <div align="center">
@@ -301,8 +301,8 @@
 <script>
   var Label = {
     speech: true,
-    servePath: "https://ZZUGeneral.github.io",
-    staticServePath: "https://ZZUGeneral.github.io",
+    servePath: "https://ZZUGEneral.github.io",
+    staticServePath: "https://ZZUGEneral.github.io",
     luteAvailable: true,
     hljsStyle: 'github',
     langLabel: "zh_CN",
@@ -313,10 +313,10 @@
   }
 </script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/common.min.js?1602754508835"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://ZZUGeneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
+        src="https://ZZUGEneral.github.io/skins/Bubble/js/circleMagic.min.js?1602754508835"
         charset="utf-8"></script>
 
     <svg viewBox="0 0 32 32" width="100%" height="100%" class="side__top side__top--toc">
@@ -324,11 +324,11 @@
     </svg>
 
 <script type="text/javascript">
-    Util.addScript('https://ZZUGeneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
+    Util.addScript('https://ZZUGEneral.github.io/js/page.min.js?1602754508835', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1602577132460",
-        "blogHost": "https://ZZUGeneral.github.io",
+        "blogHost": "https://ZZUGEneral.github.io",
         "randomArticles1Label": "随机阅读：",
         "externalRelevantArticles1Label": "站外相关阅读："
     });
@@ -344,4 +344,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 34ms, 2020/10/21 08:28:34 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 33ms, 2020/11/10 14:53:26 -->
